@@ -13,7 +13,7 @@
    Si queda vacío, la web usa los datos de demo.js.
    ========================================================= */
 const FUENTE = {
-  publicado: "",
+  publicado: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRwiPxs_PirU_o-mPUoBuWCJVD3pvhpnSr1U6Sj9HN-_xMG0Qv2_cBWcJUWzfewAvQ9-EteoMfGs-CM/pubhtml?gid=702248831&single=true",
   gidProductos: 702248831,   // número de la pestaña Productos (gid=... en el link)
   gidContacto: 1759798324    // número de la pestaña Contacto
 };
