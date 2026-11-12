@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Inventario · PATTERNS</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f2ee;--ink:#111;--muted:#6b6862;--card:#fff;--line:#e2dfd8;--ok:#16a37f;--low:#e8a200;--out:#d9412b;--blue:#2f4bff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;padding-bottom:60px}
+  button{font:inherit;cursor:pointer}
+  input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff;width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  header{background:var(--ink);color:#fff;padding:18px 0;position:sticky;top:0;z-index:20}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  h1{font-family:Unbounded;font-size:1.2rem}
+  h1 small{font-family:Inter;font-weight:500;opacity:.6;font-size:.85rem;margin-left:8px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .b{border:0;border-radius:99px;padding:9px 16px;font-weight:600;font-size:.88rem;background:#fff;color:var(--ink)}
+  .b.primary{background:#ffd23f}
+  .b.ghost{background:transparent;color:#fff;border:1px solid #444}
+  .b.dark{background:var(--ink);color:#fff}
+  .b.small{padding:6px 12px;font-size:.8rem}
+  .b.danger{background:transparent;color:var(--out);border:1px solid var(--line)}
+  .draft{background:#fff4c4;border-bottom:1px solid #f1df8a;padding:10px 0;font-size:.9rem;display:none}
+  .draft.show{display:block}
+  h2{font-size:1.15rem;margin:34px 0 14px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .kpi span{color:var(--muted);font-size:.85rem}
+  .kpi b{display:block;font-size:1.7rem;font-weight:700;margin-top:2px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .cfg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+  .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+  .sale{display:grid;grid-template-columns:2fr 1.3fr 1fr .8fr auto;gap:10px;align-items:end}
+  .prods{display:grid;gap:16px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ph{display:grid;grid-template-columns:72px 1.4fr .7fr 1fr 1fr auto;gap:12px;padding:14px;align-items:end;border-bottom:1px solid var(--line)}
+  .thumb{width:72px;height:72px;border-radius:10px;overflow:hidden;background:var(--bg)}
+  .thumb svg,.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .pdesc{padding:0 14px 12px;border-bottom:1px solid var(--line)}
+  .pdesc textarea{min-height:40px;resize:vertical}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:760px}
+  th{font-size:.75rem;color:var(--muted);font-weight:600;text-align:left;padding:10px 8px;background:#faf9f6;border-bottom:1px solid var(--line)}
+  td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tr:last-child td{border-bottom:0}
+  td.sz input{width:58px;text-align:center;font-weight:700}
+  td.sz.out input{background:#fdecea;border-color:#f3b8ae;color:var(--out)}
+  td.sz.low input{background:#fff6dd;border-color:#f1d27a}
+  .sw{display:flex;gap:6px;align-items:center}
+  .sw input[type=color]{width:34px;height:34px;padding:2px;border-radius:8px}
+  .tot{font-weight:700;text-align:center}
+  .foot{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#faf9f6;font-size:.88rem;color:var(--muted);gap:10px;flex-wrap:wrap}
+  .legend{display:flex;gap:14px;font-size:.82rem;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .help{font-size:.92rem;color:var(--muted)}
+  .help ol{margin:8px 0 0 18px;display:grid;gap:4px}
+  .help code{background:#f0eee9;padding:1px 6px;border-radius:5px;font-size:.85em}
+  .toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,200%);background:var(--ink);color:#fff;padding:11px 18px;border-radius:99px;font-weight:600;transition:.3s;z-index:50;visibility:hidden}
+  .toast.show{transform:translate(-50%,0);visibility:visible}
+  @media(max-width:900px){
+    .kpis,.cfg{grid-template-columns:1fr 1fr}
+    .sale{grid-template-columns:1fr 1fr}
+    .ph{grid-template-columns:72px 1fr 1fr}
+  }
+  @media(max-width:520px){.ph{grid-template-columns:1fr 1fr}.ph .thumb{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <h1>PATTERNS<small>Inventario</small></h1>
+  <div class="actions">
+    <a class="b ghost" href="./" target="_blank" style="text-decoration:none">Ver tienda ↗</a>
+    <button class="b ghost" id="csv">Exportar CSV</button>
+    <button class="b primary" id="dl">⬇ Descargar productos.js</button>
+  </div>
+</div></header>
+<div class="draft" id="draft"><div class="wrap">✏️ Tenés cambios sin publicar (guardados en este navegador). Descargá <b>productos.js</b> y subilo para que se vean en la tienda. <button class="b small danger" id="discard" style="margin-left:8px">Descartar cambios</button></div></div>
+
+<main class="wrap">
+
+  <div class="kpis">
+    <div class="kpi"><span>Unidades en stock</span><b id="kU">0</b></div>
+    <div class="kpi"><span>Valor del inventario</span><b id="kV">$ 0</b></div>
+    <div class="kpi"><span>Modelos agotados</span><b id="kA">0</b></div>
+    <div class="kpi"><span>Talles con poco stock</span><b id="kP">0</b></div>
+  </div>
+
+  <h2>🧾 Registrar una venta</h2>
+  <div class="panel">
+    <div class="sale">
+      <div><label>Remera</label><select id="sP"></select></div>
+      <div><label>Color</label><select id="sC"></select></div>
+      <div><label>Talle</label><select id="sT"></select></div>
+      <div><label>Cantidad</label><input id="sQ" type="number" min="1" value="1"></div>
+      <button class="b dark" id="sell">Descontar</button>
+    </div>
+    <p class="hint" id="sInfo"></p>
+  </div>
+
+  <h2>📦 Stock por modelo</h2>
+  <div class="legend"><span><i style="background:#fdecea;border:1px solid #f3b8ae"></i>Sin stock</span><span><i style="background:#fff6dd;border:1px solid #f1d27a"></i>Pocas unidades</span></div>
+  <div class="prods" id="prods"></div>
+  <div style="margin-top:14px"><button class="b dark" id="addP">+ Nuevo modelo</button></div>
+
+  <h2>⚙️ Datos de contacto</h2>
+  <div class="panel">
+    <div class="cfg">
+      <div><label>WhatsApp</label><input data-cfg="whatsapp" placeholder="59899123456"><p class="hint">598 + número sin el 0</p></div>
+      <div><label>Instagram</label><input data-cfg="instagram" placeholder="patterns.uy"><p class="hint">Usuario, sin @</p></div>
+      <div><label>Correo</label><input data-cfg="email" placeholder="hola@patterns.uy"></div>
+      <div><label>Aviso de "pocas unidades"</label><input data-cfg="pocasUnidades" type="number" min="0"><p class="hint">Cantidad por talle o menos</p></div>
+    </div>
+  </div>
+
+  <h2>❓ ¿Cómo publico los cambios?</h2>
+  <div class="panel help">
+    Los cambios se guardan en este navegador mientras trabajás. Para que se vean en la tienda:
+    <ol>
+      <li>Tocá <b>⬇ Descargar productos.js</b>.</li>
+      <li>En GitHub, entrá a la carpeta <code>proyectos/patterns</code> → <b>Add file</b> → <b>Upload files</b> y subí el archivo (reemplaza al anterior).</li>
+      <li>Tocá <b>Commit changes</b>. En uno o dos minutos la tienda muestra el stock nuevo.</li>
+    </ol>
+    <p style="margin-top:10px"><b>Exportar CSV</b> te baja el stock en formato tabla (modelo, color, talle, stock, precio, valor) para abrirlo en Excel o Power BI.</p>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="productos.js"></script>
+<script src="dibujo.js"></script>
+<script>
+/* ===== Estado: borrador del navegador, o lo publicado en productos.js ===== */
+const KEY = "patterns-inventario-borrador";
+const ORIGINAL = JSON.stringify(TIENDA);
+let D;
+try { D = JSON.parse(localStorage.getItem(KEY) || "null"); } catch(e) {}
+if (!D) D = JSON.parse(ORIGINAL);
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const T = () => D.talles;
+const fmt = n => (D.config.moneda||"$") + " " + Number(n).toLocaleString("es-UY");
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const stockColor = c => T().reduce((a,t)=>a+Number(c.stock[t]||0),0);
+const stockProd  = p => p.colores.reduce((a,c)=>a+stockColor(c),0);
+const PATRONES = ["rayas","puntos","ondas","cuadros","triangulos","zigzag","grilla","circulos"];
+
+function guardar(){
+  const cambiado = JSON.stringify(D) !== ORIGINAL;
+  try { cambiado ? localStorage.setItem(KEY, JSON.stringify(D)) : localStorage.removeItem(KEY); } catch(e) {}
+  $("#draft").classList.toggle("show", cambiado);
+  kpis();
+}
+
+/* ===== Indicadores ===== */
+function kpis(){
+  let u=0, v=0, poco=0;
+  D.productos.forEach(p => p.colores.forEach(c => T().forEach(t => {
+    const s = Number(c.stock[t]||0); u += s; v += s*p.precio;
+    if (s>0 && s<=D.config.pocasUnidades) poco++;
+  })));
+  $("#kU").textContent = u.toLocaleString("es-UY");
+  $("#kV").textContent = fmt(v);
+  $("#kA").textContent = D.productos.filter(p=>stockProd(p)===0).length;
+  $("#kP").textContent = poco;
+}
+
+/* ===== Tabla de productos ===== */
+function cls(s){ s=Number(s||0); return s<=0 ? "out" : s<=D.config.pocasUnidades ? "low" : ""; }
+
+function render(){
+  $("#prods").innerHTML = D.productos.map((p,pi) => `
+    <div class="prod">
+      <div class="ph">
+        <div class="thumb">${productImage(p,0)}</div>
+        <div><label>Nombre</label><input data-p="${pi}" data-f="nombre" value="${esc(p.nombre)}"></div>
+        <div><label>Precio</label><input data-p="${pi}" data-f="precio" type="number" min="0" value="${p.precio}"></div>
+        <div><label>Categoría</label><input data-p="${pi}" data-f="cat" value="${esc(p.cat)}"></div>
+        <div><label>Etiqueta</label><input data-p="${pi}" data-f="tag" value="${esc(p.tag)}" placeholder="Nuevo, Limitada..."></div>
+        <div><label>Patrón (dibujo)</label><select data-p="${pi}" data-f="patron">${PATRONES.map(x=>`<option ${x===p.patron?"selected":""}>${x}</option>`).join("")}</select></div>
+      </div>
+      <div class="pdesc"><label style="margin-top:10px">Descripción</label><textarea data-p="${pi}" data-f="desc">${esc(p.desc)}</textarea></div>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Color</th><th>Remera / estampa</th><th>Foto (opcional)</th>${T().map(t=>`<th style="text-align:center">${t}</th>`).join("")}<th style="text-align:center">Total</th><th></th></tr></thead>
+        <tbody>${p.colores.map((c,ci)=>`
+          <tr>
+            <td><input data-p="${pi}" data-c="${ci}" data-f="nombre" value="${esc(c.nombre)}" style="min-width:90px"></td>
+            <td><div class="sw"><input type="color" data-p="${pi}" data-c="${ci}" data-f="tee" value="${c.tee}" title="Color de la remera"><input type="color" data-p="${pi}" data-c="${ci}" data-f="tinta" value="${c.tinta}" title="Color de la estampa"></div></td>
+            <td><input data-p="${pi}" data-c="${ci}" data-f="img" value="${esc(c.img)}" placeholder="img/archivo.jpg" style="min-width:130px"></td>
+            ${T().map(t=>`<td class="sz ${cls(c.stock[t])}"><input type="number" min="0" data-p="${pi}" data-c="${ci}" data-t="${t}" value="${Number(c.stock[t]||0)}"></td>`).join("")}
+            <td class="tot" id="tot-${pi}-${ci}">${stockColor(c)}</td>
+            <td><button class="b small danger" data-delc="${pi}-${ci}" title="Eliminar color">✕</button></td>
+          </tr>`).join("")}
+        </tbody></table></div>
+      <div class="foot">
+        <span>Total del modelo: <b id="totp-${pi}">${stockProd(p)}</b> unidades · Valor: <b id="valp-${pi}">${fmt(stockProd(p)*p.precio)}</b></span>
+        <span style="display:flex;gap:8px"><button class="b small" data-addc="${pi}">+ Color</button><button class="b small danger" data-delp="${pi}">Eliminar modelo</button></span>
+      </div>
+    </div>`).join("");
+
+  $$("[data-addc]").forEach(b=>b.onclick=()=>{
+    const p=D.productos[+b.dataset.addc];
+    p.colores.push({nombre:"Nuevo color",tee:"#fafafa",tinta:"#111111",img:"",stock:Object.fromEntries(T().map(t=>[t,0]))});
+    guardar(); render(); fillSale();
+  });
+  $$("[data-delc]").forEach(b=>b.onclick=()=>{
+    const [pi,ci]=b.dataset.delc.split("-").map(Number); const p=D.productos[pi];
+    if(p.colores.length===1){ toast("Un modelo necesita al menos un color"); return; }
+    if(!confirm(`¿Eliminar el color "${p.colores[ci].nombre}" de ${p.nombre}?`)) return;
+    p.colores.splice(ci,1); guardar(); render(); fillSale();
+  });
+  $$("[data-delp]").forEach(b=>b.onclick=()=>{
+    const p=D.productos[+b.dataset.delp];
+    if(!confirm(`¿Eliminar el modelo "${p.nombre}"? Esto no se puede deshacer.`)) return;
+    D.productos.splice(+b.dataset.delp,1); guardar(); render(); fillSale();
+  });
+  kpis();
+}
+
+/* Edición en vivo (un solo listener para todos los campos) */
+$("#prods").addEventListener("input", e=>{
+  const el=e.target, pi=el.dataset.p; if(pi===undefined) return;
+  const p=D.productos[+pi];
+  if(el.dataset.t){                                   // stock de un talle
+    const c=p.colores[+el.dataset.c];
+    c.stock[el.dataset.t]=Math.max(0,parseInt(el.value)||0);
+    el.parentElement.className="sz "+cls(c.stock[el.dataset.t]);
+    $(`#tot-${pi}-${el.dataset.c}`).textContent=stockColor(c);
+  } else if(el.dataset.c!==undefined){                // campo de un color
+    p.colores[+el.dataset.c][el.dataset.f]=el.value;
+    if(el.dataset.f!=="nombre" && +el.dataset.c===0) el.closest(".prod").querySelector(".thumb").innerHTML=productImage(p,0);
+  } else {                                            // campo del modelo
+    p[el.dataset.f] = el.dataset.f==="precio" ? Math.max(0,parseInt(el.value)||0) : el.value;
+    if(el.dataset.f==="patron") el.closest(".prod").querySelector(".thumb").innerHTML=productImage(p,0);
+  }
+  $(`#totp-${pi}`).textContent=stockProd(p);
+  $(`#valp-${pi}`).textContent=fmt(stockProd(p)*p.precio);
+  guardar();
+  if(["nombre"].includes(el.dataset.f)) fillSale();
+});
+
+$("#addP").onclick=()=>{
+  const n=D.productos.length+1;
+  D.productos.push({id:"modelo-"+Date.now().toString(36),nombre:"Nuevo modelo "+n,precio:990,patron:"puntos",cat:"Clásicas",tag:"Nuevo",desc:"",
+    colores:[{nombre:"Blanco",tee:"#fafafa",tinta:"#111111",img:"",stock:Object.fromEntries(T().map(t=>[t,0]))}]});
+  guardar(); render(); fillSale();
+  setTimeout(()=>{ const last=$$("#prods .prod").pop(); last.scrollIntoView({behavior:"smooth",block:"center"}); last.querySelector("input").select(); },50);
+};
+
+/* ===== Registrar venta ===== */
+function fillSale(){
+  const keep=$("#sP").value;
+  $("#sP").innerHTML=D.productos.map((p,i)=>`<option value="${i}">${esc(p.nombre)}</option>`).join("");
+  if(keep && D.productos[+keep]) $("#sP").value=keep;
+  fillSaleColor();
+}
+function fillSaleColor(){
+  const p=D.productos[+$("#sP").value]; if(!p){ $("#sC").innerHTML=""; $("#sT").innerHTML=""; return; }
+  $("#sC").innerHTML=p.colores.map((c,i)=>`<option value="${i}">${esc(c.nombre)}</option>`).join("");
+  fillSaleSize();
+}
+function fillSaleSize(){
+  const p=D.productos[+$("#sP").value]; const c=p?.colores[+$("#sC").value]; if(!c) return;
+  $("#sT").innerHTML=T().map(t=>`<option value="${t}" ${!(c.stock[t]>0)?"disabled":""}>${t} (${c.stock[t]||0})</option>`).join("");
+  const first=T().find(t=>c.stock[t]>0); if(first) $("#sT").value=first;
+  $("#sInfo").textContent = stockColor(c) ? "" : "Este color no tiene stock.";
+}
+$("#sP").onchange=fillSaleColor; $("#sC").onchange=fillSaleSize;
+$("#sell").onclick=()=>{
+  const p=D.productos[+$("#sP").value], ci=+$("#sC").value, c=p.colores[ci], t=$("#sT").value, q=parseInt($("#sQ").value)||0;
+  if(q<=0) return;
+  if((c.stock[t]||0) < q){ toast(`Solo hay ${c.stock[t]||0} de talle ${t}`); return; }
+  c.stock[t]-=q; guardar(); render(); fillSale();
+  $("#sP").value=D.productos.indexOf(p); fillSaleColor(); $("#sC").value=ci; fillSaleSize();
+  $("#sInfo").textContent=`✓ Venta registrada: ${q} x ${p.nombre} ${c.nombre} talle ${t}. Quedan ${c.stock[t]}.`;
+};
+
+/* ===== Configuración ===== */
+$$("[data-cfg]").forEach(el=>{
+  el.value=D.config[el.dataset.cfg]??"";
+  el.oninput=()=>{
+    const k=el.dataset.cfg;
+    D.config[k]= k==="pocasUnidades" ? Math.max(0,parseInt(el.value)||0) : el.value.trim().replace(/^@/,"").replace(/[\s+-]/g, k==="whatsapp"?"":"$&");
+    guardar(); if(k==="pocasUnidades") render();
+  };
+});
+
+/* ===== Descargas ===== */
+function descargar(nombre, texto, tipo){
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([texto],{type:tipo}));
+  a.download=nombre; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+$("#dl").onclick=()=>{
+  const cab=`/* =========================================================
+   PATTERNS · Datos de la tienda
+   Generado desde inventario.html el ${new Date().toLocaleString("es-UY")}
+   Se puede editar a mano o desde inventario.html.
+   ========================================================= */
+`;
+  descargar("productos.js", cab+"const TIENDA = "+JSON.stringify(D,null,2)+";\n", "text/javascript");
+  toast("Descargado ✓ Ahora subilo a GitHub");
+};
+$("#csv").onclick=()=>{
+  const filas=[["modelo","categoria","color","talle","stock","precio","valor"]];
+  D.productos.forEach(p=>p.colores.forEach(c=>T().forEach(t=>{
+    const s=Number(c.stock[t]||0); filas.push([p.nombre,p.cat,c.nombre,t,s,p.precio,s*p.precio]);
+  })));
+  const csv=filas.map(f=>f.map(v=>/[;"\n]/.test(String(v))?`"${String(v).replace(/"/g,'""')}"`:v).join(";")).join("\n");
+  descargar(`patterns-stock-${new Date().toISOString().slice(0,10)}.csv`, "﻿"+csv, "text/csv");
+};
+$("#discard").onclick=()=>{
+  if(!confirm("¿Descartar todos los cambios y volver a lo publicado?")) return;
+  D=JSON.parse(ORIGINAL); try{localStorage.removeItem(KEY);}catch(e){}
+  $$("[data-cfg]").forEach(el=>el.value=D.config[el.dataset.cfg]??"");
+  guardar(); render(); fillSale();
+};
+
+let tt; function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("show"),2400);}
+
+render(); fillSale(); guardar();
+</script>
+</body>
+</html>
