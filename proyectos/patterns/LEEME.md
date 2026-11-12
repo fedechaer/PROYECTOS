@@ -1,44 +1,62 @@
 # PATTERNS · Tienda de remeras
 
+## De dónde salen los datos
+
+Los productos, los precios, el stock y los datos de contacto se leen de la planilla de Google
+**"PATTERNS - Stock"**. La web la lee cada vez que alguien entra, así que lo que cambies
+en la planilla se ve en la tienda en uno o dos minutos. No hay que subir nada a GitHub.
+
+**Requisito:** la planilla tiene que estar compartida como
+*Cualquier persona con el enlace → Lector* (Compartir → Acceso general).
+Si no lo está, la tienda muestra "No pudimos cargar la colección".
+
+### Pestaña Productos
+Una fila por cada modelo y color.
+
+| Columna | Qué va |
+|---|---|
+| `id` | Identificador del modelo, sin espacios. Todas las filas de un modelo llevan el mismo |
+| `modelo`, `precio`, `categoria`, `etiqueta`, `descripcion`, `patron` | Se toman de la primera fila de cada modelo |
+| `color` | Nombre del color (Blanco, Negro...) |
+| `color_remera`, `color_estampa` | Colores `#RRGGBB` para la remera dibujada |
+| `foto` | Ruta de la foto real, ej: `img/ondas-blanco.jpg`. Vacío = remera dibujada |
+| `S`, `M`, `L`, `XL`, `XXL` | Stock de cada talle. Para sumar un talle, insertá una columna antes de `total` |
+| `total` | Se calcula solo. La web no la usa |
+
+### Pestaña Contacto
+`whatsapp` (598 + número sin el 0), `instagram` (usuario sin @), `email` y `pocas_unidades`
+(desde cuántas unidades por talle se avisa "¡Quedan solo N!").
+
+> No cambies los nombres de las pestañas ni los encabezados de la fila 1: la web los usa para encontrar los datos.
+
 ## Archivos
 
 | Archivo | Para qué sirve |
 |---|---|
 | `index.html` | La tienda (estructura de la página) |
 | `estilos.css` | El diseño. Los colores de la marca están arriba, en `:root` |
-| `app.js` | La lógica: catálogo, stock, carrito y envío de pedidos |
+| `config.js` | ID de la planilla y textos fijos (moneda, frases de la barra de promo) |
+| `datos.js` | Lee la planilla y la convierte en productos |
+| `app.js` | Catálogo, stock, carrito y envío de pedidos |
 | `dibujo.js` | Dibuja las remeras de ejemplo mientras no haya fotos |
-| `productos.js` | **Los datos**: contacto, modelos, precios, colores y stock |
-| `inventario.html` | **Panel para gestionar el stock** sin tocar código |
+| `demo.js` | Datos de ejemplo, solo si `config.js` no tiene planilla |
 | `img/` | Fotos reales de las remeras |
-
-## Gestionar el stock
-
-1. Abrí `inventario.html` (en la web: `.../proyectos/patterns/inventario.html`).
-2. Cambiá stock, precios o modelos, o usá **Registrar una venta** para descontar unidades.
-3. Tocá **Descargar productos.js** y subilo a GitHub, en la carpeta `proyectos/patterns`, reemplazando el anterior.
-
-Los cambios quedan guardados en tu navegador hasta que los publiques.
-**Exportar CSV** baja el stock en formato tabla, listo para Excel o Power BI.
 
 ## Cómo funciona el stock en la tienda
 
 - Los talles sin stock aparecen tachados y no se pueden elegir.
-- Con pocas unidades avisa "¡Quedan solo N!". El umbral se configura en el inventario.
+- Con pocas unidades avisa "¡Quedan solo N!".
 - El carrito no deja agregar más unidades de las que hay.
 - Los modelos agotados van al final, en gris, y hay un filtro "Solo con stock".
 - Si el stock baja y alguien tenía más unidades en el carrito, se ajusta solo.
 
-> El stock **no se descuenta solo** cuando alguien manda un pedido, porque no hay servidor.
-> Cuando cerrás una venta, la registrás en el inventario.
+> El stock **no se descuenta solo** cuando alguien manda un pedido. Cuando cerrás una venta,
+> restá las unidades en la planilla.
 
-## Contacto
+## Power BI
 
-En el inventario, sección **Datos de contacto** (o en `productos.js` → `config`):
+Podés conectar Power BI directo a la planilla (Obtener datos → Web) con esta URL:
 
-- `whatsapp`: 598 + número sin el 0, por ejemplo `59899123456`
-- `instagram`: el usuario, sin @
-- `email`: el correo
-
-Mientras estén vacíos, los botones muestran un aviso de demo.
-El pedido por Instagram copia el mensaje y abre el chat, porque Instagram no deja precargar el texto.
+```
+https://docs.google.com/spreadsheets/d/1IS-ib6t60ZBEBRZPOj0tgwarbJBM8ogt9qA2NVM9nnE/gviz/tq?tqx=out:csv&sheet=Productos
+```

@@ -1,18 +1,9 @@
 /* =========================================================
-   PATTERNS · Datos de la tienda
-   ---------------------------------------------------------
-   Este archivo se puede editar a mano o desde inventario.html
-   (que te descarga una versión nueva de este mismo archivo).
-
-   - config: datos de contacto de la marca
-   - talles: talles disponibles, en orden
-   - productos: cada producto tiene uno o más colores, y cada
-     color tiene su propio stock por talle.
-       img:    foto real (ej: "img/ondas-blanco.jpg"). Vacío = remera dibujada.
-       patron: rayas | puntos | ondas | cuadros | triangulos | zigzag | grilla | circulos
-   Precios, nombres y stock de ejemplo: cambiar por los reales.
+   PATTERNS · Datos de DEMO
+   Solo se usan si en config.js no hay una planilla configurada.
+   Los datos reales viven en la planilla de Google.
    ========================================================= */
-const TIENDA = {
+const TIENDA_DEMO = {
   "config": {
     "marca": "PATTERNS",
     "whatsapp": "",

@@ -4,11 +4,11 @@
    - Ficha de producto con color, talle y disponibilidad
    - Carrito que respeta el stock (se guarda en el navegador)
    - Pedido y contacto por WhatsApp, Instagram o correo
-   Los datos salen de productos.js (objeto TIENDA).
+   Los datos salen de la planilla de Google (ver datos.js y config.js).
    ========================================================= */
-const CFG = TIENDA.config;
-const TALLES = TIENDA.talles;
-const PRODUCTOS = TIENDA.productos;
+let CFG = { marca: AJUSTES.marca, moneda: AJUSTES.moneda, promo: AJUSTES.promo, pocasUnidades: 2 };
+let TALLES = [];
+let PRODUCTOS = [];
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -43,7 +43,7 @@ function prepararLinks(){
       if (a.dataset.canal !== "email") { a.target = "_blank"; a.rel = "noopener"; }
     } else {
       a.href = "#";
-      a.onclick = e => { e.preventDefault(); toast(`Demo: falta configurar ${c.nombre} en productos.js`); };
+      a.onclick = e => { e.preventDefault(); toast(`Demo: falta cargar ${c.nombre} en la planilla (pestaña Contacto)`); };
     }
   });
   if (CFG.instagram) $("#igUser").textContent = "@" + CFG.instagram + " →";
@@ -52,7 +52,7 @@ function prepararLinks(){
 
 /* ---------------- Catálogo ---------------- */
 let filtro = "Todas";
-const cats = ["Todas", ...new Set(PRODUCTOS.map(p => p.cat))];
+let cats = ["Todas"];
 
 function renderFilters(){
   $("#filters").innerHTML = cats.map(c => `<button class="chip ${c === filtro ? "on" : ""}" data-c="${c}">${c}</button>`).join("");
@@ -223,7 +223,7 @@ async function copiar(txt){
 
 async function abrirCanal(canal, msg){
   const c = CANAL[canal];
-  if (!c.ok()) { alert(`Demo: acá se abriría ${c.nombre} con este mensaje:\n\n${msg}\n\n(Configurar ${canal} en productos.js)`); return; }
+  if (!c.ok()) { alert(`Demo: acá se abriría ${c.nombre} con este mensaje:\n\n${msg}\n\n(Falta cargar ${canal} en la planilla, pestaña Contacto)`); return; }
   if (canal === "whatsapp") window.open(c.url(msg), "_blank");
   if (canal === "email") location.href = c.url(msg, "Pedido " + CFG.marca);
   if (canal === "instagram") {
@@ -246,16 +246,32 @@ function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add(
 
 /* ---------------- Inicio ---------------- */
 $("#promo").textContent = (CFG.promo.join("  ✦  ") + "  ✦  ").repeat(6);
-$("#statN").textContent = PRODUCTOS.length;
 $("#yr").textContent = new Date().getFullYear();
 $("#heroA").innerHTML = swatchSVG("ondas", "#2f4bff", "#ffd23f");
 $("#heroB").innerHTML = swatchSVG("cuadros", "#111", "#ff5a36");
 $("#heroC").innerHTML = swatchSVG("circulos", "#fff", "#16a37f");
 $("#aboutArt").innerHTML = swatchSVG("triangulos", "#ff5a36", "#111");
 $("#soloStock").onchange = renderGrid;
+$("#grid").innerHTML = `<p class="none">Cargando la colección…</p>`;
+$("#cartN").textContent = cart.reduce((a, l) => a + l.q, 0);
 
-ajustarCarrito();
-prepararLinks();
-renderFilters();
-renderGrid();
-renderCart();
+(async () => {
+  try {
+    const T = await cargarTienda();
+    CFG = { ...CFG, ...T.config };
+    TALLES = T.talles;
+    PRODUCTOS = T.productos;
+  } catch (err) {
+    console.error("PATTERNS:", err);
+    $("#grid").innerHTML = `<p class="none">No pudimos cargar la colección en este momento 😕<br>Probá recargar la página o <a href="#contacto">escribinos</a>.</p>`;
+    prepararLinks();
+    return;
+  }
+  cats = ["Todas", ...new Set(PRODUCTOS.map(p => p.cat))];
+  $("#statN").textContent = PRODUCTOS.length;
+  ajustarCarrito();
+  prepararLinks();
+  renderFilters();
+  renderGrid();
+  renderCart();
+})();

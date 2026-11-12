@@ -15,7 +15,10 @@ const carpetas = fs.readdirSync(path.join(raiz, 'proyectos'))
     const url = 'file://' + path.join(raiz, 'proyectos', d, 'index.html');
     await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 }).catch(() => {});
     await page.evaluate(() => document.fonts.ready);
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(1500);
+    // Si una web no pudo cargar sus datos (ej: planilla de Google sin acceso), no pisamos la captura anterior
+    const fallo = await page.evaluate(() => /No pudimos cargar/.test(document.body.innerText));
+    if (fallo) { console.log('⚠', d, '- no cargó sus datos, se mantiene la captura anterior'); continue; }
     await page.screenshot({ path: path.join(raiz, 'previews', d + '.jpg'), type: 'jpeg', quality: 72 });
     console.log('✓', d);
   }
