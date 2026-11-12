@@ -7,6 +7,7 @@ Webs demo para negocios de barrio (Malvín, Montevideo) que no tienen presencia 
 ```
 ├── index.html            ← portada con links a todas las demos
 └── proyectos/
+    ├── patterns/               ⭐ Marca propia: tienda de remeras con carrito a WhatsApp
     ├── peluqueria-kn/        Peluquería k&n (Malvín Norte)
     ├── soberbia-peluqueria/  Soberbia Peluquería (Rimac 1617)
     ├── decano-malvin/          Decano, bar/parrilla/pizzería (Orinoco y Michigan)
