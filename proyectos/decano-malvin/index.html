@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decano · El bar de Malvín</title>
+<meta name="description" content="Decano, el bar de Malvín. Parrillada, restaurante y pizzería en Orinoco esquina Michigan, Montevideo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1a1410;--panel:#241c16;--ink:#f6efe6;--muted:#bba999;--fire:#e2562b;--amber:#f2a541;--line:#3a2e25}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;background:rgba(26,20,16,.94);border-bottom:1px solid var(--line);z-index:10}
+  nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.08em}
+  .logo span{color:var(--fire)}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav ul a{text-decoration:none;color:var(--muted);font-weight:500}
+  nav ul a:hover{color:var(--amber)}
+  .hero{padding:110px 0 90px;background:linear-gradient(180deg,rgba(226,86,43,.18),transparent 70%)}
+  .hero small{color:var(--amber);font-weight:700;letter-spacing:.3em;text-transform:uppercase;font-size:.8rem}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.4rem,11vw,7.5rem);line-height:.92;margin:14px 0 22px}
+  .hero h1 span{color:var(--fire)}
+  .hero p{max-width:520px;color:var(--muted);font-size:1.15rem;margin-bottom:32px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;background:var(--fire);color:#fff;text-decoration:none;padding:14px 28px;border-radius:6px;font-weight:700;letter-spacing:.04em}
+  .btn:hover{background:#c8461f}
+  .btn.alt{background:transparent;border:2px solid var(--line)}
+  .pills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:-30px}
+  .pill{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px;text-align:center}
+  .pill .ico{font-size:2rem}
+  .pill h3{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.05em}
+  .pill p{color:var(--muted);font-size:.92rem}
+  section{padding:80px 0}
+  h2{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.04em;margin-bottom:6px}
+  .lead{color:var(--muted);margin-bottom:34px}
+  .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px}
+  .cat h3{color:var(--amber);font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.06em;border-bottom:2px solid var(--line);padding-bottom:6px;margin-bottom:14px}
+  .item{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .item span:last-child{color:var(--muted);white-space:nowrap}
+  .note{margin-top:22px;color:var(--muted);font-size:.85rem}
+  .visit{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:center}
+  .visit dl{display:grid;gap:16px}
+  dt{color:var(--amber);font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+  iframe{width:100%;height:340px;border:0;border-radius:12px}
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:.9rem}
+  @media(max-width:720px){nav ul{display:none}.pills{grid-template-columns:1fr;margin-top:0}.visit{grid-template-columns:1fr}.hero{padding:70px 0 60px}}
+</style>
+</head>
+<body>
+<header><nav class="wrap">
+  <div class="logo">DECA<span>NO</span></div>
+  <ul><li><a href="#carta">Carta</a></li><li><a href="#visitanos">Visitanos</a></li><li><a href="https://www.instagram.com/decano.malvin/" target="_blank" rel="noopener">Instagram</a></li></ul>
+</nav></header>
+
+<main>
+  <div class="hero"><div class="wrap">
+    <small>Orinoco esq. Michigan · Malvín</small>
+    <h1>El bar de<br><span>Malvín</span></h1>
+    <p>Parrilla a la leña, pizzas y la mesa de siempre con los de siempre.</p>
+    <div class="btns">
+      <a class="btn" href="#carta">Ver la carta</a>
+      <a class="btn alt" href="https://www.instagram.com/decano.malvin/" target="_blank" rel="noopener">Reservar por Instagram</a>
+    </div>
+  </div></div>
+
+  <div class="wrap pills">
+    <div class="pill"><div class="ico">🔥</div><h3>Parrillada</h3><p>Cortes a la parrilla y achuras</p></div>
+    <div class="pill"><div class="ico">🍕</div><h3>Pizzería</h3><p>Pizzas, fainá y muzzarella</p></div>
+    <div class="pill"><div class="ico">🍺</div><h3>Bar</h3><p>Para el partido y la previa</p></div>
+  </div>
+
+  <section id="carta"><div class="wrap">
+    <h2>La carta</h2>
+    <p class="lead">Una muestra de lo que te espera.</p>
+    <div class="menu">
+      <div class="cat">
+        <h3>Parrilla</h3>
+        <div class="item"><span>Asado</span><span>$ —</span></div>
+        <div class="item"><span>Vacío</span><span>$ —</span></div>
+        <div class="item"><span>Chorizo y morcilla</span><span>$ —</span></div>
+        <div class="item"><span>Parrillada para 2</span><span>$ —</span></div>
+      </div>
+      <div class="cat">
+        <h3>Pizzería</h3>
+        <div class="item"><span>Muzzarella</span><span>$ —</span></div>
+        <div class="item"><span>Napolitana</span><span>$ —</span></div>
+        <div class="item"><span>Fainá</span><span>$ —</span></div>
+        <div class="item"><span>Pizza a caballo</span><span>$ —</span></div>
+      </div>
+      <div class="cat">
+        <h3>Minutas</h3>
+        <div class="item"><span>Chivito al plato</span><span>$ —</span></div>
+        <div class="item"><span>Milanesa con fritas</span><span>$ —</span></div>
+        <div class="item"><span>Hamburguesa</span><span>$ —</span></div>
+        <div class="item"><span>Papas fritas</span><span>$ —</span></div>
+      </div>
+    </div>
+    <p class="note">* Carta y precios de ejemplo, a completar con el menú real del local.</p>
+  </div></section>
+
+  <section id="visitanos" style="background:var(--panel)"><div class="wrap visit">
+    <div>
+      <h2>Visitanos</h2>
+      <dl>
+        <div><dt>Dirección</dt><dd>Orinoco esquina Michigan, Malvín</dd></div>
+        <div><dt>Horarios</dt><dd>[A confirmar con el cliente]</dd></div>
+        <div><dt>Reservas</dt><dd><a href="https://www.instagram.com/decano.malvin/" target="_blank" rel="noopener">@decano.malvin</a></dd></div>
+      </dl>
+    </div>
+    <iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=Orinoco+y+Michigan,+Malvin,+Montevideo,+Uruguay&output=embed"></iframe>
+  </div></section>
+</main>
+
+<footer>© Decano · El bar de Malvín, Montevideo</footer>
+</body>
+</html>

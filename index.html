@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyectos Web</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f7f9;--ink:#15181d;--muted:#667085;--card:#fff;--line:#e4e7ec;--accent:#2563eb}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:64px 20px}
+  h1{font-size:2.4rem;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;text-decoration:none;color:inherit;transition:.2s}
+  a.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(16,24,40,.08)}
+  .tag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:99px;background:#eef2ff;color:var(--accent);margin-bottom:12px}
+  .card h2{font-size:1.15rem;margin-bottom:4px}
+  .card p{color:var(--muted);font-size:.92rem}
+  .go{margin-top:14px;font-weight:600;color:var(--accent);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Proyectos Web</h1>
+  <p class="sub">Demos para negocios de Malvín, Montevideo.</p>
+  <div class="grid">
+    <a class="card" href="proyectos/peluqueria-kn/"><span class="tag">Peluquería</span><h2>Peluquería k&amp;n</h2><p>Malvín Norte · Reserva por WhatsApp</p><div class="go">Ver demo →</div></a>
+    <a class="card" href="proyectos/soberbia-peluqueria/"><span class="tag">Peluquería</span><h2>Soberbia Peluquería</h2><p>Rimac 1617 · Estilo premium</p><div class="go">Ver demo →</div></a>
+    <a class="card" href="proyectos/decano-malvin/"><span class="tag">Restaurante</span><h2>Decano</h2><p>Bar, parrilla y pizzería · Carta online</p><div class="go">Ver demo →</div></a>
+  </div>
+</div>
+</body>
+</html>
