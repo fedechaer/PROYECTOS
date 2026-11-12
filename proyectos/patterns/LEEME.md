@@ -2,32 +2,28 @@
 
 ## De dónde salen los datos
 
-Los productos, los precios, el stock y los datos de contacto se leen de la planilla de Google
-**"PATTERNS - Stock"**. La web la lee cada vez que alguien entra, así que lo que cambies
-en la planilla se ve en la tienda en uno o dos minutos. No hay que subir nada a GitHub.
+Todo vive en la planilla de Google **"PATTERNS - Stock"**:
 
-**Requisito:** la planilla tiene que estar compartida como
-*Cualquier persona con el enlace → Lector* (Compartir → Acceso general).
-Si no lo está, la tienda muestra "No pudimos cargar la colección".
+| Pestaña | Qué tiene | ¿La lee la web? |
+|---|---|---|
+| **Productos** | Catálogo, precios y stock por talle (el stock se calcula solo: Inventario − Ventas) | ✅ Sí (publicada) |
+| **Contacto** | WhatsApp, Instagram, correo y umbral de "pocas unidades" | ✅ Sí (publicada) |
+| **Inventario** | Ingresos de mercadería y ajustes | ❌ Privada |
+| **Ventas** | Cada venta: fecha, cliente, modelo, color, talle, cantidad, precio | ❌ Privada |
+| **Clientes** | Datos del cliente + compras, productos, total gastado y última compra (automáticos) | ❌ Privada |
 
-### Pestaña Productos
-Una fila por cada modelo y color.
+**La planilla NO se comparte por enlace**, porque tiene datos personales de clientes.
+La web lee solo Productos y Contacto, publicadas desde
+*Archivo → Compartir → Publicar en la Web*. El link publicado va en `config.js` → `publicado`.
+Google actualiza lo publicado cada pocos minutos.
 
-| Columna | Qué va |
-|---|---|
-| `id` | Identificador del modelo, sin espacios. Todas las filas de un modelo llevan el mismo |
-| `modelo`, `precio`, `categoria`, `etiqueta`, `descripcion`, `patron` | Se toman de la primera fila de cada modelo |
-| `color` | Nombre del color (Blanco, Negro...) |
-| `color_remera`, `color_estampa` | Colores `#RRGGBB` para la remera dibujada |
-| `foto` | Ruta de la foto real, ej: `img/ondas-blanco.jpg`. Vacío = remera dibujada |
-| `S`, `M`, `L`, `XL`, `XXL` | Stock de cada talle. Para sumar un talle, insertá una columna antes de `total` |
-| `total` | Se calcula solo. La web no la usa |
+Mientras `publicado` esté vacío, la web muestra los datos de ejemplo de `demo.js`.
 
-### Pestaña Contacto
-`whatsapp` (598 + número sin el 0), `instagram` (usuario sin @), `email` y `pocas_unidades`
-(desde cuántas unidades por talle se avisa "¡Quedan solo N!").
-
-> No cambies los nombres de las pestañas ni los encabezados de la fila 1: la web los usa para encontrar los datos.
+### El día a día
+- **Entra mercadería:** fila nueva en *Inventario*.
+- **Vendés:** fila nueva en *Ventas*. El stock de la web baja solo.
+- **Cliente nuevo:** fila nueva en *Clientes* (antes de cargar su venta).
+- Instrucciones completas en la pestaña *Cómo usar* de la planilla.
 
 ## Archivos
 
@@ -35,7 +31,7 @@ Una fila por cada modelo y color.
 |---|---|
 | `index.html` | La tienda (estructura de la página) |
 | `estilos.css` | El diseño. Los colores de la marca están arriba, en `:root` |
-| `config.js` | ID de la planilla y textos fijos (moneda, frases de la barra de promo) |
+| `config.js` | Link publicado de la planilla y textos fijos (moneda, frases de la barra de promo) |
 | `datos.js` | Lee la planilla y la convierte en productos |
 | `app.js` | Catálogo, stock, carrito y envío de pedidos |
 | `dibujo.js` | Dibuja las remeras de ejemplo mientras no haya fotos |
@@ -50,13 +46,11 @@ Una fila por cada modelo y color.
 - Los modelos agotados van al final, en gris, y hay un filtro "Solo con stock".
 - Si el stock baja y alguien tenía más unidades en el carrito, se ajusta solo.
 
-> El stock **no se descuenta solo** cuando alguien manda un pedido. Cuando cerrás una venta,
-> restá las unidades en la planilla.
+> El stock se descuenta cuando **cargás la venta** en la pestaña Ventas, no cuando
+> alguien manda un pedido por WhatsApp (ese pedido todavía no es una venta confirmada).
 
 ## Power BI
 
-Podés conectar Power BI directo a la planilla (Obtener datos → Web) con esta URL:
-
-```
-https://docs.google.com/spreadsheets/d/1IS-ib6t60ZBEBRZPOj0tgwarbJBM8ogt9qA2NVM9nnE/gviz/tq?tqx=out:csv&sheet=Productos
-```
+Como la planilla es privada, conectala con el conector **Google Sheets** de Power BI
+(Obtener datos → Google Sheets) usando el link de la planilla e iniciando sesión con tu cuenta.
+Ventas y Clientes ya están en formato tabla, listas para modelar.

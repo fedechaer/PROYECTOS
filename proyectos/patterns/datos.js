@@ -1,8 +1,8 @@
 /* =========================================================
    PATTERNS · Lectura de la planilla de Google
    ---------------------------------------------------------
-   Descarga las pestañas "Productos" y "Contacto" como CSV y
-   las convierte al formato que usa la tienda:
+   Descarga las pestañas publicadas "Productos" y "Contacto"
+   como CSV y las convierte al formato que usa la tienda:
 
    { config: {...}, talles: [...], productos: [ {.., colores:[{.., stock:{S:3,...}}]} ] }
 
@@ -13,8 +13,15 @@
    Los talles son las columnas entre "foto" y "total".
    ========================================================= */
 
-function urlHoja(hoja){
-  return `https://docs.google.com/spreadsheets/d/${FUENTE.sheetId}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(hoja)}`;
+// Acepta el link completo de "Publicar en la Web" o solo la clave 2PACX-...
+function clavePublicada(){
+  const s = String(FUENTE.publicado || "").trim();
+  const m = s.match(/\/d\/e\/([^/]+)/);
+  return m ? m[1] : s;
+}
+
+function urlHoja(gid){
+  return `https://docs.google.com/spreadsheets/d/e/${clavePublicada()}/pub?gid=${gid}&single=true&output=csv`;
 }
 
 /* Parser de CSV que respeta comillas, comas y saltos de línea dentro de un campo */
@@ -37,12 +44,12 @@ function parseCSV(txt){
   return filas.filter(f => f.some(c => c.trim() !== ""));
 }
 
-async function leerHoja(hoja){
-  const r = await fetch(urlHoja(hoja), { cache: "no-store" });
-  if (!r.ok) throw new Error(`No se pudo leer la pestaña "${hoja}" (HTTP ${r.status})`);
+async function leerHoja(gid){
+  const r = await fetch(urlHoja(gid), { cache: "no-store" });
+  if (!r.ok) throw new Error(`No se pudo leer la pestaña gid=${gid} (HTTP ${r.status})`);
   const txt = await r.text();
-  // Si la planilla no está compartida, Google devuelve una página HTML de login
-  if (/^\s*</.test(txt)) throw new Error("La planilla no está compartida como 'Cualquier persona con el enlace'");
+  // Si la pestaña no está publicada, Google devuelve una página HTML en vez de CSV
+  if (/^\s*</.test(txt)) throw new Error(`La pestaña gid=${gid} no está publicada en la Web`);
   return parseCSV(txt);
 }
 
@@ -93,12 +100,12 @@ function armarContacto(filas){
   };
 }
 
-/* Devuelve los datos de la tienda: de la planilla, o de demo.js si no hay planilla configurada */
+/* Devuelve los datos de la tienda: de la planilla publicada, o de demo.js si todavía no se publicó */
 async function cargarTienda(){
-  if (!FUENTE.sheetId) return TIENDA_DEMO;
+  if (!clavePublicada()) return TIENDA_DEMO;
   const [prod, cont] = await Promise.all([
-    leerHoja(FUENTE.hojaProductos),
-    leerHoja(FUENTE.hojaContacto).catch(() => null)
+    leerHoja(FUENTE.gidProductos),
+    leerHoja(FUENTE.gidContacto).catch(() => null)
   ]);
   const { talles, productos } = armarProductos(prod);
   return {

@@ -4,16 +4,18 @@
    Los productos, el stock y los datos de contacto se leen de
    la planilla de Google "PATTERNS - Stock".
 
-   Para que la web pueda leerla, la planilla tiene que estar
-   compartida como "Cualquier persona con el enlace: Lector".
+   La planilla queda PRIVADA (tiene datos de clientes). La web
+   lee solo las pestañas Productos y Contacto, que se publican
+   desde Archivo → Compartir → Publicar en la Web.
 
-   Si sheetId queda vacío, la web usa los datos de demo.js.
+   "publicado": pegá acá el link que te da Google al publicar
+   (o solo la parte que empieza con 2PACX-...).
+   Si queda vacío, la web usa los datos de demo.js.
    ========================================================= */
 const FUENTE = {
-  // ID de la planilla: es la parte del link entre /d/ y /edit
-  sheetId: "1IS-ib6t60ZBEBRZPOj0tgwarbJBM8ogt9qA2NVM9nnE",
-  hojaProductos: "Productos",
-  hojaContacto: "Contacto"
+  publicado: "",
+  gidProductos: 702248831,   // número de la pestaña Productos (gid=... en el link)
+  gidContacto: 1759798324    // número de la pestaña Contacto
 };
 
 /* Textos fijos de la web (no están en la planilla) */
