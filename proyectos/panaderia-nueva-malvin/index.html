@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panadería Nueva Malvín</title>
+<meta name="description" content="Panadería Nueva Malvín. Pan del día, bizcochos, facturas y tortas por encargo en Malvín, Montevideo.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fdf6ea;--ink:#3b2616;--muted:#8a6f58;--crust:#c47a35;--cream:#fff;--line:#efdcc2;--sage:#7d8f69}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Karla,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .logo{font-family:Fraunces,serif;font-weight:800;font-size:1.45rem}
+  .logo small{display:block;font-family:Karla;font-weight:600;font-size:.7rem;letter-spacing:.3em;color:var(--crust);text-transform:uppercase}
+  .hero{text-align:center;padding:60px 0 70px}
+  .hero .em{font-size:4rem}
+  .hero h1{font-family:Fraunces,serif;font-weight:800;font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;margin:10px 0 18px}
+  .hero h1 span{color:var(--crust)}
+  .hero p{color:var(--muted);font-size:1.15rem;max-width:520px;margin:0 auto 30px}
+  .btn{display:inline-block;background:var(--crust);color:#fff;padding:14px 28px;border-radius:99px;text-decoration:none;font-weight:600}
+  .fresh{display:inline-flex;gap:8px;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;margin-bottom:20px}
+  section{padding:70px 0}
+  h2{font-family:Fraunces,serif;font-size:2.3rem;text-align:center;margin-bottom:8px}
+  .lead{text-align:center;color:var(--muted);margin-bottom:38px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .p{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:26px;text-align:center}
+  .p .em{font-size:2.6rem}
+  .p h3{font-family:Fraunces;font-size:1.25rem;margin:8px 0 4px}
+  .p p{color:var(--muted);font-size:.92rem}
+  .order{background:var(--sage);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  .order h2{text-align:left;color:#fff}
+  .order ul{list-style:none;display:grid;gap:10px}
+  .order li::before{content:"✓ ";font-weight:700}
+  .order .btn{background:#fff;color:var(--sage);margin-top:18px}
+  .hours{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+  .hours div{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .hours b{display:block;font-family:Fraunces;font-size:1.2rem}
+  footer{text-align:center;color:var(--muted);padding:30px 0;font-size:.9rem}
+  @media(max-width:720px){.order,.hours{grid-template-columns:1fr}.order{padding:30px}}
+</style>
+</head>
+<body>
+<div class="wrap"><nav>
+  <div class="logo">Nueva Malvín<small>Panadería</small></div>
+  <a href="#encargos">Encargos</a>
+</nav></div>
+
+<main>
+  <div class="wrap hero">
+    <div class="fresh" id="fresh">🥖 Pan recién horneado</div>
+    <div class="em">🥐</div>
+    <h1>El pan de todos<br>los días, <span>como en casa</span></h1>
+    <p>Bizcochos, facturas, pan del día y tortas por encargo. El olorcito de la mañana en Malvín.</p>
+    <a class="btn" href="#encargos">Encargá tu torta</a>
+  </div>
+
+  <section style="padding-top:0"><div class="wrap">
+    <h2>Lo que horneamos</h2>
+    <p class="lead">Todos los días, desde temprano.</p>
+    <div class="grid">
+      <div class="p"><div class="em">🥖</div><h3>Pan</h3><p>Flautas, felipes, pan de molde y catalán</p></div>
+      <div class="p"><div class="em">🥐</div><h3>Bizcochos</h3><p>Medialunas, croissants, cañones, margaritas</p></div>
+      <div class="p"><div class="em">🍰</div><h3>Pastelería</h3><p>Masas finas, alfajores y postres</p></div>
+      <div class="p"><div class="em">🎂</div><h3>Tortas</h3><p>Para cumpleaños y eventos, por encargo</p></div>
+      <div class="p"><div class="em">🥪</div><h3>Sándwiches</h3><p>Olímpicos, de miga y para reuniones</p></div>
+      <div class="p"><div class="em">🍕</div><h3>Pizza y fainá</h3><p>Para llevar o calentar en casa</p></div>
+    </div>
+  </div></section>
+
+  <section id="encargos"><div class="wrap">
+    <div class="order">
+      <div>
+        <h2>¿Tenés un cumple?</h2>
+        <p>Encargá con anticipación y pasá a retirar el día que quieras.</p>
+        <a class="btn" href="#" onclick="alert('Demo: acá se abre WhatsApp para encargar. Falta configurar el número del local.');return false;">Encargar por WhatsApp</a>
+      </div>
+      <ul>
+        <li>Tortas personalizadas</li>
+        <li>Sándwiches de miga por docena</li>
+        <li>Bandejas de masas y bizcochos</li>
+        <li>Pedidos para oficinas y eventos</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap">
+    <h2>Horarios</h2>
+    <p class="lead">📍 [Dirección a confirmar], Malvín</p>
+    <div class="hours">
+      <div><b>Lunes a viernes</b>[A confirmar]</div>
+      <div><b>Sábados</b>[A confirmar]</div>
+      <div><b>Domingos</b>[A confirmar]</div>
+    </div>
+  </div></section>
+</main>
+
+<footer>© Panadería Nueva Malvín · Montevideo</footer>
+<script>
+  // Mensaje del badge según la hora (Uruguay)
+  const h=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Montevideo"})).getHours();
+  document.getElementById("fresh").textContent = h<11 ? "☀️ Buen día, ya hay bizcochos calentitos" : h<17 ? "🥖 Pan recién horneado" : "🌙 Llevate algo para la merienda";
+</script>
+</body>
+</html>

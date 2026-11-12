@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber Shop Malvín</title>
+<meta name="description" content="Barber Shop Malvín. Cortes y barba para caballeros, niños y adolescentes. Hipólito Yrigoyen 1609 esquina Rivera, Montevideo.">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f2efe9;--ink:#141414;--muted:#5d5a55;--red:#c1272d;--blue:#1d3a6e;--line:#d9d3c8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .stripe{height:8px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 28px,var(--blue) 28px 42px,#fff 42px 56px)}
+  header{background:var(--ink);color:#fff}
+  nav{display:flex;justify-content:space-between;align-items:center;height:68px}
+  .logo{font-family:Oswald,sans-serif;font-size:1.5rem;letter-spacing:.06em;text-transform:uppercase}
+  .logo b{color:var(--red)}
+  .call{background:var(--red);color:#fff;text-decoration:none;padding:9px 18px;font-family:Oswald;letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
+  .hero{background:var(--ink);color:#fff;padding:80px 0 100px}
+  .hero h1{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:clamp(2.8rem,9vw,6rem);line-height:.95}
+  .hero h1 span{color:var(--red)}
+  .hero p{color:#bdb8b0;max-width:480px;margin:22px 0 32px;font-size:1.1rem}
+  .btn{display:inline-block;background:#fff;color:var(--ink);padding:15px 30px;text-decoration:none;font-family:Oswald;letter-spacing:.1em;text-transform:uppercase}
+  section{padding:80px 0}
+  h2{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:2.4rem;margin-bottom:30px}
+  .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 48px}
+  .row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:2px solid var(--line)}
+  .row h3{font-weight:600;font-size:1.1rem}
+  .row small{display:block;color:var(--muted);font-weight:400}
+  .row span{font-family:Oswald;font-size:1.2rem;color:var(--red)}
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  .who div{background:#fff;border:2px solid var(--ink);padding:24px;text-align:center}
+  .who b{display:block;font-family:Oswald;font-size:1.4rem;text-transform:uppercase}
+  .hours{background:var(--blue);color:#fff}
+  .hours .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  table{width:100%;border-collapse:collapse}
+  td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+  td:last-child{text-align:right;font-weight:600}
+  tr.today td{color:#ffd166}
+  .closed{opacity:.6}
+  iframe{width:100%;height:320px;border:0}
+  footer{background:var(--ink);color:#999;text-align:center;padding:26px 0;font-size:.9rem}
+  @media(max-width:720px){.who{grid-template-columns:1fr}.hours .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<header><nav class="wrap">
+  <div class="logo">Barber Shop <b>Malvín</b></div>
+  <a class="call" href="tel:26135695">Llamar</a>
+</nav></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Corte &amp; barba<br><span>de barrio</span></h1>
+  <p>Todo tipo de cortes de cabello y barba para caballeros, niños y adolescentes. En Hipólito Yrigoyen y Rivera.</p>
+  <a class="btn" href="tel:26135695">Pedí tu turno · 2613 5695</a>
+</div></div>
+<div class="stripe"></div>
+
+<section><div class="wrap">
+  <h2>Servicios</h2>
+  <div class="list">
+    <div class="row"><h3>Corte clásico<small>Tijera y máquina</small></h3><span>$ —</span></div>
+    <div class="row"><h3>Fade / degradé<small>Bajo, medio o alto</small></h3><span>$ —</span></div>
+    <div class="row"><h3>Barba<small>Perfilado y toalla caliente</small></h3><span>$ —</span></div>
+    <div class="row"><h3>Corte + barba<small>El combo completo</small></h3><span>$ —</span></div>
+    <div class="row"><h3>Corte niños<small>Hasta 12 años</small></h3><span>$ —</span></div>
+    <div class="row"><h3>Diseños<small>Líneas y dibujos</small></h3><span>$ —</span></div>
+  </div>
+  <div class="who">
+    <div><b>Caballeros</b>Clásico o moderno</div>
+    <div><b>Adolescentes</b>Lo que esté de moda</div>
+    <div><b>Niños</b>Con paciencia</div>
+  </div>
+</div></section>
+
+<section class="hours"><div class="wrap">
+  <div>
+    <h2>Horarios</h2>
+    <table id="tabla">
+      <tr data-d="1"><td>Lunes</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="2"><td>Martes</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="3"><td>Miércoles</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="4"><td>Jueves</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="5"><td>Viernes</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="6"><td>Sábado</td><td>10:00 – 19:00</td></tr>
+      <tr data-d="0" class="closed"><td>Domingo</td><td>Cerrado</td></tr>
+    </table>
+    <p style="margin-top:18px;opacity:.85">📍 Hipólito Yrigoyen 1609 esq. Rivera, Malvín</p>
+  </div>
+  <iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=Hipolito+Yrigoyen+1609,+Montevideo,+Uruguay&output=embed"></iframe>
+</div></section>
+
+<footer>© Barber Shop Malvín · Montevideo</footer>
+<script>
+  // Resalta el día de hoy en la tabla de horarios
+  const hoy=new Date().getDay();
+  document.querySelector('#tabla tr[data-d="'+hoy+'"]')?.classList.add('today');
+</script>
+</body>
+</html>

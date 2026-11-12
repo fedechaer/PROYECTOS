@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barraca Malvín</title>
+<meta name="description" content="Barraca Malvín. Materiales de construcción, ferretería, pinturas y sanitaria en Malvín, Montevideo. Pedí presupuesto.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f5f5f2;--ink:#1b1d1f;--muted:#5f6368;--yellow:#ffc928;--steel:#2d3439;--card:#fff;--line:#dcdcd6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Barlow,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .top{background:var(--yellow);font-weight:600;font-size:.9rem;padding:8px 0;text-align:center}
+  header{background:var(--steel);color:#fff}
+  nav{display:flex;justify-content:space-between;align-items:center;height:70px}
+  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:1.9rem;text-transform:uppercase;letter-spacing:.02em}
+  .logo span{color:var(--yellow)}
+  .hero{background:var(--steel);color:#fff;padding:60px 0 90px;background-image:repeating-linear-gradient(90deg,transparent 0 80px,rgba(255,255,255,.03) 80px 81px)}
+  .hero h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:clamp(2.8rem,9vw,5.6rem);line-height:.95}
+  .hero h1 span{color:var(--yellow)}
+  .hero p{color:#c3c7cb;font-size:1.15rem;max-width:520px;margin:20px 0 30px}
+  .btn{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:700;padding:15px 28px;text-decoration:none;border-radius:4px}
+  .btn.out{background:transparent;color:#fff;border:2px solid #556;margin-left:8px}
+  .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:-46px}
+  .cat{background:var(--card);border-radius:8px;padding:22px 18px;border-bottom:4px solid var(--yellow);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .cat .i{font-size:2rem}
+  .cat h3{font-family:'Barlow Condensed';font-size:1.4rem;text-transform:uppercase}
+  .cat p{color:var(--muted);font-size:.9rem}
+  section{padding:80px 0}
+  h2{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:2.6rem;margin-bottom:24px}
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .why div{border-left:4px solid var(--yellow);padding-left:16px}
+  .why b{display:block;font-size:1.1rem}
+  .why p{color:var(--muted)}
+  .quote{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:32px;display:grid;grid-template-columns:1fr 1.3fr;gap:30px}
+  label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+  input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px;background:var(--bg)}
+  textarea{min-height:120px;resize:vertical}
+  footer{background:var(--steel);color:#aab;text-align:center;padding:28px 0;font-size:.9rem}
+  @media(max-width:760px){.why,.quote{grid-template-columns:1fr}.btn.out{margin:10px 0 0}}
+</style>
+</head>
+<body>
+<div class="top">🚚 Consultá por envíos en la zona</div>
+<header><nav class="wrap">
+  <div class="logo">Barraca <span>Malvín</span></div>
+  <a href="https://www.facebook.com/p/Barraca-Malv%C3%ADn-100068938003058/" target="_blank" rel="noopener">Facebook ↗</a>
+</nav></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Todo para tu<br><span>obra y tu casa</span></h1>
+  <p>Materiales de construcción, ferretería, pinturas y sanitaria. Atención de barrio y asesoramiento de verdad.</p>
+  <a class="btn" href="#presupuesto">Pedir presupuesto</a><a class="btn out" href="#rubros">Ver rubros</a>
+</div></div>
+
+<div class="wrap" id="rubros">
+  <div class="cats">
+    <div class="cat"><div class="i">🧱</div><h3>Construcción</h3><p>Arena, portland, bloques, hierro</p></div>
+    <div class="cat"><div class="i">🔧</div><h3>Ferretería</h3><p>Herramientas, tornillería, cerraduras</p></div>
+    <div class="cat"><div class="i">🎨</div><h3>Pinturas</h3><p>Látex, esmaltes, impermeabilizantes</p></div>
+    <div class="cat"><div class="i">🚿</div><h3>Sanitaria</h3><p>Caños, griferías, conexiones</p></div>
+    <div class="cat"><div class="i">💡</div><h3>Electricidad</h3><p>Cables, llaves, iluminación</p></div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>¿Por qué Barraca Malvín?</h2>
+  <div class="why">
+    <div><b>Del barrio</b><p>Te conocemos y sabemos lo que necesitás para tu casa.</p></div>
+    <div><b>Asesoramiento</b><p>Te ayudamos a calcular materiales para que no te sobre ni te falte.</p></div>
+    <div><b>Presupuesto rápido</b><p>Mandanos tu lista y te respondemos con precio.</p></div>
+  </div>
+</div></section>
+
+<section id="presupuesto" style="padding-top:0"><div class="wrap">
+  <div class="quote">
+    <div>
+      <h2>Pedí tu presupuesto</h2>
+      <p style="color:var(--muted)">Escribí tu lista de materiales y te la mandamos por WhatsApp. Sin compromiso.</p>
+      <p style="margin-top:18px">📍 [Dirección a confirmar], Malvín<br>🕒 [Horarios a confirmar]</p>
+    </div>
+    <form id="f">
+      <label>Nombre</label><input id="nom" required>
+      <label>Lista de materiales</label><textarea id="lista" required placeholder="Ej: 10 bolsas de portland, 1 m³ de arena, 20 L de látex blanco..."></textarea>
+      <button class="btn" style="border:0;cursor:pointer;width:100%">Enviar por WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+
+<footer>© Barraca Malvín · Montevideo</footer>
+<script>
+  // CONFIGURAR: número de WhatsApp del local (598 + número sin el 0)
+  const WHATSAPP = "";
+  document.getElementById("f").onsubmit=e=>{
+    e.preventDefault();
+    const msg=`Hola! Soy ${nom.value}, quisiera presupuesto de:\n${lista.value}`;
+    if(!WHATSAPP){alert("Demo: acá se abre WhatsApp con este mensaje:\n\n"+msg);return;}
+    window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank");
+  };
+</script>
+</body>
+</html>

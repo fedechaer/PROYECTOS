@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Fábrica · Patio cervecero</title>
+<meta name="description" content="La Fábrica Malvín. Patio cervecero de miércoles a sábado. Reservas por WhatsApp.">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#121212;--ink:#f5f1e8;--muted:#a19d95;--beer:#f6a821;--foam:#fff6dc;--panel:#1c1c1c;--line:#2e2e2e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .logo{font-family:'Archivo Black',sans-serif;font-size:1.4rem;text-transform:uppercase}
+  .logo span{color:var(--beer)}
+  .hero{padding:60px 0 90px;position:relative;overflow:hidden}
+  .hero h1{font-family:'Archivo Black',sans-serif;font-size:clamp(3rem,12vw,8rem);line-height:.88;text-transform:uppercase}
+  .hero h1 span{color:var(--beer);display:block}
+  .hero p{color:var(--muted);max-width:440px;margin:26px 0 34px;font-size:1.1rem}
+  .btn{display:inline-block;background:var(--beer);color:#111;padding:16px 30px;font-weight:700;text-decoration:none;border-radius:4px}
+  .ticker{background:var(--beer);color:#111;font-family:'Archivo Black';text-transform:uppercase;white-space:nowrap;overflow:hidden;padding:14px 0}
+  .ticker div{display:inline-block;animation:run 22s linear infinite}
+  @keyframes run{to{transform:translateX(-50%)}}
+  section{padding:84px 0}
+  h2{font-family:'Archivo Black';text-transform:uppercase;font-size:2.4rem;margin-bottom:30px}
+  .days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .day{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 6px;text-align:center}
+  .day b{display:block;font-family:'Archivo Black';font-size:1.1rem}
+  .day small{color:var(--muted)}
+  .day.on{background:var(--beer);color:#111;border-color:var(--beer)}
+  .day.on small{color:#3a2a00}
+  .taps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .tap{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}
+  .tap .c{width:42px;height:42px;border-radius:50%;margin-bottom:12px;border:3px solid var(--foam)}
+  .tap h3{font-size:1.15rem}
+  .tap p{color:var(--muted);font-size:.9rem}
+  .tap .abv{margin-top:8px;font-weight:700;color:var(--beer)}
+  .res{background:var(--panel);border-radius:14px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  input,select{width:100%;padding:12px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;margin-bottom:14px}
+  footer{color:var(--muted);text-align:center;padding:30px 0;font-size:.9rem;border-top:1px solid var(--line)}
+  @media(max-width:720px){.days{grid-template-columns:repeat(4,1fr)}.res{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap"><nav>
+  <div class="logo">La <span>Fábrica</span></div>
+  <a href="https://www.instagram.com/lafabricamalvin/" target="_blank" rel="noopener">Instagram ↗</a>
+</nav></div>
+
+<div class="wrap hero">
+  <h1>Patio<span>cervecero</span></h1>
+  <p>Birra tirada, música y amigos al aire libre en Malvín. De miércoles a sábado, de noche.</p>
+  <a class="btn" href="#reservar">Reservar mesa</a>
+</div>
+
+<div class="ticker"><div>🍺 IPA · Golden · Red Ale · Stout · Honey · Pilsen · 🍺 IPA · Golden · Red Ale · Stout · Honey · Pilsen ·&nbsp;🍺 IPA · Golden · Red Ale · Stout · Honey · Pilsen · 🍺 IPA · Golden · Red Ale · Stout · Honey · Pilsen ·&nbsp;</div></div>
+
+<section><div class="wrap">
+  <h2>¿Cuándo abrimos?</h2>
+  <div class="days">
+    <div class="day"><b>LUN</b><small>cerrado</small></div>
+    <div class="day"><b>MAR</b><small>cerrado</small></div>
+    <div class="day on"><b>MIÉ</b><small>noche</small></div>
+    <div class="day on"><b>JUE</b><small>noche</small></div>
+    <div class="day on"><b>VIE</b><small>noche</small></div>
+    <div class="day on"><b>SÁB</b><small>noche</small></div>
+    <div class="day"><b>DOM</b><small>cerrado</small></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>En las canillas</h2>
+  <div class="taps">
+    <div class="tap"><div class="c" style="background:#f3c623"></div><h3>Golden Ale</h3><p>Liviana y refrescante</p><div class="abv">[ABV a confirmar]</div></div>
+    <div class="tap"><div class="c" style="background:#e08a1e"></div><h3>IPA</h3><p>Lupulada, amarga y aromática</p><div class="abv">[ABV a confirmar]</div></div>
+    <div class="tap"><div class="c" style="background:#a63d1f"></div><h3>Red Ale</h3><p>Maltosa, notas a caramelo</p><div class="abv">[ABV a confirmar]</div></div>
+    <div class="tap"><div class="c" style="background:#2b1a12"></div><h3>Stout</h3><p>Tostada, café y chocolate</p><div class="abv">[ABV a confirmar]</div></div>
+  </div>
+</div></section>
+
+<section id="reservar" style="padding-top:0"><div class="wrap">
+  <div class="res">
+    <div>
+      <h2>Reservá</h2>
+      <p style="color:var(--muted)">Completá los datos y te abrimos WhatsApp con el mensaje listo para enviar.</p>
+    </div>
+    <form id="f">
+      <label>Nombre</label><input id="nom" required placeholder="Tu nombre">
+      <label>Día</label>
+      <select id="dia"><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option></select>
+      <label>Personas</label><input id="pers" type="number" min="1" value="4">
+      <button class="btn" style="border:0;cursor:pointer;width:100%">Reservar por WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+
+<footer>© La Fábrica · Malvín, Montevideo · 📍 [Dirección a confirmar]</footer>
+<script>
+  // CONFIGURAR: número de WhatsApp del local (598 + número sin el 0)
+  const WHATSAPP = "";
+  document.getElementById("f").onsubmit=e=>{
+    e.preventDefault();
+    const msg=`Hola! Quiero reservar una mesa en La Fábrica.\nNombre: ${nom.value}\nDía: ${dia.value}\nPersonas: ${pers.value}`;
+    if(!WHATSAPP){alert("Demo: acá se abre WhatsApp con este mensaje:\n\n"+msg);return;}
+    window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank");
+  };
+</script>
+</body>
+</html>

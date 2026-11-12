@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Rotisería de Malvín</title>
+<meta name="description" content="La Rotisería de Malvín. Milanesas, hamburguesas y chivitos. Armá tu pedido y mandalo por WhatsApp.">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fff8ec;--ink:#2a1d12;--muted:#7b6a5a;--mustard:#f4b400;--tomato:#d8432f;--card:#fff;--line:#f0e1c8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding-bottom:90px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+  header{background:var(--tomato);color:#fff;padding:18px 0}
+  .logo{font-family:Fredoka,sans-serif;font-size:1.6rem}
+  .hero{background:var(--tomato);color:#fff;padding:30px 0 70px;border-radius:0 0 40px 40px}
+  .hero h1{font-family:Fredoka,sans-serif;font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.1}
+  .hero h1 span{color:var(--mustard)}
+  .hero p{opacity:.9;margin-top:10px;font-size:1.1rem}
+  .tabs{display:flex;gap:8px;margin:-26px 0 26px;overflow-x:auto;padding-bottom:4px}
+  .tab{border:0;background:var(--card);padding:12px 20px;border-radius:99px;font:700 .95rem Nunito;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);white-space:nowrap}
+  .tab.on{background:var(--mustard)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+  .item{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
+  .item .em{font-size:2.2rem}
+  .item h3{font-family:Fredoka;font-size:1.2rem}
+  .item p{color:var(--muted);font-size:.9rem;flex:1}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+  .price{font-weight:700}
+  .qty{display:flex;align-items:center;gap:10px}
+  .qty button{width:34px;height:34px;border-radius:50%;border:0;background:var(--mustard);font:700 1.1rem Nunito;cursor:pointer}
+  .qty button.minus{background:var(--line)}
+  .qty b{min-width:18px;text-align:center}
+  h2{font-family:Fredoka;font-size:1.8rem;margin:50px 0 14px}
+  .info{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:14px 0;transform:translateY(100%);transition:.25s}
+  .bar.show{transform:none}
+  .bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .bar a{background:#25d366;color:#fff;text-decoration:none;padding:12px 20px;border-radius:99px;font-weight:700;white-space:nowrap}
+  footer{text-align:center;color:var(--muted);padding:40px 0 10px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header><div class="wrap logo">🍔 La Rotisería de Malvín</div></header>
+<div class="hero"><div class="wrap">
+  <h1>Comida casera,<br><span>lista para llevar</span></h1>
+  <p>Elegí lo que quieras y mandá el pedido por WhatsApp en un toque.</p>
+</div></div>
+
+<main class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+
+  <h2>¿Dónde estamos?</h2>
+  <div class="info">
+    <p>📍 [Dirección a confirmar con el cliente], Malvín</p>
+    <p>🕒 [Horarios a confirmar]</p>
+    <p>📘 <a href="https://www.facebook.com/larotiseriademalvin/" target="_blank" rel="noopener">Facebook</a></p>
+  </div>
+</main>
+
+<div class="bar" id="bar"><div class="wrap">
+  <div><b id="count">0 ítems</b><br><small id="total">Total: $ 0</small></div>
+  <a id="send" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+</div></div>
+
+<footer>© La Rotisería de Malvín · Montevideo</footer>
+
+<script>
+  // CONFIGURAR: número de WhatsApp del local (formato 598 + número sin el 0)
+  const WHATSAPP = "";
+
+  // Carta de ejemplo: cambiar nombres y precios por los reales
+  const MENU = {
+    "Milanesas":[
+      {n:"Milanesa al pan",d:"Lechuga, tomate y mayonesa",p:290,e:"🥪"},
+      {n:"Milanesa napolitana",d:"Con jamón, muzzarella y salsa",p:420,e:"🍝"},
+      {n:"Milanesa con fritas",d:"Al plato con papas fritas",p:390,e:"🍟"}],
+    "Hamburguesas":[
+      {n:"Hamburguesa clásica",d:"Carne, queso, lechuga y tomate",p:320,e:"🍔"},
+      {n:"Hamburguesa completa",d:"Con huevo, panceta y jamón",p:410,e:"🍔"}],
+    "Chivitos":[
+      {n:"Chivito canadiense",d:"El de siempre, bien completo",p:520,e:"🥩"},
+      {n:"Chivito al plato",d:"Con ensalada rusa y fritas",p:640,e:"🍽️"}],
+    "Bebidas":[
+      {n:"Refresco 1,5 L",d:"Línea Coca-Cola",p:150,e:"🥤"},
+      {n:"Agua 500 ml",d:"Con o sin gas",p:70,e:"💧"}]
+  };
+
+  const cart={};
+  const cats=Object.keys(MENU);
+  const $=s=>document.querySelector(s);
+  const fmt=n=>"$ "+n.toLocaleString("es-UY");
+
+  function renderTabs(active){
+    $("#tabs").innerHTML=cats.map(c=>`<button class="tab ${c===active?'on':''}" data-c="${c}">${c}</button>`).join("");
+    document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{renderTabs(b.dataset.c);renderGrid(b.dataset.c)});
+  }
+  function renderGrid(cat){
+    $("#grid").innerHTML=MENU[cat].map(i=>`
+      <div class="item"><div class="em">${i.e}</div><h3>${i.n}</h3><p>${i.d}</p>
+        <div class="foot"><span class="price">${fmt(i.p)}</span>
+          <div class="qty"><button class="minus" data-n="${i.n}" data-x="-1">−</button><b>${cart[i.n]?.q||0}</b><button data-n="${i.n}" data-x="1">+</button></div>
+        </div></div>`).join("");
+    document.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{
+      const it=Object.values(MENU).flat().find(i=>i.n===b.dataset.n);
+      const q=Math.max(0,(cart[it.n]?.q||0)+ +b.dataset.x);
+      if(q) cart[it.n]={...it,q}; else delete cart[it.n];
+      renderGrid(cat);updateBar();
+    });
+  }
+  function updateBar(){
+    const items=Object.values(cart);
+    const qty=items.reduce((a,i)=>a+i.q,0), tot=items.reduce((a,i)=>a+i.q*i.p,0);
+    $("#bar").classList.toggle("show",qty>0);
+    $("#count").textContent=qty+(qty===1?" ítem":" ítems");
+    $("#total").textContent="Total: "+fmt(tot);
+    const msg="Hola! Quiero hacer un pedido:\n"+items.map(i=>`• ${i.q} x ${i.n} (${fmt(i.p*i.q)})`).join("\n")+`\n\nTotal: ${fmt(tot)}`;
+    $("#send").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+  }
+  $("#send").addEventListener("click",e=>{ if(!WHATSAPP){e.preventDefault();alert("Demo: acá se abre WhatsApp con el pedido armado. Falta configurar el número del local.");} });
+  renderTabs(cats[0]);renderGrid(cats[0]);
+</script>
+</body>
+</html>
