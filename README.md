@@ -39,8 +39,21 @@ Queda en `https://fedechaer.github.io/proyectos/`.
 ## Agregar un proyecto nuevo
 
 1. Crear `proyectos/<nombre-negocio>/index.html`.
-2. Agregar su tarjeta en el `index.html` de la raíz.
+2. Agregarlo a la lista `PROYECTOS` del `index.html` de la raíz.
+3. Regenerar las capturas (ver abajo).
 
 ## Pendiente por cliente
 
 Los datos marcados `[A confirmar con el cliente]` (horarios, precios, carta) hay que completarlos con el negocio antes de entregar.
+
+## Capturas de la portada
+
+La portada muestra una captura de cada web, sacada de `previews/<carpeta>.jpg`.
+Si cambiás una web o agregás una nueva, regenerá las capturas con:
+
+```bash
+node herramientas/generar-previews.js
+```
+
+(Necesita Node y Playwright: `npm i -D playwright && npx playwright install chromium`.)
+Después sumá el proyecto a la lista `PROYECTOS` del `index.html` de la raíz.
