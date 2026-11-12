@@ -1,7 +1,7 @@
 /* =========================================================
    PATTERNS · Dibujo de remeras de ejemplo (SVG)
    Se usa mientras un color no tenga foto real (campo img).
-   Lo comparten la tienda (app.js) y el inventario.
+   Lo usa la tienda (app.js).
    ========================================================= */
 let _uid = 0;
 
