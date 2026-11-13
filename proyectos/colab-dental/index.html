@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colab Dental · Laboratorio Co-Work</title>
+<meta name="description" content="Colab Dental, Laboratorio Co-Work. Laboratorio dental para odontólogos: prótesis fija y removible, implantes, estética y flujo digital. Pedí tu trabajo online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f8fa; --ink:#0f2333; --muted:#5d7182; --card:#fff; --line:#dde6ec;
+    --teal:#0fa3a3; --teal-d:#0b7f80; --navy:#13324a; --mint:#e3f5f3; --warn:#e8a200;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  button,input,select,textarea{font:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(245,248,250,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.2rem;letter-spacing:-.01em}
+  .logo .m{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--navy));display:grid;place-items:center;color:#fff;font-size:1.1rem}
+  .logo small{display:block;font-weight:600;font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;line-height:1}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav ul a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.95rem}
+  nav ul a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--teal);color:#fff;border:0;border-radius:12px;padding:13px 22px;font-weight:700;text-decoration:none;cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--teal-d)}
+  .btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--navy)}
+  .btn.navy{background:var(--navy)}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;padding:72px 0 80px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--teal-d);font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:99px;margin-bottom:20px}
+  .hero h1{font-size:clamp(2.3rem,5.5vw,3.8rem);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+  .hero h1 span{color:var(--teal)}
+  .hero p{color:var(--muted);font-size:1.12rem;margin:20px 0 30px;max-width:520px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .trust{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+  .trust b{display:block;font-size:1.5rem;color:var(--navy)}
+  .trust span{color:var(--muted);font-size:.88rem}
+  .hero-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 20px 50px rgba(19,50,74,.08)}
+  .hero-card h3{font-size:1rem;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+  .hero-card h3 em{font-style:normal;font-size:.75rem;background:var(--mint);color:var(--teal-d);padding:4px 10px;border-radius:99px}
+  .track{display:grid;gap:12px}
+  .step{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:14px;background:var(--bg)}
+  .step i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;background:#fff;border:2px solid var(--line);color:var(--muted)}
+  .step.done i{background:var(--teal);border-color:var(--teal);color:#fff}
+  .step.now i{border-color:var(--teal);color:var(--teal)}
+  .step b{font-size:.92rem;display:block}
+  .step small{color:var(--muted)}
+  .step span{font-size:.78rem;color:var(--muted);font-weight:600}
+
+  section{padding:80px 0}
+  .eyebrow{color:var(--teal);font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.15;font-weight:800}
+  .lead{color:var(--muted);max-width:620px;margin:12px 0 36px;font-size:1.05rem}
+
+  /* Servicios */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;transition:.2s}
+  .svc:hover{border-color:var(--teal);transform:translateY(-3px)}
+  .svc .ic{width:48px;height:48px;border-radius:14px;background:var(--mint);display:grid;place-items:center;font-size:1.5rem;margin-bottom:14px}
+  .svc h3{font-size:1.1rem;margin-bottom:6px}
+  .svc p{color:var(--muted);font-size:.93rem}
+  .svc ul{list-style:none;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .svc li{font-size:.78rem;background:var(--bg);border:1px solid var(--line);padding:3px 10px;border-radius:99px;color:var(--navy);font-weight:600}
+
+  /* Proceso */
+  .process{background:var(--navy);color:#fff}
+  .process .lead{color:#a9bccb}
+  .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+  .p4{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;position:relative}
+  .p4::before{counter-increment:s;content:counter(s);position:absolute;top:18px;right:20px;font-size:2.4rem;font-weight:800;color:rgba(255,255,255,.12)}
+  .p4 .ic{font-size:1.6rem;margin-bottom:10px}
+  .p4 h3{font-size:1.05rem;margin-bottom:6px}
+  .p4 p{color:#a9bccb;font-size:.92rem}
+
+  /* Plazos */
+  .times{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--bg);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  td:last-child{font-weight:700;color:var(--teal-d);white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  .note{font-size:.85rem;color:var(--muted);margin-top:10px}
+
+  /* Pedido */
+  .order{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:0 20px 50px rgba(19,50,74,.06)}
+  .order-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:34px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;color:var(--navy)}
+  .field label small{font-weight:500;color:var(--muted)}
+  input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal)}
+  textarea{min-height:90px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-weight:600;font-size:.88rem;cursor:pointer;color:var(--navy)}
+  .chips button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+  /* Odontograma */
+  .odo{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .odo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+  .odo-top b{font-size:.9rem}
+  .odo-top button{border:0;background:none;color:var(--teal-d);font-weight:700;cursor:pointer;font-size:.82rem}
+  .arch{display:grid;grid-template-columns:repeat(16,1fr);gap:3px}
+  .arch + .arch{margin-top:10px}
+  .tooth{aspect-ratio:3/4;border:1.5px solid #c9d6df;background:#fff;border-radius:9px 9px 12px 12px;font-size:.62rem;font-weight:700;color:var(--muted);cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;transition:.15s}
+  .arch.low .tooth{border-radius:12px 12px 9px 9px;align-items:flex-start;padding:3px 0 0}
+  .tooth:hover{border-color:var(--teal)}
+  .tooth.on{background:var(--teal);border-color:var(--teal);color:#fff}
+  .midline{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);font-weight:700;margin:6px 2px}
+  .sel{font-size:.85rem;color:var(--muted);margin-top:10px;min-height:1.4em}
+  .sel b{color:var(--navy)}
+
+  .vita{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+  .vita button{border:2px solid transparent;border-radius:10px;padding:8px 0;font-weight:800;font-size:.78rem;cursor:pointer;color:#5b4a2e}
+  .vita button.on{border-color:var(--navy);box-shadow:0 0 0 2px #fff inset}
+
+  .summary{background:var(--mint);border-radius:16px;padding:16px;font-size:.9rem;white-space:pre-line;color:var(--navy);margin-bottom:14px;max-height:220px;overflow:auto}
+  .send{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn.wa{background:#25d366}
+  .err{color:#c0392b;font-weight:600;font-size:.88rem;min-height:1.3em;margin-bottom:8px}
+
+  /* Contacto */
+  .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .cc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+  .cc .ic{font-size:1.5rem}
+  .cc b{display:block;margin:8px 0 2px}
+  .cc p{color:var(--muted);font-size:.93rem}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  .toast{position:fixed;left:50%;top:20px;transform:translate(-50%,-200%);visibility:hidden;background:var(--navy);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;z-index:80;transition:.3s;max-width:calc(100% - 32px);text-align:center}
+  .toast.show{transform:translate(-50%,0);visibility:visible}
+
+  @media(max-width:960px){
+    .hero,.order-grid,.times{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr 1fr}
+    .steps4{grid-template-columns:1fr 1fr}
+    nav ul{display:none}
+  }
+  @media(max-width:600px){
+    .logo small{display:none}
+    nav .btn{padding:9px 14px;font-size:.88rem;white-space:nowrap}
+    .grid,.steps4,.contact,.send{grid-template-columns:1fr}
+    .order{padding:20px}
+    .arch{gap:2px}
+    .tooth{font-size:.5rem;border-radius:6px 6px 8px 8px}
+    .vita{grid-template-columns:repeat(4,1fr)}
+    .row2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header><nav class="wrap">
+  <a class="logo" href="#"><span class="m">🦷</span><span>Colab Dental<small>Laboratorio Co-Work</small></span></a>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Cómo trabajamos</a></li>
+    <li><a href="#plazos">Plazos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="btn" href="#pedido">Pedir un trabajo</a>
+</nav></header>
+
+<main>
+  <!-- HERO -->
+  <div class="wrap hero">
+    <div>
+      <span class="pill">🤝 Laboratorio dental para odontólogos</span>
+      <h1>Trabajamos <span>codo a codo</span> con tu consultorio.</h1>
+      <p>Prótesis fija y removible, implantes, estética y flujo digital. Calidad, rapidez y comunicación directa con el técnico que hace tu trabajo.</p>
+      <div class="actions">
+        <a class="btn" href="#pedido">Enviar un caso</a>
+        <a class="btn ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="trust">
+        <div><b>[X] años</b><span>de experiencia</span></div>
+        <div><b>Retiro</b><span>en tu consultorio</span></div>
+        <div><b>CAD/CAM</b><span>flujo digital</span></div>
+      </div>
+    </div>
+    <div class="hero-card" aria-label="Ejemplo de seguimiento de un trabajo">
+      <h3>Caso #1042 · Corona Zr pieza 21 <em>En proceso</em></h3>
+      <div class="track">
+        <div class="step done"><i>✓</i><div><b>Caso recibido</b><small>Escaneo intraoral</small></div><span>Lun 10:15</span></div>
+        <div class="step done"><i>✓</i><div><b>Diseño CAD aprobado</b><small>Enviado al Dr. para revisión</small></div><span>Lun 16:40</span></div>
+        <div class="step now"><i>3</i><div><b>Fresado y maquillaje</b><small>Color A2</small></div><span>Hoy</span></div>
+        <div class="step"><i>4</i><div><b>Entrega en consultorio</b><small>Estimada</small></div><span>Jue</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" style="padding-top:20px"><div class="wrap">
+    <p class="eyebrow">Servicios</p>
+    <h2>Todo lo que tu consultorio necesita</h2>
+    <p class="lead">Trabajos personalizados para cada paciente, con materiales de primera línea y control en cada etapa.</p>
+    <div class="grid">
+      <div class="svc"><div class="ic">👑</div><h3>Prótesis fija</h3><p>Coronas y puentes con ajuste preciso y estética natural.</p><ul><li>Zirconio</li><li>Disilicato</li><li>Metal-cerámica</li></ul></div>
+      <div class="svc"><div class="ic">🔩</div><h3>Implantes</h3><p>Coronas y estructuras sobre implantes, atornilladas o cementadas.</p><ul><li>Pilares</li><li>Híbridas</li><li>All-on-4</li></ul></div>
+      <div class="svc"><div class="ic">✨</div><h3>Estética</h3><p>Carillas y restauraciones con caracterización individual.</p><ul><li>Carillas</li><li>Incrustaciones</li><li>Mock-up</li></ul></div>
+      <div class="svc"><div class="ic">🦷</div><h3>Prótesis removible</h3><p>Totales, parciales y flexibles, cómodas y funcionales.</p><ul><li>Acrílico</li><li>Cromo-cobalto</li><li>Flexibles</li></ul></div>
+      <div class="svc"><div class="ic">💻</div><h3>Flujo digital</h3><p>Recibimos escaneos intraorales y diseñamos en CAD/CAM.</p><ul><li>STL</li><li>Diseño CAD</li><li>Impresión 3D</li></ul></div>
+      <div class="svc"><div class="ic">🛡️</div><h3>Placas y férulas</h3><p>Placas miorrelajantes, de blanqueamiento y deportivas.</p><ul><li>Miorrelajantes</li><li>Blanqueamiento</li><li>Protectores</li></ul></div>
+    </div>
+    <p class="note">* Servicios de ejemplo: a confirmar con el laboratorio.</p>
+  </div></section>
+
+  <!-- PROCESO -->
+  <section id="proceso" class="process"><div class="wrap">
+    <p class="eyebrow">Cómo trabajamos</p>
+    <h2>Un proceso simple, sin vueltas</h2>
+    <p class="lead">Coordinás todo desde acá, y hablás directo con el técnico.</p>
+    <div class="steps4">
+      <div class="p4"><div class="ic">📤</div><h3>Enviás el caso</h3><p>Completás el pedido online con piezas, color y tipo de trabajo. Escaneo digital o impresión.</p></div>
+      <div class="p4"><div class="ic">🛵</div><h3>Retiramos</h3><p>Pasamos por tu consultorio a buscar impresiones y modelos.</p></div>
+      <div class="p4"><div class="ic">🛠️</div><h3>Fabricamos</h3><p>Diseño, control de calidad y, si lo pedís, prueba antes de terminar.</p></div>
+      <div class="p4"><div class="ic">✅</div><h3>Entregamos</h3><p>En el plazo acordado, listo para colocar.</p></div>
+    </div>
+  </div></section>
+
+  <!-- PLAZOS -->
+  <section id="plazos"><div class="wrap times">
+    <div>
+      <p class="eyebrow">Plazos</p>
+      <h2>Sabés cuándo lo tenés</h2>
+      <p class="lead">Plazos de referencia en días hábiles, contados desde que recibimos el caso completo.</p>
+      <p class="note">* Plazos de ejemplo: reemplazar por los reales del laboratorio.</p>
+    </div>
+    <table>
+      <thead><tr><th>Trabajo</th><th>Plazo</th></tr></thead>
+      <tbody>
+        <tr><td>Corona unitaria (zirconio / disilicato)</td><td>4 a 5 días</td></tr>
+        <tr><td>Puente (hasta 3 piezas)</td><td>5 a 7 días</td></tr>
+        <tr><td>Corona sobre implante</td><td>7 días</td></tr>
+        <tr><td>Carillas</td><td>5 a 7 días</td></tr>
+        <tr><td>Prótesis removible</td><td>7 a 10 días</td></tr>
+        <tr><td>Placa miorrelajante</td><td>2 a 3 días</td></tr>
+      </tbody>
+    </table>
+  </div></section>
+
+  <!-- PEDIDO -->
+  <section id="pedido" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">Pedido de trabajo</p>
+    <h2>Enviá tu caso en 2 minutos</h2>
+    <p class="lead">Marcá las piezas en el odontograma, elegí el color y el tipo de trabajo. El pedido nos llega ordenado y te confirmamos el plazo.</p>
+
+    <div class="order"><div class="order-grid">
+      <div>
+        <div class="row2">
+          <div class="field"><label for="doc">Odontólogo/a</label><input id="doc" placeholder="Dr./Dra. Nombre Apellido" autocomplete="name"></div>
+          <div class="field"><label for="clinic">Consultorio</label><input id="clinic" placeholder="Nombre y dirección"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="pac">Paciente <small>(iniciales o código)</small></label><input id="pac" placeholder="Ej: J.P. o #245"></div>
+          <div class="field"><label for="fecha">Fecha que lo necesitás</label><input id="fecha" type="date"></div>
+        </div>
+
+        <div class="field"><label>Tipo de trabajo</label>
+          <div class="chips" id="tipo"></div>
+        </div>
+        <div class="field"><label>Material</label>
+          <div class="chips" id="mat"></div>
+        </div>
+
+        <div class="field"><label>Piezas <small>(numeración FDI · tocá para marcar)</small></label>
+          <div class="odo">
+            <div class="odo-top"><b>Odontograma</b><button type="button" id="clear">Limpiar</button></div>
+            <div class="midline"><span>Derecha del paciente</span><span>Izquierda</span></div>
+            <div class="arch" id="sup"></div>
+            <div class="arch low" id="inf"></div>
+            <div class="sel" id="selTxt">Ninguna pieza marcada.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="field"><label>Color <small>(escala VITA clásica)</small></label>
+          <div class="vita" id="vita"></div>
+        </div>
+        <div class="field"><label>Cómo nos llega el caso</label>
+          <div class="chips" id="via"></div>
+        </div>
+        <div class="field"><label for="obs">Observaciones</label><textarea id="obs" placeholder="Antagonista, forma, caracterizaciones, prueba de estructura…"></textarea></div>
+
+        <div class="field"><label>Resumen del pedido</label>
+          <div class="summary" id="summary"></div>
+        </div>
+        <div class="err" id="err"></div>
+        <div class="send">
+          <button class="btn wa" id="sendWa" type="button">💬 Enviar por WhatsApp</button>
+          <button class="btn navy" id="sendMail" type="button">✉️ Enviar por mail</button>
+        </div>
+      </div>
+    </div></div>
+  </div></section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">Contacto</p>
+    <h2>Hablemos</h2>
+    <p class="lead">¿Querés trabajar con nosotros o tenés un caso especial? Escribinos.</p>
+    <div class="contact">
+      <div class="cc"><div class="ic">💬</div><b>WhatsApp</b><p>[Número a confirmar]</p></div>
+      <div class="cc"><div class="ic">📸</div><b>Instagram</b><p><a href="https://www.instagram.com/colab.dental/" target="_blank" rel="noopener">@colab.dental</a></p></div>
+      <div class="cc"><div class="ic">📍</div><b>Laboratorio</b><p>[Dirección y horario a confirmar]</p></div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b style="color:var(--ink)">Colab Dental</b> · Laboratorio Co-Work · Uruguay</div>
+  <div>© <span id="yr"></span> Colab Dental</div>
+</div></footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* CONFIGURAR: contacto del laboratorio */
+const CONFIG = {
+  whatsapp: "",   // 598 + número sin el 0, ej: "59899123456"
+  email: ""       // ej: "pedidos@colab.dental"
+};
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const state = { tipo: null, mat: null, via: "Escaneo digital (STL)", color: null, piezas: new Set() };
+
+/* Chips de selección única */
+function chips(id, opciones, key, def){
+  const el = $(id);
+  if (def) state[key] = def;
+  el.innerHTML = opciones.map(o => `<button type="button" class="${o===state[key]?'on':''}">${o}</button>`).join("");
+  [...el.children].forEach(b => b.onclick = () => { state[key] = b.textContent; chips(id, opciones, key); resumen(); });
+}
+chips("#tipo", ["Corona","Puente","Carilla","Corona s/ implante","Incrustación","Removible","Placa"], "tipo");
+chips("#mat", ["Zirconio","Disilicato","Metal-cerámica","PMMA (provisorio)","Acrílico","Otro"], "mat");
+chips("#via", ["Escaneo digital (STL)","Impresión física (retirar)"], "via", "Escaneo digital (STL)");
+
+/* Odontograma FDI */
+const SUP = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
+const INF = [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
+function arcada(id, nums){
+  $(id).innerHTML = nums.map(n => `<button type="button" class="tooth" data-n="${n}" aria-label="Pieza ${n}" aria-pressed="false">${n}</button>`).join("");
+}
+arcada("#sup", SUP); arcada("#inf", INF);
+$$(".tooth").forEach(t => t.onclick = () => {
+  const n = +t.dataset.n;
+  state.piezas.has(n) ? state.piezas.delete(n) : state.piezas.add(n);
+  t.classList.toggle("on"); t.setAttribute("aria-pressed", t.classList.contains("on"));
+  resumen();
+});
+$("#clear").onclick = () => { state.piezas.clear(); $$(".tooth").forEach(t => { t.classList.remove("on"); t.setAttribute("aria-pressed","false"); }); resumen(); };
+
+/* Escala VITA con colores aproximados */
+const VITA = {A1:"#f3e7cf",A2:"#ecdcb9",A3:"#e4cfa2","A3.5":"#dcc28f",A4:"#cfb27a",B1:"#f5ecd6",B2:"#eedfbd",B3:"#e2cd9c",B4:"#d9c18a",C1:"#e6dcc6",C2:"#ddd0b2",C3:"#d1c29f",C4:"#c2af88",D2:"#e4d8c0",D3:"#dacbab",D4:"#d0bf9a"};
+$("#vita").innerHTML = Object.entries(VITA).map(([k,c]) => `<button type="button" style="background:${c}" data-c="${k}">${k}</button>`).join("");
+$$("#vita button").forEach(b => b.onclick = () => { state.color = b.dataset.c; $$("#vita button").forEach(x => x.classList.toggle("on", x === b)); resumen(); });
+
+["#doc","#clinic","#pac","#fecha","#obs"].forEach(s => $(s).addEventListener("input", resumen));
+
+function piezasTxt(){
+  const p = [...state.piezas].sort((a,b) => a-b);
+  return p.length ? p.join(", ") : "";
+}
+function fechaTxt(){
+  const v = $("#fecha").value; if (!v) return "";
+  const [y,m,d] = v.split("-"); return `${d}/${m}/${y}`;
+}
+function mensaje(){
+  return [
+    "PEDIDO DE TRABAJO · Colab Dental",
+    `Odontólogo/a: ${$("#doc").value.trim() || "—"}`,
+    `Consultorio: ${$("#clinic").value.trim() || "—"}`,
+    `Paciente: ${$("#pac").value.trim() || "—"}`,
+    `Trabajo: ${state.tipo || "—"}${state.mat ? " · " + state.mat : ""}`,
+    `Piezas (FDI): ${piezasTxt() || "—"}`,
+    `Color: ${state.color || "—"}`,
+    `Caso: ${state.via}`,
+    `Para el: ${fechaTxt() || "a coordinar"}`,
+    `Obs.: ${$("#obs").value.trim() || "—"}`
+  ].join("\n");
+}
+function resumen(){
+  $("#selTxt").innerHTML = state.piezas.size ? `Piezas marcadas: <b>${piezasTxt()}</b>` : "Ninguna pieza marcada.";
+  $("#summary").textContent = mensaje();
+  $("#err").textContent = "";
+}
+function validar(){
+  if (!$("#doc").value.trim()) return "Completá el nombre del odontólogo/a.";
+  if (!state.tipo) return "Elegí el tipo de trabajo.";
+  if (!state.piezas.size && !["Removible","Placa"].includes(state.tipo)) return "Marcá al menos una pieza en el odontograma.";
+  return "";
+}
+function enviar(canal){
+  const e = validar(); if (e) { $("#err").textContent = e; return; }
+  const msg = mensaje();
+  if (canal === "wa"){
+    if (!CONFIG.whatsapp) return alert("Demo: acá se abre WhatsApp con el pedido armado:\n\n" + msg);
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+  } else {
+    if (!CONFIG.email) return alert("Demo: acá se abre el mail con el pedido armado:\n\n" + msg);
+    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Pedido de trabajo · " + ($("#pac").value || state.tipo))}&body=${encodeURIComponent(msg)}`;
+  }
+}
+$("#sendWa").onclick = () => enviar("wa");
+$("#sendMail").onclick = () => enviar("mail");
+
+/* Fecha mínima: hoy */
+$("#fecha").min = new Date().toISOString().slice(0,10);
+$("#yr").textContent = new Date().getFullYear();
+resumen();
+</script>
+</body>
+</html>
