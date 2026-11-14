@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Colab Dental · Laboratorio Co-Work</title>
-<meta name="description" content="Colab Dental, Laboratorio Co-Work. Laboratorio dental para odontólogos: prótesis fija y removible, implantes, estética y flujo digital. Pedí tu trabajo online.">
+<meta name="description" content="Colab Dental, Laboratorio Co-Work. Laboratorio dental para odontólogos: prótesis fija y removible, implantes, estética y flujo digital. Escribinos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -103,25 +103,12 @@
   .chips button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-weight:600;font-size:.88rem;cursor:pointer;color:var(--navy)}
   .chips button.on{background:var(--navy);border-color:var(--navy);color:#fff}
 
-  /* Odontograma */
-  .odo{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:16px}
-  .odo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap}
-  .odo-top b{font-size:.9rem}
-  .odo-top button{border:0;background:none;color:var(--teal-d);font-weight:700;cursor:pointer;font-size:.82rem}
-  .arch{display:grid;grid-template-columns:repeat(16,1fr);gap:3px}
-  .arch + .arch{margin-top:10px}
-  .tooth{aspect-ratio:3/4;border:1.5px solid #c9d6df;background:#fff;border-radius:9px 9px 12px 12px;font-size:.62rem;font-weight:700;color:var(--muted);cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;transition:.15s}
-  .arch.low .tooth{border-radius:12px 12px 9px 9px;align-items:flex-start;padding:3px 0 0}
-  .tooth:hover{border-color:var(--teal)}
-  .tooth.on{background:var(--teal);border-color:var(--teal);color:#fff}
-  .midline{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);font-weight:700;margin:6px 2px}
-  .sel{font-size:.85rem;color:var(--muted);margin-top:10px;min-height:1.4em}
-  .sel b{color:var(--navy)}
-
-  .vita{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
-  .vita button{border:2px solid transparent;border-radius:10px;padding:8px 0;font-weight:800;font-size:.78rem;cursor:pointer;color:#5b4a2e}
-  .vita button.on{border-color:var(--navy);box-shadow:0 0 0 2px #fff inset}
-
+  .cc.link{text-decoration:none;color:inherit;transition:.2s}
+  .cc.link:hover{border-color:var(--teal);transform:translateY(-2px)}
+  #contacto .contact{grid-template-columns:1fr;gap:12px}
+  #contacto .cc{display:grid;grid-template-columns:44px 1fr;column-gap:12px;align-items:center;padding:16px 18px}
+  #contacto .cc .ic{grid-row:span 2}
+  #contacto .cc b{margin:0}
   .summary{background:var(--mint);border-radius:16px;padding:16px;font-size:.9rem;white-space:pre-line;color:var(--navy);margin-bottom:14px;max-height:220px;overflow:auto}
   .send{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .btn.wa{background:#25d366}
@@ -152,8 +139,6 @@
     .grid,.steps4,.contact,.send{grid-template-columns:1fr}
     .order{padding:20px}
     .arch{gap:2px}
-    .tooth{font-size:.5rem;border-radius:6px 6px 8px 8px}
-    .vita{grid-template-columns:repeat(4,1fr)}
     .row2{grid-template-columns:1fr}
   }
 </style>
@@ -168,7 +153,7 @@
     <li><a href="#plazos">Plazos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a class="btn" href="#pedido">Pedir un trabajo</a>
+  <a class="btn" href="#contacto">Contacto</a>
 </nav></header>
 
 <main>
@@ -179,7 +164,7 @@
       <h1>Trabajamos <span>codo a codo</span> con tu consultorio.</h1>
       <p>Prótesis fija y removible, implantes, estética y flujo digital. Calidad, rapidez y comunicación directa con el técnico que hace tu trabajo.</p>
       <div class="actions">
-        <a class="btn" href="#pedido">Enviar un caso</a>
+        <a class="btn" href="#contacto">Escribinos</a>
         <a class="btn ghost" href="#servicios">Ver servicios</a>
       </div>
       <div class="trust">
@@ -188,13 +173,13 @@
         <div><b>CAD/CAM</b><span>flujo digital</span></div>
       </div>
     </div>
-    <div class="hero-card" aria-label="Ejemplo de seguimiento de un trabajo">
-      <h3>Caso #1042 · Corona Zr pieza 21 <em>En proceso</em></h3>
+    <div class="hero-card">
+      <h3>¿Por qué Colab? <em>Co-Work</em></h3>
       <div class="track">
-        <div class="step done"><i>✓</i><div><b>Caso recibido</b><small>Escaneo intraoral</small></div><span>Lun 10:15</span></div>
-        <div class="step done"><i>✓</i><div><b>Diseño CAD aprobado</b><small>Enviado al Dr. para revisión</small></div><span>Lun 16:40</span></div>
-        <div class="step now"><i>3</i><div><b>Fresado y maquillaje</b><small>Color A2</small></div><span>Hoy</span></div>
-        <div class="step"><i>4</i><div><b>Entrega en consultorio</b><small>Estimada</small></div><span>Jue</span></div>
+        <div class="step done"><i>✓</i><div><b>Comunicación directa</b><small>Hablás con el técnico que hace tu trabajo</small></div></div>
+        <div class="step done"><i>✓</i><div><b>Plazos que se cumplen</b><small>Sabés de antemano cuándo lo tenés</small></div></div>
+        <div class="step done"><i>✓</i><div><b>Retiro y entrega</b><small>Pasamos por tu consultorio</small></div></div>
+        <div class="step done"><i>✓</i><div><b>Analógico o digital</b><small>Impresiones o escaneos intraorales</small></div></div>
       </div>
     </div>
   </div>
@@ -219,9 +204,9 @@
   <section id="proceso" class="process"><div class="wrap">
     <p class="eyebrow">Cómo trabajamos</p>
     <h2>Un proceso simple, sin vueltas</h2>
-    <p class="lead">Coordinás todo desde acá, y hablás directo con el técnico.</p>
+    <p class="lead">Coordinamos todo directo con vos, sin intermediarios.</p>
     <div class="steps4">
-      <div class="p4"><div class="ic">📤</div><h3>Enviás el caso</h3><p>Completás el pedido online con piezas, color y tipo de trabajo. Escaneo digital o impresión.</p></div>
+      <div class="p4"><div class="ic">📤</div><h3>Nos contactás</h3><p>Por WhatsApp, mail o Instagram. Te asesoramos y coordinamos el caso: escaneo digital o impresión.</p></div>
       <div class="p4"><div class="ic">🛵</div><h3>Retiramos</h3><p>Pasamos por tu consultorio a buscar impresiones y modelos.</p></div>
       <div class="p4"><div class="ic">🛠️</div><h3>Fabricamos</h3><p>Diseño, control de calidad y, si lo pedís, prueba antes de terminar.</p></div>
       <div class="p4"><div class="ic">✅</div><h3>Entregamos</h3><p>En el plazo acordado, listo para colocar.</p></div>
@@ -249,72 +234,37 @@
     </table>
   </div></section>
 
-  <!-- PEDIDO -->
-  <section id="pedido" style="padding-top:0"><div class="wrap">
-    <p class="eyebrow">Pedido de trabajo</p>
-    <h2>Enviá tu caso en 2 minutos</h2>
-    <p class="lead">Marcá las piezas en el odontograma, elegí el color y el tipo de trabajo. El pedido nos llega ordenado y te confirmamos el plazo.</p>
-
-    <div class="order"><div class="order-grid">
-      <div>
-        <div class="row2">
-          <div class="field"><label for="doc">Odontólogo/a</label><input id="doc" placeholder="Dr./Dra. Nombre Apellido" autocomplete="name"></div>
-          <div class="field"><label for="clinic">Consultorio</label><input id="clinic" placeholder="Nombre y dirección"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="pac">Paciente <small>(iniciales o código)</small></label><input id="pac" placeholder="Ej: J.P. o #245"></div>
-          <div class="field"><label for="fecha">Fecha que lo necesitás</label><input id="fecha" type="date"></div>
-        </div>
-
-        <div class="field"><label>Tipo de trabajo</label>
-          <div class="chips" id="tipo"></div>
-        </div>
-        <div class="field"><label>Material</label>
-          <div class="chips" id="mat"></div>
-        </div>
-
-        <div class="field"><label>Piezas <small>(numeración FDI · tocá para marcar)</small></label>
-          <div class="odo">
-            <div class="odo-top"><b>Odontograma</b><button type="button" id="clear">Limpiar</button></div>
-            <div class="midline"><span>Derecha del paciente</span><span>Izquierda</span></div>
-            <div class="arch" id="sup"></div>
-            <div class="arch low" id="inf"></div>
-            <div class="sel" id="selTxt">Ninguna pieza marcada.</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="field"><label>Color <small>(escala VITA clásica)</small></label>
-          <div class="vita" id="vita"></div>
-        </div>
-        <div class="field"><label>Cómo nos llega el caso</label>
-          <div class="chips" id="via"></div>
-        </div>
-        <div class="field"><label for="obs">Observaciones</label><textarea id="obs" placeholder="Antagonista, forma, caracterizaciones, prueba de estructura…"></textarea></div>
-
-        <div class="field"><label>Resumen del pedido</label>
-          <div class="summary" id="summary"></div>
-        </div>
-        <div class="err" id="err"></div>
-        <div class="send">
-          <button class="btn wa" id="sendWa" type="button">💬 Enviar por WhatsApp</button>
-          <button class="btn navy" id="sendMail" type="button">✉️ Enviar por mail</button>
-        </div>
-      </div>
-    </div></div>
-  </div></section>
-
   <!-- CONTACTO -->
   <section id="contacto" style="padding-top:0"><div class="wrap">
     <p class="eyebrow">Contacto</p>
-    <h2>Hablemos</h2>
-    <p class="lead">¿Querés trabajar con nosotros o tenés un caso especial? Escribinos.</p>
-    <div class="contact">
-      <div class="cc"><div class="ic">💬</div><b>WhatsApp</b><p>[Número a confirmar]</p></div>
-      <div class="cc"><div class="ic">📸</div><b>Instagram</b><p><a href="https://www.instagram.com/colab.dental/" target="_blank" rel="noopener">@colab.dental</a></p></div>
-      <div class="cc"><div class="ic">📍</div><b>Laboratorio</b><p>[Dirección y horario a confirmar]</p></div>
-    </div>
+    <h2>Hablemos de tu próximo caso</h2>
+    <p class="lead">¿Querés empezar a trabajar con nosotros, consultar por un trabajo o pedir un presupuesto? Escribinos por donde te quede más cómodo.</p>
+
+    <div class="order"><div class="order-grid">
+      <div>
+        <div class="contact">
+          <a class="cc link" data-canal="whatsapp" href="#"><div class="ic">💬</div><b>WhatsApp</b><p id="waTxt">Escribinos directo</p></a>
+          <a class="cc link" href="https://www.instagram.com/colab.dental/" target="_blank" rel="noopener"><div class="ic">📸</div><b>Instagram</b><p>@colab.dental</p></a>
+          <a class="cc link" data-canal="email" href="#"><div class="ic">✉️</div><b>Mail</b><p id="mailTxt">Mandanos un correo</p></a>
+        </div>
+        <div class="cc" style="margin-top:16px"><div class="ic">📍</div><b>Laboratorio</b><p>[Dirección a confirmar]<br>[Horario a confirmar, ej: lunes a viernes de 9 a 18]</p></div>
+      </div>
+
+      <form id="form" novalidate>
+        <div class="row2">
+          <div class="field"><label for="nom">Nombre</label><input id="nom" placeholder="Dr./Dra. Nombre Apellido" autocomplete="name"></div>
+          <div class="field"><label for="cons">Consultorio <small>(opcional)</small></label><input id="cons" placeholder="Nombre o zona"></div>
+        </div>
+        <div class="field"><label for="tel">Teléfono o mail</label><input id="tel" placeholder="Para poder responderte" autocomplete="tel"></div>
+        <div class="field"><label>Motivo</label><div class="chips" id="motivo"></div></div>
+        <div class="field"><label for="msj">Mensaje</label><textarea id="msj" placeholder="Contanos en qué te podemos ayudar"></textarea></div>
+        <div class="err" id="err"></div>
+        <div class="send">
+          <button class="btn wa" type="button" data-send="whatsapp">💬 Enviar por WhatsApp</button>
+          <button class="btn navy" type="button" data-send="email">✉️ Enviar por mail</button>
+        </div>
+      </form>
+    </div></div>
   </div></section>
 </main>
 
@@ -329,97 +279,59 @@
 /* CONFIGURAR: contacto del laboratorio */
 const CONFIG = {
   whatsapp: "",   // 598 + número sin el 0, ej: "59899123456"
-  email: ""       // ej: "pedidos@colab.dental"
+  email: ""       // ej: "contacto@colab.dental"
 };
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const state = { tipo: null, mat: null, via: "Escaneo digital (STL)", color: null, piezas: new Set() };
+const MOTIVOS = ["Quiero trabajar con ustedes", "Consulta por un trabajo", "Presupuesto", "Otro"];
+let motivo = MOTIVOS[0];
 
-/* Chips de selección única */
-function chips(id, opciones, key, def){
-  const el = $(id);
-  if (def) state[key] = def;
-  el.innerHTML = opciones.map(o => `<button type="button" class="${o===state[key]?'on':''}">${o}</button>`).join("");
-  [...el.children].forEach(b => b.onclick = () => { state[key] = b.textContent; chips(id, opciones, key); resumen(); });
+function chips(){
+  $("#motivo").innerHTML = MOTIVOS.map(m => `<button type="button" class="${m === motivo ? 'on' : ''}">${m}</button>`).join("");
+  [...$("#motivo").children].forEach(b => b.onclick = () => { motivo = b.textContent; chips(); });
 }
-chips("#tipo", ["Corona","Puente","Carilla","Corona s/ implante","Incrustación","Removible","Placa"], "tipo");
-chips("#mat", ["Zirconio","Disilicato","Metal-cerámica","PMMA (provisorio)","Acrílico","Otro"], "mat");
-chips("#via", ["Escaneo digital (STL)","Impresión física (retirar)"], "via", "Escaneo digital (STL)");
+chips();
 
-/* Odontograma FDI */
-const SUP = [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
-const INF = [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
-function arcada(id, nums){
-  $(id).innerHTML = nums.map(n => `<button type="button" class="tooth" data-n="${n}" aria-label="Pieza ${n}" aria-pressed="false">${n}</button>`).join("");
+function demo(canal, msg){
+  alert(`Demo: acá se abre ${canal}` + (msg ? ` con este mensaje:\n\n${msg}` : ".") + "\n\n(Falta configurar el contacto del laboratorio)");
 }
-arcada("#sup", SUP); arcada("#inf", INF);
-$$(".tooth").forEach(t => t.onclick = () => {
-  const n = +t.dataset.n;
-  state.piezas.has(n) ? state.piezas.delete(n) : state.piezas.add(n);
-  t.classList.toggle("on"); t.setAttribute("aria-pressed", t.classList.contains("on"));
-  resumen();
-});
-$("#clear").onclick = () => { state.piezas.clear(); $$(".tooth").forEach(t => { t.classList.remove("on"); t.setAttribute("aria-pressed","false"); }); resumen(); };
-
-/* Escala VITA con colores aproximados */
-const VITA = {A1:"#f3e7cf",A2:"#ecdcb9",A3:"#e4cfa2","A3.5":"#dcc28f",A4:"#cfb27a",B1:"#f5ecd6",B2:"#eedfbd",B3:"#e2cd9c",B4:"#d9c18a",C1:"#e6dcc6",C2:"#ddd0b2",C3:"#d1c29f",C4:"#c2af88",D2:"#e4d8c0",D3:"#dacbab",D4:"#d0bf9a"};
-$("#vita").innerHTML = Object.entries(VITA).map(([k,c]) => `<button type="button" style="background:${c}" data-c="${k}">${k}</button>`).join("");
-$$("#vita button").forEach(b => b.onclick = () => { state.color = b.dataset.c; $$("#vita button").forEach(x => x.classList.toggle("on", x === b)); resumen(); });
-
-["#doc","#clinic","#pac","#fecha","#obs"].forEach(s => $(s).addEventListener("input", resumen));
-
-function piezasTxt(){
-  const p = [...state.piezas].sort((a,b) => a-b);
-  return p.length ? p.join(", ") : "";
-}
-function fechaTxt(){
-  const v = $("#fecha").value; if (!v) return "";
-  const [y,m,d] = v.split("-"); return `${d}/${m}/${y}`;
-}
-function mensaje(){
-  return [
-    "PEDIDO DE TRABAJO · Colab Dental",
-    `Odontólogo/a: ${$("#doc").value.trim() || "—"}`,
-    `Consultorio: ${$("#clinic").value.trim() || "—"}`,
-    `Paciente: ${$("#pac").value.trim() || "—"}`,
-    `Trabajo: ${state.tipo || "—"}${state.mat ? " · " + state.mat : ""}`,
-    `Piezas (FDI): ${piezasTxt() || "—"}`,
-    `Color: ${state.color || "—"}`,
-    `Caso: ${state.via}`,
-    `Para el: ${fechaTxt() || "a coordinar"}`,
-    `Obs.: ${$("#obs").value.trim() || "—"}`
-  ].join("\n");
-}
-function resumen(){
-  $("#selTxt").innerHTML = state.piezas.size ? `Piezas marcadas: <b>${piezasTxt()}</b>` : "Ninguna pieza marcada.";
-  $("#summary").textContent = mensaje();
-  $("#err").textContent = "";
-}
-function validar(){
-  if (!$("#doc").value.trim()) return "Completá el nombre del odontólogo/a.";
-  if (!state.tipo) return "Elegí el tipo de trabajo.";
-  if (!state.piezas.size && !["Removible","Placa"].includes(state.tipo)) return "Marcá al menos una pieza en el odontograma.";
-  return "";
-}
-function enviar(canal){
-  const e = validar(); if (e) { $("#err").textContent = e; return; }
-  const msg = mensaje();
-  if (canal === "wa"){
-    if (!CONFIG.whatsapp) return alert("Demo: acá se abre WhatsApp con el pedido armado:\n\n" + msg);
-    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+function abrir(canal, msg){
+  if (canal === "whatsapp"){
+    if (!CONFIG.whatsapp) return demo("WhatsApp", msg);
+    window.open(`https://wa.me/${CONFIG.whatsapp}${msg ? "?text=" + encodeURIComponent(msg) : ""}`, "_blank");
   } else {
-    if (!CONFIG.email) return alert("Demo: acá se abre el mail con el pedido armado:\n\n" + msg);
-    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Pedido de trabajo · " + ($("#pac").value || state.tipo))}&body=${encodeURIComponent(msg)}`;
+    if (!CONFIG.email) return demo("el mail", msg);
+    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Consulta desde la web · " + motivo)}${msg ? "&body=" + encodeURIComponent(msg) : ""}`;
   }
 }
-$("#sendWa").onclick = () => enviar("wa");
-$("#sendMail").onclick = () => enviar("mail");
 
-/* Fecha mínima: hoy */
-$("#fecha").min = new Date().toISOString().slice(0,10);
+/* Botones de contacto directo */
+$$("[data-canal]").forEach(a => a.onclick = e => {
+  e.preventDefault();
+  abrir(a.dataset.canal, a.dataset.canal === "whatsapp" ? "¡Hola Colab! Les escribo desde la web." : "");
+});
+if (CONFIG.whatsapp) $("#waTxt").textContent = "+" + CONFIG.whatsapp;
+if (CONFIG.email) $("#mailTxt").textContent = CONFIG.email;
+
+/* Formulario: arma el mensaje y lo manda por el canal elegido */
+$$("[data-send]").forEach(b => b.onclick = () => {
+  const nom = $("#nom").value.trim(), tel = $("#tel").value.trim(), msj = $("#msj").value.trim();
+  if (!nom || !tel){ $("#err").textContent = "Completá tu nombre y un teléfono o mail para poder responderte."; return; }
+  $("#err").textContent = "";
+  const msg = [
+    "¡Hola Colab! Les escribo desde la web.",
+    `Nombre: ${nom}`,
+    $("#cons").value.trim() ? `Consultorio: ${$("#cons").value.trim()}` : "",
+    `Contacto: ${tel}`,
+    `Motivo: ${motivo}`,
+    msj ? `Mensaje: ${msj}` : ""
+  ].filter(Boolean).join("\n");
+  abrir(b.dataset.send, msg);
+});
+
+["#nom", "#tel"].forEach(id => $(id).addEventListener("input", () => { $("#err").textContent = ""; }));
 $("#yr").textContent = new Date().getFullYear();
-resumen();
 </script>
 </body>
 </html>
