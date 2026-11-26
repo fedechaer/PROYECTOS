@@ -392,9 +392,11 @@ function renderCal(){
   }
   $("#calG").innerHTML = html;
   $$(".day:not([disabled]):not(.vacio)").forEach(b => b.onclick = () => {
-    const [y,m,dd] = b.dataset.iso.split("-").map(Number); sel.fecha = new Date(y, m-1, dd); renderCal(); renderForm();
+    const [y,m,dd] = b.dataset.iso.split("-").map(Number); const d = new Date(y, m-1, dd);
+    sel.fecha = sel.fecha && sel.fecha.getTime() === d.getTime() ? null : d;   // tocar el día elegido lo desmarca
+    renderCal(); renderForm();
   });
-  $("#fechaTxt").textContent = sel.fecha ? `📅 ${DSEM[sel.fecha.getDay()]} ${sel.fecha.getDate()} de ${sel.fecha.toLocaleDateString("es-UY",{month:"long"}).toLowerCase()}` + (estado(sel.fecha)==="pocos" ? " · ¡últimos lugares!" : "") : "Elegí un día 👆";
+  $("#fechaTxt").textContent = sel.fecha ? `📅 ${DSEM[sel.fecha.getDay()]} ${sel.fecha.getDate()} de ${sel.fecha.toLocaleDateString("es-UY",{month:"long"}).toLowerCase()}` + (estado(sel.fecha)==="pocos" ? " · ¡últimos lugares!" : "") + " · tocalo de nuevo para desmarcar" : "Elegí un día 👆";
 }
 $("#prevM").onclick = () => { vista = new Date(vista.getFullYear(), vista.getMonth()-1, 1); renderCal(); };
 $("#nextM").onclick = () => { vista = new Date(vista.getFullYear(), vista.getMonth()+1, 1); renderCal(); };
