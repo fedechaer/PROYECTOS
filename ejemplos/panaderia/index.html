@@ -147,7 +147,7 @@
     <div class="fresh" id="fresh">🥖 Pan recién horneado</div>
     <div class="em">🎂</div>
     <h1>El pan de todos los días<br>y la torta <span>de tu festejo</span></h1>
-    <p>Bizcochos, pan del día y tortas por encargo. Elegí la fecha, armá tu torta a tu gusto y te pasamos el presupuesto.</p>
+    <p>Bizcochos, pan del día y tortas por encargo. Elegí la fecha, armá tu torta y mirá el precio al instante. Las personalizadas te las cotizamos.</p>
     <a class="btn" href="#encargo">Encargá tu torta</a>
     <a class="btn ghost" href="#tortas" style="margin-left:6px">Ver tortas</a>
   </div>
@@ -172,7 +172,7 @@
 
   <section id="encargo" style="padding-top:0"><div class="wrap">
     <h2>Encargá tu torta</h2>
-    <p class="lead">Elegí el día, armala a tu gusto y mandanos el pedido. Te respondemos con el presupuesto por WhatsApp o mail.</p>
+    <p class="lead">Elegí el día y armala a tu gusto. Las tortas clásicas tienen precio fijo. Las personalizadas varían según el diseño: te mostramos desde cuánto salen y te las cotizamos.</p>
 
     <div class="order">
       <div>
@@ -224,19 +224,21 @@
         <div class="quote" aria-live="polite">
           <b class="qt">Tu pedido</b>
           <div id="qResumen" class="qr">—</div>
+          <div class="tot"><span id="qEt">Precio</span><b id="qTotal">$ 0</b></div>
+          <small id="qNota"></small>
           <button class="btn" type="button" id="send">📩 Pedir presupuesto</button>
-          <small>Te llega por WhatsApp y por mail a la pastelería. Te respondemos con el precio.</small>
+          <small id="qCanal">Le llega a la pastelería por WhatsApp y por mail.</small>
           <div class="err" id="err"></div>
         </div>
         <div class="done" id="done" role="status">
           <b>✅ ¡Pedido enviado!</b>
-          <p>La pastelería ya lo recibió y te responde con el presupuesto.</p>
+          <p id="doneTxt">La pastelería ya lo recibió y te responde con el presupuesto.</p>
           <p id="doneImg" style="display:none">📷 Si subiste una imagen, pegala también en el chat de WhatsApp que se abrió.</p>
           <button class="btn ghost" type="button" id="otro">Armar otro pedido</button>
         </div>
       </div>
     </div>
-    <p class="note">* Sabores y disponibilidad de ejemplo.</p>
+    <p class="note">* Precios, sabores y disponibilidad de ejemplo.</p>
   </div></section>
 
   <section style="padding-top:0"><div class="wrap">
@@ -273,16 +275,16 @@ const CONFIG = {
   anticipacion: 3,
   diasCerrado: [0]   // domingos sin entregas de tortas
 };
-const TIPOS = [
-  {id:"clasica",  n:"Clásica"},
-  {id:"decorada", n:"Decorada / temática"},
-  {id:"cheese",   n:"Cheesecake"},
-  {id:"numero",   n:"Números o letras"}
+const TIPOS = [   // pers: personalizada -> se muestra "desde" y se cotiza
+  {id:"clasica",  n:"Clásica",             base:900,  porc:110, pers:false},
+  {id:"decorada", n:"Decorada / temática", base:1500, porc:140, pers:true},
+  {id:"cheese",   n:"Cheesecake",          base:800,  porc:120, pers:false},
+  {id:"numero",   n:"Números o letras",    base:1300, porc:130, pers:true}
 ];
 const PORCIONES = [10, 15, 20, 30, 40];
-const BIZC = [{n:"Vainilla"},{n:"Chocolate"},{n:"Red velvet"}];
-const RELL = [{n:"Dulce de leche"},{n:"Chocolate"},{n:"Crema y frutillas"},{n:"Mousse de limón"}];
-const EXTRAS = [{id:"velas",n:"Velitas"},{id:"topper",n:"Cartel personalizado"},{id:"envio",n:"Envío a domicilio"}];
+const BIZC = [{n:"Vainilla",x:0},{n:"Chocolate",x:0},{n:"Red velvet",x:300}];
+const RELL = [{n:"Dulce de leche",x:0},{n:"Chocolate",x:150},{n:"Crema y frutillas",x:250},{n:"Mousse de limón",x:200}];   // x = extra cada 10 porciones
+const EXTRAS = [{id:"velas",n:"Velitas",x:60},{id:"topper",n:"Cartel personalizado",x:250},{id:"envio",n:"Envío a domicilio",x:200}];
 
 /* Galería de ejemplo: colores y forma de la ilustración */
 const TORTAS = [
@@ -298,6 +300,7 @@ const TORTAS = [
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
+const fmt = n => "$ " + Math.round(n).toLocaleString("es-UY");
 const DSEM = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 
 /* ================== Ilustraciones SVG ================== */
@@ -338,7 +341,7 @@ $$(".cake").forEach(b => b.onclick = () => abrirLB(+b.dataset.i));
 function abrirLB(i){
   lbI = (i + TORTAS.length) % TORTAS.length; const t = TORTAS[lbI];
   $("#lbPic").innerHTML = cakeSVG(t); $("#lbT").textContent = t.n; $("#lbD").textContent = t.d;
-  $("#lbDl").innerHTML = `<dt>Tipo</dt><dd>${TIPOS.find(x=>x.id===t.tipo).n}</dd><dt>Bizcochuelo</dt><dd>${t.bizc}</dd><dt>Relleno</dt><dd>${t.rell}</dd><dt>Tamaño</dt><dd>${t.porc} porciones</dd>`;
+  $("#lbDl").innerHTML = `<dt>Tipo</dt><dd>${TIPOS.find(x=>x.id===t.tipo).n}</dd><dt>Bizcochuelo</dt><dd>${t.bizc}</dd><dt>Relleno</dt><dd>${t.rell}</dd><dt>Tamaño</dt><dd>${t.porc} porciones</dd><dt>${TIPOS.find(x=>x.id===t.tipo).pers ? "Desde" : "Precio"}</dt><dd><b>${fmt(precio({tipo:t.tipo, porc:t.porc, bizc:t.bizc, rell:t.rell, extras:new Set()}))}</b>${TIPOS.find(x=>x.id===t.tipo).pers ? " · a cotizar" : ""}</dd>`;
   $("#lb").classList.add("show"); $("#lbX").focus();
 }
 const cerrarLB = () => $("#lb").classList.remove("show");
@@ -405,6 +408,19 @@ $("#nextM").onclick = () => { vista = new Date(vista.getFullYear(), vista.getMon
 const sel = {fecha:null, tipo:"clasica", porc:20, bizc:"Vainilla", rell:"Dulce de leche", extras:new Set(["velas"])};
 let imagen = null;
 
+function precio(s){
+  const t = TIPOS.find(x => x.id === s.tipo);
+  let p = t.base + t.porc * s.porc;
+  p += BIZC.find(x => x.n === s.bizc).x;
+  p += RELL.find(x => x.n === s.rell).x * s.porc / 10;
+  s.extras.forEach(id => p += EXTRAS.find(x => x.id === id).x);
+  return Math.round(p / 10) * 10;
+}
+const esPers = () => TIPOS.find(x => x.id === sel.tipo).pers;
+function textoPrecio(){
+  return esPers() ? `Desde ${fmt(precio(sel))} · precio final a cotizar según el diseño` : `Precio: ${fmt(precio(sel))}`;
+}
+
 function chips(el, items, key, label, sub){
   $(el).innerHTML = items.map(it => { const v = typeof it === "object" ? (it.id || it.n) : it;
     return `<button type="button" class="${sel[key]===v?'on':''}" data-v="${v}">${label(it)}${sub ? `<small>${sub(it)}</small>` : ""}</button>`; }).join("");
@@ -440,16 +456,21 @@ function resumen(){
 }
 
 function renderForm(){
-  chips("#tipo", TIPOS, "tipo", t => t.n);
+  chips("#tipo", TIPOS, "tipo", t => t.n, t => (t.pers ? "a cotizar · desde " : "desde ") + fmt(t.base + t.porc * 10));
   chips("#porc", PORCIONES, "porc", p => `${p} porc.`, p => p <= 10 ? "chica" : p <= 20 ? "mediana" : p <= 30 ? "grande" : "fiesta");
-  chips("#bizc", BIZC, "bizc", b => b.n);
-  chips("#rell", RELL, "rell", r => r.n);
-  $("#extras").innerHTML = EXTRAS.map(e => `<label><input type="checkbox" data-x="${e.id}" ${sel.extras.has(e.id)?"checked":""}> ${e.n}</label>`).join("");
+  chips("#bizc", BIZC, "bizc", b => b.n, b => b.x ? "+" + fmt(b.x) : "");
+  chips("#rell", RELL, "rell", r => r.n, r => r.x ? "+" + fmt(r.x * sel.porc / 10) : "");
+  $("#extras").innerHTML = EXTRAS.map(e => `<label><input type="checkbox" data-x="${e.id}" ${sel.extras.has(e.id)?"checked":""}> ${e.n}<span>+${fmt(e.x)}</span></label>`).join("");
   $$("#extras input").forEach(i => i.onchange = () => { i.checked ? sel.extras.add(i.dataset.x) : sel.extras.delete(i.dataset.x); renderForm(); });
   $("#fNum").style.display = sel.tipo === "numero" ? "" : "none";
   $("#fTema").style.display = sel.tipo === "decorada" ? "" : "none";
   $("#numPrev").innerHTML = numSVG($("#numTxt").value);
   $("#qResumen").textContent = resumen();
+  const pers = esPers();
+  $("#qEt").textContent = pers ? "Desde" : "Precio";
+  $("#qTotal").textContent = fmt(precio(sel));
+  $("#qNota").textContent = pers ? "Es una torta personalizada: el precio varía según el diseño y te lo cotizamos." : `≈ ${fmt(precio(sel) / sel.porc)} por porción`;
+  $("#send").textContent = pers ? "📩 Pedir presupuesto" : "💬 Encargar por WhatsApp";
   $("#err").textContent = "";
   renderCal();
 }
@@ -480,8 +501,9 @@ $("#send").onclick = () => {
   if (!nom){ $("#err").textContent = "Poné tu nombre"; $("#nom").focus(); return; }
   if (!tel){ $("#err").textContent = "Dejanos tu WhatsApp para pasarte el presupuesto"; $("#tel").focus(); return; }
 
-  const cuerpo = `${resumen()}${$("#dedi").value.trim() ? "\n💬 " + $("#dedi").value.trim() : ""}\n\n👤 ${nom} · ${tel}${mail ? " · " + mail : ""}`;
-  const wa = `¡Hola Horno de Barrio! Quiero pedir presupuesto para una torta:\n\n${cuerpo}${imagen ? "\n\nTe mando la imagen de referencia acá abajo 👇" : ""}`;
+  const cuerpo = `${resumen()}${$("#dedi").value.trim() ? "\n💬 " + $("#dedi").value.trim() : ""}\n\n💲 ${textoPrecio()}\n👤 ${nom} · ${tel}${mail ? " · " + mail : ""}`;
+  const intro = esPers() ? "Quiero pedir presupuesto para una torta personalizada:" : "Quiero encargar una torta:";
+  const wa = `¡Hola Horno de Barrio! ${intro}\n\n${cuerpo}${imagen ? "\n\nTe mando la imagen de referencia acá abajo 👇" : ""}`;
 
   if (!CONFIG.whatsapp && !CONFIG.email){
     alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + wa + "\n\nY le llega un mail a la pastelería con los mismos datos" + (imagen ? " y la imagen adjunta." : "."));
@@ -490,7 +512,7 @@ $("#send").onclick = () => {
     if (CONFIG.whatsapp) window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(wa), "_blank");
     if (CONFIG.email){
       const fd = new FormData();
-      fd.append("_subject", `Pedido de torta · ${nom} · ${sel.fecha.toLocaleDateString("es-UY")}`);
+      fd.append("_subject", `${esPers() ? "Presupuesto" : "Encargo"} de torta · ${nom} · ${sel.fecha.toLocaleDateString("es-UY")}`);
       fd.append("_template", "table");
       fd.append("_captcha", "false");
       if (mail) fd.append("_replyto", mail);
@@ -502,6 +524,7 @@ $("#send").onclick = () => {
   }
   $(".quote").style.display = "none";
   $("#doneImg").style.display = imagen ? "" : "none";
+  $("#doneTxt").textContent = esPers() ? "La pastelería ya lo recibió y te responde con el presupuesto." : "La pastelería ya lo recibió y te confirma el encargo.";
   $("#done").classList.add("show");
 };
 $("#otro").onclick = () => { $("#done").classList.remove("show"); $(".quote").style.display = ""; };
