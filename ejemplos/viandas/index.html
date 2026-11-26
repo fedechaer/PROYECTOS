@@ -4,134 +4,348 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vianda Casera · Menú de la semana</title>
-<meta name="description" content="Vianda Casera. Menú de la semana, planes y pedidos por WhatsApp.">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Vianda Casera. Menú de la semana, planes con descuento y pedidos por WhatsApp. Sitio de ejemplo.">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#fff8ec;--ink:#2a1d12;--muted:#7b6a5a;--mustard:#f4b400;--tomato:#d8432f;--card:#fff;--line:#f0e1c8}
+  :root{--bg:#fff8ec;--ink:#2a1d12;--muted:#7b6a5a;--mustard:#f4b400;--tomato:#d8432f;--green:#2e9d5b;--card:#fff;--line:#f0e1c8}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding-bottom:90px}
+  body{font-family:Nunito,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding-bottom:110px}
+  button{font:inherit;cursor:pointer}
+  a{color:inherit}
   .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
   header{background:var(--tomato);color:#fff;padding:18px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px}
   .logo{font-family:Fredoka,sans-serif;font-size:1.6rem}
-  .hero{background:var(--tomato);color:#fff;padding:30px 0 70px;border-radius:0 0 40px 40px}
-  .hero h1{font-family:Fredoka,sans-serif;font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.1}
+  header nav a{color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;margin-left:14px;opacity:.9}
+  .hero{background:var(--tomato);color:#fff;padding:22px 0 64px;border-radius:0 0 40px 40px}
+  .hero h1{font-family:Fredoka,sans-serif;font-size:clamp(2.1rem,7vw,3.4rem);line-height:1.1}
   .hero h1 span{color:var(--mustard)}
-  .hero p{opacity:.9;margin-top:10px;font-size:1.1rem}
-  .tabs{display:flex;gap:8px;margin:-26px 0 26px;overflow-x:auto;padding-bottom:4px}
-  .tab{border:0;background:var(--card);padding:12px 20px;border-radius:99px;font:700 .95rem Nunito;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);white-space:nowrap}
+  .hero p{opacity:.92;margin-top:10px;font-size:1.08rem;max-width:560px}
+  /* V2: cuenta regresiva */
+  .cutoff{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:10px 14px;font-weight:700}
+  .cutoff .clock{font-family:Fredoka;font-size:1.25rem;background:#fff;color:var(--tomato);border-radius:10px;padding:2px 10px;white-space:nowrap}
+  .cutoff.urgent .clock{background:var(--mustard);color:var(--ink)}
+
+  section{padding-top:46px}
+  h2{font-family:Fredoka;font-size:1.9rem;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:18px}
+
+  /* V4: repetir pedido */
+  .repeat{display:none;margin:-22px 0 22px;background:var(--card);border:2px dashed var(--mustard);border-radius:16px;padding:12px 14px;align-items:center;justify-content:space-between;gap:12px}
+  .repeat.show{display:flex}
+  .repeat small{color:var(--muted);display:block}
+  .repeat button{border:0;background:var(--mustard);border-radius:99px;padding:10px 16px;font-weight:800;white-space:nowrap}
+
+  .tabs{display:flex;gap:8px;margin:-26px 0 14px;overflow-x:auto;padding-bottom:4px}
+  .tab{border:0;background:var(--card);padding:12px 18px;border-radius:99px;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.08);white-space:nowrap}
   .tab.on{background:var(--mustard)}
+  .tab small{display:block;font-size:.7rem;font-weight:600;color:var(--muted)}
+  /* V3: filtros */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .f{border:2px solid var(--line);background:var(--card);border-radius:99px;padding:7px 14px;font-weight:700;font-size:.88rem}
+  .f.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
   .item{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
   .item .em{font-size:2.2rem}
-  .item h3{font-family:Fredoka;font-size:1.2rem}
+  .item h3{font-family:Fredoka;font-size:1.15rem}
   .item p{color:var(--muted);font-size:.9rem;flex:1}
+  .tags{display:flex;gap:6px;flex-wrap:wrap}
+  .tg{font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:99px;background:#eef7f1;color:var(--green)}
   .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-  .price{font-weight:700}
+  .price{font-weight:800}
   .qty{display:flex;align-items:center;gap:10px}
-  .qty button{width:34px;height:34px;border-radius:50%;border:0;background:var(--mustard);font:700 1.1rem Nunito;cursor:pointer}
+  .qty button{width:34px;height:34px;border-radius:50%;border:0;background:var(--mustard);font-weight:800;font-size:1.1rem}
   .qty button.minus{background:var(--line)}
   .qty b{min-width:18px;text-align:center}
-  h2{font-family:Fredoka;font-size:1.8rem;margin:50px 0 14px}
-  .info{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px}
-  .bar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:14px 0;transform:translateY(100%);transition:.25s}
+  .empty{color:var(--muted);grid-column:1/-1;text-align:center;padding:30px 0}
+
+  /* V1: simulador de planes */
+  .sim{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:24px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px}
+  .ctrl{margin-bottom:18px}
+  .ctrl label{display:block;font-weight:800;font-size:.9rem;margin-bottom:8px}
+  .days{display:flex;gap:6px}
+  .days button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-weight:800}
+  .days button.on{background:var(--tomato);border-color:var(--tomato);color:#fff}
+  .stepper{display:inline-flex;align-items:center;gap:14px;border:2px solid var(--line);border-radius:99px;padding:4px}
+  .stepper button{width:36px;height:36px;border-radius:50%;border:0;background:var(--mustard);font-weight:800;font-size:1.1rem}
+  .stepper b{min-width:22px;text-align:center;font-size:1.1rem}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 14px;font-weight:700}
+  .seg button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .result{background:var(--bg);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+  .row{display:flex;justify-content:space-between;gap:10px}
+  .row span:first-child{color:var(--muted)}
+  .row.save span:last-child{color:var(--green);font-weight:800}
+  .total{border-top:2px dashed var(--line);padding-top:10px;margin-top:4px;font-family:Fredoka;font-size:1.6rem;display:flex;justify-content:space-between;align-items:baseline}
+  .total small{font-family:Nunito;font-size:.85rem;color:var(--muted)}
+  .badge{align-self:flex-start;background:var(--green);color:#fff;font-weight:800;font-size:.78rem;padding:4px 10px;border-radius:99px}
+  .cta{border:0;background:#25d366;color:#fff;border-radius:14px;padding:14px;font-weight:800;margin-top:6px}
+  .tiers{font-size:.82rem;color:var(--muted);margin-top:4px}
+
+  .info{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:6px}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:14px 0 50px;transform:translateY(100%);transition:.25s;z-index:20}
   .bar.show{transform:none}
   .bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .bar a{background:#25d366;color:#fff;text-decoration:none;padding:12px 20px;border-radius:99px;font-weight:700;white-space:nowrap}
+  .bar button{border:0;background:#25d366;color:#fff;padding:12px 18px;border-radius:99px;font-weight:800;white-space:nowrap}
   footer{text-align:center;color:var(--muted);padding:40px 0 10px;font-size:.9rem}
+
+  @media(max-width:760px){.sim{grid-template-columns:1fr;padding:18px}header nav{display:none}}
+  @media(max-width:380px){.days button{width:40px;height:40px}}
 </style>
 </head>
 <body>
-<header><div class="wrap logo">🥗 Vianda Casera</div></header>
+<header><div class="wrap">
+  <div class="logo">🥗 Vianda Casera</div>
+  <nav><a href="#menu">Menú</a><a href="#planes">Planes</a><a href="#envios">Envíos</a></nav>
+</div></header>
+
 <div class="hero"><div class="wrap">
-  <h1>El menú de la semana,<br><span>listo para pedir</span></h1>
-  <p>Elegí tus viandas día por día y mandá el pedido por WhatsApp. Envíos de lunes a viernes.</p>
+  <h1>Comida casera,<br><span>lista cuando la necesitás</span></h1>
+  <p>Elegí tus viandas día por día o armá un plan con descuento. Envíos de lunes a viernes.</p>
+  <div class="cutoff" id="cutoff" aria-live="polite">⏰ <span id="cutoffTxt">Calculando…</span> <span class="clock" id="clock">--</span></div>
 </div></div>
 
 <main class="wrap">
-  <div class="tabs" id="tabs"></div>
-  <div class="grid" id="grid"></div>
+  <section id="menu">
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="repeat" id="repeat">
+      <div>🔁 <b>¿Lo mismo que la última vez?</b><small id="repeatTxt"></small></div>
+      <button id="repeatBtn" type="button">Repetir pedido</button>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
 
-  <h2>Planes</h2>
-  <div class="grid" style="margin-bottom:10px">
-    <div class="item"><div class="em">📅</div><h3>Plan semanal</h3><p>5 viandas, una por día de lunes a viernes.</p><div class="foot"><span class="price">$ 1.600</span></div></div>
-    <div class="item"><div class="em">🗓️</div><h3>Plan quincenal</h3><p>10 viandas para dos semanas, elegís los días.</p><div class="foot"><span class="price">$ 3.100</span></div></div>
-    <div class="item"><div class="em">⭐</div><h3>Plan mensual</h3><p>20 viandas + postre de regalo cada viernes.</p><div class="foot"><span class="price">$ 6.000</span></div></div>
-  </div>
-  <p style="color:var(--muted);font-size:.9rem">* Precios de ejemplo.</p>
+  <section id="planes">
+    <h2>Simulá tu plan</h2>
+    <p class="sub">Elegí los días y cuántas viandas por día. Cuantas más pedís, más ahorrás.</p>
+    <div class="sim">
+      <div>
+        <div class="ctrl"><label>¿Qué días querés recibir?</label><div class="days" id="simDays"></div></div>
+        <div class="ctrl"><label>Viandas por día</label><div class="stepper"><button type="button" id="ppMinus" aria-label="Menos">−</button><b id="pp">1</b><button type="button" id="ppPlus" aria-label="Más">+</button></div></div>
+        <div class="ctrl"><label>Duración</label><div class="seg" id="simWeeks"></div></div>
+        <p class="tiers">Descuentos: 5% desde 5 viandas · 10% desde 10 · 15% desde 20.</p>
+      </div>
+      <div class="result">
+        <span class="badge" id="simBadge"></span>
+        <div class="row"><span>Viandas en total</span><b id="simN"></b></div>
+        <div class="row"><span>Precio sin plan</span><span id="simBase"></span></div>
+        <div class="row save"><span>Descuento</span><span id="simDisc"></span></div>
+        <div class="row"><span>Precio por vianda</span><span id="simUnit"></span></div>
+        <div class="total"><span>Total</span><span id="simTotal"></span></div>
+        <button class="cta" id="simSend" type="button">💬 Quiero este plan</button>
+      </div>
+    </div>
+  </section>
 
-  <h2>Zona de envío</h2>
-  <div class="info">
-    <p>🚚 Envíos en Montevideo de lunes a viernes, de 11 a 13 h</p>
-    <p>🕒 Pedidos hasta las 20 h del día anterior</p>
-    <p>📸 <a href="#">Instagram</a></p>
-  </div>
+  <section id="envios">
+    <h2>Envíos y pedidos</h2>
+    <div class="info">
+      <p>🚚 Entregamos en Montevideo de lunes a viernes, de 11 a 13 h.</p>
+      <p>⏰ Los pedidos se reciben hasta las 20 h del día anterior.</p>
+      <p>💳 Pagás al recibir: efectivo o transferencia.</p>
+    </div>
+    <p class="sub" style="margin-top:10px;font-size:.85rem">* Menú, precios y zonas de ejemplo.</p>
+  </section>
 </main>
 
-<div class="bar" id="bar"><div class="wrap">
-  <div><b id="count">0 ítems</b><br><small id="total">Total: $ 0</small></div>
-  <a id="send" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+<div class="bar" id="bar" aria-live="polite"><div class="wrap">
+  <div><b id="count">0 viandas</b><br><small id="total">Total: $ 0</small></div>
+  <button id="send" type="button">💬 Pedir por WhatsApp</button>
 </div></div>
 
 <footer>© Vianda Casera · Montevideo</footer>
 
-<script>
-  // CONFIGURAR: número de WhatsApp del local (formato 598 + número sin el 0)
-  const WHATSAPP = "";
-
-  // Carta de ejemplo: cambiar nombres y precios por los reales
-  const MENU = {
-    "Lunes":[
-      {n:"Pollo al horno con boniatos",d:"Con ensalada de hojas verdes",p:330,e:"🍗"},
-      {n:"Tarta de verduras",d:"Masa integral, con ensalada",p:300,e:"🥧"}],
-    "Martes":[
-      {n:"Albóndigas con puré",d:"Puré de papa y zapallo",p:330,e:"🍲"},
-      {n:"Wok de vegetales y arroz",d:"Opción vegetariana",p:300,e:"🥢"}],
-    "Miércoles":[
-      {n:"Milanesa de carne al horno",d:"Con ensalada rusa casera",p:340,e:"🥩"},
-      {n:"Lasaña de verduras",d:"Salsa blanca liviana",p:320,e:"🍝"}],
-    "Jueves":[
-      {n:"Pescado con arroz y vegetales",d:"Merluza al limón",p:350,e:"🐟"},
-      {n:"Ensalada completa",d:"Pollo, huevo, quinoa y palta",p:320,e:"🥗"}],
-    "Viernes":[
-      {n:"Pastel de carne",d:"Con ensalada fresca",p:340,e:"🥧"},
-      {n:"Canelones de verdura",d:"Con salsa de tomate casera",p:320,e:"🍝"}]
-  };
-
-  const cart={};
-  const cats=Object.keys(MENU);
-  const $=s=>document.querySelector(s);
-  const fmt=n=>"$ "+n.toLocaleString("es-UY");
-
-  function renderTabs(active){
-    $("#tabs").innerHTML=cats.map(c=>`<button class="tab ${c===active?'on':''}" data-c="${c}">${c}</button>`).join("");
-    document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{renderTabs(b.dataset.c);renderGrid(b.dataset.c)});
-  }
-  function renderGrid(cat){
-    $("#grid").innerHTML=MENU[cat].map(i=>`
-      <div class="item"><div class="em">${i.e}</div><h3>${i.n}</h3><p>${i.d}</p>
-        <div class="foot"><span class="price">${fmt(i.p)}</span>
-          <div class="qty"><button class="minus" data-n="${i.n}" data-x="-1">−</button><b>${cart[i.n]?.q||0}</b><button data-n="${i.n}" data-x="1">+</button></div>
-        </div></div>`).join("");
-    document.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{
-      const it=Object.values(MENU).flat().find(i=>i.n===b.dataset.n);
-      const q=Math.max(0,(cart[it.n]?.q||0)+ +b.dataset.x);
-      if(q) cart[it.n]={...it,q}; else delete cart[it.n];
-      renderGrid(cat);updateBar();
-    });
-  }
-  function updateBar(){
-    const items=Object.values(cart);
-    const qty=items.reduce((a,i)=>a+i.q,0), tot=items.reduce((a,i)=>a+i.q*i.p,0);
-    $("#bar").classList.toggle("show",qty>0);
-    $("#count").textContent=qty+(qty===1?" ítem":" ítems");
-    $("#total").textContent="Total: "+fmt(tot);
-    const msg="Hola! Quiero hacer un pedido:\n"+items.map(i=>`• ${i.q} x ${i.n} (${fmt(i.p*i.q)})`).join("\n")+`\n\nTotal: ${fmt(tot)}`;
-    $("#send").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
-  }
-  $("#send").addEventListener("click",e=>{ if(!WHATSAPP){e.preventDefault();alert("Demo: acá se abre WhatsApp con el pedido armado. Falta configurar el número del local.");} });
-  renderTabs(cats[0]);renderGrid(cats[0]);
-</script>
-
 <a href="../../" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9999;background:rgba(17,17,17,.88);color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);white-space:nowrap">Sitio de ejemplo · hecho por Federico Chaer ↗</a>
+
+<script>
+/* ================== CONFIGURACIÓN ================== */
+const CONFIG = {
+  whatsapp: "",            // 598 + número sin el 0
+  precioVianda: 330,       // precio de referencia para el simulador
+  corte: 20,               // hora límite para pedir para el día siguiente
+  descuentos: [[20, .15], [10, .10], [5, .05]]   // [desde N viandas, descuento]
+};
+
+/* Menú de ejemplo. Etiquetas: veg (vegetariano), sg (sin gluten), liv (liviano) */
+const DIAS = ["Lunes","Martes","Miércoles","Jueves","Viernes"];
+const MENU = {
+  "Lunes":[
+    {n:"Pollo al horno con boniatos",d:"Con ensalada de hojas verdes",p:330,e:"🍗",t:["sg"]},
+    {n:"Tarta de verduras",d:"Masa integral, con ensalada",p:300,e:"🥧",t:["veg"]},
+    {n:"Bowl de quinoa y vegetales",d:"Con hummus y semillas",p:310,e:"🥗",t:["veg","sg","liv"]}],
+  "Martes":[
+    {n:"Albóndigas con puré",d:"Puré de papa y zapallo",p:330,e:"🍲",t:[]},
+    {n:"Wok de vegetales y arroz",d:"Con salsa de soja",p:300,e:"🥢",t:["veg","liv"]},
+    {n:"Pollo grillé con ensalada",d:"Tomate, zanahoria y huevo",p:320,e:"🥙",t:["sg","liv"]}],
+  "Miércoles":[
+    {n:"Milanesa de carne al horno",d:"Con ensalada rusa casera",p:340,e:"🥩",t:[]},
+    {n:"Lasaña de verduras",d:"Salsa blanca liviana",p:320,e:"🍝",t:["veg"]},
+    {n:"Zapallitos rellenos",d:"Con arroz integral",p:310,e:"🥒",t:["veg","sg","liv"]}],
+  "Jueves":[
+    {n:"Pescado con arroz y vegetales",d:"Merluza al limón",p:350,e:"🐟",t:["sg","liv"]},
+    {n:"Ensalada completa",d:"Pollo, huevo, quinoa y palta",p:320,e:"🥗",t:["sg","liv"]},
+    {n:"Ñoquis con tuco",d:"Caseros, de papa",p:310,e:"🍝",t:["veg"]}],
+  "Viernes":[
+    {n:"Pastel de carne",d:"Con ensalada fresca",p:340,e:"🥧",t:["sg"]},
+    {n:"Canelones de verdura",d:"Con salsa de tomate casera",p:320,e:"🍝",t:["veg"]},
+    {n:"Tortilla de papas",d:"Con ensalada de estación",p:300,e:"🍳",t:["veg","sg"]}]
+};
+const FILTROS = [["todos","Todos"],["veg","🌱 Vegetariano"],["sg","🌾 Sin gluten"],["liv","🍃 Liviano"]];
+
+const $ = s => document.querySelector(s);
+const fmt = n => "$ " + Math.round(n).toLocaleString("es-UY");
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ================== V2: cuenta regresiva ================== */
+function ahoraUY(){ return new Date(new Date().toLocaleString("en-US",{timeZone:"America/Montevideo"})); }
+function proximaEntrega(){
+  const now = ahoraUY();
+  for (let d = 1; d <= 7; d++){
+    const ent = new Date(now); ent.setHours(0,0,0,0); ent.setDate(ent.getDate() + d);
+    const dow = ent.getDay();
+    if (dow === 0 || dow === 6) continue;               // sin entregas sábado y domingo
+    const corte = new Date(ent); corte.setDate(corte.getDate() - 1); corte.setHours(CONFIG.corte,0,0,0);
+    if (now < corte) return {ent, corte, now, d};
+  }
+}
+function tickCutoff(){
+  const {ent, corte, now, d} = proximaEntrega();
+  const nombre = d === 1 ? "mañana" : "el " + ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"][ent.getDay()];
+  const ms = corte - now, h = Math.floor(ms / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+  const DSEM = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  const corteHoy = corte.toDateString() === now.toDateString();
+  const cuando = corteHoy ? `hasta las ${CONFIG.corte} h` : `hasta el ${DSEM[corte.getDay()]} a las ${CONFIG.corte} h`;
+  $("#cutoffTxt").textContent = `Pedidos para ${nombre} ${cuando} · faltan`;
+  $("#clock").textContent = h >= 24 ? `${Math.floor(h/24)} d ${h%24} h` : `${h} h ${String(m).padStart(2,"0")} min`;
+  $("#cutoff").classList.toggle("urgent", ms < 2 * 36e5);
+  window.entregaTxt = nombre;
+}
+tickCutoff(); setInterval(tickCutoff, 30000);
+
+/* ================== Menú, filtros y carrito ================== */
+let dia = DIAS[Math.max(0, Math.min(4, (proximaEntrega().ent.getDay() + 6) % 7))];  // arranca en el próximo día de entrega
+let filtro = "todos";
+const cart = {};   // clave "Día|Plato" -> {dia, n, p, q}
+
+function renderTabs(){
+  $("#tabs").innerHTML = DIAS.map(d => {
+    const q = Object.values(cart).filter(i => i.dia === d).reduce((a,i)=>a+i.q,0);
+    return `<button class="tab ${d===dia?'on':''}" role="tab" aria-selected="${d===dia}" data-d="${d}">${d}${q?`<small>${q} en el pedido</small>`:""}</button>`;
+  }).join("");
+  document.querySelectorAll(".tab").forEach(b => b.onclick = () => { dia = b.dataset.d; renderTabs(); renderGrid(); });
+}
+function renderFilters(){
+  $("#filters").innerHTML = FILTROS.map(([k,l]) => `<button class="f ${k===filtro?'on':''}" data-f="${k}">${l}</button>`).join("");
+  document.querySelectorAll(".f").forEach(b => b.onclick = () => { filtro = b.dataset.f; renderFilters(); renderGrid(); });
+}
+const ETQ = {veg:"🌱 Vegetariano", sg:"🌾 Sin gluten", liv:"🍃 Liviano"};
+function renderGrid(){
+  const items = MENU[dia].filter(i => filtro === "todos" || i.t.includes(filtro));
+  if (!items.length){ $("#grid").innerHTML = `<p class="empty">No hay opciones con ese filtro el ${dia.toLowerCase()}. Probá otro día 🙂</p>`; return; }
+  $("#grid").innerHTML = items.map(i => {
+    const k = dia + "|" + i.n, q = cart[k]?.q || 0;
+    return `<div class="item"><div class="em">${i.e}</div><h3>${i.n}</h3><p>${i.d}</p>
+      <div class="tags">${i.t.map(t=>`<span class="tg">${ETQ[t]}</span>`).join("")}</div>
+      <div class="foot"><span class="price">${fmt(i.p)}</span>
+        <div class="qty"><button class="minus" data-k="${k}" data-x="-1" aria-label="Quitar">−</button><b>${q}</b><button data-k="${k}" data-x="1" aria-label="Agregar">+</button></div>
+      </div></div>`;
+  }).join("");
+  document.querySelectorAll(".qty button").forEach(b => b.onclick = () => {
+    const [d, n] = b.dataset.k.split("|"); const it = MENU[d].find(x => x.n === n);
+    const q = Math.max(0, (cart[b.dataset.k]?.q || 0) + +b.dataset.x);
+    if (q) cart[b.dataset.k] = {dia:d, n, p:it.p, q}; else delete cart[b.dataset.k];
+    renderTabs(); renderGrid(); updateBar();
+  });
+}
+function updateBar(){
+  const items = Object.values(cart);
+  const q = items.reduce((a,i)=>a+i.q,0), t = items.reduce((a,i)=>a+i.q*i.p,0);
+  $("#bar").classList.toggle("show", q > 0);
+  $("#count").textContent = q + (q === 1 ? " vianda" : " viandas");
+  $("#total").textContent = "Total: " + fmt(t);
+}
+function mensajePedido(items){
+  const porDia = DIAS.map(d => {
+    const l = items.filter(i => i.dia === d); if (!l.length) return "";
+    return `${d}:\n` + l.map(i => `  • ${i.q} x ${i.n} (${fmt(i.p*i.q)})`).join("\n");
+  }).filter(Boolean).join("\n");
+  const t = items.reduce((a,i)=>a+i.q*i.p,0);
+  return `¡Hola Vianda Casera! Quiero hacer este pedido:\n\n${porDia}\n\nTotal: ${fmt(t)}`;
+}
+function abrirWhatsApp(msg){
+  if (!CONFIG.whatsapp) { alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + msg); return; }
+  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+}
+$("#send").onclick = () => {
+  const items = Object.values(cart); if (!items.length) return;
+  store.set("vianda-ultimo", {fecha: new Date().toISOString(), items});   // V4
+  abrirWhatsApp(mensajePedido(items));
+  renderRepeat();
+};
+
+/* ================== V4: repetir último pedido ================== */
+function renderRepeat(){
+  const ult = store.get("vianda-ultimo");
+  const ok = ult && Array.isArray(ult.items) && ult.items.some(i => MENU[i.dia]?.some(x => x.n === i.n));
+  $("#repeat").classList.toggle("show", !!ok);
+  if (!ok) return;
+  const n = ult.items.reduce((a,i)=>a+i.q,0);
+  const f = new Date(ult.fecha).toLocaleDateString("es-UY", {day:"numeric", month:"long"});
+  $("#repeatTxt").textContent = `${n} ${n===1?"vianda":"viandas"} · pedido del ${f}`;
+}
+$("#repeatBtn").onclick = () => {
+  const ult = store.get("vianda-ultimo"); if (!ult) return;
+  ult.items.forEach(i => {
+    const it = MENU[i.dia]?.find(x => x.n === i.n); if (!it) return;   // si el plato ya no está, se saltea
+    cart[i.dia + "|" + i.n] = {dia:i.dia, n:i.n, p:it.p, q:i.q};
+  });
+  renderTabs(); renderGrid(); updateBar();
+};
+
+/* ================== V1: simulador de planes ================== */
+const sim = {dias: new Set([0,1,2,3,4]), pp: 1, semanas: 1};
+const SEMANAS = [[1,"1 semana"],[2,"2 semanas"],[4,"1 mes"]];
+function renderSim(){
+  $("#simDays").innerHTML = ["L","M","X","J","V"].map((l,i) => `<button type="button" class="${sim.dias.has(i)?'on':''}" data-i="${i}" aria-pressed="${sim.dias.has(i)}" aria-label="${DIAS[i]}">${l}</button>`).join("");
+  document.querySelectorAll("#simDays button").forEach(b => b.onclick = () => {
+    const i = +b.dataset.i;
+    if (sim.dias.has(i)) { if (sim.dias.size > 1) sim.dias.delete(i); } else sim.dias.add(i);
+    renderSim();
+  });
+  $("#simWeeks").innerHTML = SEMANAS.map(([w,l]) => `<button type="button" class="${w===sim.semanas?'on':''}" data-w="${w}">${l}</button>`).join("");
+  document.querySelectorAll("#simWeeks button").forEach(b => b.onclick = () => { sim.semanas = +b.dataset.w; renderSim(); });
+  $("#pp").textContent = sim.pp;
+
+  const n = sim.dias.size * sim.pp * sim.semanas;
+  const base = n * CONFIG.precioVianda;
+  const desc = (CONFIG.descuentos.find(([min]) => n >= min) || [0,0])[1];
+  const total = base * (1 - desc);
+  $("#simN").textContent = n;
+  $("#simBase").textContent = fmt(base);
+  $("#simDisc").textContent = desc ? `− ${fmt(base - total)} (${desc*100}%)` : "—";
+  $("#simUnit").textContent = fmt(total / n);
+  $("#simTotal").innerHTML = fmt(total);
+  const sig = [...CONFIG.descuentos].reverse().find(([min]) => n < min);
+  $("#simBadge").textContent = desc ? `Ahorrás ${fmt(base - total)}` : (sig ? `Sumá ${sig[0]-n} y ahorrás ${sig[1]*100}%` : "");
+  $("#simBadge").style.display = $("#simBadge").textContent ? "" : "none";
+}
+$("#ppMinus").onclick = () => { sim.pp = Math.max(1, sim.pp - 1); renderSim(); };
+$("#ppPlus").onclick = () => { sim.pp = Math.min(6, sim.pp + 1); renderSim(); };
+$("#simSend").onclick = () => {
+  const dias = [...sim.dias].sort().map(i => DIAS[i]).join(", ");
+  const n = sim.dias.size * sim.pp * sim.semanas;
+  const desc = (CONFIG.descuentos.find(([min]) => n >= min) || [0,0])[1];
+  const dur = SEMANAS.find(([w]) => w === sim.semanas)[1];
+  abrirWhatsApp(`¡Hola Vianda Casera! Me interesa este plan:\n\n• Días: ${dias}\n• ${sim.pp} ${sim.pp===1?"vianda":"viandas"} por día\n• Duración: ${dur}\n• Total: ${n} viandas por ${fmt(n*CONFIG.precioVianda*(1-desc))}${desc?` (${desc*100}% de descuento)`:""}\n\n¿Cómo seguimos?`);
+};
+
+renderTabs(); renderFilters(); renderGrid(); renderRepeat(); renderSim();
+</script>
 </body>
 </html>
