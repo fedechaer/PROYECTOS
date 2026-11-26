@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos de prospectos (interno)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f7f9;--ink:#15181d;--muted:#667085;--card:#fff;--line:#e4e7ec;--accent:#2563eb}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1200px;margin:0 auto;padding:56px 20px}
+  h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;letter-spacing:-.02em}
+  .sub{color:var(--muted);margin:6px 0 26px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 15px;font:600 .88rem Inter;cursor:pointer}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(16,24,40,.1)}
+  .card.featured{border:2px solid var(--ink)}
+  /* Ventana tipo navegador */
+  .browser{background:#eef0f3;border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:6px;padding:9px 12px}
+  .bar i{width:9px;height:9px;border-radius:50%;background:#d0d4da}
+  .bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+  .bar .url{flex:1;margin-left:8px;background:#fff;border-radius:6px;padding:3px 10px;font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .shot{display:block;aspect-ratio:16/10;overflow:hidden;background:#e5e7eb}
+  .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+  .card:hover .shot img{transform:scale(1.03)}
+  .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .tag{align-self:flex-start;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:99px;background:#eef2ff;color:var(--accent)}
+  .tag.own{background:#111;color:#ffd23f}
+  .body h2{font-size:1.12rem}
+  .body p{color:var(--muted);font-size:.9rem;flex:1}
+  .link{display:flex;gap:8px;margin-top:8px}
+  .link a{flex:1;text-align:center;text-decoration:none;font-weight:600;font-size:.88rem;padding:9px;border-radius:9px}
+  .link .open{background:var(--ink);color:#fff}
+  .link .copy{border:1px solid var(--line);color:var(--ink);cursor:pointer;background:none;font:600 .88rem Inter;flex:0 0 auto;padding:9px 14px;border-radius:9px}
+  .count{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+  footer{color:var(--muted);font-size:.85rem;text-align:center;padding:10px 0 40px}
+  @media(max-width:400px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Demos de prospectos</h1>
+  <p class="sub">Página interna: demos hechas con datos de negocios reales. No compartir públicamente.</p>
+  <div class="filters" id="filters"></div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+</div>
+<footer>Para agregar un proyecto: sumarlo a la lista <code>PROYECTOS</code> de este archivo.</footer>
+
+<script>
+  // Lista de proyectos. "carpeta" = nombre de la carpeta dentro de /proyectos
+  // La imagen sale de /previews/<carpeta>.jpg (se genera con herramientas/generar-previews.js)
+  const PROYECTOS = [
+    {carpeta:"patterns",               nombre:"PATTERNS",               rubro:"Marca propia", desc:"Tienda de remeras con stock desde Google Sheets, carrito y pedidos por WhatsApp, Instagram o correo.", propio:true},
+    {carpeta:"colab-dental",           nombre:"Colab Dental",           rubro:"Salud",        desc:"Laboratorio dental: servicios, plazos y canal de contacto directo para odontólogos."},
+    {carpeta:"peluqueria-kn",          nombre:"Peluquería k&n",         rubro:"Peluquería",   desc:"Malvín Norte · Reserva de turnos por WhatsApp."},
+    {carpeta:"soberbia-peluqueria",    nombre:"Soberbia Peluquería",    rubro:"Peluquería",   desc:"Rimac 1617 · Estilo premium negro y dorado."},
+    {carpeta:"barber-shop-malvin",     nombre:"Barber Shop Malvín",     rubro:"Barbería",     desc:"Hipólito Yrigoyen 1609 · Horarios con el día de hoy resaltado."},
+    {carpeta:"decano-malvin",          nombre:"Decano",                 rubro:"Gastronomía",  desc:"Bar, parrilla y pizzería · Carta online."},
+    {carpeta:"la-redonda-malvin",      nombre:"La Redonda",             rubro:"Gastronomía",  desc:"Restaurante y parrilla · Indicador \"Abierto ahora\" en vivo."},
+    {carpeta:"la-rotiseria-de-malvin", nombre:"La Rotisería de Malvín", rubro:"Gastronomía",  desc:"Carrito de pedido que arma el mensaje de WhatsApp."},
+    {carpeta:"la-fabrica-malvin",      nombre:"La Fábrica",             rubro:"Gastronomía",  desc:"Patio cervecero · Formulario de reserva."},
+    {carpeta:"panaderia-nueva-malvin", nombre:"Panadería Nueva Malvín", rubro:"Comercio",     desc:"Productos del día y encargos de tortas."},
+    {carpeta:"barraca-malvin",         nombre:"Barraca Malvín",         rubro:"Comercio",     desc:"Rubros y pedido de presupuesto por WhatsApp."}
+  ];
+
+  // Link público (GitHub Pages). Si se abre en local, usa la ruta relativa.
+  const BASE = location.protocol.startsWith("http") ? location.href.replace(/index\.html$/,"").replace(/\/?$/,"/") : "https://fedechaer.github.io/proyectos/";
+
+  const rubros = ["Todos", ...new Set(PROYECTOS.map(p=>p.rubro))];
+  let filtro = "Todos";
+  const $ = s => document.querySelector(s);
+
+  function render(){
+    $("#filters").innerHTML = rubros.map(r=>`<button class="chip ${r===filtro?'on':''}" data-r="${r}">${r}</button>`).join("");
+    $("#filters").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.r;render();});
+    const lista = PROYECTOS.filter(p=>filtro==="Todos"||p.rubro===filtro);
+    $("#count").textContent = lista.length + (lista.length===1?" proyecto":" proyectos");
+    $("#grid").innerHTML = lista.map(p=>{
+      const href = "proyectos/"+p.carpeta+"/";
+      const url  = BASE + href;
+      return `<article class="card ${p.propio?'featured':''}">
+        <div class="browser">
+          <div class="bar"><i></i><i></i><i></i><span class="url">${url.replace(/^https?:\/\//,"")}</span></div>
+          <a class="shot" href="${href}" target="_blank" rel="noopener"><img src="previews/${p.carpeta}.jpg" alt="Vista previa de ${p.nombre}" loading="lazy"></a>
+        </div>
+        <div class="body">
+          <span class="tag ${p.propio?'own':''}">${p.rubro}</span>
+          <h2>${p.nombre}</h2>
+          <p>${p.desc}</p>
+          <div class="link">
+            <a class="open" href="${href}" target="_blank" rel="noopener">Abrir web ↗</a>
+            <button class="copy" data-url="${url}">Copiar link</button>
+          </div>
+        </div>
+      </article>`;
+    }).join("");
+    $("#grid").querySelectorAll(".copy").forEach(b=>b.onclick=async()=>{
+      try{ await navigator.clipboard.writeText(b.dataset.url); b.textContent="¡Copiado!"; }
+      catch(e){ prompt("Copiá el link:", b.dataset.url); }
+      setTimeout(()=>b.textContent="Copiar link",1500);
+    });
+  }
+  render();
+</script>
+</body>
+</html>

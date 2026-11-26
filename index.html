@@ -3,110 +3,194 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Proyectos Web</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Federico Chaer · Webs para emprendimientos</title>
+<meta name="description" content="Páginas web simples para emprendimientos y comercios de Montevideo: vidriera, catálogo con pedidos por WhatsApp, turnos, reservas y tiendas con stock.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#f6f7f9;--ink:#15181d;--muted:#667085;--card:#fff;--line:#e4e7ec;--accent:#2563eb}
+  :root{
+    --bg:#f6f5f1; --ink:#15171a; --muted:#646a73; --card:#fff; --line:#e4e2db;
+    --accent:#2f5bea; --accent-soft:#e8eefe; --green:#1f9d6b; --wa:#25d366;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-  .wrap{max-width:1200px;margin:0 auto;padding:56px 20px}
-  h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;letter-spacing:-.02em}
-  .sub{color:var(--muted);margin:6px 0 26px}
-  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-  .chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 15px;font:600 .88rem Inter;cursor:pointer}
-  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
-  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(16,24,40,.1)}
-  .card.featured{border:2px solid var(--ink)}
-  /* Ventana tipo navegador */
-  .browser{background:#eef0f3;border-bottom:1px solid var(--line)}
-  .bar{display:flex;align-items:center;gap:6px;padding:9px 12px}
-  .bar i{width:9px;height:9px;border-radius:50%;background:#d0d4da}
-  .bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
-  .bar .url{flex:1;margin-left:8px;background:#fff;border-radius:6px;padding:3px 10px;font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .shot{display:block;aspect-ratio:16/10;overflow:hidden;background:#e5e7eb}
-  .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
-  .card:hover .shot img{transform:scale(1.03)}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(246,245,241,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+  .brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none;letter-spacing:-.01em}
+  .brand span{color:var(--accent)}
+  nav ul{display:flex;gap:24px;list-style:none}
+  nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+  nav ul a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:13px 22px;font-weight:600;text-decoration:none;transition:.2s;white-space:nowrap}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.wa{background:var(--wa)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.sm{padding:9px 16px;font-size:.9rem}
+
+  .hero{padding:80px 0 70px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  .hi{display:inline-block;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.85rem;padding:6px 14px;border-radius:99px;margin-bottom:18px}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.3rem,5.6vw,3.9rem);line-height:1.04;letter-spacing:-.03em}
+  h1 em{font-style:normal;color:var(--accent)}
+  .hero p{color:var(--muted);font-size:1.13rem;margin:20px 0 30px;max-width:540px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .stack{display:grid;gap:12px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+  .chip i{font-style:normal;font-size:1.4rem;width:42px;height:42px;border-radius:12px;background:var(--bg);display:grid;place-items:center;flex:none}
+  .chip b{display:block;font-size:.95rem}
+  .chip small{color:var(--muted)}
+
+  section{padding:70px 0}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.1}
+  .lead{color:var(--muted);max-width:640px;margin:12px 0 34px;font-size:1.05rem}
+
+  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .svc .ic{font-size:1.6rem;margin-bottom:10px}
+  .svc h3{font-size:1.02rem;margin-bottom:6px}
+  .svc p{color:var(--muted);font-size:.92rem}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.2s;text-decoration:none}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(20,24,30,.09)}
+  .shot{aspect-ratio:16/10;background:#e9e7e1;overflow:hidden;border-bottom:1px solid var(--line)}
+  .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
   .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .tag{align-self:flex-start;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:99px;background:#eef2ff;color:var(--accent)}
-  .tag.own{background:#111;color:#ffd23f}
-  .body h2{font-size:1.12rem}
-  .body p{color:var(--muted);font-size:.9rem;flex:1}
-  .link{display:flex;gap:8px;margin-top:8px}
-  .link a{flex:1;text-align:center;text-decoration:none;font-weight:600;font-size:.88rem;padding:9px;border-radius:9px}
-  .link .open{background:var(--ink);color:#fff}
-  .link .copy{border:1px solid var(--line);color:var(--ink);cursor:pointer;background:none;font:600 .88rem Inter;flex:0 0 auto;padding:9px 14px;border-radius:9px}
-  .count{color:var(--muted);font-size:.9rem;margin-bottom:12px}
-  footer{color:var(--muted);font-size:.85rem;text-align:center;padding:10px 0 40px}
-  @media(max-width:400px){.grid{grid-template-columns:1fr}}
+  .tag{align-self:flex-start;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+  .tag.real{background:#e4f5ee;color:var(--green)}
+  .body h3{font-size:1.08rem}
+  .body p{color:var(--muted);font-size:.92rem;flex:1}
+  .go{font-weight:600;font-size:.9rem;color:var(--accent);margin-top:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;margin-bottom:12px}
+  .step h3{font-size:1rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.92rem}
+
+  .cta{background:var(--ink);color:#fff;border-radius:26px;padding:48px 34px;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{color:#b8bec7;max-width:520px;margin:14px auto 26px}
+
+  footer{padding:30px 0;color:var(--muted);font-size:.88rem;text-align:center}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding:56px 0 40px}
+    .services,.steps{grid-template-columns:1fr 1fr}
+    nav ul{display:none}
+  }
+  @media(max-width:520px){
+    .services,.steps{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .cta{padding:36px 20px}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Proyectos Web</h1>
-  <p class="sub">Webs para negocios de barrio en Montevideo. Tocá cualquiera para verla funcionando.</p>
-  <div class="filters" id="filters"></div>
-  <div class="count" id="count"></div>
-  <div class="grid" id="grid"></div>
-</div>
-<footer>Para agregar un proyecto: sumarlo a la lista <code>PROYECTOS</code> de este archivo.</footer>
+
+<header><nav class="wrap">
+  <a class="brand" href="#">Federico <span>Chaer</span></a>
+  <ul>
+    <li><a href="#que-hago">Qué hago</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#ejemplos">Ejemplos</a></li>
+    <li><a href="#como-trabajo">Cómo trabajo</a></li>
+  </ul>
+  <a class="btn wa sm" href="https://wa.me/59899075625?text=Hola%20Federico!%20Vi%20tu%20p%C3%A1gina%20y%20quer%C3%ADa%20consultarte%20por%20una%20web." target="_blank" rel="noopener">💬 Escribime</a>
+</nav></header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <span class="hi">👋 Hola, soy Federico</span>
+      <h1>Páginas web simples para <em>emprendimientos</em> que trabajan por Instagram y WhatsApp.</h1>
+      <p>Hago webs a medida para comercios y emprendimientos de Montevideo: que la gente te encuentre, vea lo que hacés y te escriba con todo ordenado.</p>
+      <div class="actions">
+        <a class="btn" href="#ejemplos">Ver ejemplos</a>
+        <a class="btn ghost" href="#como-trabajo">Cómo trabajo</a>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="chip"><i>🪟</i><div><b>Tu vidriera en Google</b><small>Servicios, horarios, ubicación y contacto</small></div></div>
+      <div class="chip"><i>🛒</i><div><b>Pedidos ordenados</b><small>Catálogo y carrito que llegan por WhatsApp</small></div></div>
+      <div class="chip"><i>📅</i><div><b>Turnos y reservas</b><small>Menos ida y vuelta por mensaje</small></div></div>
+    </div>
+  </div>
+
+  <section id="que-hago" style="padding-top:20px"><div class="wrap">
+    <p class="eyebrow">Qué hago</p>
+    <h2>Cada web, pensada para cómo trabajás</h2>
+    <p class="lead">No hay paquetes cerrados: armamos lo que tu negocio necesita, y lo podés actualizar vos mismo.</p>
+    <div class="services">
+      <div class="svc"><div class="ic">🪟</div><h3>Web vidriera</h3><p>Quién sos, qué ofrecés, horarios, ubicación y botones directos a WhatsApp e Instagram.</p></div>
+      <div class="svc"><div class="ic">🧾</div><h3>Catálogo con pedidos</h3><p>Productos o menú con precios y un carrito que arma el pedido y te lo manda por WhatsApp.</p></div>
+      <div class="svc"><div class="ic">📅</div><h3>Turnos y reservas</h3><p>Formularios que ordenan la reserva (día, hora, servicio) antes de que te escriban.</p></div>
+      <div class="svc"><div class="ic">📦</div><h3>Tienda con stock</h3><p>Stock y precios desde una planilla de Google: cambiás una celda y la web se actualiza.</p></div>
+    </div>
+  </div></section>
+
+  <section id="proyectos" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">Proyectos</p>
+    <h2>Webs hechas</h2>
+    <p class="lead">Mi propia marca y un proyecto en curso.</p>
+    <div class="cards" id="proyectosGrid"></div>
+  </div></section>
+
+  <section id="ejemplos" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">Ejemplos por rubro</p>
+    <h2>Así podría verse la tuya</h2>
+    <p class="lead">Sitios de ejemplo con nombres inventados, para que veas ideas según tu rubro. Tocá cualquiera para probarlo.</p>
+    <div class="cards" id="ejemplosGrid"></div>
+  </div></section>
+
+  <section id="como-trabajo" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">Cómo trabajo</p>
+    <h2>Simple y sin vueltas</h2>
+    <p class="lead">Arrancamos con una charla corta y no te comprometés a nada hasta ver una propuesta.</p>
+    <div class="steps">
+      <div class="step"><h3>Charlamos</h3><p>15 minutos para entender tu negocio y cómo te contactan hoy tus clientes.</p></div>
+      <div class="step"><h3>Te muestro una propuesta</h3><p>Una primera versión de tu web para que la veas funcionando.</p></div>
+      <div class="step"><h3>La ajustamos juntos</h3><p>Con tus fotos, textos, precios y colores, hasta que quede como querés.</p></div>
+      <div class="step"><h3>La publicamos</h3><p>Online, con tu dominio si querés, y te explico cómo actualizarla.</p></div>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap">
+    <div class="cta">
+      <h2>¿Charlamos?</h2>
+      <p>Si te interesa tener una web para tu emprendimiento, escribime y lo vemos sin compromiso.</p>
+      <a class="btn wa" href="https://wa.me/59899075625?text=Hola%20Federico!%20Vi%20tu%20p%C3%A1gina%20y%20quer%C3%ADa%20consultarte%20por%20una%20web." target="_blank" rel="noopener">💬 Escribime por WhatsApp</a>
+    </div>
+  </div></section>
+</main>
+
+<footer>Federico Chaer · Webs para emprendimientos · Montevideo, Uruguay · © <span id="yr"></span></footer>
 
 <script>
-  // Lista de proyectos. "carpeta" = nombre de la carpeta dentro de /proyectos
-  // La imagen sale de /previews/<carpeta>.jpg (se genera con herramientas/generar-previews.js)
+  // Proyectos reales (carpeta en /proyectos) y ejemplos genéricos (carpeta en /ejemplos)
   const PROYECTOS = [
-    {carpeta:"patterns",               nombre:"PATTERNS",               rubro:"Marca propia", desc:"Tienda de remeras con stock desde Google Sheets, carrito y pedidos por WhatsApp, Instagram o correo.", propio:true},
-    {carpeta:"colab-dental",           nombre:"Colab Dental",           rubro:"Salud",        desc:"Laboratorio dental: servicios, plazos y canal de contacto directo para odontólogos."},
-    {carpeta:"peluqueria-kn",          nombre:"Peluquería k&n",         rubro:"Peluquería",   desc:"Malvín Norte · Reserva de turnos por WhatsApp."},
-    {carpeta:"soberbia-peluqueria",    nombre:"Soberbia Peluquería",    rubro:"Peluquería",   desc:"Rimac 1617 · Estilo premium negro y dorado."},
-    {carpeta:"barber-shop-malvin",     nombre:"Barber Shop Malvín",     rubro:"Barbería",     desc:"Hipólito Yrigoyen 1609 · Horarios con el día de hoy resaltado."},
-    {carpeta:"decano-malvin",          nombre:"Decano",                 rubro:"Gastronomía",  desc:"Bar, parrilla y pizzería · Carta online."},
-    {carpeta:"la-redonda-malvin",      nombre:"La Redonda",             rubro:"Gastronomía",  desc:"Restaurante y parrilla · Indicador \"Abierto ahora\" en vivo."},
-    {carpeta:"la-rotiseria-de-malvin", nombre:"La Rotisería de Malvín", rubro:"Gastronomía",  desc:"Carrito de pedido que arma el mensaje de WhatsApp."},
-    {carpeta:"la-fabrica-malvin",      nombre:"La Fábrica",             rubro:"Gastronomía",  desc:"Patio cervecero · Formulario de reserva."},
-    {carpeta:"panaderia-nueva-malvin", nombre:"Panadería Nueva Malvín", rubro:"Comercio",     desc:"Productos del día y encargos de tortas."},
-    {carpeta:"barraca-malvin",         nombre:"Barraca Malvín",         rubro:"Comercio",     desc:"Rubros y pedido de presupuesto por WhatsApp."}
+    {ruta:"proyectos/patterns/", img:"previews/patterns.jpg", tag:"Mi marca", nombre:"PATTERNS", desc:"Tienda de remeras: catálogo con stock desde Google Sheets, carrito y pedidos por WhatsApp, Instagram o correo."},
+    {ruta:"proyectos/colab-dental/", img:"previews/colab-dental.jpg", tag:"En curso", nombre:"Colab Dental", desc:"Propuesta de web para un laboratorio dental: servicios, proceso, plazos y contacto directo para odontólogos."}
   ];
-
-  // Link público (GitHub Pages). Si se abre en local, usa la ruta relativa.
-  const BASE = location.protocol.startsWith("http") ? location.href.replace(/index\.html$/,"").replace(/\/?$/,"/") : "https://fedechaer.github.io/proyectos/";
-
-  const rubros = ["Todos", ...new Set(PROYECTOS.map(p=>p.rubro))];
-  let filtro = "Todos";
-  const $ = s => document.querySelector(s);
-
-  function render(){
-    $("#filters").innerHTML = rubros.map(r=>`<button class="chip ${r===filtro?'on':''}" data-r="${r}">${r}</button>`).join("");
-    $("#filters").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filtro=b.dataset.r;render();});
-    const lista = PROYECTOS.filter(p=>filtro==="Todos"||p.rubro===filtro);
-    $("#count").textContent = lista.length + (lista.length===1?" proyecto":" proyectos");
-    $("#grid").innerHTML = lista.map(p=>{
-      const href = "proyectos/"+p.carpeta+"/";
-      const url  = BASE + href;
-      return `<article class="card ${p.propio?'featured':''}">
-        <div class="browser">
-          <div class="bar"><i></i><i></i><i></i><span class="url">${url.replace(/^https?:\/\//,"")}</span></div>
-          <a class="shot" href="${href}" target="_blank" rel="noopener"><img src="previews/${p.carpeta}.jpg" alt="Vista previa de ${p.nombre}" loading="lazy"></a>
-        </div>
-        <div class="body">
-          <span class="tag ${p.propio?'own':''}">${p.rubro}</span>
-          <h2>${p.nombre}</h2>
-          <p>${p.desc}</p>
-          <div class="link">
-            <a class="open" href="${href}" target="_blank" rel="noopener">Abrir web ↗</a>
-            <button class="copy" data-url="${url}">Copiar link</button>
-          </div>
-        </div>
-      </article>`;
-    }).join("");
-    $("#grid").querySelectorAll(".copy").forEach(b=>b.onclick=async()=>{
-      try{ await navigator.clipboard.writeText(b.dataset.url); b.textContent="¡Copiado!"; }
-      catch(e){ prompt("Copiá el link:", b.dataset.url); }
-      setTimeout(()=>b.textContent="Copiar link",1500);
-    });
-  }
-  render();
+  const EJEMPLOS = [
+    {ruta:"ejemplos/viandas/", img:"previews/ejemplo-viandas.jpg", tag:"Viandas", nombre:"Vianda Casera", desc:"Menú de la semana día por día, planes y pedido armado por WhatsApp."},
+    {ruta:"ejemplos/panaderia/", img:"previews/ejemplo-panaderia.jpg", tag:"Panadería y pastelería", nombre:"Horno de Barrio", desc:"Productos del día y encargos de tortas para cumpleaños y eventos."},
+    {ruta:"ejemplos/peluqueria/", img:"previews/ejemplo-peluqueria.jpg", tag:"Peluquería", nombre:"Studio Bruma", desc:"Servicios, ubicación y reserva de turnos por WhatsApp."},
+    {ruta:"ejemplos/barberia/", img:"previews/ejemplo-barberia.jpg", tag:"Barbería", nombre:"Filo Barbería", desc:"Servicios, horarios con el día de hoy resaltado y botón para llamar."},
+    {ruta:"ejemplos/restaurante/", img:"previews/ejemplo-restaurante.jpg", tag:"Restaurante", nombre:"Parrilla El Fogón", desc:"Momentos del día y cartel de \"Abierto ahora\" en vivo."},
+    {ruta:"ejemplos/cerveceria/", img:"previews/ejemplo-cerveceria.jpg", tag:"Bar y cervecería", nombre:"Patio Lúpulo", desc:"Días de apertura, canillas y reserva de mesa por WhatsApp."}
+  ];
+  const card = (p, real) => `<a class="card" href="${p.ruta}" target="_blank" rel="noopener">
+      <div class="shot"><img src="${p.img}" alt="Vista de ${p.nombre}" loading="lazy"></div>
+      <div class="body"><span class="tag ${real ? "real" : ""}">${p.tag}</span><h3>${p.nombre}</h3><p>${p.desc}</p><span class="go">${real ? "Ver web ↗" : "Ver ejemplo ↗"}</span></div>
+    </a>`;
+  document.getElementById("proyectosGrid").innerHTML = PROYECTOS.map(p => card(p, true)).join("");
+  document.getElementById("ejemplosGrid").innerHTML = EJEMPLOS.map(p => card(p, false)).join("");
+  document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

@@ -58,3 +58,12 @@ node herramientas/generar-previews.js
 
 (Necesita Node y Playwright: `npm i -D playwright && npx playwright install chromium`.)
 Después sumá el proyecto a la lista `PROYECTOS` del `index.html` de la raíz.
+
+## Portada pública y ejemplos
+
+- `index.html`: página de Federico ("Webs para emprendimientos"), para mandar a interesados.
+  Muestra PATTERNS, Colab Dental y los ejemplos por rubro.
+- `ejemplos/<rubro>/`: sitios de ejemplo con **nombres inventados** (viandas, panadería, peluquería,
+  barbería, restaurante, cervecería). Se generan a partir de las demos, con una cinta de "Sitio de ejemplo".
+- `prospectos.html`: página **interna** con las demos hechas con datos de negocios reales.
+  No está enlazada desde la portada; no compartirla.
