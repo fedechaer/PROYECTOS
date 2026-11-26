@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Horno de Barrio · Panadería</title>
-<meta name="description" content="Horno de Barrio. Pan del día, bizcochos y tortas por encargo en Montevideo: elegí la fecha, armá tu torta y conocé el precio al instante. Sitio de ejemplo.">
+<meta name="description" content="Horno de Barrio. Pan del día, bizcochos y tortas por encargo en Montevideo: elegí la fecha, armá tu torta y pedí tu presupuesto. Sitio de ejemplo.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#fdf6ea;--ink:#3b2616;--muted:#8a6f58;--crust:#c47a35;--crust-d:#a7631f;--cream:#fff;--line:#efdcc2;--sage:#7d8f69;--rose:#e9a6a1}
@@ -96,19 +96,38 @@
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
   .fecha{margin-top:10px;font-weight:700;min-height:1.5em}
 
+  .pers{background:var(--bg);border:2px dashed var(--line);border-radius:18px;padding:14px 14px 2px;margin-bottom:16px}
+  .preview{margin-top:10px;background:#fff;border:2px solid var(--line);border-radius:16px;max-width:260px}
+  .preview svg{width:100%;display:block}
+  .upload{display:flex;align-items:center;gap:10px;border:2px dashed var(--crust);border-radius:14px;padding:14px;background:#fff;color:var(--crust-d);font-weight:700;cursor:pointer}
+  .upload input{position:absolute;opacity:0;width:1px;height:1px}
+  .upload:focus-within{outline:2px solid var(--crust);outline-offset:2px}
+  .thumb{display:none;align-items:center;gap:10px;margin-top:10px}
+  .thumb.show{display:flex}
+  .thumb img{width:72px;height:72px;object-fit:cover;border-radius:12px;border:2px solid var(--line)}
+  .thumb button{border:0;background:none;color:var(--crust-d);font-weight:700;text-decoration:underline}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .qt{font-family:Fraunces;font-size:1.2rem;display:block;margin-bottom:6px}
+  .qr{font-size:.95rem;opacity:.95;white-space:pre-line}
+  .done{display:none;background:#e6efe0;border:2px solid #b9d3a8;border-radius:20px;padding:20px;margin-top:18px}
+  .done.show{display:block}
+  .done p{margin-top:6px}
+  .done .btn{margin-top:12px}
   .quote{background:var(--sage);color:#fff;border-radius:20px;padding:20px;margin-top:18px}
   .quote .row{display:flex;justify-content:space-between;gap:10px;font-size:.95rem;opacity:.95}
   .quote .tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed rgba(255,255,255,.4);margin-top:10px;padding-top:10px}
   .quote .tot b{font-family:Fraunces;font-size:1.9rem}
   .quote small{opacity:.85;display:block;margin-top:4px}
   .quote .btn{width:100%;margin-top:14px;background:#25d366}
-  .err{color:#b3261e;font-weight:700;font-size:.9rem;min-height:1.3em;margin-top:8px}
+  .err{color:#fff;font-weight:700;font-size:.9rem;min-height:1.3em;margin-top:8px}
+  .quote small{opacity:.9;display:block;margin-top:8px;font-size:.85rem}
 
   .hours{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center}
   .hours div{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:20px}
   .hours b{display:block;font-family:Fraunces;font-size:1.15rem}
   footer{text-align:center;color:var(--muted);padding:30px 0;font-size:.9rem}
 
+  @media(max-width:420px){.two{grid-template-columns:1fr}}
   @media(max-width:820px){
     .order{grid-template-columns:1fr;padding:18px}
     .lb .box{grid-template-columns:1fr}
@@ -128,7 +147,7 @@
     <div class="fresh" id="fresh">🥖 Pan recién horneado</div>
     <div class="em">🎂</div>
     <h1>El pan de todos los días<br>y la torta <span>de tu festejo</span></h1>
-    <p>Bizcochos, pan del día y tortas por encargo. Elegí la fecha, armá tu torta y conocé el precio al instante.</p>
+    <p>Bizcochos, pan del día y tortas por encargo. Elegí la fecha, armá tu torta a tu gusto y te pasamos el presupuesto.</p>
     <a class="btn" href="#encargo">Encargá tu torta</a>
     <a class="btn ghost" href="#tortas" style="margin-left:6px">Ver tortas</a>
   </div>
@@ -153,7 +172,7 @@
 
   <section id="encargo" style="padding-top:0"><div class="wrap">
     <h2>Encargá tu torta</h2>
-    <p class="lead">Elegí el día en el calendario, armala a tu gusto y mandanos el pedido por WhatsApp. El precio es estimado y lo confirmamos al responderte.</p>
+    <p class="lead">Elegí el día, armala a tu gusto y mandanos el pedido. Te respondemos con el presupuesto por WhatsApp o mail.</p>
 
     <div class="order">
       <div>
@@ -172,20 +191,52 @@
       <div>
         <div class="field"><span class="lbl">4 · Bizcochuelo</span><div class="chips" id="bizc"></div></div>
         <div class="field"><span class="lbl">5 · Relleno</span><div class="chips" id="rell"></div></div>
-        <div class="field"><span class="lbl">6 · Extras</span><div class="checks" id="extras"></div></div>
-        <div class="field"><label for="dedi">Dedicatoria o idea <small>(opcional)</small></label><textarea id="dedi" placeholder="Ej: ¡Feliz cumple Sofi! Temática de unicornios, tonos lila."></textarea></div>
-        <div class="field"><label for="nom">Tu nombre</label><input type="text" id="nom" placeholder="Para saber a nombre de quién va" autocomplete="name"></div>
+
+        <div class="pers">
+          <span class="lbl">6 · Personalizala</span>
+          <div class="field" id="fNum"><label for="numTxt">¿Qué números o letras? <small>(hasta 4)</small></label>
+            <input type="text" id="numTxt" maxlength="4" placeholder="Ej: 30, 18, SOFI" autocomplete="off">
+            <div class="preview" id="numPrev" aria-label="Vista previa"></div>
+          </div>
+          <div class="field" id="fTema"><label for="tema">Temática y colores</label>
+            <input type="text" id="tema" placeholder="Ej: Frozen en celeste y blanco, Peñarol, flores en tonos pastel">
+          </div>
+          <div class="field"><label for="texto">Texto escrito en la torta <small>(opcional)</small></label>
+            <input type="text" id="texto" maxlength="40" placeholder="Ej: ¡Feliz cumple Sofi!">
+          </div>
+          <div class="field"><span class="lbl">Imagen de referencia <small>(opcional)</small></span>
+            <label class="upload" id="upLbl"><input type="file" id="img" accept="image/*"><span id="upTxt">📷 Subí una foto o captura de la torta que te gusta</span></label>
+            <div class="thumb" id="thumb"></div>
+          </div>
+        </div>
+
+        <div class="field"><span class="lbl">7 · Extras</span><div class="checks" id="extras"></div></div>
+
+        <div class="field"><span class="lbl">8 · Tus datos</span>
+          <div class="two">
+            <input type="text" id="nom" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre">
+            <input type="text" id="tel" placeholder="Tu WhatsApp" autocomplete="tel" inputmode="tel" aria-label="Tu WhatsApp">
+          </div>
+          <input type="text" id="mail" placeholder="Tu mail (opcional)" autocomplete="email" inputmode="email" aria-label="Tu mail" style="margin-top:8px">
+          <textarea id="dedi" placeholder="¿Algo más que tengamos que saber? (alergias, horario de retiro, etc.)" style="margin-top:8px" aria-label="Comentarios"></textarea>
+        </div>
 
         <div class="quote" aria-live="polite">
-          <div class="row"><span id="qResumen">—</span></div>
-          <div class="tot"><span>Precio estimado</span><b id="qTotal">$ 0</b></div>
-          <small id="qPorc"></small>
-          <button class="btn" type="button" id="send">💬 Encargar por WhatsApp</button>
-          <div class="err" id="err" style="color:#fff"></div>
+          <b class="qt">Tu pedido</b>
+          <div id="qResumen" class="qr">—</div>
+          <button class="btn" type="button" id="send">📩 Pedir presupuesto</button>
+          <small>Te llega por WhatsApp y por mail a la pastelería. Te respondemos con el precio.</small>
+          <div class="err" id="err"></div>
+        </div>
+        <div class="done" id="done" role="status">
+          <b>✅ ¡Pedido enviado!</b>
+          <p>La pastelería ya lo recibió y te responde con el presupuesto.</p>
+          <p id="doneImg" style="display:none">📷 Si subiste una imagen, pegala también en el chat de WhatsApp que se abrió.</p>
+          <button class="btn ghost" type="button" id="otro">Armar otro pedido</button>
         </div>
       </div>
     </div>
-    <p class="note">* Precios, sabores y disponibilidad de ejemplo.</p>
+    <p class="note">* Sabores y disponibilidad de ejemplo.</p>
   </div></section>
 
   <section style="padding-top:0"><div class="wrap">
@@ -216,23 +267,28 @@
 
 <script>
 /* ================== CONFIGURACIÓN (ejemplo) ================== */
-const CONFIG = { whatsapp: "", anticipacion: 3, diasCerrado: [0] /* domingos sin entregas de tortas */ };
+const CONFIG = {
+  whatsapp: "",      // 598 + número sin el 0
+  email: "",         // mail de la pastelería: los pedidos llegan por FormSubmit (gratis, se activa con un clic la primera vez)
+  anticipacion: 3,
+  diasCerrado: [0]   // domingos sin entregas de tortas
+};
 const TIPOS = [
-  {id:"clasica",  n:"Clásica",           base:900,  porc:110},
-  {id:"decorada", n:"Decorada / temática",base:1500, porc:140},
-  {id:"cheese",   n:"Cheesecake",        base:800,  porc:120},
-  {id:"numero",   n:"Número o letra",    base:1300, porc:130}
+  {id:"clasica",  n:"Clásica"},
+  {id:"decorada", n:"Decorada / temática"},
+  {id:"cheese",   n:"Cheesecake"},
+  {id:"numero",   n:"Números o letras"}
 ];
 const PORCIONES = [10, 15, 20, 30, 40];
-const BIZC = [{n:"Vainilla",x:0},{n:"Chocolate",x:0},{n:"Red velvet",x:300}];
-const RELL = [{n:"Dulce de leche",x:0},{n:"Chocolate",x:150},{n:"Crema y frutillas",x:250},{n:"Mousse de limón",x:200}];   // x = extra cada 10 porciones
-const EXTRAS = [{id:"velas",n:"Velitas",x:60},{id:"topper",n:"Cartel personalizado",x:250},{id:"envio",n:"Envío a domicilio",x:200}];
+const BIZC = [{n:"Vainilla"},{n:"Chocolate"},{n:"Red velvet"}];
+const RELL = [{n:"Dulce de leche"},{n:"Chocolate"},{n:"Crema y frutillas"},{n:"Mousse de limón"}];
+const EXTRAS = [{id:"velas",n:"Velitas"},{id:"topper",n:"Cartel personalizado"},{id:"envio",n:"Envío a domicilio"}];
 
 /* Galería de ejemplo: colores y forma de la ilustración */
 const TORTAS = [
   {n:"Selva negra", tipo:"clasica", bizc:"Chocolate", rell:"Crema y frutillas", porc:20, d:"Bizcochuelo de chocolate, crema y frutillas, con virutas.", c:["#4a2a1a","#f7efe6","#c0392b"], pisos:1, top:"frutillas"},
   {n:"Unicornio", tipo:"decorada", bizc:"Vainilla", rell:"Dulce de leche", porc:20, d:"Temática con tonos pastel, cuerno dorado y flores de crema.", c:["#f8d7e8","#ffffff","#c9a7f0"], pisos:1, top:"cuerno"},
-  {n:"Número 30", tipo:"numero", bizc:"Vainilla", rell:"Dulce de leche", porc:20, d:"Número con crema, macarons, flores y frutos rojos.", c:["#fbe3d6","#ffffff","#e9a6a1"], pisos:0, top:"numero"},
+  {n:"Números o letras", tipo:"numero", bizc:"Vainilla", rell:"Dulce de leche", porc:20, d:"Con el número o las letras que quieras (una edad, una inicial, un nombre corto), decorada con crema, macarons y flores.", c:["#fbe3d6","#ffffff","#e9a6a1"], pisos:0, top:"numero"},
   {n:"Cheesecake de frutos rojos", tipo:"cheese", bizc:"Vainilla", rell:"Crema y frutillas", porc:15, d:"Base de galletita, crema de queso y coulis de frutos rojos.", c:["#f3ead7","#fff7e8","#8e1b3a"], pisos:1, top:"frutos"},
   {n:"Dos pisos floral", tipo:"decorada", bizc:"Vainilla", rell:"Mousse de limón", porc:40, d:"Para casamientos y bautismos: dos pisos con flores naturales.", c:["#ffffff","#f3ece2","#9db58c"], pisos:2, top:"flores"},
   {n:"Chocotorta", tipo:"clasica", bizc:"Chocolate", rell:"Dulce de leche", porc:15, d:"La de siempre, con galletitas de chocolate y dulce de leche.", c:["#5b3a26","#e7c9a0","#3a2214"], pisos:1, top:"velas"},
@@ -242,7 +298,6 @@ const TORTAS = [
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const fmt = n => "$ " + Math.round(n).toLocaleString("es-UY");
 const DSEM = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 
 /* ================== Ilustraciones SVG ================== */
@@ -283,7 +338,7 @@ $$(".cake").forEach(b => b.onclick = () => abrirLB(+b.dataset.i));
 function abrirLB(i){
   lbI = (i + TORTAS.length) % TORTAS.length; const t = TORTAS[lbI];
   $("#lbPic").innerHTML = cakeSVG(t); $("#lbT").textContent = t.n; $("#lbD").textContent = t.d;
-  $("#lbDl").innerHTML = `<dt>Tipo</dt><dd>${TIPOS.find(x=>x.id===t.tipo).n}</dd><dt>Bizcochuelo</dt><dd>${t.bizc}</dd><dt>Relleno</dt><dd>${t.rell}</dd><dt>Tamaño</dt><dd>${t.porc} porciones</dd><dt>Desde</dt><dd><b>${fmt(precio({tipo:t.tipo, porc:t.porc, bizc:t.bizc, rell:t.rell, extras:new Set()}))}</b></dd>`;
+  $("#lbDl").innerHTML = `<dt>Tipo</dt><dd>${TIPOS.find(x=>x.id===t.tipo).n}</dd><dt>Bizcochuelo</dt><dd>${t.bizc}</dd><dt>Relleno</dt><dd>${t.rell}</dd><dt>Tamaño</dt><dd>${t.porc} porciones</dd>`;
   $("#lb").classList.add("show"); $("#lbX").focus();
 }
 const cerrarLB = () => $("#lb").classList.remove("show");
@@ -298,7 +353,9 @@ document.addEventListener("keydown", e => {
 $("#lbPedir").onclick = () => {
   const t = TORTAS[lbI];
   Object.assign(sel, {tipo:t.tipo, porc:t.porc, bizc:t.bizc, rell:t.rell});
-  if (!$("#dedi").value) $("#dedi").value = `Como la "${t.n}" de la galería.`;
+  if (t.tipo === "numero" && !$("#numTxt").value) $("#numTxt").value = "30";
+  if (t.tipo === "decorada" && !$("#tema").value) $("#tema").value = `Como la "${t.n}" de la galería`;
+  if (!$("#dedi").value) $("#dedi").value = `Me gustó la "${t.n}" de la galería.`;
   cerrarLB(); renderForm(); $("#encargo").scrollIntoView({behavior:"smooth"});
 };
 
@@ -342,56 +399,110 @@ function renderCal(){
 $("#prevM").onclick = () => { vista = new Date(vista.getFullYear(), vista.getMonth()-1, 1); renderCal(); };
 $("#nextM").onclick = () => { vista = new Date(vista.getFullYear(), vista.getMonth()+1, 1); renderCal(); };
 
-/* ================== H1 · Encargo con precio ================== */
+/* ================== H1 · Encargo para presupuesto ================== */
 const sel = {fecha:null, tipo:"clasica", porc:20, bizc:"Vainilla", rell:"Dulce de leche", extras:new Set(["velas"])};
-function precio(s){
-  const t = TIPOS.find(x => x.id === s.tipo);
-  let p = t.base + t.porc * s.porc;
-  p += BIZC.find(x => x.n === s.bizc).x;
-  p += RELL.find(x => x.n === s.rell).x * s.porc / 10;
-  s.extras.forEach(id => p += EXTRAS.find(x => x.id === id).x);
-  return Math.round(p / 10) * 10;
-}
+let imagen = null;
+
 function chips(el, items, key, label, sub){
   $(el).innerHTML = items.map(it => { const v = typeof it === "object" ? (it.id || it.n) : it;
     return `<button type="button" class="${sel[key]===v?'on':''}" data-v="${v}">${label(it)}${sub ? `<small>${sub(it)}</small>` : ""}</button>`; }).join("");
   $$(el + " button").forEach(b => b.onclick = () => { sel[key] = isNaN(b.dataset.v) ? b.dataset.v : +b.dataset.v; renderForm(); });
 }
+
+/* Vista previa de la torta de números o letras */
+function numSVG(txt){
+  txt = (txt || "").toUpperCase().slice(0, 4) || "30";
+  const fs = [0, 190, 170, 120, 92][txt.length];
+  const safe = txt.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  return `<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vista previa: ${safe}">
+    <rect width="300" height="220" fill="#fffaf2"/>
+    <ellipse cx="150" cy="196" rx="128" ry="14" fill="#efe2d0"/>
+    <text x="150" y="${150 + fs * .22}" text-anchor="middle" font-family="Fraunces,serif" font-weight="800" font-size="${fs}" fill="#fbe3d6" stroke="#e9a6a1" stroke-width="5" paint-order="stroke">${safe}</text>
+    ${[60,105,150,195,240].map((x,i)=>`<circle cx="${x}" cy="${30 + (i%2)*10}" r="${9 + (i%2)*2}" fill="${i%2 ? '#e9a6a1' : '#fff'}" stroke="#e9a6a1" stroke-width="2"/>`).join("")}
+  </svg>`;
+}
+
+function resumen(){
+  const t = TIPOS.find(x => x.id === sel.tipo);
+  const ex = [...sel.extras].map(id => EXTRAS.find(x => x.id === id).n);
+  return [
+    sel.fecha ? `📅 ${DSEM[sel.fecha.getDay()]} ${sel.fecha.toLocaleDateString("es-UY")}` : "📅 Falta elegir el día",
+    `🎂 ${t.n} · ${sel.porc} porciones`,
+    `🍰 ${sel.bizc} con relleno de ${sel.rell.toLowerCase()}`,
+    sel.tipo === "numero" && $("#numTxt").value.trim() ? `🔢 Números/letras: ${$("#numTxt").value.trim().toUpperCase()}` : "",
+    sel.tipo === "decorada" && $("#tema").value.trim() ? `🎨 Temática: ${$("#tema").value.trim()}` : "",
+    $("#texto").value.trim() ? `✍️ Texto: "${$("#texto").value.trim()}"` : "",
+    imagen ? "📷 Con imagen de referencia" : "",
+    ex.length ? `✨ Extras: ${ex.join(", ")}` : ""
+  ].filter(Boolean).join("\n");
+}
+
 function renderForm(){
-  chips("#tipo", TIPOS, "tipo", t => t.n, t => "desde " + fmt(t.base + t.porc * 10));
+  chips("#tipo", TIPOS, "tipo", t => t.n);
   chips("#porc", PORCIONES, "porc", p => `${p} porc.`, p => p <= 10 ? "chica" : p <= 20 ? "mediana" : p <= 30 ? "grande" : "fiesta");
-  chips("#bizc", BIZC, "bizc", b => b.n, b => b.x ? "+" + fmt(b.x) : "");
-  chips("#rell", RELL, "rell", r => r.n, r => r.x ? "+" + fmt(r.x * sel.porc / 10) : "");
-  $("#extras").innerHTML = EXTRAS.map(e => `<label><input type="checkbox" data-x="${e.id}" ${sel.extras.has(e.id)?"checked":""}> ${e.n}<span>+${fmt(e.x)}</span></label>`).join("");
+  chips("#bizc", BIZC, "bizc", b => b.n);
+  chips("#rell", RELL, "rell", r => r.n);
+  $("#extras").innerHTML = EXTRAS.map(e => `<label><input type="checkbox" data-x="${e.id}" ${sel.extras.has(e.id)?"checked":""}> ${e.n}</label>`).join("");
   $$("#extras input").forEach(i => i.onchange = () => { i.checked ? sel.extras.add(i.dataset.x) : sel.extras.delete(i.dataset.x); renderForm(); });
-  const t = TIPOS.find(x => x.id === sel.tipo), total = precio(sel);
-  $("#qResumen").textContent = `${t.n} · ${sel.porc} porciones · ${sel.bizc} con ${sel.rell.toLowerCase()}`;
-  $("#qTotal").textContent = fmt(total);
-  $("#qPorc").textContent = `≈ ${fmt(total / sel.porc)} por porción · se confirma al responderte`;
+  $("#fNum").style.display = sel.tipo === "numero" ? "" : "none";
+  $("#fTema").style.display = sel.tipo === "decorada" ? "" : "none";
+  $("#numPrev").innerHTML = numSVG($("#numTxt").value);
+  $("#qResumen").textContent = resumen();
   $("#err").textContent = "";
   renderCal();
 }
-$("#send").onclick = () => {
-  const nom = $("#nom").value.trim();
-  if (!sel.fecha){ $("#err").textContent = "Elegí un día en el calendario 📅"; $("#calG").scrollIntoView({behavior:"smooth", block:"center"}); return; }
-  if (!nom){ $("#err").textContent = "Poné tu nombre así sabemos de quién es el encargo"; $("#nom").focus(); return; }
-  const t = TIPOS.find(x => x.id === sel.tipo);
-  const ex = [...sel.extras].map(id => EXTRAS.find(x => x.id === id).n);
-  const msg = [
-    "¡Hola Horno de Barrio! Quiero encargar una torta:",
-    "",
-    `📅 Para el ${DSEM[sel.fecha.getDay()]} ${sel.fecha.toLocaleDateString("es-UY")}`,
-    `🎂 ${t.n} · ${sel.porc} porciones`,
-    `🍰 ${sel.bizc} con relleno de ${sel.rell.toLowerCase()}`,
-    ex.length ? `✨ Extras: ${ex.join(", ")}` : "",
-    $("#dedi").value.trim() ? `✍️ ${$("#dedi").value.trim()}` : "",
-    "",
-    `Precio estimado: ${fmt(precio(sel))}`,
-    `A nombre de: ${nom}`
-  ].filter((l, i, a) => l !== "" || a[i-1] !== "").join("\n");
-  if (!CONFIG.whatsapp){ alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + msg); return; }
-  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+["#numTxt", "#tema", "#texto"].forEach(id => $(id).addEventListener("input", () => {
+  if (id === "#numTxt") $("#numPrev").innerHTML = numSVG($("#numTxt").value);
+  $("#qResumen").textContent = resumen();
+}));
+
+/* Imagen de referencia */
+$("#img").onchange = () => {
+  const f = $("#img").files[0];
+  if (!f) return;
+  if (!f.type.startsWith("image/")) { $("#err").textContent = "El archivo tiene que ser una imagen"; return; }
+  if (f.size > 8 * 1024 * 1024) { $("#err").textContent = "La imagen es muy pesada (máximo 8 MB)"; $("#img").value = ""; return; }
+  imagen = f;
+  $("#thumb").innerHTML = `<img src="${URL.createObjectURL(f)}" alt="Imagen de referencia"><span>${f.name}</span><button type="button" id="quitarImg">Quitar</button>`;
+  $("#thumb").classList.add("show");
+  $("#upTxt").textContent = "📷 Cambiar imagen";
+  $("#quitarImg").onclick = () => { imagen = null; $("#img").value = ""; $("#thumb").classList.remove("show"); $("#upTxt").textContent = "📷 Subí una foto o captura de la torta que te gusta"; $("#qResumen").textContent = resumen(); };
+  $("#qResumen").textContent = resumen();
 };
+
+/* Enviar: WhatsApp a la pastelería + mail con los datos y la imagen */
+$("#send").onclick = () => {
+  const nom = $("#nom").value.trim(), tel = $("#tel").value.trim(), mail = $("#mail").value.trim();
+  if (!sel.fecha){ $("#err").textContent = "Elegí un día en el calendario 📅"; $("#calG").scrollIntoView({behavior:"smooth", block:"center"}); return; }
+  if (sel.tipo === "numero" && !$("#numTxt").value.trim()){ $("#err").textContent = "Contanos qué números o letras va a tener"; $("#numTxt").focus(); return; }
+  if (!nom){ $("#err").textContent = "Poné tu nombre"; $("#nom").focus(); return; }
+  if (!tel){ $("#err").textContent = "Dejanos tu WhatsApp para pasarte el presupuesto"; $("#tel").focus(); return; }
+
+  const cuerpo = `${resumen()}${$("#dedi").value.trim() ? "\n💬 " + $("#dedi").value.trim() : ""}\n\n👤 ${nom} · ${tel}${mail ? " · " + mail : ""}`;
+  const wa = `¡Hola Horno de Barrio! Quiero pedir presupuesto para una torta:\n\n${cuerpo}${imagen ? "\n\nTe mando la imagen de referencia acá abajo 👇" : ""}`;
+
+  if (!CONFIG.whatsapp && !CONFIG.email){
+    alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + wa + "\n\nY le llega un mail a la pastelería con los mismos datos" + (imagen ? " y la imagen adjunta." : "."));
+  } else {
+    // WhatsApp primero (tiene que abrirse en el mismo clic para que el navegador no lo bloquee)
+    if (CONFIG.whatsapp) window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(wa), "_blank");
+    if (CONFIG.email){
+      const fd = new FormData();
+      fd.append("_subject", `Pedido de torta · ${nom} · ${sel.fecha.toLocaleDateString("es-UY")}`);
+      fd.append("_template", "table");
+      fd.append("_captcha", "false");
+      if (mail) fd.append("_replyto", mail);
+      fd.append("Pedido", cuerpo);
+      if (imagen) fd.append("attachment", imagen, imagen.name);
+      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(CONFIG.email), {method:"POST", body:fd, headers:{Accept:"application/json"}})
+        .catch(() => { $("#err").textContent = "El mail no salió, pero el WhatsApp sí. ¡Listo igual!"; });
+    }
+  }
+  $(".quote").style.display = "none";
+  $("#doneImg").style.display = imagen ? "" : "none";
+  $("#done").classList.add("show");
+};
+$("#otro").onclick = () => { $("#done").classList.remove("show"); $(".quote").style.display = ""; };
 
 /* Saludo según la hora */
 const hr = new Date(new Date().toLocaleString("en-US",{timeZone:"America/Montevideo"})).getHours();
