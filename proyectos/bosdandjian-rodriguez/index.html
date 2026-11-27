@@ -1,1232 +1,577 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abogados y Escribanos en Montevideo | Bosdandjian Rodríguez — Estudio Jurídico Notarial</title>
-  <meta name="description" content="Estudio jurídico notarial en Ciudad Vieja, Montevideo. Abogacía, escribanía y servicios inmobiliarios integrados. Atención en todo Uruguay.">
-  <meta name="robots" content="noindex, nofollow">
-  <!-- Propuesta de mejora: copia que no se indexa para no competir con la web oficial -->
-  <link rel="canonical" href="https://bosdandjianrodriguez.com.uy/">
-  <link rel="icon" type="image/png" href="img/marca/icono-64.png">
-  <link rel="apple-touch-icon" href="img/marca/icono-180.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bosdandjian Rodríguez · Estudio Jurídico Notarial</title>
+<meta name="description" content="Estudio jurídico notarial en Ciudad Vieja, Montevideo. Abogacía, escribanía y servicios inmobiliarios integrados, con atención en todo Uruguay.">
+<!-- Propuesta de web: no se indexa para no competir con la web oficial del estudio -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://bosdandjianrodriguez.com.uy/">
+<meta property="og:title" content="Bosdandjian Rodríguez · Estudio Jurídico Notarial">
+<meta property="og:description" content="Abogacía, escribanía y servicios inmobiliarios bajo un mismo respaldo. Ciudad Vieja, Montevideo.">
+<meta property="og:image" content="https://fedechaer.github.io/PROYECTOS/proyectos/bosdandjian-rodriguez/img/compartir/compartir.jpg">
+<link rel="icon" type="image/png" href="img/marca/icono-64.png">
+<link rel="apple-touch-icon" href="img/marca/icono-180.png">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ffffff;--ink:#0e1a2e;--soft:#56627a;--line:#e3e8f0;--panel:#f2f5fa;--navy:#0e1a2e;--navy2:#16243d;--blue:#2459c4;--blue-d:#1a449a;--gold:#b08a4e;--ok:#1d7a4a;--wa:#25d366}
+  *{box-sizing:border-box;margin:0;padding:0;min-width:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:clip;padding-bottom:52px}
+  button,input,select,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 max(5vw,18px)}
+  .serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.015em;line-height:1.08}
+  section{padding:76px 0}
+  h2{font-size:clamp(2rem,4.6vw,2.9rem)}
+  .sub{color:var(--soft);max-width:60ch;margin:12px 0 30px;font-size:1.04rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;border:0;border-radius:10px;padding:13px 22px;font-weight:600;text-decoration:none;transition:background .2s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.line{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.line:hover{border-color:var(--ink)}
+  .btn.wa{background:var(--wa)}
+  .btn.sm{padding:9px 14px;font-size:.9rem}
+  .note{color:var(--soft);font-size:.86rem;margin-top:14px}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bosdandjianrodriguez.com.uy/">
-  <meta property="og:title" content="Abogados y Escribanos en Montevideo | Bosdandjian Rodríguez — Estudio Jurídico Notarial">
-  <meta property="og:description" content="Estudio jurídico notarial en Ciudad Vieja, Montevideo. Abogacía, escribanía y servicios inmobiliarios integrados. Atención en todo Uruguay.">
-  <meta property="og:image" content="https://fedechaer.github.io/PROYECTOS/proyectos/bosdandjian-rodriguez/img/compartir/compartir.jpg">
-  <meta property="og:locale" content="es_UY">
-  <meta property="og:site_name" content="Bosdandjian Rodríguez — Estudio Jurídico Notarial">
+  /* Encabezado */
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand .mono{width:46px;height:46px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+  .brand .mono img{width:30px;height:auto}
+  .brand b{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:1.22rem;display:block;line-height:1.1}
+  .brand small{font-size:.72rem;letter-spacing:.08em;color:var(--soft)}
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav ul a{text-decoration:none;color:var(--soft);font-weight:500;font-size:.93rem;white-space:nowrap}
+  nav ul a:hover{color:var(--ink)}
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Abogados y Escribanos en Montevideo | Bosdandjian Rodríguez">
-  <meta name="twitter:description" content="Estudio jurídico notarial en Ciudad Vieja, Montevideo. Abogacía, escribanía y servicios inmobiliarios integrados.">
-  <meta name="twitter:image" content="https://fedechaer.github.io/PROYECTOS/proyectos/bosdandjian-rodriguez/img/compartir/compartir.jpg">
+  /* Portada */
+  .hero{padding:56px 0 64px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .kick{color:var(--blue);font-weight:600;font-size:.9rem;margin-bottom:14px}
+  .hero h1{font-size:clamp(2.5rem,5.6vw,4.1rem)}
+  .hero h1 span{color:var(--blue)}
+  .hero p.lead{color:var(--soft);font-size:1.1rem;max-width:52ch;margin:20px 0 28px}
+  .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .photo{position:relative;border-radius:18px;overflow:hidden;background:var(--panel);aspect-ratio:1/1}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo .tag{position:absolute;left:14px;bottom:14px;background:rgba(14,26,46,.86);color:#fff;border-radius:10px;padding:10px 14px;font-size:.86rem;line-height:1.35}
+  .photo .tag b{display:block;font-family:Newsreader,Georgia,serif;font-size:1.05rem}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:40px}
+  .stat{border-top:2px solid var(--ink);padding-top:10px}
+  .stat b{display:block;font-family:Newsreader,Georgia,serif;font-size:1.9rem;font-weight:600;line-height:1}
+  .stat span{color:var(--soft);font-size:.86rem}
 
-  <!-- JSON-LD: LegalService -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LegalService",
-    "name": "Bosdandjian Rodríguez — Estudio Jurídico Notarial",
-    "description": "Estudio jurídico notarial en Ciudad Vieja, Montevideo. Abogacía, escribanía y servicios inmobiliarios integrados. Atención en todo Uruguay.",
-    "url": "https://bosdandjianrodriguez.com.uy/",
-    "logo": "https://bosdandjianrodriguez.com.uy/img/logo-br-alt.png",
-    "image": "https://bosdandjianrodriguez.com.uy/img/portada.png",
-    "telephone": "+59894617681",
-    "email": "contacto@bosdandjianrodriguez.com.uy",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ciudad Vieja, Montevideo",
-      "addressCountry": "UY"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Uruguay"
-    },
-    "sameAs": [
-      "https://www.instagram.com/estudio_bosdandjian.rodriguez",
-      "https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8"
-    ],
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "bestRating": "5",
-      "reviewCount": "19"
-    }
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="css/styles.css?v=2">
-  <link rel="stylesheet" href="css/mejoras.css">
+  /* Consulta guiada */
+  .guia{background:var(--navy);color:#fff}
+  .guia .sub{color:#b8c3d6}
+  .sits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .sit{background:var(--navy2);border:1.5px solid #26375a;color:#fff;border-radius:12px;padding:14px 16px;text-align:left;display:flex;gap:12px;align-items:center;font-weight:600;transition:.15s}
+  .sit:hover{border-color:#4a6aa8}
+  .sit .i{font-size:1.3rem;flex:none}
+  .sit.on{background:#fff;color:var(--ink);border-color:#fff}
+  .resp{margin-top:18px;background:#fff;color:var(--ink);border-radius:16px;padding:22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+  .resp[hidden]{display:none}
+  .resp .area{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--blue);border-radius:99px;padding:3px 10px;margin-bottom:8px}
+  .resp h3{font-family:Newsreader,Georgia,serif;font-size:1.5rem;font-weight:600;line-height:1.15}
+  .resp p{color:var(--soft);margin-top:6px}
+  .resp .bt{display:flex;flex-direction:column;gap:8px}
 
-   
+  /* Servicios */
+  .areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .ar{border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+  .ar .ico{width:44px;height:44px;border-radius:12px;background:var(--panel);display:grid;place-items:center;font-size:1.3rem}
+  .ar h3{font-family:Newsreader,Georgia,serif;font-size:1.6rem;font-weight:600}
+  .ar ul{list-style:none;display:grid;gap:7px;flex:1}
+  .ar li{padding-left:20px;position:relative;font-size:.96rem}
+  .ar li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--blue)}
+  .ar small{color:var(--soft)}
 
+  /* Trámites: qué llevar */
+  #tramites{background:var(--panel)}
+  .tram{display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px;align-items:start}
+  .tabs{display:flex;flex-direction:column;gap:6px}
+  .tab{border:0;background:transparent;text-align:left;padding:11px 14px;border-radius:10px;font-weight:600;color:var(--soft)}
+  .tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 6px rgba(14,26,46,.08)}
+  .lista{background:#fff;border-radius:16px;padding:24px}
+  .lista h3{font-family:Newsreader,Georgia,serif;font-size:1.6rem;font-weight:600}
+  .grupo{margin-top:16px}
+  .grupo b{display:block;font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .chk input{width:20px;height:20px;accent-color:var(--blue);margin-top:2px;flex:none}
+  .chk.hecho span{color:var(--soft);text-decoration:line-through}
+  .prog{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.9rem;color:var(--soft)}
+  .prog .bar{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+  .prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+
+  /* Inmuebles */
+  .filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .fb{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:7px 15px;font-weight:600;font-size:.9rem}
+  .fb.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .props{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .pr{border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:#fff;transition:box-shadow .2s}
+  .pr.dest{box-shadow:0 0 0 3px var(--gold)}
+  .pr .ph{position:relative;aspect-ratio:4/3;background:var(--panel);border:0;padding:0;display:block;width:100%}
+  .pr .ph img{width:100%;height:100%;object-fit:cover}
+  .pr .est{position:absolute;left:12px;top:12px;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:99px;padding:4px 10px;background:#fff;color:var(--ink)}
+  .pr .est.v{background:var(--blue);color:#fff}
+  .pr .nf{position:absolute;right:12px;bottom:12px;background:rgba(14,26,46,.82);color:#fff;font-size:.8rem;font-weight:600;border-radius:99px;padding:4px 10px}
+  .pr .bd{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .pr .precio{font-family:Newsreader,Georgia,serif;font-size:1.6rem;font-weight:600;line-height:1}
+  .pr h3{font-size:1.02rem;line-height:1.35}
+  .pr .loc{color:var(--soft);font-size:.88rem}
+  .feats{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.88rem;font-weight:600;border-top:1px solid var(--line);padding-top:10px}
+  .amen{display:flex;flex-wrap:wrap;gap:6px}
+  .amen span{font-size:.78rem;background:var(--panel);border-radius:6px;padding:3px 8px}
+  .pr .bts{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:auto;padding-top:8px}
+  .pr.cerrada{opacity:.75}
+  .pr.cerrada .ph img{filter:grayscale(.5)}
+  .lb{position:fixed;inset:0;background:rgba(8,14,26,.94);z-index:80;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px}
+  .lb.on{display:flex}
+  .lb .st{width:min(980px,100%);aspect-ratio:4/3;max-height:74vh;position:relative}
+  .lb .st img{width:100%;height:100%;object-fit:contain}
+  .lb .cnt{color:#cfd7e6;font-size:.9rem}
+  .lb .x,.lb .nv{position:absolute;border:0;background:rgba(255,255,255,.92);border-radius:50%;width:44px;height:44px;font-size:1.3rem;line-height:1}
+  .lb .x{top:16px;right:16px;position:fixed}
+  .lb .nv{top:50%;transform:translateY(-50%)}
+  .lb .pv{left:8px}.lb .nx{right:8px}
+  .thumbs{display:flex;gap:6px;overflow-x:auto;max-width:min(980px,100%);padding-bottom:4px}
+  .thumbs button{flex:0 0 64px;height:48px;border:2px solid transparent;border-radius:6px;overflow:hidden;padding:0;background:none;opacity:.6}
+  .thumbs button.on{border-color:#fff;opacity:1}
+  .thumbs img{width:100%;height:100%;object-fit:cover}
+
+  /* Por qué + proceso */
+  .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .why div{border-top:2px solid var(--blue);padding-top:14px}
+  .why b{display:block;font-size:1.05rem;margin-bottom:4px}
+  .why p{color:var(--soft);font-size:.94rem}
+  .pasos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:48px;counter-reset:p}
+  .paso{background:var(--panel);border-radius:14px;padding:20px}
+  .paso::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;margin-bottom:10px}
+  .paso b{display:block}
+  .paso p{color:var(--soft);font-size:.93rem}
+  blockquote.cita{margin-top:40px;font-family:Newsreader,Georgia,serif;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;max-width:34ch;border-left:3px solid var(--gold);padding-left:18px}
+
+  /* Equipo */
+  #estudio{background:var(--panel)}
+  .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .pf{background:#fff;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:200px minmax(0,1fr)}
+  .pf img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .pf .tx{padding:22px;display:flex;flex-direction:column;gap:8px}
+  .pf h3{font-family:Newsreader,Georgia,serif;font-size:1.6rem;font-weight:600;line-height:1.1}
+  .pf .rol{color:var(--blue);font-weight:600;font-size:.9rem}
+  .pf p{color:var(--soft);font-size:.95rem}
+  .pf .tg{display:flex;gap:6px;flex-wrap:wrap}
+  .pf .tg span{font-size:.78rem;border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+
+  /* Opiniones */
+  .rhead{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+  .rnum{font-family:Newsreader,Georgia,serif;font-size:3.2rem;font-weight:600;line-height:1}
+  .stars{color:#e2a522;letter-spacing:2px;font-size:1.1rem}
+  .rtrack{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+  .rv{scroll-snap-align:start;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+  .rv p{font-size:.95rem;flex:1}
+  .rv .who{display:flex;align-items:center;gap:10px;font-size:.9rem}
+  .rv .av{width:34px;height:34px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-weight:700;flex:none}
+  .rv .who small{display:block;color:var(--soft);font-size:.78rem}
+  .rnav{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+  .rnav button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:1.1rem}
+
+  /* Preguntas */
+  .faq{display:grid;gap:10px;max-width:860px}
+  .faq details{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--soft);margin-top:8px}
+
+  /* Contacto */
+  #contacto{background:var(--navy);color:#fff}
+  #contacto .sub{color:#b8c3d6}
+  .ct{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}
+  .datos{list-style:none;display:grid;gap:14px}
+  .datos li{display:flex;gap:14px;align-items:flex-start}
+  .datos .i{width:40px;height:40px;border-radius:10px;background:var(--navy2);display:grid;place-items:center;flex:none}
+  .datos a{color:#fff;font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+  .datos small{display:block;color:#b8c3d6;font-size:.84rem}
+  .completar{border:1px dashed #d8b87a;border-radius:4px;padding:0 6px;color:#f0d9ad;white-space:nowrap}
+  form{background:#fff;color:var(--ink);border-radius:16px;padding:22px;display:grid;gap:12px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{font-weight:600;font-size:.86rem;display:grid;gap:6px}
+  .fld{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:1rem}
+  .fld:focus{outline:none;border-color:var(--blue)}
+  textarea.fld{min-height:110px;resize:vertical}
+  .err{color:#b3261e;font-weight:600;font-size:.88rem;min-height:1.2em}
+  .ok{display:none;background:#e8f6ee;border:1px solid #bfe5cf;border-radius:10px;padding:12px;font-size:.92rem}
+  .ok.on{display:block}
+  form small{color:var(--soft);font-size:.8rem}
+
+  footer{background:#0a1322;color:#8d9ab3;padding:28px 0;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .fab{position:fixed;right:18px;bottom:62px;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:30}
+  .fab svg{width:30px;height:30px;fill:#fff}
+  .toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-weight:600;font-size:.9rem;z-index:90;opacity:0;pointer-events:none;transition:opacity .25s}
+  .toast.on{opacity:1}
+
+  @media(max-width:1000px){nav ul{display:none}.props{grid-template-columns:repeat(2,minmax(0,1fr))}.why,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}.pf{grid-template-columns:1fr}.pf img{height:300px}}
+  @media(max-width:820px){.hero .wrap,.ct,.tram{grid-template-columns:1fr}.areas,.sits{grid-template-columns:1fr 1fr}.team{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto}.tab{white-space:nowrap}.resp{grid-template-columns:1fr}
+    .props{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*max(5vw,18px));padding:4px max(5vw,18px) 8px}.props .pr{flex:0 0 84%;scroll-snap-align:center}}
+  @media(max-width:560px){section{padding:56px 0}.areas,.sits,.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.why,.pasos{grid-template-columns:1fr}.brand b{font-size:1.05rem}.brand small{display:none}.photo{aspect-ratio:4/3}}
+</style>
 </head>
 <body>
 
-  <!-- ─── NAV ─── -->
-  <nav class="site-nav" aria-label="Navegación principal">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Bosdandjian Rodríguez – Estudio Jurídico Notarial">
-        <!-- Logo B&R: reemplazar con <img class="nav-logo-img" src="logo-br.png" alt="B&R"> si se cuenta con el logo -->
-        <div class="nav-logo-monogram">
-          <img src="img/marca/monograma.webp" alt="B&R" style="width:100%;height:100%;object-fit:contain;border-radius:50%;">
-        </div>
-        <div class="nav-logo-text">
-          <span class="nav-logo-name">Bosdandjian Rodríguez</span>
-          <span class="nav-logo-tag">Estudio Jurídico Notarial</span>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#areas">Servicios</a></li>
-        <li><a href="#inmuebles">Inmuebles</a></li>
-        <li><a href="#equipo">El estudio</a></li>
-        <li><a href="#porque">Por qué B&R</a></li>
-        <li><a href="#testimonios">Opiniones</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="nav-cta">Consultar ahora</a></li>
-      </ul>
-      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-drawer">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<header><nav class="wrap">
+  <a class="brand" href="#" aria-label="Bosdandjian Rodríguez, inicio"><span class="mono"><img src="img/marca/monograma.webp" alt="" width="30" height="20"></span><span><b>Bosdandjian Rodríguez</b><small>ESTUDIO JURÍDICO NOTARIAL</small></span></a>
+  <ul><li><a href="#servicios">Servicios</a></li><li><a href="#tramites">Trámites</a></li><li><a href="#inmuebles">Inmuebles</a></li><li><a href="#estudio">El estudio</a></li><li><a href="#opiniones">Opiniones</a></li></ul>
+  <a class="btn sm" href="#consulta">Consultar</a>
+</nav></header>
 
-  <!-- Mobile drawer -->
-  <nav class="nav-drawer" id="nav-drawer" aria-label="Menú móvil" role="dialog">
-    <a href="#areas"   onclick="closeMenu()">Servicios</a>
-    <a href="#inmuebles" onclick="closeMenu()">Inmuebles</a>
-    <a href="#equipo"  onclick="closeMenu()">El estudio</a>
-    <a href="#porque"  onclick="closeMenu()">Por qué B&R</a>
-    <a href="#testimonios" onclick="closeMenu()">Opiniones</a>
-    <a href="#contacto" onclick="closeMenu()">Contacto</a>
-    <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="nav-cta" onclick="closeMenu()">Consultar ahora</a>
-  </nav>
-
-
-  <!-- ─── HERO ─── -->
-  <section class="hero" aria-label="Inicio">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-
-      <div class="hero-left-top reveal">
-        <p class="hero-eyebrow">Estudio Jurídico Notarial · Ciudad Vieja, Montevideo</p>
-        <h1>Abogacía, Escribanía<br>y <em>Servicios Inmobiliarios</em><br>bajo un mismo respaldo.</h1>
-      </div>
-
-      <div class="hero-right reveal reveal-delay-2">
-        <div class="hero-photo-wrap">
-          <!-- Foto principal: se recomienda una imagen del estudio o ambos profesionales juntos -->
-          <picture>
-            <source
-              type="image/webp"
-              srcset="img/portada/estudio-700.webp 700w, img/portada/estudio-1100.webp 1100w"
-              sizes="(max-width: 960px) 100vw, 420px"
-            >
-            <img
-              src="img/portada/estudio-1100.webp" width="1100" height="1086"
-              class="hero-photo-img"
-              alt="Bosdandjian Rodríguez – Estudio Jurídico Notarial en Montevideo"
-              loading="eager"
-            >
-          </picture>
-          <div class="hero-photo-stats">
-            <div class="hero-photo-stat"><strong>+ 7</strong><span>Años de experiencia</span></div>
-            <div class="hero-photo-stat"><strong>3</strong><span>Áreas</span></div>
-            <div class="hero-photo-stat"><strong>5,0 ★</strong><span>En Google</span></div>
-            <div class="hero-photo-stat"><strong>19</strong><span>Reseñas</span></div>
-          </div>
-          <div class="hero-photo-corner"></div>
-        </div>
-      </div>
-
-      <div class="hero-left-bottom reveal reveal-delay-1">
-        <p class="hero-desc">Integramos abogacía, escribanía y servicios inmobiliarios en un solo estudio. Ciudad Vieja, Montevideo — atención en todo el país.</p>
-        <div class="hero-btns">
-          <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-gold">
-            <i class="bi bi-whatsapp"></i> Coordinar consulta
-          </a>
-          <a href="#areas" class="btn-outline">
-            <i class="bi bi-briefcase"></i> Ver servicios
-          </a>
-        </div>
-        <div class="hero-trust-list">
-          <span class="hero-trust-item"><i class="bi bi-check2-circle"></i> Abogacía · Escribanía · Inmobiliaria integrados</span>
-          <span class="hero-trust-item"><i class="bi bi-check2-circle"></i> Atención presencial y remota en todo el país</span>
-          <span class="hero-trust-item"><i class="bi bi-check2-circle"></i> Respaldo jurídico y notarial en cada operación</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ─── TRUST STRIP ─── -->
-  <div class="trust-strip" aria-label="Datos del estudio">
-    <div class="container">
-      <div class="trust-grid">
-        <div class="trust-item reveal reveal-delay-1">
-          <span class="trust-num">+ 7</span>
-          <span class="trust-label">Años de experiencia</span>
-        </div>
-        <div class="trust-item reveal reveal-delay-2">
-          <span class="trust-num">3</span>
-          <span class="trust-label">Áreas integradas</span>
-        </div>
-        <div class="trust-item reveal reveal-delay-3">
-          <span class="trust-num">2</span>
-          <span class="trust-label">Profesionales</span>
-        </div>
-        <div class="trust-item reveal reveal-delay-4">
-          <span class="trust-num">5,0 ★</span>
-          <span class="trust-label">19 reseñas en Google</span>
-        </div>
-      </div>
+<main>
+<section class="hero"><div class="wrap">
+  <div>
+    <p class="kick">Estudio jurídico notarial · Ciudad Vieja, Montevideo</p>
+    <h1 class="serif">Abogacía, escribanía e inmobiliaria con <span>un solo respaldo</span>.</h1>
+    <p class="lead">No necesitás coordinar entre un abogado, un escribano y una inmobiliaria: lo resolvemos dentro del mismo proceso, con análisis preventivo antes de que firmes.</p>
+    <div class="acts"><a class="btn" href="#consulta">Contanos tu caso</a><a class="btn line" href="#inmuebles">Ver propiedades</a></div>
+    <div class="stats">
+      <div class="stat"><b>2019</b><span>Año de fundación</span></div>
+      <div class="stat"><b>3</b><span>Áreas integradas</span></div>
+      <div class="stat"><b>5,0 ★</b><span>En Google</span></div>
+      <div class="stat"><b>19</b><span>Reseñas de clientes</span></div>
     </div>
   </div>
-
-
-  <!-- ─── ÁREAS DE PRÁCTICA ─── -->
-  <section id="areas" class="areas-sec" aria-labelledby="areas-heading">
-    <div class="container">
-      <p class="section-eyebrow">Lo que hacemos</p>
-      <h2 class="s-title" id="areas-heading">Nuestros servicios</h2>
-      <p class="s-desc">Tres áreas integradas para darte seguridad jurídica, notarial e inmobiliaria en cada decisión importante.</p>
-      <div class="areas-grid">
-
-        <div class="area-card reveal reveal-delay-1">
-          <div class="area-icon"><i class="bi bi-person-workspace"></i></div>
-          <h3>Abogacía</h3>
-          <ul class="area-list">
-            <li><a href="/abogado-laboral-montevideo" class="area-link">Derecho laboral</a></li>
-            <li>Derecho civil</li>
-            <li>Derecho de familia</li>
-            <li>Accidentes de tránsito</li>
-            <li>Recursos de Amparo</li>
-          </ul>
-          <span class="area-tag">Personas y empresas</span>
-        </div>
-
-        <div class="area-card reveal reveal-delay-2">
-          <div class="area-icon"><i class="bi bi-file-earmark-text"></i></div>
-          <h3>Escribanía</h3>
-          <ul class="area-list">
-            <li>Compraventa de inmuebles y automotores</li>
-            <li>Poderes para pleitos y poderes generales</li>
-            <li>Testamentos</li>
-            <li>Certificados notariales</li>
-            <li>Actas de constatación y notificación</li>
-          </ul>
-          <span class="area-tag">Personas y empresas</span>
-        </div>
-
-        <div class="area-card featured reveal reveal-delay-3">
-          <div class="area-icon"><i class="bi bi-building-check"></i></div>
-          <h3>Servicios Inmobiliarios</h3>
-          <ul class="area-list">
-            <li><a href="/inmobiliaria-con-escribania-montevideo" class="area-link">Compra y venta de propiedades</a></li>
-            <li>Análisis jurídico del inmueble antes de firmar</li>
-            <li>Detección de deudas y riesgos legales</li>
-            <li>Operaciones en Montevideo y Maldonado</li>
-            <li>Escrituración con respaldo notarial incluido</li>
-          </ul>
-          <span class="area-tag">Nuestro diferencial</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── EL DIFERENCIAL ─── -->
-  <section class="diferencial-sec" aria-labelledby="dif-heading">
-    <div class="container">
-      <div class="diferencial-inner">
-
-        <div class="diferencial-text reveal">
-          <p class="section-eyebrow">Por qué B&R</p>
-          <h2 id="dif-heading">Una sola consulta,<br>tres <em>respaldos reales.</em></h2>
-          <p>No necesitás coordinar entre un abogado, un escribano y una inmobiliaria. En B&R lo hacemos todo dentro del mismo proceso, con análisis preventivo incluido antes de que firmes.</p>
-          <div class="diferencial-quote">
-            <p>"No se trata solo de comprar o vender. Se trata de hacerlo con seguridad. Ese es nuestro diferencial."</p>
-          </div>
-          <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20consultar%20sobre%20una%20operaci%C3%B3n%20inmobiliaria" target="_blank" rel="noopener noreferrer" class="btn-gold" style="margin-top:8px; display:inline-flex;">
-            <i class="bi bi-chat-text"></i> Consultar sin compromiso
-          </a>
-        </div>
-
-        <div class="diferencial-pillars reveal reveal-delay-2">
-          <div class="diferencial-pillar">
-            <div class="diferencial-pillar-icon"><i class="bi bi-search"></i></div>
-            <div>
-              <h4>Análisis preventivo</h4>
-              <p>Estudiamos la situación jurídica del inmueble, deudas y condiciones legales antes de que firmes cualquier documento.</p>
-            </div>
-          </div>
-          <div class="diferencial-pillar">
-            <div class="diferencial-pillar-icon"><i class="bi bi-shield-check"></i></div>
-            <div>
-              <h4>Seguridad notarial</h4>
-              <p>Respaldo notarial desde el inicio: no solo al escriturar, sino en todo el proceso de la operación.</p>
-            </div>
-          </div>
-          <div class="diferencial-pillar">
-            <div class="diferencial-pillar-icon"><i class="bi bi-people"></i></div>
-            <div>
-              <h4>Acompañamiento real</h4>
-              <p>Estamos en cada etapa. No desaparecemos después de la firma: te acompañamos hasta el cierre y más allá.</p>
-            </div>
-          </div>
-          <div class="diferencial-pillar">
-            <div class="diferencial-pillar-icon"><i class="bi bi-geo-alt"></i></div>
-            <div>
-              <h4>Cobertura nacional</h4>
-              <p>Base en Ciudad Vieja, Montevideo. Operamos también en Maldonado y en todo el país, presencial o de forma remota.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── INMUEBLES ─── -->
-  <section id="inmuebles" class="inmuebles-sec" aria-labelledby="inmuebles-heading">
-    <div class="container">
-      <p class="section-eyebrow">Servicios Inmobiliarios</p>
-      <h2 class="s-title" id="inmuebles-heading">Propiedades disponibles</h2>
-      <p class="s-desc">Cada operación con respaldo jurídico y notarial incluido. Compra, venta y alquiler con seguridad en cada etapa.</p>
-
-      <div class="inmuebles-grid">
-
-        <!-- Casa Buceo – VENTA -->
-        <article class="inmueble-card reveal reveal-delay-1" id="casa-buceo" data-slug="casa-buceo">
-          <div class="inmueble-img">
-            <img src="img/inmuebles/casa-buceo/portada.webp"
-                 alt="Casa en venta con gran garage y fondo con parrillero – Buceo, Montevideo"
-                 loading="lazy" width="800" height="540">
-            <span class="inmueble-badge badge-venta">En venta</span>
-            <div class="inmueble-price">
-              U$S 279.000
-            </div>
-            <button class="inmueble-ver-fotos" data-gallery="casa-buceo" aria-label="Ver todas las fotos de la casa en Buceo">
-              <i class="bi bi-images" aria-hidden="true"></i> Ver 13 fotos
-            </button>
-          </div>
-          <div class="inmueble-body">
-            <h3>Oportunidad Buceo · Padrón único 320 m² · Gran garage + fondo con parrillero</h3>
-            <p class="inmueble-location">
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              Buceo, Montevideo · Ref. IDF8F3
-            </p>
-            <div class="inmueble-features">
-              <span class="inmueble-feature"><i class="bi bi-door-open" aria-hidden="true"></i> 2 dorms.</span>
-              <span class="inmueble-feature"><i class="bi bi-droplet" aria-hidden="true"></i> 2 baños</span>
-              <span class="inmueble-feature"><i class="bi bi-arrows-angle-expand" aria-hidden="true"></i> 163 m²</span>
-              <span class="inmueble-feature"><i class="bi bi-layout-text-window" aria-hidden="true"></i> 320 m² terreno</span>
-            </div>
-            <div class="inmueble-amenities">
-              <span class="inmueble-amenity"><i class="bi bi-car-front"></i> Gran garage (84 m²)</span>
-              <span class="inmueble-amenity"><i class="bi bi-fire"></i> Parrillero techado</span>
-              <span class="inmueble-amenity"><i class="bi bi-tree"></i> Jardín / Patio</span>
-              <span class="inmueble-amenity"><i class="bi bi-box-seam"></i> Box / Depósito</span>
-              <span class="inmueble-amenity"><i class="bi bi-person-workspace"></i> Dorm. de servicio</span>
-              <span class="inmueble-amenity"><i class="bi bi-droplet-half"></i> Agua caliente central</span>
-              <span class="inmueble-amenity"><i class="bi bi-arrow-left-right"></i> Acepta permuta</span>
-              <span class="inmueble-amenity"><i class="bi bi-bank"></i> Financiación bancaria: consultar</span>
-            </div>
-            <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20consultar%20sobre%20la%20casa%20en%20venta%20en%20Buceo%20(Ref.%20IDF8F3)"
-               target="_blank" rel="noopener noreferrer" class="inmueble-cta">
-              <i class="bi bi-whatsapp" aria-hidden="true"></i> Consultar por este inmueble
-            </a>
-          </div>
-        </article>
-
-        
-
-                
-
-        <!-- Terreno Av. Italia – VENTA -->
-        <article class="inmueble-card reveal reveal-delay-1" id="terreno-av-italia" data-slug="terreno-av-italia">
-          <div class="inmueble-img">
-            <img src="img/inmuebles/terreno-av-italia/portada.webp"
-                 alt="Terreno en venta de 900 m² – próximo a Av. Italia, Montevideo"
-                 loading="lazy" width="800" height="540">
-            <span class="inmueble-badge badge-venta">En venta</span>
-            <div class="inmueble-price">
-              U$S 149.000
-            </div>
-            <button class="inmueble-ver-fotos" data-gallery="terreno-tres-cruces" aria-label="Ver todas las fotos del terreno">
-              <i class="bi bi-images" aria-hidden="true"></i> Ver 6 fotos
-            </button>
-          </div>
-          <div class="inmueble-body">
-            <h3>Terreno de 900 m² · Próximo a Av. Italia</h3>
-            <p class="inmueble-location">
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              Próximo a Av. Italia · Montevideo
-            </p>
-            <div class="inmueble-features">
-              <span class="inmueble-feature"><i class="bi bi-layout-text-window" aria-hidden="true"></i> 900 m² terreno</span>
-            </div>
-            <div class="inmueble-amenities">
-              <span class="inmueble-amenity"><i class="bi bi-bus-front"></i> Excelente conectividad con Montevideo</span>
-              <span class="inmueble-amenity"><i class="bi bi-building-add"></i> Ideal inversores</span>
-              <span class="inmueble-amenity"><i class="bi bi-diagram-3"></i> Ideal desarrolladores</span>
-              <span class="inmueble-amenity"><i class="bi bi-bricks"></i> Ideal constructores</span>
-            </div>
-            <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20consultar%20sobre%20el%20terreno%20en%20venta%20pr%C3%B3ximo%20a%20Av.%20Italia"
-               target="_blank" rel="noopener noreferrer" class="inmueble-cta">
-              <i class="bi bi-whatsapp" aria-hidden="true"></i> Consultar por este inmueble
-            </a>
-            <a href="https://youtu.be/y_fdsqOL_0o"
-               target="_blank" rel="noopener noreferrer" class="inmueble-cta inmueble-cta--video">
-              <i class="bi bi-play-circle" aria-hidden="true"></i> Ver video del terreno
-            </a>
-          </div>
-        </article>
-
-        <!-- Casa Playa Hermosa – VENTA -->
-        <article class="inmueble-card reveal reveal-delay-2" id="casa-playa-hermosa" data-slug="casa-playa-hermosa">
-          <div class="inmueble-img">
-            <img src="img/inmuebles/casa-playa-hermosa/portada.webp"
-                 alt="Casa en venta – Playa Hermosa, Maldonado"
-                 loading="lazy" width="800" height="540">
-            <span class="inmueble-badge badge-venta">En venta</span>
-            <div class="inmueble-price">
-              U$S 298.000
-            </div>
-            <button class="inmueble-ver-fotos" data-gallery="casa-playa-hermosa" aria-label="Ver todas las fotos de la casa">
-              <i class="bi bi-images" aria-hidden="true"></i> Ver 14 fotos
-            </button>
-          </div>
-          <div class="inmueble-body">
-            <h3>Casa con terreno · Playa Hermosa</h3>
-            <p class="inmueble-location">
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              Proa al Mar · Playa Hermosa, Maldonado
-            </p>
-            <div class="inmueble-features">
-              <span class="inmueble-feature"><i class="bi bi-door-open" aria-hidden="true"></i> 2 dorms.</span>
-              <span class="inmueble-feature"><i class="bi bi-droplet" aria-hidden="true"></i> 1 baño</span>
-              <span class="inmueble-feature"><i class="bi bi-arrows-angle-expand" aria-hidden="true"></i> 101 m²</span>
-              <span class="inmueble-feature"><i class="bi bi-layout-text-window" aria-hidden="true"></i> 450 m² terreno</span>
-            </div>
-            <div class="inmueble-amenities">
-              <span class="inmueble-amenity"><i class="bi bi-car-front"></i> Garaje</span>
-              <span class="inmueble-amenity"><i class="bi bi-fire"></i> Est. a leña</span>
-              <span class="inmueble-amenity"><i class="bi bi-egg-fried"></i> Parrillero</span>
-              <span class="inmueble-amenity"><i class="bi bi-wind"></i> A/A</span>
-              <span class="inmueble-amenity"><i class="bi bi-tree"></i> Jardín</span>
-              <span class="inmueble-amenity"><i class="bi bi-water"></i> 200 m al mar</span>
-              <span class="inmueble-amenity"><i class="bi bi-heart"></i> Admite mascotas</span>
-            </div>
-            <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20consultar%20sobre%20la%20casa%20en%20venta%20en%20Playa%20Hermosa%2C%20Maldonado"
-               target="_blank" rel="noopener noreferrer" class="inmueble-cta">
-              <i class="bi bi-whatsapp" aria-hidden="true"></i> Consultar por este inmueble
-            </a>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="operaciones" id="operaciones">
-        <h3 class="operaciones-tit">Operaciones recientes</h3>
-        <div class="operaciones-grid">
-<!-- Apartamento Barrio Sur – ALQUILADO -->
-        <article class="inmueble-card inmueble-card--ribbon reveal reveal-delay-1">
-          <div class="inmueble-img">
-            <img src="img/inmuebles/apto-barrio-sur/portada.webp"
-                 alt="Apartamento alquilado – Barrio Sur, Montevideo"
-                 loading="lazy" width="800" height="540">
-            <span class="inmueble-badge badge-alquilado-ok">Alquilado</span>
-            <div class="inmueble-ribbon" aria-hidden="true">ALQUILADO</div>
-            <div class="inmueble-price">
-              $26.000<small>+ G.C. $4.000</small>
-            </div>
-          </div>
-          <div class="inmueble-body">
-            <h3>Apartamento con balcón · Barrio Sur</h3>
-            <p class="inmueble-location">
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              Av. Gonzalo Ramírez y Ejido · Barrio Sur, Montevideo
-            </p>
-            <div class="inmueble-features">
-              <span class="inmueble-feature"><i class="bi bi-door-open" aria-hidden="true"></i> 1 dorm.</span>
-              <span class="inmueble-feature"><i class="bi bi-droplet" aria-hidden="true"></i> 1 baño</span>
-              <span class="inmueble-feature"><i class="bi bi-arrows-angle-expand" aria-hidden="true"></i> 45 m²</span>
-              <span class="inmueble-feature"><i class="bi bi-car-front" aria-hidden="true"></i> Garaje opc.</span>
-            </div>
-            <div class="inmueble-amenities">
-              <span class="inmueble-amenity"><i class="bi bi-wind"></i> A/A</span>
-              <span class="inmueble-amenity"><i class="bi bi-arrow-up-square"></i> Ascensor</span>
-              <span class="inmueble-amenity"><i class="bi bi-buildings"></i> Piso 2</span>
-              <span class="inmueble-amenity"><i class="bi bi-people"></i> Cowork</span>
-              <span class="inmueble-amenity"><i class="bi bi-shield-check"></i> Seg. 24 hs</span>
-              <span class="inmueble-amenity"><i class="bi bi-tree"></i> Plaza int.</span>
-              <span class="inmueble-amenity"><i class="bi bi-heart"></i> Admite mascotas</span>
-            </div>
-            <a href="https://wa.me/59894617681?text=Hola%2C%20me%20interes%C3%B3%20el%20apartamento%20en%20Barrio%20Sur%20que%20vi%20en%20su%20web.%20%C2%BFTienen%20otras%20propiedades%20disponibles%3F"
-               target="_blank" rel="noopener noreferrer" class="inmueble-cta inmueble-cta--secondary">
-              <i class="bi bi-whatsapp" aria-hidden="true"></i> Ver otras propiedades disponibles
-            </a>
-          </div>
-        </article>
-<!-- Casa Goes 2206 – RESERVADO -->
-        <article class="inmueble-card inmueble-card--alquilado reveal reveal-delay-3">
-          <div class="inmueble-img">
-                <img src="img/inmuebles/casa-tres-cruces/01.webp"
-                 alt="Casa reservada – Goes 2206, Tres Cruces, Montevideo"
-                 loading="lazy" width="800" height="540">
-            <span class="inmueble-badge badge-alquilado">Reservado</span>
-            <div class="inmueble-alquilado-overlay" aria-hidden="true">
-              <span class="inmueble-alquilado-stamp">RESERVADO</span>
-            </div>
-            <div class="inmueble-price inmueble-price--tachado">
-               U$S260.000
-            </div>
-          </div>
-
-          <div class="inmueble-body">
-            <h3>Casa de dos plantas · Tres Cruces</h3>
-
-            <p class="inmueble-location">
-              <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-              Goes 2206 esquina Cufré · Tres Cruces, Montevideo
-            </p>
-
-            <div class="inmueble-features">
-              <span class="inmueble-feature">
-                <i class="bi bi-door-open" aria-hidden="true"></i> 3 dorms.
-              </span>
-
-              <span class="inmueble-feature">
-                <i class="bi bi-droplet" aria-hidden="true"></i> 2 baños
-              </span>
-
-              <span class="inmueble-feature">
-                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i> 124 m²
-              </span>
-
-              <span class="inmueble-feature">
-                <i class="bi bi-layout-text-window" aria-hidden="true"></i> 78 m² terreno
-              </span>
-            </div>
-
-            <div class="inmueble-amenities">
-              <span class="inmueble-amenity"><i class="bi bi-car-front"></i> Garaje</span>
-              <span class="inmueble-amenity"><i class="bi bi-fire"></i> Parrillero</span>
-              <span class="inmueble-amenity"><i class="bi bi-house-door"></i> Patio interior</span>
-              <span class="inmueble-amenity"><i class="bi bi-arrow-up-square"></i> Azotea exclusiva</span>
-              <span class="inmueble-amenity"><i class="bi bi-shield-lock"></i> Rejas y cerramiento</span>
-              <span class="inmueble-amenity"><i class="bi bi-stars"></i> Excelente estado</span>
-              <span class="inmueble-amenity"><i class="bi bi-shop"></i> A metros de Tres Cruces</span>
-            </div>
-
-            <span class="inmueble-cta inmueble-cta--inactivo" aria-disabled="true">
-              <i class="bi bi-lock-fill" aria-hidden="true"></i> Inmueble no disponible
-            </span>
-          </div>
-        </article>
-        </div>
-      </div>
-
-
-      <p class="inmuebles-nota">
-        <i class="bi bi-shield-check"></i>
-        Todos nuestros inmuebles incluyen análisis jurídico del inmueble y respaldo notarial en la operación.
-      </p>
-    </div>
-  </section>
-
-
-  <!-- ─── EL EQUIPO ─── -->
-  <section id="equipo" class="equipo-sec" aria-labelledby="equipo-heading">
-    <div class="container">
-      <p class="section-eyebrow">El estudio</p>
-      <h2 class="s-title" id="equipo-heading">Quiénes somos</h2>
-      <p class="s-desc">Dos profesionales, dos disciplinas complementarias. Estudio fundado en 2019 con foco en integración jurídica, notarial e inmobiliaria.</p>
-      <div class="equipo-grid">
-
-        <!-- PERFIL 1 — Abogado + Inmobiliaria -->
-        <div class="equipo-card reveal reveal-delay-1">
-          <div class="equipo-photo-wrap">
-            <picture>
-              <source
-                type="image/webp"
-                srcset="img/equipo/andres-bosdandjian-700.webp 700w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              >
-              <img src="img/equipo/andres-bosdandjian-700.webp" width="700" height="1050" alt="Dr. Andrés Bosdandjian – Abogado y Escribano" loading="lazy">
-            </picture>
-            <div class="equipo-photo-overlay">
-              <h3>Dr. Andrés Bosdandjian</h3>
-              <span>Abogado y Escribano</span>
-            </div>
-          </div>
-          <div class="equipo-body">
-            <p>Abogado y Escribano (UdelaR). Ejerce en derecho laboral, civil y familia, y lidera el área de Servicios Inmobiliarios del estudio.</p>
-            <div class="equipo-tags">
-              <span class="equipo-tag"><i class="bi bi-briefcase-fill"></i> Abogacía</span>
-              <span class="equipo-tag"><i class="bi bi-building"></i> Inmobiliaria</span>
-              <span class="equipo-tag"><i class="bi bi-mortarboard-fill"></i> UdelaR</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PERFIL 2 — Escribana -->
-        <div class="equipo-card reveal reveal-delay-2">
-          <div class="equipo-photo-wrap">
-            <picture>
-              <source
-                type="image/webp"
-                srcset="img/equipo/paula-rodriguez-700.webp 700w, img/equipo/paula-rodriguez-1400.webp 1400w"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              >
-              <img src="img/equipo/paula-rodriguez-700.webp" width="700" height="1050" alt="Dra. Paula Rodríguez – Abogada y Escribana" loading="lazy">
-            </picture>
-            <div class="equipo-photo-overlay">
-              <h3>Dra. Paula Rodríguez</h3>
-              <span>Abogada y Escribana</span>
-            </div>
-          </div>
-          <div class="equipo-body">
-            <p>Abogada y Escribana (UdelaR). Ejerce la escribanía en compraventas, poderes, testamentos, actas y todo acto notarial con rigor y precisión.</p>
-            <div class="equipo-tags">
-              <span class="equipo-tag"><i class="bi bi-file-earmark-text-fill"></i> Escribanía</span>
-              <span class="equipo-tag"><i class="bi bi-shield-check"></i> Derecho notarial</span>
-              <span class="equipo-tag"><i class="bi bi-mortarboard-fill"></i> UdelaR</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── POR QUÉ ELEGIRNOS ─── -->
-  <section class="porque-sec" id="porque" aria-labelledby="porque-heading">
-    <div class="container">
-      <p class="section-eyebrow">La diferencia</p>
-      <h2 class="s-title" id="porque-heading">¿Por qué elegir B&R?</h2>
-      <p class="s-desc">Los valores que guían cada asesoramiento, formalización y operación que tomamos.</p>
-      <div class="porque-grid">
-        <div class="porque-card">
-          <div class="porque-icon"><i class="bi bi-shield-check"></i></div>
-          <div>
-            <h3>Seguridad jurídica</h3>
-            <p>Detectamos riesgos legales antes de que avances. Cada operación, analizada de forma rigurosa y preventiva.</p>
-          </div>
-        </div>
-        <div class="porque-card">
-          <div class="porque-icon"><i class="bi bi-people-fill"></i></div>
-          <div>
-            <h3>Confianza y cercanía</h3>
-            <p>Acompañamiento real desde el primer contacto hasta el cierre de cada gestión.</p>
-          </div>
-        </div>
-        <div class="porque-card">
-          <div class="porque-icon"><i class="bi bi-eye"></i></div>
-          <div>
-            <h3>Transparencia total</h3>
-            <p>Sin tecnicismos ni letra chica. Te explicamos todo con claridad en cada etapa y sin sorpresas en los honorarios.</p>
-          </div>
-        </div>
-        <div class="porque-card">
-          <div class="porque-icon"><i class="bi bi-layers"></i></div>
-          <div>
-            <h3>Integración única</h3>
-            <p>Abogacía, escribanía e inmobiliaria en un mismo proceso. Un servicio que ninguna inmobiliaria convencional puede ofrecer.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── CÓMO TRABAJAMOS ─── -->
-  <section class="proceso-sec" id="proceso" aria-labelledby="proceso-heading">
-    <div class="container">
-      <p class="section-eyebrow centered">El proceso</p>
-      <h2 class="s-title centered" id="proceso-heading">¿Cómo trabajamos?</h2>
-      <p class="s-desc centered">Cuatro pasos desde la consulta inicial hasta la resolución, con acompañamiento en cada etapa.</p>
-      <div class="proceso-steps">
-        <div class="proceso-step reveal reveal-delay-1">
-          <div class="proceso-num">I</div>
-          <h4>Consulta inicial</h4>
-          <p>Escribinos por WhatsApp. Respondemos rápido con orientación preliminar y sin compromiso.</p>
-        </div>
-        <div class="proceso-step reveal reveal-delay-2">
-          <div class="proceso-num">II</div>
-          <h4>Análisis del caso</h4>
-          <p>Estudiamos el caso, identificamos riesgos y presentamos un plan de acción claro.</p>
-        </div>
-        <div class="proceso-step reveal reveal-delay-3">
-          <div class="proceso-num">III</div>
-          <h4>Gestión integral</h4>
-          <p>Documentación, plazos y trámites a cargo nuestro. Seguimiento jurídico o notarial según corresponda.</p>
-        </div>
-        <div class="proceso-step reveal reveal-delay-4">
-          <div class="proceso-num">IV</div>
-          <h4>Cierre y seguimiento</h4>
-          <p>Explicamos resultados con claridad y seguimos disponibles. La relación no termina con la firma.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── FAQ ─── -->
-  <section class="faq-sec" id="faq" aria-labelledby="faq-heading">
-    <div class="container">
-      <p class="section-eyebrow centered">Preguntas frecuentes</p>
-      <h2 class="s-title centered" id="faq-heading">¿Tenés dudas?</h2>
-      <p class="s-desc centered">Lo que nos consultan antes del primer contacto.</p>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary class="faq-q">¿Qué hace diferente al servicio inmobiliario de B&R?</summary>
-          <p class="faq-a">A diferencia de una inmobiliaria convencional, en B&R cada operación tiene respaldo jurídico y notarial desde el inicio. Analizamos la situación legal del inmueble, detectamos posibles deudas y riesgos antes de que firmes, y acompañamos todo el proceso hasta la escrituración. Muchas personas firman un boleto de compraventa pensando que "está todo bien" — los problemas aparecen después. Nosotros prevenimos eso.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">¿Qué trámites de escribanía realizan?</summary>
-          <p class="faq-a">Realizamos todo lo relacionado a la actuación notarial: compraventa de inmuebles y automotores, poderes para pleitos y poderes generales, testamentos, certificados notariales, actas de constatación y de notificación, acuerdos patrimoniales, entre otros. Consultanos por tu trámite específico.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">¿Cómo puedo agendar una consulta?</summary>
-          <p class="faq-a">La forma más rápida es por WhatsApp o Instagram. Contanos brevemente tu situación y te respondemos para coordinar una reunión presencial en Ciudad Vieja o por videollamada si estás en otro departamento. Las condiciones de la primera consulta te las indicamos al coordinarla.</p>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── TESTIMONIOS ─── -->
-  <section class="testimonios-sec" id="testimonios" aria-labelledby="test-heading">
-    <div class="container">
-      <p class="section-eyebrow centered">Opiniones</p>
-      <h2 class="s-title centered" id="test-heading">Lo que dicen nuestros clientes</h2>
-      <p class="s-desc centered">Respaldo real de quienes ya confiaron en el estudio.</p>
-
-      <!-- Google badge -->
-      <div class="test-badge reveal">
-        <span class="test-badge-score">5.0</span>
-        <div class="test-badge-stars">
-          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-        </div>
-        <span class="test-badge-count">19 reseñas de clientes en Google</span>
-        <div class="test-badge-sep"></div>
-        <a href="https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8" target="_blank" rel="noopener noreferrer" class="test-badge-link" aria-label="Ver reseñas en Google">
-          <i class="bi bi-google"></i> Ver en Google
-        </a>
-      </div>
-
-      <!-- Carousel -->
-      <div class="test-wrapper">
-        <div class="test-viewport" id="test-viewport">
-          <div class="test-track" id="test-track" data-resenas="resenas.php">
-
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelente experiencia. Necesité servicios de abogados y de escribanía, y en todo momento recibí una atención muy profesional. Destaco la claridad de las explicaciones, la rapidez en la gestión y la confianza que transmiten."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">N</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Nicolás Rau</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Buen profesional, atento y responsable. Explicó claramente el proceso, respondió mis consultas con disposición. Quedé conforme con su trabajo."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">N</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Natalia Rodriguez</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Un estudio de profesionales serios y comprometidos, con gran experiencia en diversos rubros jurídicos e inmobiliarios. ¡Más que recomendables!"</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">F</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Facundo Gómez</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"¡Excelentes profesionales! Rápido, seguro y muy eficaz. ¡Recomiendo!"</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">A</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Agustín Pereira</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelentes profesionales. Siempre brindan un asesoramiento claro, responsable y confiable. Muy recomendables."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">G</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Gabriela Cabana</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelente atención y profesionalismo. Nos acompañaron en todos los trámites de nuestra SRL agropecuaria. Destacamos su seriedad, rapidez y claridad en cada gestión. Muy recomendables."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">J</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Joaquín Brit</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Los recomiendo. Hicimos una demanda por acoso y todo el tiempo me sentí acompañada y protegida. Además de excelentes profesionales, son excelentes personas, comprometidas al 100% con su trabajo."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">L</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Lucía Campos</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Cambié el auto y los contacté para que se encarguen de los papeles de principio a fin. Da gusto cuando te cruzás con profesionales así. Un equipo de trabajo tremendo."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">D</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Daniel Castro</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelentes personas y profesionales, serios, responsables, de total confianza. Informando y buscando la mejor solución al cliente. ¡Recomiendo!"</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">A</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Adriana Fanfassian</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelentes profesionales. Realizamos más de 4 operaciones de compraventa con Andrés y Paula. Muy atentos y prolijos, respondiendo rápido y trabajando de forma genuina y cálida. Recomiendo 100%."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">S</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Sebastián Sosa</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelentes profesionales, comprometidos con su labor. Serios, responsables y accesibles. Me llevaron adelante un recurso de amparo y me ofrecieron un servicio accesible a mis posibilidades. Los recomiendo."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">J</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Jeshna Acosta</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Andrés y Paula son excelentes profesionales. Consulté por una liquidación laboral y me asesoraron de forma excelente. Se ocuparon de todo el reclamo con la empresa y el resultado fue favorable."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">N</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Natasha Díaz</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"La verdad los recomiendo, son muy responsables en la labor que realizan."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">C</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Claudia Barrera</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"¡Muy recomendable!"</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">J</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Jacqueline Correa</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Muy recomendables, excelente atención. ¡Son unos crack!"</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">P</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Paulo Saravia Pereyra</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"¡Excelentes profesionales! Me han ayudado mucho."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">D</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Dimas Odriozola</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelentes profesionales y excelentes personas. Muy buena atención, seriedad y compromiso. Recomiendo totalmente."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">M</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Melisa Teixeira</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelente trabajo, buenos profesionales, muy confiables y seguros. Brindan seguridad, eficacia y rapidez. Muy agradecida, especialmente con el Dr. Bosdandjian, excelente profesional."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">A</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Agrimony Magnolia</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-            <article class="test-card">
-              <div class="test-card-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-              <blockquote class="test-card-text">"Excelente y completo servicio."</blockquote>
-              <footer class="test-card-meta">
-                <div class="test-card-avatar">A</div>
-                <div class="test-card-info">
-                  <span class="test-card-name">Agustín Bosdandjian</span>
-                  <span class="test-card-date">Reseña en Google</span>
-                </div>
-                <i class="bi bi-google test-card-google" aria-hidden="true"></i>
-              </footer>
-            </article>
-
-          </div>
-        </div>
-        <button class="test-arrow test-arrow-prev" id="test-prev" aria-label="Reseña anterior"><i class="bi bi-chevron-left"></i></button>
-        <button class="test-arrow test-arrow-next" id="test-next" aria-label="Siguiente reseña"><i class="bi bi-chevron-right"></i></button>
-      </div>
-
-      <div class="test-dots" id="test-dots" role="tablist" aria-label="Navegar entre reseñas"></div>
-
-      <div class="test-cta">
-        <a href="https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8" target="_blank" rel="noopener noreferrer" class="btn-outline">
-          <i class="bi bi-pencil-square"></i> Dejá tu reseña en Google
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── CONTACTO ─── -->
-  <section id="contacto" class="contacto-sec" aria-labelledby="contacto-heading">
-    <div class="container">
-      <div class="contacto-inner">
-
-        <div class="contacto-info reveal">
-          <p class="section-eyebrow">Contacto</p>
-          <h2 id="contacto-heading">Contanos tu<br><em>situación.</em></h2>
-          <p>Respondemos a la brevedad.</p>
-
-          <ul class="contacto-data">
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-geo-alt-fill"></i></div>
-              <div>
-                <a href="https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8" target="_blank" rel="noopener noreferrer"><span class="completar">Calle y número</span> · Ciudad Vieja, Montevideo</a>
-                <span>Maldonado · Atención en todo el país</span>
-              </div>
-            </li>
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-clock-fill"></i></div>
-              <div>
-                <span>Lunes a viernes de <span class="completar">00</span> a <span class="completar">00</span> h</span>
-                <span>Reuniones con coordinación previa</span>
-              </div>
-            </li>
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-telephone-fill"></i></div>
-              <div>
-                <a href="tel:+59894617681">094 617 681</a>
-                <span>Tocá para llamar</span>
-              </div>
-            </li>
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-envelope-fill"></i></div>
-              <div>
-                <a href="mailto:contacto@bosdandjianrodriguez.com.uy">contacto@bosdandjianrodriguez.com.uy</a>
-                <span>Para enviar documentación</span>
-              </div>
-            </li>
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-whatsapp"></i></div>
-              <div>
-                <a href="https://wa.me/59894617681" target="_blank" rel="noopener noreferrer">+598 94 617 681</a>
-                <span>Respuesta rápida por WhatsApp</span>
-              </div>
-            </li>
-            <li>
-              <div class="contacto-data-icon"><i class="bi bi-instagram"></i></div>
-              <div>
-                <a href="https://www.instagram.com/estudio_bosdandjian.rodriguez" target="_blank" rel="noopener noreferrer">@estudio_bosdandjian.rodriguez</a>
-                <span>También por Instagram</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="contacto-form-wrap reveal reveal-delay-2">
-          <form class="contacto-form" id="contacto-form" novalidate action="contactar.php" method="POST">
-
-            <!-- Honeypot anti-spam (invisible) -->
-            <div style="display:none" aria-hidden="true">
-              <label for="website">No completar</label>
-              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-row">
-              <div class="form-field">
-                <label for="cf-nombre">Nombre <span aria-hidden="true">*</span></label>
-                <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre completo"
-                       autocomplete="name" required maxlength="100">
-              </div>
-              <div class="form-field">
-                <label for="cf-email">Email <span aria-hidden="true">*</span></label>
-                <input type="email" id="cf-email" name="email" placeholder="tu@email.com"
-                       autocomplete="email" required maxlength="200">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-field">
-                <label for="cf-telefono">Teléfono <span class="form-optional">(opcional)</span></label>
-                <input type="tel" id="cf-telefono" name="telefono" placeholder="099 000 000"
-                       autocomplete="tel" maxlength="30">
-              </div>
-              <div class="form-field">
-                <label for="cf-area">Área de consulta <span aria-hidden="true">*</span></label>
-                <select id="cf-area" name="area" required>
-                  <option value="" disabled selected>Seleccioná una opción</option>
-                  <option>Derecho laboral</option>
-                  <option>Derecho civil</option>
-                  <option>Derecho de familia</option>
-                  <option>Accidentes de tránsito</option>
-                  <option>Recurso de amparo</option>
-                  <option>Escribanía / Trámites notariales</option>
-                  <option>Compraventa de inmueble</option>
-                  <option>Compraventa de automotor</option>
-                  <option>Servicios inmobiliarios</option>
-                  <option>Otra consulta</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="cf-mensaje">Mensaje <span aria-hidden="true">*</span></label>
-              <textarea id="cf-mensaje" name="mensaje" rows="5"
-                        placeholder="Contanos brevemente tu situación o consulta…"
-                        required minlength="10" maxlength="3000"></textarea>
-              <span class="form-char-count" id="cf-chars">0 / 3000</span>
-            </div>
-
-            <div class="form-status" id="form-status" role="alert" aria-live="polite" hidden></div>
-
-            <button type="submit" class="form-submit" id="form-submit">
-              <span class="form-submit-text"><i class="bi bi-send" aria-hidden="true"></i> Enviar consulta</span>
-              <span class="form-submit-loading" aria-hidden="true"><i class="bi bi-arrow-repeat"></i> Enviando…</span>
-            </button>
-
-            <p class="form-note">
-              <i class="bi bi-lock" aria-hidden="true"></i>
-              Tu información es confidencial y nunca se comparte con terceros.
-            </p>
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─── CTA FINAL ─── -->
-  <section class="cta-sec" aria-labelledby="cta-heading">
-    <p class="cta-eyebrow">Próximo paso</p>
-    <h2 id="cta-heading">¿Tenés una consulta?<br><em>Escribinos hoy.</em></h2>
-    <p>Contanos tu situación. Atendemos en todo el país.</p>
-    <div class="cta-btns">
-      <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-gold">
-        <i class="bi bi-whatsapp"></i> Escribinos por WhatsApp
-      </a>
-      <a href="https://www.instagram.com/estudio_bosdandjian.rodriguez" target="_blank" rel="noopener noreferrer" class="btn-outline">
-        <i class="bi bi-instagram"></i> Seguinos en Instagram
-      </a>
-    </div>
-  </section>
-
-
-  <!-- ─── FOOTER ─── -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-brand-logo">
-            <div class="footer-brand-monogram">
-              <img src="img/marca/monograma.webp" alt="Bosdandjian Rodríguez – Estudio Jurídico Notarial">
-            </div>
-            <div>
-              <div class="footer-brand-name">Bosdandjian Rodríguez</div>
-              <div class="footer-brand-tag">Estudio Jurídico Notarial</div>
-            </div>
-          </div>
-          <p>Abogacía, escribanía y servicios inmobiliarios integrados en Montevideo. Atención en todo el país.</p>
-          <div class="footer-social">
-            <a href="https://www.instagram.com/estudio_bosdandjian.rodriguez" target="_blank" rel="noopener noreferrer" aria-label="Instagram del estudio"><i class="bi bi-instagram"></i></a>
-            <a href="https://wa.me/59894617681" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp del estudio"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h5>Servicios</h5>
-          <ul>
-            <li><a href="#areas">Abogacía</a></li>
-            <li><a href="/abogado-laboral-montevideo">Abogado laboral</a></li>
-            <li><a href="#areas">Escribanía</a></li>
-            <li><a href="/inmobiliaria-con-escribania-montevideo">Servicios Inmobiliarios</a></li>
-            <li><a href="#equipo">El estudio</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Contacto</h5>
-          <ul>
-            <li>Ciudad Vieja · Montevideo</li>
-            <li>Maldonado · Uruguay</li>
-            <li><a href="https://wa.me/59894617681">+598 94 617 681</a></li>
-            <li><a href="https://www.instagram.com/estudio_bosdandjian.rodriguez" target="_blank" rel="noopener noreferrer">@estudio_bosdandjian.rodriguez</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Bosdandjian Rodríguez — Estudio Jurídico Notarial · Ciudad Vieja, Montevideo</p>
-        <p>Diseño web por <a href="https://urucode.com/" target="_blank" rel="noopener noreferrer nofollow" class="urucode-link">UruCode</a></p>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- ─── WA FLOAT ─── -->
-  <a href="https://wa.me/59894617681?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Contactar por WhatsApp">
-    <i class="bi bi-whatsapp"></i>
-  </a>
-
-
-  <!-- ─── LIGHTBOX ─── -->
-  <div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
-    <button class="lb-close" id="lb-close" aria-label="Cerrar galería"><i class="bi bi-x-lg"></i></button>
-    <div class="lb-header">
-      <span class="lb-title" id="lb-title"></span>
-      <span class="lb-counter" id="lb-counter"></span>
-    </div>
-    <div class="lb-stage">
-      <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Foto anterior"><i class="bi bi-chevron-left"></i></button>
-      <div class="lb-img-wrap">
-        <img class="lb-img" id="lb-img" src="" alt="">
-      </div>
-      <button class="lb-arrow lb-next" id="lb-next" aria-label="Siguiente foto"><i class="bi bi-chevron-right"></i></button>
-    </div>
-    <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="photo">
+    <img src="img/portada/estudio-1100.webp" srcset="img/portada/estudio-700.webp 700w, img/portada/estudio-1100.webp 1100w" sizes="(max-width:820px) 100vw, 480px" alt="Andrés Bosdandjian y Paula Rodríguez, del estudio" width="1100" height="1086">
+    <div class="tag"><b>Andrés y Paula</b>Abogados y escribanos (UdelaR)</div>
   </div>
+</div></section>
 
-  <script src="js/main.js"></script>
-  <script src="js/mejoras.js"></script>
+<section id="consulta" class="guia"><div class="wrap">
+  <h2 class="serif">¿En qué te podemos ayudar?</h2>
+  <p class="sub">Elegí tu situación y te decimos qué área la atiende y cómo seguimos. La primera respuesta es por WhatsApp, rápida y sin compromiso.</p>
+  <div class="sits" id="sits"></div>
+  <div class="resp" id="resp" hidden aria-live="polite"></div>
+</div></section>
 
+<section id="servicios"><div class="wrap">
+  <h2 class="serif">Tres áreas, un mismo estudio</h2>
+  <p class="sub">Para personas y empresas, en Montevideo, Maldonado y todo el país, presencial o a distancia.</p>
+  <div class="areas">
+    <div class="ar"><span class="ico">⚖️</span><h3>Abogacía</h3><ul><li>Derecho laboral</li><li>Derecho civil</li><li>Derecho de familia</li><li>Accidentes de tránsito</li><li>Recursos de amparo</li></ul><small>Personas y empresas</small></div>
+    <div class="ar"><span class="ico">📜</span><h3>Escribanía</h3><ul><li>Compraventa de inmuebles y automotores</li><li>Poderes para pleitos y generales</li><li>Testamentos</li><li>Certificados notariales</li><li>Actas de constatación y notificación</li></ul><small>Personas y empresas</small></div>
+    <div class="ar"><span class="ico">🏠</span><h3>Servicios inmobiliarios</h3><ul><li>Compra y venta de propiedades</li><li>Análisis jurídico del inmueble antes de firmar</li><li>Detección de deudas y riesgos legales</li><li>Operaciones en Montevideo y Maldonado</li><li>Escrituración con respaldo notarial incluido</li></ul><small>Con escribanía incluida</small></div>
+  </div>
+</div></section>
+
+<section id="tramites"><div class="wrap">
+  <h2 class="serif">¿Qué necesito llevar?</h2>
+  <p class="sub">Elegí el trámite y mirá la documentación habitual. Podés ir marcando lo que ya tenés.</p>
+  <div class="tram">
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="lista" id="lista"></div>
+  </div>
+  <p class="note">Lista orientativa: cada caso puede pedir algo más. Te lo confirmamos al coordinar.</p>
+</div></section>
+
+<section id="inmuebles"><div class="wrap">
+  <h2 class="serif">Propiedades</h2>
+  <p class="sub">Cada operación incluye análisis jurídico del inmueble y respaldo notarial.</p>
+  <div class="filtros" id="filtros"></div>
+  <div class="props" id="props"></div>
+</div></section>
+
+<section id="porque" style="padding-top:0"><div class="wrap">
+  <h2 class="serif">Por qué elegirnos</h2>
+  <p class="sub">Los valores que guían cada asesoramiento y cada operación.</p>
+  <div class="why">
+    <div><b>Seguridad jurídica</b><p>Detectamos riesgos legales antes de que avances. Cada operación, analizada de forma preventiva.</p></div>
+    <div><b>Confianza y cercanía</b><p>Acompañamiento real desde el primer contacto hasta el cierre de cada gestión.</p></div>
+    <div><b>Transparencia</b><p>Sin tecnicismos ni letra chica. Te explicamos cada etapa y no hay sorpresas en los honorarios.</p></div>
+    <div><b>Todo integrado</b><p>Abogacía, escribanía e inmobiliaria en un mismo proceso.</p></div>
+  </div>
+  <div class="pasos">
+    <div class="paso"><b>Consulta inicial</b><p>Escribinos por WhatsApp. Te orientamos rápido y sin compromiso.</p></div>
+    <div class="paso"><b>Análisis del caso</b><p>Estudiamos la situación, identificamos riesgos y te presentamos un plan claro.</p></div>
+    <div class="paso"><b>Gestión integral</b><p>Documentación, plazos y trámites a cargo nuestro.</p></div>
+    <div class="paso"><b>Cierre y seguimiento</b><p>Te explicamos el resultado y seguimos disponibles después de la firma.</p></div>
+  </div>
+  <blockquote class="cita">"No se trata solo de comprar o vender. Se trata de hacerlo con seguridad."</blockquote>
+</div></section>
+
+<section id="estudio"><div class="wrap">
+  <h2 class="serif">Quiénes somos</h2>
+  <p class="sub">Dos profesionales, dos disciplinas complementarias. Estudio fundado en 2019 con foco en integrar lo jurídico, lo notarial y lo inmobiliario.</p>
+  <div class="team">
+    <div class="pf"><img src="img/equipo/andres-bosdandjian-700.webp" alt="Dr. Andrés Bosdandjian" loading="lazy" width="700" height="1050">
+      <div class="tx"><h3>Dr. Andrés Bosdandjian</h3><span class="rol">Abogado y Escribano · UdelaR</span><p>Ejerce en derecho laboral, civil y de familia, y lidera el área de servicios inmobiliarios del estudio.</p><div class="tg"><span>Abogacía</span><span>Inmobiliaria</span></div></div></div>
+    <div class="pf"><img src="img/equipo/paula-rodriguez-700.webp" srcset="img/equipo/paula-rodriguez-700.webp 700w, img/equipo/paula-rodriguez-1400.webp 1400w" sizes="(max-width:1000px) 100vw, 200px" alt="Dra. Paula Rodríguez" loading="lazy" width="700" height="1050">
+      <div class="tx"><h3>Dra. Paula Rodríguez</h3><span class="rol">Abogada y Escribana · UdelaR</span><p>Ejerce la escribanía en compraventas, poderes, testamentos, actas y todo acto notarial con rigor y precisión.</p><div class="tg"><span>Escribanía</span><span>Derecho notarial</span></div></div></div>
+  </div>
+</div></section>
+
+<section id="opiniones"><div class="wrap">
+  <h2 class="serif">Lo que dicen nuestros clientes</h2>
+  <div class="rhead" style="margin-top:18px">
+    <span class="rnum" id="rNum">5,0</span>
+    <div><div class="stars" aria-label="5 de 5 estrellas">★★★★★</div><span style="color:var(--soft)" id="rTot">19 reseñas en Google</span></div>
+    <a class="btn line sm" href="https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8" target="_blank" rel="noopener">Ver todas en Google ↗</a>
+  </div>
+  <div class="rtrack" id="rTrack" data-resenas="resenas.php" tabindex="0" aria-label="Reseñas"></div>
+  <div class="rnav"><button type="button" id="rPrev" aria-label="Anteriores">←</button><button type="button" id="rNext" aria-label="Siguientes">→</button></div>
+</div></section>
+
+<section id="preguntas" style="padding-top:0"><div class="wrap">
+  <h2 class="serif" style="margin-bottom:24px">Preguntas frecuentes</h2>
+  <div class="faq">
+    <details><summary>¿Qué hace diferente al servicio inmobiliario?</summary><p>Cada operación tiene respaldo jurídico y notarial desde el inicio. Analizamos la situación legal del inmueble, detectamos deudas y riesgos antes de que firmes, y acompañamos hasta la escrituración. Muchos problemas aparecen después de firmar un boleto "pensando que está todo bien": nosotros los prevenimos.</p></details>
+    <details><summary>¿Qué trámites de escribanía realizan?</summary><p>Compraventa de inmuebles y automotores, poderes para pleitos y generales, testamentos, certificados notariales, actas de constatación y notificación, acuerdos patrimoniales, entre otros. Consultanos por tu trámite.</p></details>
+    <details><summary>¿Cómo agendo una consulta?</summary><p>La forma más rápida es por WhatsApp o Instagram. Contanos tu situación y coordinamos una reunión presencial en Ciudad Vieja o por videollamada si estás en otro departamento. Las condiciones de la primera consulta te las indicamos al coordinarla.</p></details>
+    <details><summary>¿Atienden fuera de Montevideo?</summary><p>Sí. Operamos también en Maldonado y en todo el país, de forma presencial o a distancia.</p></details>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap ct">
+  <div>
+    <h2 class="serif">Contanos tu situación</h2>
+    <p class="sub">Respondemos a la brevedad.</p>
+    <ul class="datos">
+      <li><span class="i">📍</span><div><a href="https://maps.app.goo.gl/gt4tGZKeVwGq3s6a8" target="_blank" rel="noopener"><span class="completar">Calle y número</span> · Ciudad Vieja, Montevideo</a><small>Maldonado · Atención en todo el país</small></div></li>
+      <li><span class="i">🕒</span><div><span>Lunes a viernes de <span class="completar">00</span> a <span class="completar">00</span> h</span><small>Reuniones con coordinación previa</small></div></li>
+      <li><span class="i">💬</span><div><a href="#" id="waLink">094 617 681</a><small>WhatsApp · respuesta rápida</small></div></li>
+      <li><span class="i">📞</span><div><a href="tel:+59894617681">094 617 681</a><small>Tocá para llamar</small></div></li>
+      <li><span class="i">✉️</span><div><a href="mailto:contacto@bosdandjianrodriguez.com.uy">contacto@bosdandjianrodriguez.com.uy</a><small>Para enviar documentación</small></div></li>
+      <li><span class="i">📸</span><div><a href="https://www.instagram.com/estudio_bosdandjian.rodriguez" target="_blank" rel="noopener">@estudio_bosdandjian.rodriguez</a><small>También por Instagram</small></div></li>
+    </ul>
+  </div>
+  <form id="form" novalidate>
+    <div class="two"><label>Nombre<input class="fld" id="fNom" autocomplete="name"></label><label>Teléfono<input class="fld" id="fTel" inputmode="tel" autocomplete="tel"></label></div>
+    <label>Email<input class="fld" id="fMail" type="email" autocomplete="email"></label>
+    <label>Área de consulta<select class="fld" id="fArea"></select></label>
+    <label>Mensaje<textarea class="fld" id="fMsg" placeholder="Contanos brevemente tu situación"></textarea></label>
+    <button class="btn wa" type="submit">💬 Enviar por WhatsApp</button>
+    <div class="err" id="fErr" aria-live="polite"></div>
+    <div class="ok" id="fOk">✅ ¡Listo! Te respondemos a la brevedad.</div>
+    <small>Tu información es confidencial y nunca se comparte con terceros.</small>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© Bosdandjian Rodríguez · Estudio Jurídico Notarial · Ciudad Vieja, Montevideo</span><span>Abogacía · Escribanía · Inmobiliaria</span></div></footer>
+
+<a class="fab" href="#consulta" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Fotos de la propiedad">
+  <button type="button" class="x" id="lbX" aria-label="Cerrar">✕</button>
+  <div class="st"><img id="lbImg" alt=""><button type="button" class="nv pv" id="lbP" aria-label="Anterior">‹</button><button type="button" class="nv nx" id="lbN" aria-label="Siguiente">›</button></div>
+  <span class="cnt" id="lbC"></span>
+  <div class="thumbs" id="lbT"></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<a href="../../" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;background:rgba(17,17,17,.88);color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);white-space:nowrap">Propuesta de web · Federico Chaer ↗</a>
+
+<script>
+{
+const CONFIG = { whatsapp: "" };   // 598 + número sin el 0 (en la web real: 59894617681)
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function wa(msg){
+  if (!CONFIG.whatsapp) alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + msg);
+  else window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+}
+function toast(t){ const e = $("#toast"); e.textContent = t; e.classList.add("on"); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove("on"), 2200); }
+
+/* ===== Consulta guiada ===== */
+const SITS = [
+  {i:"💼", t:"Me despidieron o tengo un reclamo laboral", a:"Abogacía", d:"Liquidaciones, despidos, acoso o reclamos con la empresa. Revisamos tu caso y te decimos qué te corresponde."},
+  {i:"🏠", t:"Compro, vendo o alquilo una propiedad", a:"Inmobiliaria + Escribanía", d:"Análisis jurídico del inmueble, detección de deudas y escrituración, todo en el mismo proceso.", tram:"inmueble"},
+  {i:"🚗", t:"Compro o vendo un auto", a:"Escribanía", d:"Nos encargamos de los papeles de principio a fin.", tram:"auto"},
+  {i:"✍️", t:"Necesito un poder", a:"Escribanía", d:"Poderes generales o para pleitos, para que alguien te represente.", tram:"poder"},
+  {i:"📜", t:"Testamento o sucesión", a:"Escribanía", d:"Dejá todo ordenado o iniciá la sucesión de un familiar.", tram:"sucesion"},
+  {i:"👨‍👩‍👧", t:"Divorcio, pensión o tema de familia", a:"Abogacía", d:"Divorcios, pensiones alimenticias, visitas y acuerdos."},
+  {i:"🚦", t:"Tuve un accidente de tránsito", a:"Abogacía", d:"Reclamos por daños y lesiones, y gestión con aseguradoras."},
+  {i:"🏛️", t:"Necesito un recurso de amparo", a:"Abogacía", d:"Cuando un derecho tuyo está en riesgo y necesitás una respuesta urgente."},
+  {i:"🏢", t:"Tengo una empresa o voy a crear una", a:"Abogacía + Escribanía", d:"Constitución de sociedades, contratos, certificaciones y asesoramiento."}
+];
+let sitSel = -1;
+function renderSits(){
+  $("#sits").innerHTML = SITS.map((s, i) => `<button type="button" class="sit ${i === sitSel ? "on" : ""}" data-i="${i}" aria-pressed="${i === sitSel}"><span class="i" aria-hidden="true">${s.i}</span>${esc(s.t)}</button>`).join("");
+  $$("#sits .sit").forEach(b => b.onclick = () => { sitSel = sitSel === +b.dataset.i ? -1 : +b.dataset.i; renderSits(); });
+  const r = $("#resp");
+  if (sitSel < 0){ r.hidden = true; return; }
+  const s = SITS[sitSel];
+  r.hidden = false;
+  r.innerHTML = `<div><span class="area">${esc(s.a)}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div>
+    <div class="bt"><button type="button" class="btn wa" id="respWa">💬 Consultar por WhatsApp</button>${s.tram ? `<a class="btn line" style="background:#fff" href="#tramites" id="respTram">📋 ¿Qué necesito llevar?</a>` : ""}</div>`;
+  $("#respWa").onclick = () => wa(`Hola, quiero hacer una consulta sobre: ${s.t.toLowerCase()}.`);
+  if (s.tram) $("#respTram").onclick = () => { tramSel = s.tram; renderTram(); };
+}
+
+/* ===== ¿Qué necesito llevar? (orientativo) ===== */
+const TRAMITES = {
+  inmueble: {n:"Compraventa de inmueble", g:[
+    ["Si vendés", ["Cédula de identidad", "Título de propiedad (escritura anterior)", "Plano de mensura del inmueble", "Contribución Inmobiliaria al día", "Impuesto de Primaria al día", "Gastos comunes al día (si es propiedad horizontal)", "Datos de tu estado civil (partida de matrimonio o divorcio, si corresponde)"]],
+    ["Si comprás", ["Cédula de identidad", "Datos de tu estado civil", "Origen de los fondos (constancia bancaria o de ingresos)"]]]},
+  auto: {n:"Compraventa de automotor", g:[
+    ["Los dos", ["Cédula de identidad del comprador y del vendedor"]],
+    ["Si vendés", ["Título de propiedad del vehículo", "Libreta de circulación", "Patente al día (SUCIVE)", "Constancia de que no tiene multas pendientes"]]]},
+  poder: {n:"Poder", g:[
+    ["Quien da el poder", ["Cédula de identidad", "Nombre completo y cédula de la persona que te va a representar", "Para qué es el poder (trámite, pleito, banco, venta…)"]]]},
+  firmas: {n:"Certificación de firmas", g:[
+    ["Para la cita", ["Cédula de identidad de quienes firman", "El documento a firmar, sin firmar todavía"]]]},
+  sucesion: {n:"Sucesión", g:[
+    ["De la persona fallecida", ["Partida de defunción", "Títulos de los bienes (inmuebles, vehículos, cuentas)", "Testamento, si existe"]],
+    ["De los herederos", ["Cédulas de identidad", "Partidas de nacimiento", "Partida de matrimonio (cónyuge)"]]]}
+};
+let tramSel = "inmueble";
+const hechos = {};
+function renderTram(){
+  $("#tabs").innerHTML = Object.entries(TRAMITES).map(([k, t]) => `<button type="button" class="tab ${k === tramSel ? "on" : ""}" role="tab" aria-selected="${k === tramSel}" data-k="${k}">${esc(t.n)}</button>`).join("");
+  $$("#tabs .tab").forEach(b => b.onclick = () => { tramSel = b.dataset.k; renderTram(); });
+  const t = TRAMITES[tramSel], items = t.g.flatMap(g => g[1]);
+  hechos[tramSel] = hechos[tramSel] || new Set();
+  $("#lista").innerHTML = `<h3>${esc(t.n)}</h3>` + t.g.map(([tit, l]) => `<div class="grupo"><b>${esc(tit)}</b>${l.map(x => {
+      const on = hechos[tramSel].has(x);
+      return `<label class="chk ${on ? "hecho" : ""}"><input type="checkbox" ${on ? "checked" : ""} data-x="${esc(x)}"><span>${esc(x)}</span></label>`;
+    }).join("")}</div>`).join("") +
+    `<div class="prog"><span id="pTxt"></span><div class="bar"><i id="pBar"></i></div></div>
+     <button type="button" class="btn sm" style="margin-top:14px" id="tramWa">💬 Coordinar este trámite</button>`;
+  const prog = () => { const n = hechos[tramSel].size; $("#pTxt").textContent = `${n} de ${items.length}`; $("#pBar").style.width = n / items.length * 100 + "%"; };
+  $$("#lista input").forEach(c => c.onchange = () => {
+    c.checked ? hechos[tramSel].add(c.dataset.x) : hechos[tramSel].delete(c.dataset.x);
+    c.closest(".chk").classList.toggle("hecho", c.checked); prog();
+  });
+  $("#tramWa").onclick = () => wa(`Hola, quiero coordinar un trámite de ${t.n.toLowerCase()}.`);
+  prog();
+}
+
+/* ===== Propiedades ===== */
+const fotos = (slug, n, portada = true) => (portada ? [`img/inmuebles/${slug}/portada.webp`] : []).concat(Array.from({length: n}, (_, i) => `img/inmuebles/${slug}/${String(i + 1).padStart(2, "0")}.webp`));
+const PROPS = [
+  {slug:"casa-buceo", est:"En venta", precio:"U$S 279.000", t:"Casa con gran garage y fondo con parrillero", loc:"Buceo, Montevideo · Ref. IDF8F3", zona:"Montevideo",
+   f:["2 dorms.","2 baños","163 m²","320 m² terreno"], a:["Gran garage (84 m²)","Parrillero techado","Jardín / patio","Box / depósito","Dorm. de servicio","Agua caliente central","Acepta permuta","Financiación bancaria: consultar"], fotos:fotos("casa-buceo", 12)},
+  {slug:"terreno-av-italia", est:"En venta", precio:"U$S 149.000", t:"Terreno de 900 m² próximo a Av. Italia", loc:"Próximo a Av. Italia · Montevideo", zona:"Montevideo",
+   f:["900 m² terreno"], a:["Excelente conectividad","Ideal inversores","Ideal desarrolladores","Ideal constructores"], fotos:fotos("terreno-av-italia", 5), video:"https://youtu.be/y_fdsqOL_0o"},
+  {slug:"casa-playa-hermosa", est:"En venta", precio:"U$S 298.000", t:"Casa con terreno a 200 m del mar", loc:"Proa al Mar · Playa Hermosa, Maldonado", zona:"Maldonado",
+   f:["2 dorms.","1 baño","101 m²","450 m² terreno"], a:["Garaje","Estufa a leña","Parrillero","A/A","Jardín","200 m al mar","Admite mascotas"], fotos:fotos("casa-playa-hermosa", 13)},
+  {slug:"apto-barrio-sur", est:"Alquilado", precio:"$ 26.000 + G.C. $ 4.000", t:"Apartamento con balcón", loc:"Av. Gonzalo Ramírez y Ejido · Barrio Sur", zona:"Montevideo",
+   f:["1 dorm.","1 baño","45 m²"], a:["Garaje opcional","Ascensor","Cowork","Seguridad 24 h"], fotos:fotos("apto-barrio-sur", 10), cerrada:true},
+  {slug:"casa-tres-cruces", est:"Reservado", precio:"U$S 260.000", t:"Casa de dos plantas", loc:"Goes y Cufré · Tres Cruces", zona:"Montevideo",
+   f:["3 dorms.","2 baños","124 m²","78 m² terreno"], a:["Garaje","Parrillero","Azotea exclusiva","Excelente estado"], fotos:fotos("casa-tres-cruces", 11, false), cerrada:true}
+];
+const FILTROS = [["disp","Disponibles", p => !p.cerrada], ["Montevideo","Montevideo", p => !p.cerrada && p.zona === "Montevideo"], ["Maldonado","Maldonado", p => !p.cerrada && p.zona === "Maldonado"], ["cerr","Operaciones recientes", p => p.cerrada]];
+let filtro = "disp";
+function renderProps(){
+  $("#filtros").innerHTML = FILTROS.map(([k, n, f]) => `<button type="button" class="fb ${k === filtro ? "on" : ""}" data-k="${k}" aria-pressed="${k === filtro}">${n} <span style="opacity:.6">${PROPS.filter(f).length}</span></button>`).join("");
+  $$("#filtros .fb").forEach(b => b.onclick = () => { filtro = b.dataset.k; renderProps(); });
+  const f = FILTROS.find(x => x[0] === filtro)[2];
+  $("#props").innerHTML = PROPS.filter(f).map(p => `<article class="pr ${p.cerrada ? "cerrada" : ""}" id="${p.slug}">
+      <button type="button" class="ph" data-g="${p.slug}" aria-label="Ver ${p.fotos.length} fotos de ${esc(p.t)}"><img src="${p.fotos[0]}" alt="${esc(p.t)} · ${esc(p.loc)}" loading="lazy" width="1200" height="900">
+        <span class="est ${p.cerrada ? "" : "v"}">${p.est}</span><span class="nf">📷 ${p.fotos.length} fotos</span></button>
+      <div class="bd"><span class="precio">${esc(p.precio)}</span><h3>${esc(p.t)}</h3><span class="loc">📍 ${esc(p.loc)}</span>
+        <div class="feats">${p.f.map(x => `<span>${esc(x)}</span>`).join("")}</div>
+        <div class="amen">${p.a.map(x => `<span>${esc(x)}</span>`).join("")}</div>
+        ${p.video ? `<a class="btn line sm" href="${p.video}" target="_blank" rel="noopener">▶ Ver video del terreno</a>` : ""}
+        <div class="bts">${p.cerrada
+          ? `<button type="button" class="btn line sm" data-c="${p.slug}">Consultar por propiedades similares</button>`
+          : `<button type="button" class="btn sm" data-c="${p.slug}">💬 Consultar</button><button type="button" class="btn line sm" data-s="${p.slug}" aria-label="Compartir esta propiedad">🔗 Compartir</button>`}</div>
+      </div></article>`).join("");
+  $$("#props [data-g]").forEach(b => b.onclick = () => abrirLb(PROPS.find(p => p.slug === b.dataset.g), 0));
+  $$("#props [data-c]").forEach(b => b.onclick = () => {
+    const p = PROPS.find(x => x.slug === b.dataset.c);
+    wa(p.cerrada ? `Hola, vi el ${p.t.toLowerCase()} en ${p.loc} en su web. ¿Tienen propiedades similares disponibles?` : `Hola, quiero consultar por: ${p.t} (${p.loc}) · ${p.precio}.`);
+  });
+  $$("#props [data-s]").forEach(b => b.onclick = async () => {
+    const p = PROPS.find(x => x.slug === b.dataset.s), url = location.href.split("#")[0] + "#" + p.slug;
+    if (navigator.share){ try { await navigator.share({title: p.t, url}); return; } catch (e) { if (e.name === "AbortError") return; } }
+    try { await navigator.clipboard.writeText(url); toast("Link copiado ✓"); } catch (e) { window.open("https://wa.me/?text=" + encodeURIComponent(p.t + " " + url), "_blank"); }
+  });
+}
+/* Link directo a una propiedad: #casa-buceo */
+function irA(){
+  const slug = location.hash.slice(1), p = PROPS.find(x => x.slug === slug);
+  if (!p) return;
+  filtro = p.cerrada ? "cerr" : "disp"; renderProps();
+  const el = document.getElementById(slug);
+  el.classList.add("dest");
+  const g = $("#props");
+  if (g.scrollWidth > g.clientWidth) g.scrollTo({left: el.offsetLeft - 20});
+  el.scrollIntoView({behavior: "smooth", block: "center"});
+  setTimeout(() => el.classList.remove("dest"), 3500);
+}
+window.addEventListener("hashchange", irA);
+
+/* Galería de fotos */
+let lbP = null, lbI = 0;
+function abrirLb(p, i){
+  lbP = p; lbI = (i + p.fotos.length) % p.fotos.length;
+  $("#lbImg").src = p.fotos[lbI]; $("#lbImg").alt = `${p.t}, foto ${lbI + 1}`;
+  $("#lbC").textContent = `${p.t} · ${lbI + 1} / ${p.fotos.length}`;
+  $("#lbT").innerHTML = p.fotos.map((f, k) => `<button type="button" class="${k === lbI ? "on" : ""}" data-k="${k}" aria-label="Foto ${k + 1}"><img src="${f}" alt="" loading="lazy"></button>`).join("");
+  $$("#lbT button").forEach(b => b.onclick = () => abrirLb(lbP, +b.dataset.k));
+  const t = $("#lbT .on"); if (t) t.scrollIntoView({block: "nearest", inline: "center"});
+  $("#lb").classList.add("on");
+}
+const cerrarLb = () => $("#lb").classList.remove("on");
+$("#lbX").onclick = cerrarLb;
+$("#lbP").onclick = () => abrirLb(lbP, lbI - 1);
+$("#lbN").onclick = () => abrirLb(lbP, lbI + 1);
+$("#lb").onclick = e => { if (e.target.id === "lb") cerrarLb(); };
+document.addEventListener("keydown", e => {
+  if (!$("#lb").classList.contains("on")) return;
+  if (e.key === "Escape") cerrarLb();
+  if (e.key === "ArrowLeft") abrirLb(lbP, lbI - 1);
+  if (e.key === "ArrowRight") abrirLb(lbP, lbI + 1);
+});
+let tx = 0;
+$("#lb").addEventListener("touchstart", e => tx = e.touches[0].clientX, {passive: true});
+$("#lb").addEventListener("touchend", e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) abrirLb(lbP, lbI + (dx < 0 ? 1 : -1)); });
+
+/* ===== Opiniones (textos de Google; la fecha real llega con resenas.php) ===== */
+const RESENAS = [["Nicolás Rau", "Excelente experiencia. Necesité servicios de abogados y de escribanía, y en todo momento recibí una atención muy profesional. Destaco la claridad de las explicaciones, la rapidez en la gestión y la confianza que transmiten."], ["Natalia Rodriguez", "Buen profesional, atento y responsable. Explicó claramente el proceso, respondió mis consultas con disposición. Quedé conforme con su trabajo."], ["Facundo Gómez", "Un estudio de profesionales serios y comprometidos, con gran experiencia en diversos rubros jurídicos e inmobiliarios. ¡Más que recomendables!"], ["Agustín Pereira", "¡Excelentes profesionales! Rápido, seguro y muy eficaz. ¡Recomiendo!"], ["Gabriela Cabana", "Excelentes profesionales. Siempre brindan un asesoramiento claro, responsable y confiable. Muy recomendables."], ["Joaquín Brit", "Excelente atención y profesionalismo. Nos acompañaron en todos los trámites de nuestra SRL agropecuaria. Destacamos su seriedad, rapidez y claridad en cada gestión. Muy recomendables."], ["Lucía Campos", "Los recomiendo. Hicimos una demanda por acoso y todo el tiempo me sentí acompañada y protegida. Además de excelentes profesionales, son excelentes personas, comprometidas al 100% con su trabajo."], ["Daniel Castro", "Cambié el auto y los contacté para que se encarguen de los papeles de principio a fin. Da gusto cuando te cruzás con profesionales así. Un equipo de trabajo tremendo."], ["Adriana Fanfassian", "Excelentes personas y profesionales, serios, responsables, de total confianza. Informando y buscando la mejor solución al cliente. ¡Recomiendo!"], ["Sebastián Sosa", "Excelentes profesionales. Realizamos más de 4 operaciones de compraventa con Andrés y Paula. Muy atentos y prolijos, respondiendo rápido y trabajando de forma genuina y cálida. Recomiendo 100%."], ["Jeshna Acosta", "Excelentes profesionales, comprometidos con su labor. Serios, responsables y accesibles. Me llevaron adelante un recurso de amparo y me ofrecieron un servicio accesible a mis posibilidades. Los recomiendo."], ["Natasha Díaz", "Andrés y Paula son excelentes profesionales. Consulté por una liquidación laboral y me asesoraron de forma excelente. Se ocuparon de todo el reclamo con la empresa y el resultado fue favorable."], ["Claudia Barrera", "La verdad los recomiendo, son muy responsables en la labor que realizan."], ["Jacqueline Correa", "¡Muy recomendable!"], ["Paulo Saravia Pereyra", "Muy recomendables, excelente atención. ¡Son unos crack!"], ["Dimas Odriozola", "¡Excelentes profesionales! Me han ayudado mucho."], ["Melisa Teixeira", "Excelentes profesionales y excelentes personas. Muy buena atención, seriedad y compromiso. Recomiendo totalmente."], ["Agrimony Magnolia", "Excelente trabajo, buenos profesionales, muy confiables y seguros. Brindan seguridad, eficacia y rapidez. Muy agradecida, especialmente con el Dr. Bosdandjian, excelente profesional."], ["Agustín Bosdandjian", "Excelente y completo servicio."]];
+function renderResenas(lista){
+  $("#rTrack").innerHTML = lista.map(r => `<article class="rv"><div class="stars" aria-label="5 estrellas">★★★★★</div><p>“${esc(r[1])}”</p>
+    <div class="who"><span class="av">${esc(r[0].charAt(0))}</span><span><b>${esc(r[0])}</b><small>${r[2] ? esc(r[2]) + " · " : ""}Reseña en Google</small></span></div></article>`).join("");
+}
+renderResenas(RESENAS);
+const paso = () => $("#rTrack").clientWidth * .9;
+$("#rPrev").onclick = () => $("#rTrack").scrollBy({left: -paso(), behavior: "smooth"});
+$("#rNext").onclick = () => $("#rTrack").scrollBy({left: paso(), behavior: "smooth"});
+if (location.protocol.startsWith("http")){
+  fetch($("#rTrack").dataset.resenas, {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()).then(d => {
+    if (!d || !Array.isArray(d.reviews) || !d.reviews.length) return;
+    const fecha = iso => new Date(iso).toLocaleDateString("es-UY", {month: "long", year: "numeric"});
+    const api = d.reviews.map(r => [r.autor, r.texto, r.fecha ? fecha(r.fecha) : ""]);
+    const resto = RESENAS.filter(r => !api.some(a => a[0] === r[0]));
+    renderResenas(api.concat(resto));
+    if (d.rating) $("#rNum").textContent = String(d.rating).replace(".", ",");
+    if (d.total) $("#rTot").textContent = d.total + " reseñas en Google";
+  }).catch(() => {});
+}
+
+/* ===== Contacto ===== */
+const AREAS = ["Derecho laboral","Derecho civil","Derecho de familia","Accidentes de tránsito","Recurso de amparo","Escribanía / trámites notariales","Compraventa de inmueble","Compraventa de automotor","Servicios inmobiliarios","Otra consulta"];
+$("#fArea").innerHTML = `<option value="">Elegí una opción</option>` + AREAS.map(a => `<option>${a}</option>`).join("");
+$("#form").onsubmit = e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const falta = [[!v("#fNom"), "Poné tu nombre", "#fNom"], [!v("#fTel") && !v("#fMail"), "Dejanos un teléfono o un email", "#fTel"], [!v("#fArea"), "Elegí el área de consulta", "#fArea"], [!v("#fMsg"), "Contanos brevemente tu situación", "#fMsg"]].find(x => x[0]);
+  if (falta){ $("#fErr").textContent = falta[1]; $(falta[2]).focus(); return; }
+  $("#fErr").textContent = "";
+  wa(`Hola, soy ${v("#fNom")}. Consulta sobre ${v("#fArea").toLowerCase()}:\n\n${v("#fMsg")}\n\n📞 ${v("#fTel") || "—"} · ✉️ ${v("#fMail") || "—"}`);
+  $("#fOk").classList.add("on");
+};
+$("#waLink").onclick = e => { e.preventDefault(); wa("Hola, quiero hacer una consulta."); };
+
+renderSits(); renderTram(); renderProps();
+if (location.hash) setTimeout(irA, 300);
+}
+</script>
 </body>
 </html>
