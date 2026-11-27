@@ -248,11 +248,13 @@ tr.rec td{background:#fff8d9;font-weight:700}
 .notify .btn{background:var(--a2);padding:11px 18px}
 .notify.ya{background:#e7f6ef;border-color:var(--a4)}
 
-/* Cinta para volver al portfolio (queda debajo del carrito y la ficha) */
-.portfolio{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:40;background:rgba(17,17,17,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:9px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);white-space:nowrap}
-.portfolio:hover{background:#111}
-body{padding-bottom:56px}
-.fab{bottom:60px}
+/* Burbuja para volver al portfolio (queda debajo del carrito y la ficha) */
+.portfolio{position:fixed;right:20px;bottom:20px;z-index:40;height:56px;min-width:56px;padding:0 6px;border-radius:99px;background:var(--ink);color:#fff;text-decoration:none;display:flex;align-items:center;gap:0;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:gap .25s,padding .25s,transform .2s}
+.portfolio .fc{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:Unbounded,sans-serif;font-weight:800;font-size:.95rem;letter-spacing:-.02em;background:conic-gradient(var(--a1) 0 25%,var(--a2) 0 50%,var(--a3) 0 75%,var(--a4) 0);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45);flex:none}
+.portfolio .txt{max-width:0;overflow:hidden;white-space:nowrap;font-weight:700;font-size:.9rem;transition:max-width .3s ease}
+.portfolio .arr{position:absolute;top:-4px;right:-4px;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:.75rem;font-weight:800;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.portfolio:hover,.portfolio:focus-visible{gap:10px;padding-right:18px;transform:translateY(-2px)}
+.portfolio:hover .txt,.portfolio:focus-visible .txt{max-width:240px}
 
 @media(max-width:900px){
   .talles{grid-template-columns:1fr}
