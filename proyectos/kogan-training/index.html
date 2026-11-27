@@ -152,7 +152,7 @@
   <h1 class="disp">Movete mejor.<br><em>Rendí mejor.</em></h1>
   <p>Entrenamiento consciente, fisio y recuperación. Primero te conocemos y te evaluamos; después trabajamos lo que tu cuerpo y tu deporte necesitan.</p>
   <div class="acts">
-    <a class="btn" href="#entrevista">Hacer la entrevista inicial</a>
+    <a class="btn" href="#entrevista">Agendá tu entrevista</a>
     <a class="btn ghost" href="#metodo">Cómo trabajamos</a>
   </div>
   <div class="chain">Evaluar <i>→</i> Entrenar <i>→</i> Recuperar <i>→</i> Progresar</div>
@@ -171,12 +171,12 @@
 </div></section>
 
 <section id="entrevista"><div class="wrap">
-  <span class="kick">Primer paso</span>
-  <h2 class="disp">Contanos sobre <span>vos</span></h2>
-  <p class="sub">Cinco preguntas rápidas. Con esto coordinamos la entrevista inicial y vemos juntos qué plan te sirve.</p>
+  <span class="kick">Primer paso · entrevista presencial</span>
+  <h2 class="disp">Agendá tu <span>entrevista</span></h2>
+  <p class="sub">La entrevista inicial es presencial: nos sentamos, te escuchamos y te evaluamos. Antes, cuatro preguntas rápidas para llegar con la primera información.</p>
   <div class="iv" id="iv">
     <div class="bar"><i id="bar"></i></div>
-    <div class="ivh"><span id="paso">Paso 1 de 5</span><span id="pasoTxt">Tu objetivo</span></div>
+    <div class="ivh"><span id="paso">Paso 1 de 4</span><span id="pasoTxt">Tu objetivo</span></div>
 
     <div class="q on" data-q="1">
       <h3>¿Qué querés lograr?</h3>
@@ -207,25 +207,6 @@
     </div>
 
     <div class="q" data-q="3">
-      <h3>¿Cuánto tiempo tenés?</h3>
-      <label class="t" for="dias">Días por semana que podés entrenar</label>
-      <div class="range"><input type="range" id="dias" min="1" max="6" value="3"><output id="diasOut">3 días</output></div>
-      <label class="t">¿En qué momento del día?</label>
-      <div class="chips" data-k="momento" data-multi="1">
-        <button type="button" class="chip">🌅 Mañana</button>
-        <button type="button" class="chip">☀️ Mediodía</button>
-        <button type="button" class="chip">🌆 Tarde</button>
-        <button type="button" class="chip">🌙 Noche</button>
-      </div>
-      <label class="t">Modalidad</label>
-      <div class="chips" data-k="modalidad">
-        <button type="button" class="chip">🏢 Presencial</button>
-        <button type="button" class="chip">💻 Online</button>
-        <button type="button" class="chip">🤷 Me da igual</button>
-      </div>
-    </div>
-
-    <div class="q" data-q="4">
       <h3>¿Algo que debamos saber?</h3>
       <p class="hint">Lesiones, dolores, operaciones o indicaciones médicas. Si hace falta, sumamos fisio y recuperación al plan.</p>
       <div class="chips" data-k="salud">
@@ -238,15 +219,25 @@
       </div>
     </div>
 
-    <div class="q" data-q="5">
+    <div class="q" data-q="4">
       <h3>Último paso</h3>
-      <p class="hint">Te escribimos para coordinar la entrevista inicial.</p>
+      <p class="hint">Te escribimos para confirmar día y hora de la entrevista.</p>
       <div class="grid2">
         <div><label class="t" for="nom">Nombre</label><input class="fld" id="nom" autocomplete="name" placeholder="Tu nombre"></div>
         <div><label class="t" for="edad">Edad</label><input class="fld" id="edad" type="number" inputmode="numeric" min="10" max="99" placeholder="Ej: 32"></div>
       </div>
       <label class="t" for="tel">WhatsApp</label>
       <input class="fld" id="tel" inputmode="tel" autocomplete="tel" placeholder="09X XXX XXX">
+      <label class="t">¿Qué días te queda cómodo venir?</label>
+      <div class="chips" data-k="dias" data-multi="1">
+        <button type="button" class="chip">Lun</button><button type="button" class="chip">Mar</button><button type="button" class="chip">Mié</button><button type="button" class="chip">Jue</button><button type="button" class="chip">Vie</button><button type="button" class="chip">Sáb</button>
+      </div>
+      <label class="t">¿En qué horario?</label>
+      <div class="chips" data-k="momento" data-multi="1">
+        <button type="button" class="chip">🌅 Mañana</button>
+        <button type="button" class="chip">☀️ Mediodía</button>
+        <button type="button" class="chip">🌆 Tarde</button>
+      </div>
       <label class="t">¿Te interesa algún plan? <span style="color:var(--muted);font-weight:500">(opcional)</span></label>
       <div class="chips" data-k="plan">
         <button type="button" class="chip">🎯 Personalizado mensual</button>
@@ -262,7 +253,7 @@
       <button type="button" class="btn ghost" id="prev">← Atrás</button>
       <button type="button" class="btn" id="next">Siguiente →</button>
     </div>
-    <div class="ok" id="ok">✅ <b>¡Listo!</b> Te llegó el resumen a Kogan Training. Te escribimos para coordinar la entrevista inicial.</div>
+    <div class="ok" id="ok">✅ <b>¡Listo!</b> Le llegó tu pedido a Kogan Training. Te escribimos para confirmar el día y la hora de la entrevista presencial.</div>
   </div>
 </div></section>
 
@@ -337,8 +328,9 @@
 const CONFIG = { whatsapp: "" };   // 598 + número sin el 0
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const TITULOS = ["Tu objetivo", "Tu punto de partida", "Tu tiempo", "Tu salud", "Tus datos"];
-const R = {objetivos:[], nivel:"", momento:[], modalidad:"", salud:"", plan:""};
+const TITULOS = ["Tu objetivo", "Tu punto de partida", "Tu salud", "Tus datos"];
+const PASOS = TITULOS.length;
+const R = {objetivos:[], nivel:"", salud:"", dias:[], momento:[], plan:""};
 let paso = 1;
 
 const valor = b => b.dataset.v || b.textContent.trim().replace(/\s+/g, " ");
@@ -358,7 +350,7 @@ $$(".chips, .cards").forEach(g => {
       pintar(g, k);
       if (k === "salud") $("#saludTxtBox").style.display = R.salud.includes("Sí") ? "" : "none";
       $("#err").textContent = "";
-      if (paso === 5) resumen();
+      if (paso === PASOS) resumen();
     };
   });
 });
@@ -370,38 +362,36 @@ function pintar(g, k){
   });
 }
 
-$("#dias").oninput = () => $("#diasOut").textContent = $("#dias").value + ($("#dias").value === "1" ? " día" : " días");
 
 const nivelTxt = () => R.nivel;
 function validar(){
   if (paso === 1 && !R.objetivos.length) return "Elegí al menos un objetivo";
   if (paso === 2 && !R.nivel) return "Elegí desde dónde arrancás";
-  if (paso === 3 && !R.modalidad) return "Elegí la modalidad";
-  if (paso === 4 && !R.salud) return "Contanos si hay algo que debamos saber";
-  if (paso === 4 && R.salud.includes("Sí") && !$("#saludTxt").value.trim()) return "Contanos brevemente qué te pasa";
-  if (paso === 5 && !$("#nom").value.trim()) return "Poné tu nombre";
-  if (paso === 5 && !$("#tel").value.trim()) return "Dejanos tu WhatsApp para coordinar";
+  if (paso === 3 && !R.salud) return "Contanos si hay algo que debamos saber";
+  if (paso === 3 && R.salud.includes("Sí") && !$("#saludTxt").value.trim()) return "Contanos brevemente qué te pasa";
+  if (paso === 4 && !$("#nom").value.trim()) return "Poné tu nombre";
+  if (paso === 4 && !$("#tel").value.trim()) return "Dejanos tu WhatsApp para coordinar";
+  if (paso === 4 && !R.dias.length) return "Elegí al menos un día para venir";
   return "";
 }
 function ir(n){
   paso = n;
   $$(".q").forEach(q => q.classList.toggle("on", +q.dataset.q === paso));
-  $("#bar").style.width = paso * 20 + "%";
-  $("#paso").textContent = `Paso ${paso} de 5`;
+  $("#bar").style.width = paso / PASOS * 100 + "%";
+  $("#paso").textContent = `Paso ${paso} de ${PASOS}`;
   $("#pasoTxt").textContent = TITULOS[paso - 1];
   $("#prev").style.visibility = paso === 1 ? "hidden" : "visible";
-  $("#next").textContent = paso === 5 ? "💬 Enviar por WhatsApp" : "Siguiente →";
-  $("#next").style.background = paso === 5 ? "#25d366" : "";
+  $("#next").textContent = paso === PASOS ? "💬 Agendar por WhatsApp" : "Siguiente →";
+  $("#next").style.background = paso === PASOS ? "#25d366" : "";
   $("#err").textContent = "";
-  if (paso === 5) resumen();
+  if (paso === PASOS) resumen();
 }
 function resumen(){
   const filas = [
     ["Objetivo", R.objetivos.map(x => x.replace(/^\S+\s/, "")).join(", ")],
     ["Nivel", nivelTxt() + ($("#deporte").value.trim() ? ` · ${$("#deporte").value.trim()}` : "")],
-    ["Tiempo", `${$("#diasOut").textContent} por semana${R.momento.length ? " · " + R.momento.map(x => x.replace(/^\S+\s/, "")).join(", ").toLowerCase() : ""}`],
-    ["Modalidad", R.modalidad.replace(/^\S+\s/, "")],
     ["Salud", R.salud.includes("Sí") ? $("#saludTxt").value.trim() : "Nada en particular"],
+    ["Para venir", R.dias.join(", ") + (R.momento.length ? " · " + R.momento.map(x => x.replace(/^\S+\s/, "")).join(", ").toLowerCase() : "")],
     ["Plan", planTxt() || "A definir en la entrevista"]
   ];
   $("#res").innerHTML = `<dl>${filas.map(([a, b]) => `<dt>${a}</dt><dd>${b || "—"}</dd>`).join("")}</dl>`;
@@ -411,10 +401,10 @@ $("#prev").onclick = () => { if (paso > 1) ir(paso - 1); $("#iv").scrollIntoView
 $("#next").onclick = () => {
   const e = validar();
   if (e){ $("#err").textContent = e; return; }
-  if (paso < 5){ ir(paso + 1); $("#iv").scrollIntoView({behavior:"smooth", block:"start"}); return; }
+  if (paso < PASOS){ ir(paso + 1); $("#iv").scrollIntoView({behavior:"smooth", block:"start"}); return; }
   const filas = resumen(), nom = $("#nom").value.trim(), edad = $("#edad").value.trim();
   const msg = [
-    "¡Hola Kogan Training! Quiero coordinar la entrevista inicial 💪",
+    "¡Hola Kogan Training! Quiero agendar la entrevista inicial presencial 💪",
     "",
     `👤 ${nom}${edad ? `, ${edad} años` : ""} · ${$("#tel").value.trim()}`,
     ...filas.map(([a, b]) => `• ${a}: ${b || "—"}`)
@@ -430,7 +420,7 @@ $$(".cup button").forEach(b => b.onclick = () => {
   pack = +b.dataset.n;
   $$(".cup button").forEach(x => x.classList.toggle("on", x === b));
   $("#cupBtn").textContent = `Me interesa · ${pack} sesiones`;
-  if (paso === 5) resumen();
+  if (paso === PASOS) resumen();
 });
 const planTxt = () => R.plan ? R.plan.replace(/^\S+\s/, "") + (R.plan.includes("Cuponera") ? ` de ${pack} sesiones` : "") : "";
 
@@ -438,7 +428,7 @@ const planTxt = () => R.plan ? R.plan.replace(/^\S+\s/, "") + (R.plan.includes("
 $$("[data-plan]").forEach(b => b.onclick = () => {
   R.plan = b.dataset.plan;
   pintar($('[data-k="plan"]'), "plan");
-  if (paso === 5) resumen();
+  if (paso === PASOS) resumen();
   $("#entrevista").scrollIntoView({behavior:"smooth"});
   toastPlan(planTxt());
 });
