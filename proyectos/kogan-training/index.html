@@ -116,6 +116,92 @@
   .cup button::after{content:" ses.";font-family:Inter;font-weight:600;font-size:.75rem;color:var(--muted)}
   .cup button.on{border-color:var(--red);background:#fdecec;color:var(--red-d)}
 
+  .note{color:var(--muted);font-size:.85rem;margin-top:14px}
+  .chips.sm .chip{padding:8px 12px;font-size:.88rem}
+
+  /* K4 · Historias */
+  .hist{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .hc{border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+  .hc .who{display:flex;align-items:center;gap:12px}
+  .hc .av{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;flex:none}
+  .hc .who small{display:block;color:var(--muted);font-size:.82rem}
+  .tg{display:flex;background:var(--soft);border-radius:10px;padding:3px}
+  .tg button{flex:1;border:0;background:none;border-radius:8px;padding:7px;font-weight:700;font-size:.85rem;color:var(--muted)}
+  .tg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  .tg button.on.d{background:var(--red);color:#fff}
+  .met{display:grid;gap:10px}
+  .met .l{display:flex;justify-content:space-between;font-size:.88rem;gap:8px}
+  .met .l b{font-family:'Barlow Condensed';font-size:1.2rem;font-weight:800}
+  .met .tr{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+  .met .tr i{display:block;height:100%;border-radius:99px;background:#a1a1aa;transition:width .6s cubic-bezier(.2,.8,.2,1),background .3s}
+  .hc.after .met .tr i{background:var(--red)}
+  .delta{display:inline-block;font-size:.75rem;font-weight:800;color:var(--ok);background:#e8f6ee;border-radius:99px;padding:1px 8px;margin-left:6px;opacity:0;transition:opacity .3s}
+  .hc.after .delta{opacity:1}
+  .hc q{font-style:italic;color:var(--muted);font-size:.92rem;border-left:3px solid var(--red);padding-left:10px}
+
+  /* K5 · Semana ideal */
+  .ideal{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;background:var(--soft);border-radius:20px;padding:22px;margin-bottom:26px}
+  .ideal-q p{color:var(--muted);font-size:.93rem}
+  .ideal label.t{display:block;font-weight:700;font-size:.86rem;margin:12px 0 6px}
+  .ideal-r{background:#fff;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+  .ideal-r .wk{display:flex;gap:4px}
+  .ideal-r .wk span{flex:1;text-align:center;border-radius:8px;padding:6px 0;font-size:.75rem;font-weight:700;background:var(--soft);color:#a1a1aa}
+  .ideal-r .wk span.on{background:var(--red);color:#fff}
+  .ideal-r .rec{font-family:'Barlow Condensed';font-weight:800;font-size:2rem;text-transform:uppercase;line-height:1}
+  .ideal-r p{color:var(--muted);font-size:.9rem}
+
+  /* K3 · Horarios */
+  .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+  .day{flex:1 0 auto;min-width:64px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:center;font-weight:700}
+  .day small{display:block;font-size:.7rem;color:var(--muted);font-weight:600}
+  .day.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .day.on small{color:#d4d4d8}
+  .hfil{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .hfil button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 12px;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:6px}
+  .hfil button i{width:10px;height:10px;border-radius:50%}
+  .hfil button.on{border-color:var(--ink)}
+  .hfil button.off{opacity:.45}
+  .slots{display:grid;gap:8px}
+  .slot{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:12px 14px}
+  .slot time{font-family:'Barlow Condensed';font-weight:800;font-size:1.35rem}
+  .slot b{display:block}
+  .slot small{color:var(--muted);font-size:.84rem}
+  .slot .pl{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;border-radius:99px;padding:4px 9px;background:var(--soft);white-space:nowrap}
+  .slot.now{background:#fdecec;border-color:#f6c3c5}
+  .slot .nowb{color:var(--red);font-weight:800;font-size:.75rem;margin-left:6px}
+  .slot.past{opacity:.45}
+
+  /* K7 · Reto del mes */
+  .reto{background:var(--ink);color:#fff;border-radius:24px;padding:30px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;position:relative;overflow:hidden}
+  .reto::before{content:"";position:absolute;right:-60px;top:-40px;width:180px;height:420px;background:var(--red);transform:skewX(-24deg);opacity:.25}
+  .reto > div{position:relative}
+  .reto h2{font-size:clamp(2.2rem,7vw,3.2rem)}
+  .reto p{color:#c9c9cf;margin-top:10px}
+  .cd{display:flex;gap:8px;margin-top:18px}
+  .cd div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 0;min-width:62px;text-align:center}
+  .cd b{display:block;font-family:'Barlow Condensed';font-size:1.9rem;font-weight:800;line-height:1}
+  .cd small{font-size:.7rem;color:#a1a1aa;text-transform:uppercase;letter-spacing:.06em}
+  .btn.ghost.light{border-color:#fff;color:#fff}
+  .rhead{display:flex;justify-content:space-between;align-items:baseline}
+  .rhead span{font-family:'Barlow Condensed';font-weight:800;font-size:1.8rem;color:#ff6b70}
+  .rbar{height:10px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin:6px 0 8px}
+  .rbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff6b70);transition:width .4s}
+  .rhint{font-size:.82rem;color:#a1a1aa}
+  .rgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:12px}
+  .rgrid button{aspect-ratio:1;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#fff;font-weight:700;font-size:.85rem}
+  .rgrid button.on{background:var(--red);border-color:var(--red)}
+  .rgrid button.hoy{outline:2px solid #fff;outline-offset:1px}
+  .rgrid button:disabled{opacity:.25;cursor:not-allowed}
+
+  /* K6 · Preguntas */
+  .faq{display:grid;gap:10px;max-width:820px}
+  .faq details{border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .faq summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--red);font-size:1.4rem;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);margin-top:8px}
+
   /* Contacto */
   .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .ch{border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:.2s}
@@ -129,9 +215,9 @@
   .wa{position:fixed;right:18px;bottom:62px;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:20}
   .wa svg{width:30px;height:30px;fill:#fff}
 
-  @media(max-width:980px){.steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr;max-width:560px}}
+  @media(max-width:980px){.steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr;max-width:560px}.hist{grid-template-columns:1fr 1fr}.ideal,.reto{grid-template-columns:1fr}}
   @media(max-width:820px){nav ul{display:none}.contact{grid-template-columns:1fr}.hero::before{right:-300px;opacity:.55}.hero::after{display:none}}
-  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  @media(max-width:560px){.steps,.hist{grid-template-columns:1fr}.reto{padding:22px}.slot{grid-template-columns:58px 1fr}.slot .pl{grid-column:2;justify-self:start}.cd div{min-width:0;flex:1}}
   @media(max-width:480px){.grid2{grid-template-columns:1fr}.q h3{font-size:1.6rem}.nav2 .btn{flex:1}.brand b{font-size:1.25rem}}
 </style>
 </head>
@@ -143,7 +229,7 @@
     <svg viewBox="0 0 100 80" aria-hidden="true"><path d="M6 74 L40 6 L60 6 L26 74Z" fill="#d9262c"/><path d="M46 40 L78 6 L98 6 L66 40 L90 74 L70 74Z" fill="#8f1a1f"/></svg>
     <b>KOGAN<span>TRAINING</span></b>
   </a>
-  <ul><li><a href="#metodo">Método</a></li><li><a href="#planes">Planes</a></li><li><a href="#contacto">Contacto</a></li></ul>
+  <ul><li><a href="#metodo">Método</a></li><li><a href="#planes">Planes</a></li><li><a href="#horarios">Horarios</a></li><li><a href="#reto">Reto</a></li><li><a href="#faq">Preguntas</a></li></ul>
   <a class="btn sm" href="#entrevista">Empezá acá</a>
 </nav></header>
 
@@ -168,6 +254,86 @@
     <div class="st"><div class="ic">🔋</div><h3>Recuperar</h3><p>Fisio y recuperación como parte del plan, no como un parche: para prevenir lesiones y volver más fuerte.</p></div>
     <div class="st"><div class="ic">📈</div><h3>Progresar</h3><p>Volvemos a medir, ajustamos y seguimos. Tus avances se ven en números, no solo en sensaciones.</p></div>
   </div>
+</div></section>
+
+<section id="historias" style="padding-top:0"><div class="wrap">
+  <span class="kick">Progresos</span>
+  <h2 class="disp">Los números <span>no mienten</span></h2>
+  <p class="sub">Medimos al empezar y volvemos a medir. Tocá "Después" para ver el cambio.</p>
+  <div class="hist" id="hist"></div>
+  <p class="note">* Casos de ejemplo: acá van historias reales de alumnos, con su permiso.</p>
+</div></section>
+
+<section id="planes"><div class="wrap">
+  <span class="kick">Planes</span>
+  <h2 class="disp">Elegí cómo <span>entrenar</span></h2>
+  <p class="sub">Los detalles y el precio los definimos después de la entrevista, según lo que necesites.</p>
+  <div class="ideal" id="ideal">
+    <div class="ideal-q">
+      <b class="disp" style="font-size:1.6rem">¿No sabés cuál elegir?</b>
+      <p>Armá tu semana ideal y te sugerimos un plan.</p>
+      <label class="t">¿Qué días podrías entrenar?</label>
+      <div class="chips sm" data-s="dias" data-multi="1"><button type="button" class="chip">Lun</button><button type="button" class="chip">Mar</button><button type="button" class="chip">Mié</button><button type="button" class="chip">Jue</button><button type="button" class="chip">Vie</button><button type="button" class="chip">Sáb</button></div>
+      <label class="t">Tus horarios…</label>
+      <div class="chips sm" data-s="agenda"><button type="button" class="chip">Son fijos</button><button type="button" class="chip">Cambian seguido</button><button type="button" class="chip">Viajo bastante</button></div>
+      <label class="t">¿Qué buscás?</label>
+      <div class="chips sm" data-s="busca"><button type="button" class="chip">Que me guíen</button><button type="button" class="chip">Ya tengo mi rutina</button><button type="button" class="chip">Sesiones puntuales</button></div>
+    </div>
+    <div class="ideal-r" id="idealR" aria-live="polite"></div>
+  </div>
+  <div class="plans">
+    <div class="plan feat">
+      <span class="badge">Más completo</span>
+      <h3>Personalizado mensual</h3>
+      <p class="pp">Un plan hecho para vos, que se ajusta mes a mes.</p>
+      <ul>
+        <li>Entrevista inicial y evaluación</li>
+        <li>Plan de entrenamiento a tu medida</li>
+        <li>Seguimiento y ajustes cada mes</li>
+        <li>Re-evaluaciones para medir tu progreso</li>
+        <li>Contacto directo con tu entrenador</li>
+      </ul>
+      <div class="price">💬 Precio según lo que definamos en la entrevista</div>
+      <button type="button" class="btn" data-plan="🎯 Personalizado mensual">Me interesa</button>
+    </div>
+    <div class="plan">
+      <h3>Pase libre</h3>
+      <p class="pp">Entrená cuando quieras, sin días fijos.</p>
+      <ul>
+        <li>Acceso libre en los horarios del espacio</li>
+        <li>Sin días ni horarios fijos</li>
+        <li>Acompañamiento del equipo en sala</li>
+        <li>Ideal si ya tenés tu rutina armada</li>
+      </ul>
+      <div class="price">💬 Consultá el valor mensual</div>
+      <button type="button" class="btn dark" data-plan="🔓 Pase libre">Me interesa</button>
+    </div>
+    <div class="plan">
+      <h3>Cuponera</h3>
+      <p class="pp">Un paquete de sesiones para usar a tu ritmo.</p>
+      <ul>
+        <li>Packs de 4, 8 o 12 sesiones</li>
+        <li>Entrenamiento, fisio o recuperación</li>
+        <li>Las usás cuando te quede cómodo</li>
+        <li>Ideal si viajás o tenés semanas cambiantes</li>
+      </ul>
+      <div class="cup" role="group" aria-label="Elegí el pack">
+        <button type="button" data-n="4">4</button><button type="button" class="on" data-n="8">8</button><button type="button" data-n="12">12</button>
+      </div>
+      <div class="price">💬 Consultá el valor de cada pack</div>
+      <button type="button" class="btn dark" data-plan="🎟️ Cuponera" id="cupBtn">Me interesa · 8 sesiones</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="horarios" style="padding-top:0"><div class="wrap">
+  <span class="kick">Horarios</span>
+  <h2 class="disp">Tu semana <span>en el espacio</span></h2>
+  <p class="sub">Clases, sala libre y turnos de fisio y recuperación. Elegí el día.</p>
+  <div class="days" id="hDias" role="tablist"></div>
+  <div class="hfil" id="hFil"></div>
+  <div class="slots" id="hSlots"></div>
+  <p class="note">* Horarios de ejemplo: se cargan los reales del espacio.</p>
 </div></section>
 
 <section id="entrevista"><div class="wrap">
@@ -257,52 +423,35 @@
   </div>
 </div></section>
 
-<section id="planes"><div class="wrap">
-  <span class="kick">Planes</span>
-  <h2 class="disp">Elegí cómo <span>entrenar</span></h2>
-  <p class="sub">Los detalles y el precio los definimos después de la entrevista, según lo que necesites.</p>
-  <div class="plans">
-    <div class="plan feat">
-      <span class="badge">Más completo</span>
-      <h3>Personalizado mensual</h3>
-      <p class="pp">Un plan hecho para vos, que se ajusta mes a mes.</p>
-      <ul>
-        <li>Entrevista inicial y evaluación</li>
-        <li>Plan de entrenamiento a tu medida</li>
-        <li>Seguimiento y ajustes cada mes</li>
-        <li>Re-evaluaciones para medir tu progreso</li>
-        <li>Contacto directo con tu entrenador</li>
-      </ul>
-      <div class="price">💬 Precio según lo que definamos en la entrevista</div>
-      <button type="button" class="btn" data-plan="🎯 Personalizado mensual">Me interesa</button>
+<section id="reto"><div class="wrap">
+  <div class="reto">
+    <div>
+      <span class="kick" style="color:#ff9a9e">Reto del mes</span>
+      <h2 class="disp" id="rTit">—</h2>
+      <p id="rDesc"></p>
+      <div class="cd" id="rCd" aria-live="off"></div>
+      <div class="acts" style="margin-top:20px"><button type="button" class="btn" id="rJoin">🔥 Sumarme al reto</button><button type="button" class="btn ghost light" id="rShare">Compartir mi progreso</button></div>
     </div>
-    <div class="plan">
-      <h3>Pase libre</h3>
-      <p class="pp">Entrená cuando quieras, sin días fijos.</p>
-      <ul>
-        <li>Acceso libre en los horarios del espacio</li>
-        <li>Sin días ni horarios fijos</li>
-        <li>Acompañamiento del equipo en sala</li>
-        <li>Ideal si ya tenés tu rutina armada</li>
-      </ul>
-      <div class="price">💬 Consultá el valor mensual</div>
-      <button type="button" class="btn dark" data-plan="🔓 Pase libre">Me interesa</button>
+    <div>
+      <div class="rhead"><b>Tu progreso</b><span id="rPct">0%</span></div>
+      <div class="rbar"><i id="rBar"></i></div>
+      <p class="rhint">Tocá cada día que cumpliste. Se guarda en tu celular.</p>
+      <div class="rgrid" id="rGrid"></div>
     </div>
-    <div class="plan">
-      <h3>Cuponera</h3>
-      <p class="pp">Un paquete de sesiones para usar a tu ritmo.</p>
-      <ul>
-        <li>Packs de 4, 8 o 12 sesiones</li>
-        <li>Entrenamiento, fisio o recuperación</li>
-        <li>Las usás cuando te quede cómodo</li>
-        <li>Ideal si viajás o tenés semanas cambiantes</li>
-      </ul>
-      <div class="cup" role="group" aria-label="Elegí el pack">
-        <button type="button" data-n="4">4</button><button type="button" class="on" data-n="8">8</button><button type="button" data-n="12">12</button>
-      </div>
-      <div class="price">💬 Consultá el valor de cada pack</div>
-      <button type="button" class="btn dark" data-plan="🎟️ Cuponera" id="cupBtn">Me interesa · 8 sesiones</button>
-    </div>
+  </div>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="wrap">
+  <span class="kick">Preguntas frecuentes</span>
+  <h2 class="disp" style="margin-bottom:24px">Lo que <span>siempre nos preguntan</span></h2>
+  <div class="faq">
+    <details><summary>¿Necesito tener experiencia?</summary><p>No. Arrancamos desde donde estés: justamente para eso hacemos la entrevista y la evaluación inicial.</p></details>
+    <details><summary>¿Qué pasa en la entrevista inicial?</summary><p>Es presencial. Charlamos sobre tus objetivos, tu deporte y tu historia de lesiones, y hacemos una evaluación de cómo te movés y de tu composición corporal. Con eso armamos la propuesta.</p></details>
+    <details><summary>¿Qué llevo a la primera vez?</summary><p>Ropa cómoda para moverte, calzado deportivo y agua. Si tenés estudios o indicaciones médicas, traelos.</p></details>
+    <details><summary>¿Trabajan con lesiones?</summary><p>Sí. Integramos fisio y recuperación al plan y, si hace falta, coordinamos con tu médico o traumatólogo.</p></details>
+    <details><summary>¿Entrenan para deportes específicos?</summary><p>Sí: running, fútbol, pádel, natación y más. Cada deporte tiene sus gestos y sus demandas, y el trabajo se adapta a eso.</p></details>
+    <details><summary>¿Puedo pausar el plan?</summary><p>Sí, avisándonos con anticipación [condiciones a confirmar].</p></details>
+    <details><summary>¿Cuánto dura la cuponera?</summary><p>Las sesiones se usan dentro de un plazo [a confirmar] desde la compra.</p></details>
   </div>
 </div></section>
 
@@ -425,13 +574,15 @@ $$(".cup button").forEach(b => b.onclick = () => {
 const planTxt = () => R.plan ? R.plan.replace(/^\S+\s/, "") + (R.plan.includes("Cuponera") ? ` de ${pack} sesiones` : "") : "";
 
 /* K2 · "Me interesa" precarga el plan en la entrevista */
-$$("[data-plan]").forEach(b => b.onclick = () => {
-  R.plan = b.dataset.plan;
+function elegirPlan(plan, n){
+  R.plan = plan;
+  if (n) $(`.cup button[data-n="${n}"]`).click();
   pintar($('[data-k="plan"]'), "plan");
   if (paso === PASOS) resumen();
   $("#entrevista").scrollIntoView({behavior:"smooth"});
   toastPlan(planTxt());
-});
+}
+$$("[data-plan]").forEach(b => b.onclick = () => elegirPlan(b.dataset.plan));
 function toastPlan(p){
   $("#err").style.color = "var(--ok)";
   $("#err").textContent = `✓ Anotamos que te interesa el plan ${p}. Completá la entrevista y lo vemos juntos.`;
@@ -446,6 +597,171 @@ $("#waLink").onclick = e => {
   else window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(m), "_blank");
 };
 
+/* ================== K4 · Historias (ejemplo) ==================
+   menos: true si bajar el número es mejorar (tiempo, % grasa, dolor) */
+const HISTORIAS = [
+  {n:"Martina", d:"29 años · Running", obj:"Bajar su tiempo en 10K sin dolor de rodilla", q:"Corro más rápido y sin dolor. Nunca había entrenado fuerza.",
+   m:[{l:"Tiempo en 10K", a:3510, b:3070, f:"tiempo", menos:true}, {l:"Evaluación de movimiento", a:12, b:17, u:"/21"}, {l:"Dolor de rodilla", a:6, b:1, u:"/10", menos:true}]},
+  {n:"Diego", d:"41 años · Pádel", obj:"Volver a jugar después de una lesión de hombro", q:"Volví a la cancha y sin miedo a lastimarme.",
+   m:[{l:"Movilidad del hombro", a:120, b:170, u:"°"}, {l:"Fuerza de empuje", a:12, b:20, u:" kg"}, {l:"Días con dolor por semana", a:4, b:0, menos:true}]},
+  {n:"Sofía", d:"35 años · Salud", obj:"Sentirse mejor y sostener el hábito", q:"Por primera vez entreno con un plan y lo sostengo.",
+   m:[{l:"% de grasa corporal", a:31, b:25, u:"%", menos:true}, {l:"Masa muscular", a:22.5, b:25.1, u:" kg"}, {l:"Entrenamientos por semana", a:1, b:3}]}
+];
+const fmtV = (v, x) => x.f === "tiempo" ? `${Math.floor(v/60)}:${String(v%60).padStart(2,"0")}` : `${String(v).replace(".", ",")}${x.u || ""}`;
+function renderHist(){
+  $("#hist").innerHTML = HISTORIAS.map((h, i) => `<article class="hc" data-i="${i}">
+    <div class="who"><span class="av">${h.n[0]}</span><div><b>${h.n}</b><small>${h.d}</small></div></div>
+    <small style="color:var(--muted)">🎯 ${h.obj}</small>
+    <div class="tg" role="group" aria-label="Comparar"><button type="button" class="on" data-v="a">Antes</button><button type="button" class="d" data-v="b">Después</button></div>
+    <div class="met">${h.m.map(x => {
+      const dif = Math.abs(x.b - x.a), dTxt = x.f === "tiempo" ? `−${Math.floor(dif/60)}:${String(dif%60).padStart(2,"0")}` : `${x.b > x.a ? "+" : "−"}${String(Math.round(dif*10)/10).replace(".", ",")}${x.u && !x.u.startsWith("/") ? x.u : ""}`;
+      return `<div><div class="l"><span>${x.l}<span class="delta">${dTxt}</span></span><b data-a="${fmtV(x.a, x)}" data-b="${fmtV(x.b, x)}">${fmtV(x.a, x)}</b></div>
+        <div class="tr"><i data-a="${barra(x, "a")}" data-b="${barra(x, "b")}" style="width:${barra(x, "a")}%"></i></div></div>`;
+    }).join("")}</div>
+    <q>${h.q}</q></article>`).join("");
+  $$(".hc").forEach(c => c.querySelectorAll(".tg button").forEach(b => b.onclick = () => {
+    const v = b.dataset.v;
+    c.classList.toggle("after", v === "b");
+    c.querySelectorAll(".tg button").forEach(x => x.classList.toggle("on", x === b));
+    c.querySelectorAll(".met b").forEach(x => x.textContent = x.dataset[v]);
+    c.querySelectorAll(".met i").forEach(x => x.style.width = x.dataset[v] + "%");
+  }));
+}
+/* La barra crece cuando mejora: si "menos es mejor", se invierte */
+function barra(x, k){
+  const max = Math.max(x.a, x.b) * 1.15, v = x[k];
+  return Math.round((x.menos ? (max - v) / max * 100 + 12 : v / max * 100));
+}
+
+/* ================== K5 · Semana ideal ================== */
+const S = {dias:[], agenda:"", busca:""};
+$$("[data-s]").forEach(g => {
+  const k = g.dataset.s, multi = !!g.dataset.multi;
+  g.querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    const v = b.textContent.trim();
+    if (multi) S[k] = S[k].includes(v) ? S[k].filter(x => x !== v) : [...S[k], v];
+    else S[k] = S[k] === v ? "" : v;
+    g.querySelectorAll(".chip").forEach(x => { const on = multi ? S[k].includes(x.textContent.trim()) : S[k] === x.textContent.trim(); x.classList.toggle("on", on); x.setAttribute("aria-pressed", on); });
+    renderIdeal();
+  });
+});
+function renderIdeal(){
+  const wk = `<div class="wk">${["Lun","Mar","Mié","Jue","Vie","Sáb"].map(d => `<span class="${S.dias.includes(d) ? "on" : ""}">${d}</span>`).join("")}</div>`;
+  if (!S.dias.length || !S.agenda || !S.busca){
+    $("#idealR").innerHTML = wk + `<p>Completá las tres preguntas y te decimos qué plan te conviene.</p>`;
+    return;
+  }
+  const n = S.dias.length;
+  let plan, nom, por, pk = 0;
+  if (S.busca === "Sesiones puntuales" || S.agenda !== "Son fijos"){
+    pk = n * 4 <= 4 ? 4 : n * 4 <= 8 ? 8 : 12;
+    plan = "🎟️ Cuponera"; nom = `Cuponera de ${pk}`;
+    por = S.agenda === "Viajo bastante" ? "Como viajás, te conviene usar las sesiones cuando estés, sin perder días." : S.busca === "Sesiones puntuales" ? "Para sesiones puntuales de entrenamiento, fisio o recuperación, la cuponera es lo más práctico." : "Con horarios que cambian, la cuponera te deja venir cuando puedas.";
+  } else if (S.busca === "Ya tengo mi rutina"){
+    plan = "🔓 Pase libre"; nom = "Pase libre";
+    por = `Ya tenés tu rutina y ${n} día${n > 1 ? "s" : ""} fijo${n > 1 ? "s" : ""}: con el pase libre venís cuando quieras.`;
+  } else {
+    plan = "🎯 Personalizado mensual"; nom = "Personalizado";
+    por = `Con ${n} día${n > 1 ? "s" : ""} fijo${n > 1 ? "s" : ""} y alguien que te guíe, el personalizado te saca el máximo.`;
+  }
+  $("#idealR").innerHTML = wk + `<small style="color:var(--muted);font-weight:700">Te sugerimos</small><div class="rec">${nom}</div><p>${por}</p>
+    <button type="button" class="btn sm" id="idealBtn">Me interesa</button>`;
+  $("#idealBtn").onclick = () => elegirPlan(plan, pk);
+}
+
+/* ================== K3 · Horarios (ejemplo) ================== */
+const TIPOS = {
+  clase:   {n:"Clase grupal", c:"#d9262c", pl:"Pase libre"},
+  sala:    {n:"Sala libre", c:"#18181b", pl:"Pase libre"},
+  run:     {n:"Running", c:"#f08a24", pl:"Pase libre"},
+  fisio:   {n:"Fisio", c:"#2563eb", pl:"Con turno"},
+  recup:   {n:"Recuperación", c:"#1f9d55", pl:"Con turno"}
+};
+const BASE = [["07:00","sala","Sala libre","Entrená con tu plan"],["08:00","clase","Fuerza funcional","Grupo reducido"],["12:30","clase","Movilidad y core","45 minutos"],["14:00","fisio","Fisio","Evaluación y tratamiento"],["17:00","recup","Recuperación","Movilidad, liberación y descarga"],["18:30","run","Running: técnica y series","Pista / rambla"],["19:30","sala","Sala libre","Entrená con tu plan"]];
+const HORARIOS = {
+  1: BASE, 3: BASE, 5: BASE,
+  2: [["07:00","sala","Sala libre","Entrená con tu plan"],["09:00","clase","Fuerza para corredores","Prevención de lesiones"],["14:00","fisio","Fisio","Evaluación y tratamiento"],["18:00","clase","Preparación para pádel","Gestos y explosividad"],["19:30","recup","Recuperación","Movilidad, liberación y descarga"]],
+  4: [["07:00","sala","Sala libre","Entrená con tu plan"],["09:00","clase","Fuerza para corredores","Prevención de lesiones"],["14:00","fisio","Fisio","Evaluación y tratamiento"],["18:00","clase","Preparación para fútbol","Velocidad y cambios de dirección"],["19:30","sala","Sala libre","Entrená con tu plan"]],
+  6: [["09:00","run","Fondo largo","Salida grupal por la rambla"],["10:30","clase","Movilidad y core","45 minutos"],["11:30","recup","Recuperación","Movilidad, liberación y descarga"]]
+};
+const NOMD = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const ahoraUY = () => new Date(new Date().toLocaleString("en-US", {timeZone: "America/Montevideo"}));
+let hDia = ahoraUY().getDay() || 1, hOff = new Set();
+function renderHorarios(){
+  const hoy = ahoraUY().getDay();
+  $("#hDias").innerHTML = [1,2,3,4,5,6].map(d => `<button type="button" class="day ${d === hDia ? "on" : ""}" role="tab" aria-selected="${d === hDia}" data-d="${d}">${NOMD[d].slice(0,3)}<small>${d === hoy ? "Hoy" : HORARIOS[d].length + " act."}</small></button>`).join("");
+  $$("#hDias .day").forEach(b => b.onclick = () => { hDia = +b.dataset.d; renderHorarios(); });
+  $("#hFil").innerHTML = Object.entries(TIPOS).map(([k, t]) => `<button type="button" class="${hOff.has(k) ? "off" : "on"}" data-t="${k}" aria-pressed="${!hOff.has(k)}"><i style="background:${t.c}"></i>${t.n}</button>`).join("");
+  $$("#hFil button").forEach(b => b.onclick = () => { const k = b.dataset.t; hOff.has(k) ? hOff.delete(k) : hOff.add(k); renderHorarios(); });
+  const now = ahoraUY(), min = now.getHours()*60 + now.getMinutes();
+  const lista = HORARIOS[hDia].filter(x => !hOff.has(x[1]));
+  const aMin = hora => { const [h, m] = hora.split(":").map(Number); return h*60 + m; };
+  $("#hSlots").innerHTML = lista.length ? lista.map(x => {
+    const t = TIPOS[x[1]], ini = aMin(x[0]), fin = ini + 60;   // cada actividad dura ~1 hora
+    const esHoy = hDia === hoy, ahora = esHoy && min >= ini && min < fin, pasado = esHoy && min >= fin;
+    return `<div class="slot ${ahora ? "now" : ""} ${pasado ? "past" : ""}" style="--c:${t.c}"><time>${x[0]}</time><div><b>${x[2]}${ahora ? `<span class="nowb">● AHORA</span>` : ""}</b><small>${x[3]}</small></div><span class="pl">${t.pl === "Pase libre" ? "🔓 " : "📅 "}${t.pl}</span></div>`;
+  }).join("") : `<p class="note">No hay actividades con este filtro.</p>`;
+}
+
+/* ================== K7 · Reto del mes ================== */
+const RETOS = [
+  ["Enero en movimiento", "20 minutos de movimiento por día, aunque sea de vacaciones."],
+  ["Febrero de fuerza", "3 sesiones de fuerza por semana durante todo el mes."],
+  ["Marzo, vuelta a la rutina", "Entrená al menos 12 días este mes."],
+  ["Abril de movilidad", "10 minutos de movilidad cada día: cadera, columna y hombros."],
+  ["Mayo, a correr", "Sumá 50 km corriendo o caminando rápido en el mes."],
+  ["Junio de core", "Plancha diaria: arrancá en 30 segundos y sumá 5 por día."],
+  ["Julio sin excusas", "Entrená aunque haga frío: 15 sesiones en el mes."],
+  ["Agosto de recuperación", "Dormí 7 horas o más y hacé 10 minutos de descarga por día."],
+  ["Septiembre de velocidad", "2 sesiones de series o cambios de ritmo por semana."],
+  ["Octubre de hábitos", "2 litros de agua y 8.000 pasos por día."],
+  ["Noviembre en movimiento", "20 minutos de movilidad o entrenamiento cada día del mes."],
+  ["Diciembre activo", "Llegá a fin de año moviéndote: 20 sesiones antes del 31."]
+];
+const rKey = () => { const d = ahoraUY(); return `kogan-reto-${d.getFullYear()}-${d.getMonth()+1}`; };
+let rHechos = [];
+try { rHechos = JSON.parse(localStorage.getItem(rKey()) || "[]"); } catch (e) {}
+function renderReto(){
+  const d = ahoraUY(), mes = d.getMonth(), total = new Date(d.getFullYear(), mes + 1, 0).getDate(), hoy = d.getDate();
+  $("#rTit").textContent = RETOS[mes][0];
+  $("#rDesc").textContent = RETOS[mes][1];
+  const pad = (new Date(d.getFullYear(), mes, 1).getDay() + 6) % 7;   // empieza en lunes
+  $("#rGrid").innerHTML = "<span></span>".repeat(pad) + Array.from({length: total}, (_, i) => i + 1).map(n =>
+    `<button type="button" class="${rHechos.includes(n) ? "on" : ""} ${n === hoy ? "hoy" : ""}" data-n="${n}" ${n > hoy ? "disabled" : ""} aria-pressed="${rHechos.includes(n)}" aria-label="Día ${n}">${n}</button>`).join("");
+  $$("#rGrid button:not([disabled])").forEach(b => b.onclick = () => {
+    const n = +b.dataset.n;
+    rHechos = rHechos.includes(n) ? rHechos.filter(x => x !== n) : [...rHechos, n];
+    try { localStorage.setItem(rKey(), JSON.stringify(rHechos)); } catch (e) {}
+    renderReto();
+  });
+  const pct = Math.round(rHechos.length / total * 100);
+  $("#rPct").textContent = `${rHechos.length}/${total} días`;
+  $("#rBar").style.width = pct + "%";
+}
+function cuentaReto(){
+  const d = ahoraUY(), fin = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+  let s = Math.max(0, Math.floor((fin - d) / 1000));
+  const dd = Math.floor(s / 86400); s %= 86400;
+  const hh = Math.floor(s / 3600); s %= 3600;
+  const mm = Math.floor(s / 60), ss = s % 60;
+  $("#rCd").innerHTML = [[dd,"días"],[hh,"horas"],[mm,"min"],[ss,"seg"]].map(([v, l]) => `<div><b>${String(v).padStart(2,"0")}</b><small>${l}</small></div>`).join("");
+  $("#rCd").setAttribute("aria-label", `Quedan ${dd} días y ${hh} horas para terminar el reto`);
+}
+$("#rJoin").onclick = () => {
+  const m = `¡Hola Kogan Training! 🔥 Me quiero sumar al reto del mes: "${RETOS[ahoraUY().getMonth()][0]}".`;
+  if (!CONFIG.whatsapp) alert("Demo: acá se abre WhatsApp con el mensaje:\n\n" + m);
+  else window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(m), "_blank");
+};
+$("#rShare").onclick = async () => {
+  const total = new Date(ahoraUY().getFullYear(), ahoraUY().getMonth() + 1, 0).getDate();
+  const txt = `Voy ${rHechos.length}/${total} días en el reto "${RETOS[ahoraUY().getMonth()][0]}" de @kogantraining 💪🔥`;
+  if (navigator.share) { try { await navigator.share({text: txt}); return; } catch (e) { if (e.name === "AbortError") return; } }
+  window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank");
+};
+
+renderHist(); renderIdeal(); renderHorarios(); renderReto(); cuentaReto();
+setInterval(cuentaReto, 1000);
+setInterval(renderHorarios, 60000);
 ir(1);
 </script>
 </body>
