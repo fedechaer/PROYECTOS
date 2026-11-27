@@ -269,10 +269,11 @@ function proximosDias(){
   for (let i = 0; i < CONFIG.diasAdelante; i++){ const d = new Date(now); d.setHours(0,0,0,0); d.setDate(d.getDate() + i); out.push(d); }
   return out;
 }
+const mezcla = x => { x = Math.imul(x ^ (x >>> 16), 0x45d9f3b); x = Math.imul(x ^ (x >>> 16), 0x45d9f3b); return (x ^ (x >>> 16)) >>> 0; };
 /* Agenda de ejemplo: ocupación fija por fecha, profesional y bloque (en un sitio real vendría de una agenda) */
 function ocupado(d, pro, minuto){
-  const h = ((d.getFullYear()*400 + d.getMonth()*32 + d.getDate()) * 31 + pro.charCodeAt(0) * 7 + minuto) * 2654435761 % 4294967296;
-  return h % 100 < 38;
+  const h = ((d.getFullYear()*400 + d.getMonth()*32 + d.getDate()) * 31 + pro.charCodeAt(0) * 7 + minuto);
+  return mezcla(h) % 100 < 38;
 }
 function libre(d, proId, inicio, dur){
   const pros = proId === "any" ? PROS.filter(p => p.id !== "any" && proHace(p)) : [PROS.find(p => p.id === proId)];

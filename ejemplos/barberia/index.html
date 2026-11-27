@@ -4,102 +4,491 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Filo Barbería</title>
-<meta name="description" content="Filo Barbería. Cortes y barba para caballeros, niños y adolescentes en Montevideo.">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Filo Barbería. Cortes y barba para caballeros, niños y adolescentes en Montevideo. Mirá precios y reservá tu turno online. Sitio de ejemplo.">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#f2efe9;--ink:#141414;--muted:#5d5a55;--red:#c1272d;--blue:#1d3a6e;--line:#d9d3c8}
+  :root{--bg:#f2efe9;--ink:#141414;--muted:#5d5a55;--red:#c1272d;--red-d:#9c1d22;--blue:#1d3a6e;--line:#d9d3c8;--ok:#2f7d4a}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  html{scroll-behavior:smooth}
+  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:60px}
+  button,input{font:inherit;color:inherit}
+  button{cursor:pointer}
   a{color:inherit}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
   .stripe{height:8px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 28px,var(--blue) 28px 42px,#fff 42px 56px)}
-  header{background:var(--ink);color:#fff}
-  nav{display:flex;justify-content:space-between;align-items:center;height:68px}
-  .logo{font-family:Oswald,sans-serif;font-size:1.5rem;letter-spacing:.06em;text-transform:uppercase}
+  header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:10}
+  nav{display:flex;justify-content:space-between;align-items:center;height:64px;gap:10px}
+  .logo{font-family:Oswald,sans-serif;font-size:1.45rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
   .logo b{color:var(--red)}
-  .call{background:var(--red);color:#fff;text-decoration:none;padding:9px 18px;font-family:Oswald;letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
-  .hero{background:var(--ink);color:#fff;padding:80px 0 100px}
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav ul a{text-decoration:none;color:#bdb8b0;font-size:.92rem;text-transform:uppercase;letter-spacing:.06em}
+  .call{background:var(--red);color:#fff;text-decoration:none;padding:9px 16px;font-family:Oswald;letter-spacing:.08em;text-transform:uppercase;font-size:.92rem;white-space:nowrap;border:0}
+  .hero{background:var(--ink);color:#fff;padding:72px 0 88px}
   .hero h1{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:clamp(2.8rem,9vw,6rem);line-height:.95}
   .hero h1 span{color:var(--red)}
-  .hero p{color:#bdb8b0;max-width:480px;margin:22px 0 32px;font-size:1.1rem}
-  .btn{display:inline-block;background:#fff;color:var(--ink);padding:15px 30px;text-decoration:none;font-family:Oswald;letter-spacing:.1em;text-transform:uppercase}
-  section{padding:80px 0}
-  h2{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:2.4rem;margin-bottom:30px}
-  .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 48px}
-  .row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:2px solid var(--line)}
-  .row h3{font-weight:600;font-size:1.1rem}
-  .row small{display:block;color:var(--muted);font-weight:400}
-  .row span{font-family:Oswald;font-size:1.2rem;color:var(--red)}
-  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-  .who div{background:#fff;border:2px solid var(--ink);padding:24px;text-align:center}
-  .who b{display:block;font-family:Oswald;font-size:1.4rem;text-transform:uppercase}
+  .hero p{color:#bdb8b0;max-width:480px;margin:22px 0 30px;font-size:1.08rem}
+  .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--ink);padding:14px 26px;text-decoration:none;font-family:Oswald;letter-spacing:.1em;text-transform:uppercase;border:0}
+  .btn.red{background:var(--red);color:#fff}
+  .btn.red:hover{background:var(--red-d)}
+  .btn.out{background:transparent;color:#fff;border:2px solid #fff}
+  .open{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;margin-bottom:18px;color:#bdb8b0}
+  .open i{width:9px;height:9px;border-radius:50%;background:#888}
+  .open.si i{background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+  section{padding:64px 0}
+  h2{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:clamp(1.9rem,6vw,2.4rem);line-height:1.1;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:24px}
+  .note{color:var(--muted);font-size:.85rem;margin-top:14px}
+
+  /* B2 · Servicios */
+  .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 48px}
+  .row{display:grid;grid-template-columns:1fr auto auto;gap:4px 14px;align-items:center;padding:14px 0;border-bottom:2px solid var(--line)}
+  .row h3{font-weight:600;font-size:1.06rem;line-height:1.3}
+  .row small{display:block;color:var(--muted);font-weight:400;font-size:.88rem}
+  .row .tag{display:inline-block;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:1px 7px;margin-left:6px;vertical-align:2px}
+  .row .pr{text-align:right;font-family:Oswald;font-size:1.2rem;color:var(--red);line-height:1.1}
+  .row .pr small{font-family:'Work Sans';font-size:.78rem;color:var(--muted)}
+  .row .pr s{font-family:'Work Sans';font-size:.78rem;color:var(--muted);display:block}
+  .add{width:40px;height:40px;border:2px solid var(--ink);background:#fff;font-weight:700;font-size:1.2rem;display:grid;place-items:center}
+  .add.on{background:var(--ink);color:#fff}
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .who div{background:#fff;border:2px solid var(--ink);padding:20px;text-align:center}
+  .who b{display:block;font-family:Oswald;font-size:1.3rem;text-transform:uppercase}
+
+  /* B1 · Turno */
+  #reservar{background:#fff;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .book{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+  .book>div{min-width:0}
+  .step{padding:16px 0;border-bottom:2px dashed var(--line)}
+  .step:first-child{padding-top:0}
+  .step h3{display:flex;align-items:center;gap:10px;font-family:Oswald;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem;margin-bottom:12px}
+  .step h3 i{font-style:normal;width:28px;height:28px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:.85rem;flex:none}
+  .step.done h3 i{background:var(--ok)}
+  .step h3 small{margin-left:auto;font-family:'Work Sans';text-transform:none;letter-spacing:0;font-weight:500;color:var(--muted);font-size:.88rem;text-align:right}
+  .picked{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:2px solid var(--ink);padding:5px 10px;font-size:.88rem;font-weight:600;text-decoration:none}
+  .pill button{border:0;background:none;color:var(--red);font-weight:700}
+  .empty{color:var(--muted);font-size:.92rem}
+  .tip{margin-top:12px;background:#fff6d6;border:2px solid #e8c547;padding:10px 12px;font-size:.9rem;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .tip button{background:var(--ink);color:#fff;border:0;padding:7px 12px;font-weight:700;font-size:.85rem}
+  .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .opt{border:2px solid var(--line);background:#fff;padding:8px 12px;font-weight:600;font-size:.92rem;display:flex;align-items:center;gap:8px}
+  .opt .av{width:26px;height:26px;display:grid;place-items:center;color:#fff;font-size:.78rem;font-weight:700;font-family:Oswald}
+  .opt.on{border-color:var(--ink);background:var(--ink);color:#fff}
+  .express{width:100%;margin-bottom:12px;background:var(--blue);color:#fff;border:0;padding:12px;font-family:Oswald;letter-spacing:.08em;text-transform:uppercase}
+  .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+  .day{flex:0 0 auto;width:60px;border:2px solid var(--line);background:#fff;padding:7px 0;text-align:center;scroll-snap-align:start}
+  .day small{display:block;color:var(--muted);font-size:.7rem;text-transform:uppercase;font-weight:700}
+  .day b{font-family:Oswald;font-size:1.3rem}
+  .day.on{background:var(--red);border-color:var(--red);color:#fff}
+  .day.on small{color:#ffd9d9}
+  .day:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+  .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px}
+  .slot{border:2px solid var(--line);background:#fff;padding:8px 0;font-weight:600}
+  .slot.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .slot:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .two input{width:100%;padding:12px;border:2px solid var(--line);background:#fff}
+  .two input:focus{outline:none;border-color:var(--ink)}
+  .sum{position:sticky;top:84px;background:var(--ink);color:#fff;padding:22px}
+  .sum h3{font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .sum .r{display:flex;justify-content:space-between;gap:10px;font-size:.93rem;padding:4px 0}
+  .sum .r span:first-child{color:#a7a29a}
+  .sum .r span:last-child{text-align:right}
+  .sum .tot{border-top:1px dashed #555;margin-top:8px;padding-top:10px;font-family:Oswald;font-size:1.25rem}
+  .sum .save{color:#3ddc84;font-size:.88rem;text-align:right}
+  .sum .btn{width:100%;margin-top:14px;background:#25d366;color:#fff}
+  .err{color:#ff8a80;font-weight:600;font-size:.9rem;min-height:1.3em;margin-top:8px}
+  .ok{display:none;background:#1f3d2a;border:1px solid #2f7d4a;padding:12px;margin-top:10px;font-size:.92rem}
+  .ok.show{display:block}
+
+  /* B3 · Estilos */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{border:2px solid var(--ink);background:#fff;padding:7px 14px;font-family:Oswald;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem}
+  .tab.on{background:var(--ink);color:#fff}
+  .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+  .sty{background:#fff;border:2px solid var(--ink);display:flex;flex-direction:column}
+  .sty svg{display:block;width:100%;aspect-ratio:1;background:#e7e2d8}
+  .sty .cap{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .sty b{font-family:Oswald;text-transform:uppercase;letter-spacing:.04em;font-size:1.08rem}
+  .sty small{color:var(--muted);font-size:.86rem;flex:1}
+  .sty button{margin-top:8px;background:var(--red);color:#fff;border:0;padding:9px;font-family:Oswald;letter-spacing:.08em;text-transform:uppercase;font-size:.88rem}
+  .sty button.on{background:var(--ok)}
+
   .hours{background:var(--blue);color:#fff}
   .hours .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
   table{width:100%;border-collapse:collapse}
-  td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+  td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.2)}
   td:last-child{text-align:right;font-weight:600}
   tr.today td{color:#ffd166}
   .closed{opacity:.6}
   iframe{width:100%;height:320px;border:0}
   footer{background:var(--ink);color:#999;text-align:center;padding:26px 0;font-size:.9rem}
-  @media(max-width:720px){.who{grid-template-columns:1fr}.hours .wrap{grid-template-columns:1fr}}
+  .wa{position:fixed;right:18px;bottom:60px;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:20}
+  .wa svg{width:30px;height:30px;fill:#fff}
+  @media(max-width:860px){.book{grid-template-columns:1fr}.sum{position:static}}
+  @media(max-width:720px){nav ul{display:none}.who{grid-template-columns:1fr}.hours .wrap{grid-template-columns:1fr}.hero{padding:52px 0 64px}section{padding:52px 0}}
+  @media(max-width:560px){.gal{grid-template-columns:1fr 1fr;gap:10px}.sty .cap{padding:9px 10px 11px}.sty b{font-size:.95rem}.sty small{font-size:.8rem}.who{gap:10px}}
+  @media(max-width:400px){.two{grid-template-columns:1fr}.call.tel{display:none}}
 </style>
 </head>
 <body>
 <div class="stripe"></div>
 <header><nav class="wrap">
-  <div class="logo">Filo <b>Barbería</b></div>
-  <a class="call" href="tel:29000000">Llamar</a>
+  <a class="logo" href="#">Filo <b>Barbería</b></a>
+  <ul><li><a href="#servicios">Precios</a></li><li><a href="#reservar">Turnos</a></li><li><a href="#estilos">Estilos</a></li><li><a href="#horarios">Horarios</a></li></ul>
+  <div style="display:flex;gap:8px"><a class="call tel" href="tel:29000000" style="background:transparent;border:2px solid #fff;padding:7px 12px">Llamar</a><a class="call" href="#reservar">Reservar</a></div>
 </nav></header>
 
 <div class="hero"><div class="wrap">
+  <div class="open" id="open"><i></i><span>—</span></div>
   <h1>Corte &amp; barba<br><span>de barrio</span></h1>
-  <p>Todo tipo de cortes de cabello y barba para caballeros, niños y adolescentes. En el centro de tu barrio.</p>
-  <a class="btn" href="tel:29000000">Pedí tu turno · 2900 0000</a>
+  <p>Todo tipo de cortes de cabello y barba para caballeros, niños y adolescentes. Mirá los precios y sacá tu turno sin esperar.</p>
+  <div class="acts">
+    <a class="btn red" href="#reservar">Reservar turno</a>
+    <a class="btn out" href="#estilos">Ver estilos</a>
+  </div>
 </div></div>
 <div class="stripe"></div>
 
-<section><div class="wrap">
-  <h2>Servicios</h2>
-  <div class="list">
-    <div class="row"><h3>Corte clásico<small>Tijera y máquina</small></h3><span>$ —</span></div>
-    <div class="row"><h3>Fade / degradé<small>Bajo, medio o alto</small></h3><span>$ —</span></div>
-    <div class="row"><h3>Barba<small>Perfilado y toalla caliente</small></h3><span>$ —</span></div>
-    <div class="row"><h3>Corte + barba<small>El combo completo</small></h3><span>$ —</span></div>
-    <div class="row"><h3>Corte niños<small>Hasta 12 años</small></h3><span>$ —</span></div>
-    <div class="row"><h3>Diseños<small>Líneas y dibujos</small></h3><span>$ —</span></div>
-  </div>
+<section id="servicios"><div class="wrap">
+  <h2>Servicios y precios</h2>
+  <p class="sub">Tocá el <b>+</b> para sumarlo a tu turno.</p>
+  <div class="list" id="list"></div>
   <div class="who">
     <div><b>Caballeros</b>Clásico o moderno</div>
     <div><b>Adolescentes</b>Lo que esté de moda</div>
     <div><b>Niños</b>Con paciencia</div>
   </div>
+  <p class="note">* Precios de ejemplo.</p>
 </div></section>
 
-<section class="hours"><div class="wrap">
+<section id="reservar"><div class="wrap">
+  <h2>Sacá tu turno</h2>
+  <p class="sub">Sin llamar y sin esperar. Te confirmamos por WhatsApp.</p>
+  <div class="book">
+    <div>
+      <div class="step" id="s1"><h3><i>1</i>¿Qué te hacés? <small id="s1Info"></small></h3><div class="picked" id="picked"></div><div id="tip"></div></div>
+      <div class="step" id="s2"><h3><i>2</i>¿Con quién?</h3><div class="opts" id="pros"></div></div>
+      <div class="step" id="s3"><h3><i>3</i>¿Cuándo? <small id="s3Info"></small></h3>
+        <button type="button" class="express" id="express">⚡ Dame el próximo lugar libre</button>
+        <div class="days" id="days"></div></div>
+      <div class="step" id="s4"><h3><i>4</i>¿A qué hora? <small id="s4Info"></small></h3><div class="slots" id="slots"></div></div>
+      <div class="step" id="s5" style="border-bottom:0"><h3><i>5</i>Tus datos</h3>
+        <div class="two"><input id="nom" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre"><input id="tel" placeholder="Tu WhatsApp" inputmode="tel" autocomplete="tel" aria-label="Tu WhatsApp"></div>
+      </div>
+    </div>
+    <div class="sum" aria-live="polite"><h3>Tu turno</h3><div id="sum"></div>
+      <button class="btn" type="button" id="send">💬 Pedir turno por WhatsApp</button>
+      <div class="err" id="err"></div>
+      <div class="ok" id="ok">✅ <b>¡Listo!</b> Te llegó el pedido a la barbería. Te confirmamos en breve.</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="estilos"><div class="wrap">
+  <h2>Elegí tu estilo</h2>
+  <p class="sub">¿No sabés cómo pedirlo? Elegilo acá y le llega al barbero junto con el turno.</p>
+  <div class="filters" id="gf"></div>
+  <div class="gal" id="gal"></div>
+  <p class="note">* Ilustraciones de ejemplo: acá van fotos reales de trabajos de la barbería.</p>
+</div></section>
+
+<section class="hours" id="horarios"><div class="wrap">
   <div>
     <h2>Horarios</h2>
-    <table id="tabla">
-      <tr data-d="1"><td>Lunes</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="2"><td>Martes</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="3"><td>Miércoles</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="4"><td>Jueves</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="5"><td>Viernes</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="6"><td>Sábado</td><td>10:00 – 19:00</td></tr>
-      <tr data-d="0" class="closed"><td>Domingo</td><td>Cerrado</td></tr>
-    </table>
+    <table id="tabla"></table>
     <p style="margin-top:18px;opacity:.85">📍 Av. Ejemplo 1234, Montevideo</p>
   </div>
   <iframe loading="lazy" title="Mapa" src="https://www.google.com/maps?q=Montevideo,+Uruguay&output=embed"></iframe>
 </div></section>
 
 <footer>© Filo Barbería · Montevideo</footer>
-<script>
-  // Resalta el día de hoy en la tabla de horarios
-  const hoy=new Date().getDay();
-  document.querySelector('#tabla tr[data-d="'+hoy+'"]')?.classList.add('today');
-</script>
+
+<a class="wa" href="#reservar" aria-label="Reservar turno por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg>
+</a>
 
 <a href="../../" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9999;background:rgba(17,17,17,.88);color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 14px;border-radius:99px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);white-space:nowrap">Sitio de ejemplo · hecho por Federico Chaer ↗</a>
+
+<script>
+/* ================== CONFIGURACIÓN (ejemplo) ================== */
+const CONFIG = {
+  whatsapp: "",                                          // 598 + número sin el 0
+  horario: {1:[10,19],2:[10,19],3:[10,19],4:[10,19],5:[10,19],6:[10,19]},   // 0 = domingo (cerrado)
+  bloque: 15,                                            // minutos por bloque de agenda
+  diasAdelante: 10
+};
+/* combo: reemplaza a los servicios de "incluye" y cuesta menos */
+const SERVICIOS = [
+  {id:"cl", n:"Corte clásico", d:"Tijera y máquina", min:30, p:550},
+  {id:"fd", n:"Fade / degradé", d:"Bajo, medio o alto", min:45, p:650},
+  {id:"ba", n:"Barba", d:"Perfilado y toalla caliente", min:30, p:400},
+  {id:"cb", n:"Corte + barba", d:"El combo completo", min:60, p:850, combo:["cl","ba"]},
+  {id:"fb", n:"Fade + barba", d:"Degradé con barba perfilada", min:75, p:950, combo:["fd","ba"]},
+  {id:"ni", n:"Corte niños", d:"Hasta 12 años", min:30, p:450},
+  {id:"di", n:"Diseño", d:"Líneas y dibujos (se suma al corte)", min:15, p:200},
+  {id:"ce", n:"Cejas", d:"Perfilado con navaja", min:15, p:150}
+];
+const PROS = [
+  {id:"any", n:"El primero libre", c:"#c1272d"},
+  {id:"nic", n:"Nico", c:"#141414"},
+  {id:"tat", n:"Tato", c:"#1d3a6e"},
+  {id:"gon", n:"Gonza", c:"#6b4f2a"}
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const fmt = n => "$ " + n.toLocaleString("es-UY");
+const durTxt = m => m < 60 ? `${m} min` : `${Math.floor(m/60)} h${m%60 ? " " + m%60 + " min" : ""}`;
+const hhmm = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
+const DSEM = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const DSEML = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const svc = id => SERVICIOS.find(s => s.id === id);
+const hoyUY = () => new Date(new Date().toLocaleString("en-US",{timeZone:"America/Montevideo"}));
+
+const sel = {svcs:[], pro:"any", dia:null, hora:null, estilo:null};
+
+/* ================== B2 · Servicios con precio y duración ================== */
+function renderList(){
+  $("#list").innerHTML = SERVICIOS.map(s => {
+    const on = sel.svcs.includes(s.id);
+    const suelto = s.combo ? s.combo.reduce((a, id) => a + svc(id).p, 0) : 0;
+    return `<div class="row"><h3>${s.n}${s.combo ? `<span class="tag">Combo</span>` : ""}<small>${s.d} · ⏱ ${durTxt(s.min)}</small></h3>
+      <div class="pr">${s.combo ? `<s>${fmt(suelto)}</s>` : ""}${fmt(s.p)}</div>
+      <button class="add ${on?'on':''}" data-id="${s.id}" aria-pressed="${on}" aria-label="${on ? "Quitar" : "Agregar"} ${s.n}">${on ? "✓" : "+"}</button></div>`;
+  }).join("");
+  $$("#list .add").forEach(b => b.onclick = () => toggleSvc(b.dataset.id, true));
+}
+function toggleSvc(id, scroll){
+  const i = sel.svcs.indexOf(id);
+  if (i >= 0) sel.svcs.splice(i, 1);
+  else {
+    const s = svc(id);
+    if (s.combo) sel.svcs = sel.svcs.filter(x => !s.combo.includes(x));                    // el combo reemplaza a los sueltos
+    sel.svcs = sel.svcs.filter(x => !(svc(x).combo || []).includes(id));                    // y un suelto reemplaza al combo que lo incluye
+    if (["cl","fd","ni"].includes(id)) sel.svcs = sel.svcs.filter(x => !["cl","fd","ni","cb","fb"].includes(x) || x === id);   // un solo corte
+    if (["cb","fb"].includes(id)) sel.svcs = sel.svcs.filter(x => !["cl","fd","ni","cb","fb"].includes(x) || x === id);
+    sel.svcs.push(id);
+  }
+  sel.hora = null;
+  renderList(); renderBook(); renderGal();
+  if (scroll && i < 0 && sel.svcs.length === 1) $("#reservar").scrollIntoView({behavior:"smooth"});
+}
+/* Si eligió corte y barba por separado, le sugerimos el combo */
+function comboSugerido(){
+  return SERVICIOS.find(c => c.combo && c.combo.every(id => sel.svcs.includes(id)));
+}
+
+/* ================== B1 · Turno guiado ================== */
+const elegidos = () => sel.svcs.map(svc);
+const duracion = () => elegidos().reduce((a, s) => a + s.min, 0);
+const total = () => elegidos().reduce((a, s) => a + s.p, 0);
+function proximosDias(){
+  const now = hoyUY(), out = [];
+  for (let i = 0; i < CONFIG.diasAdelante; i++){ const d = new Date(now); d.setHours(0,0,0,0); d.setDate(d.getDate() + i); out.push(d); }
+  return out;
+}
+const mezcla = x => { x = Math.imul(x ^ (x >>> 16), 0x45d9f3b); x = Math.imul(x ^ (x >>> 16), 0x45d9f3b); return (x ^ (x >>> 16)) >>> 0; };
+/* Agenda de ejemplo: ocupación fija por fecha, barbero y bloque (en un sitio real vendría de una agenda) */
+function ocupado(d, pro, m){
+  const h = ((d.getFullYear()*400 + d.getMonth()*32 + d.getDate()) * 31 + pro.charCodeAt(0) * 7 + Math.floor(m/30));
+  return mezcla(h) % 100 < 45;
+}
+function libre(d, proId, inicio, dur){
+  const pros = proId === "any" ? PROS.filter(p => p.id !== "any") : [PROS.find(p => p.id === proId)];
+  for (const p of pros){
+    let ok = true;
+    for (let m = inicio; m < inicio + dur; m += CONFIG.bloque) if (ocupado(d, p.id, m)) { ok = false; break; }
+    if (ok) return p;
+  }
+  return null;
+}
+function horarios(d){
+  const hz = CONFIG.horario[d.getDay()]; if (!hz) return [];
+  const dur = Math.max(duracion(), 30), out = [];
+  const now = hoyUY(), esHoy = d.toDateString() === now.toDateString(), corte = now.getHours()*60 + now.getMinutes() + 20;
+  for (let m = hz[0]*60; m + dur <= hz[1]*60; m += 30)
+    out.push({m, txt:hhmm(m), pro:(esHoy && m < corte) ? null : libre(d, sel.pro, m, dur)});
+  return out;
+}
+
+function renderBook(){
+  const svcs = elegidos();
+  $("#picked").innerHTML = svcs.length
+    ? svcs.map(s => `<span class="pill">${s.n}<button type="button" data-id="${s.id}" aria-label="Quitar ${s.n}">✕</button></span>`).join("") + `<a class="pill" href="#servicios">+ Agregar</a>`
+    : `<span class="empty">Elegí lo que te vas a hacer en la lista de <a href="#servicios">precios</a> 👆</span>`;
+  $$("#picked button").forEach(b => b.onclick = () => toggleSvc(b.dataset.id));
+  const c = comboSugerido();
+  if (c){
+    const ahorro = c.combo.reduce((a, id) => a + svc(id).p, 0) - c.p;
+    $("#tip").innerHTML = `<div class="tip"><span>💡 Con el combo <b>${c.n}</b> ahorrás <b>${fmt(ahorro)}</b></span><button type="button" id="toCombo">Cambiar al combo</button></div>`;
+    $("#toCombo").onclick = () => toggleSvc(c.id);
+  } else $("#tip").innerHTML = "";
+  $("#s1Info").textContent = svcs.length ? `⏱ ${durTxt(duracion())}` : "";
+  $("#s1").classList.toggle("done", svcs.length > 0);
+
+  $("#pros").innerHTML = PROS.map(p => `<button type="button" class="opt ${p.id===sel.pro?'on':''}" data-p="${p.id}"><span class="av" style="background:${p.c}">${p.id==="any" ? "⚡" : p.n[0]}</span>${p.n}</button>`).join("");
+  $$("#pros .opt").forEach(b => b.onclick = () => { sel.pro = b.dataset.p; sel.hora = null; renderBook(); });
+  $("#s2").classList.add("done");
+
+  $("#days").innerHTML = proximosDias().map(d => {
+    const cerrado = !CONFIG.horario[d.getDay()], lugar = !cerrado && horarios(d).some(h => h.pro);
+    const on = sel.dia && d.getTime() === sel.dia.getTime();
+    const hoy = d.toDateString() === hoyUY().toDateString();
+    return `<button type="button" class="day ${on?'on':''}" data-t="${d.getTime()}" ${cerrado || !lugar ? "disabled" : ""} aria-label="${DSEML[d.getDay()]} ${d.getDate()}${cerrado ? ', cerrado' : !lugar ? ', sin lugar' : ''}"><small>${hoy ? "Hoy" : DSEM[d.getDay()]}</small><b>${d.getDate()}</b></button>`;
+  }).join("");
+  $$("#days .day:not([disabled])").forEach(b => b.onclick = () => {
+    const d = new Date(+b.dataset.t);
+    sel.dia = sel.dia && sel.dia.getTime() === d.getTime() ? null : d;
+    sel.hora = null; renderBook();
+  });
+  $("#s3Info").textContent = sel.dia ? `${DSEML[sel.dia.getDay()]} ${sel.dia.getDate()}` : "";
+  $("#s3").classList.toggle("done", !!sel.dia);
+
+  if (!sel.dia) $("#slots").innerHTML = `<span class="empty">Primero elegí el día.</span>`;
+  else {
+    const hs = horarios(sel.dia);
+    $("#slots").innerHTML = hs.map(h => `<button type="button" class="slot ${sel.hora && sel.hora.m===h.m?'on':''}" data-m="${h.m}" ${h.pro ? "" : "disabled"} aria-label="${h.txt}${h.pro ? "" : ", ocupado"}">${h.txt}</button>`).join("");
+    $$("#slots .slot:not([disabled])").forEach(b => b.onclick = () => {
+      const h = hs.find(x => x.m === +b.dataset.m);
+      sel.hora = sel.hora && sel.hora.m === h.m ? null : h;
+      renderBook();
+    });
+  }
+  $("#s4Info").textContent = sel.hora ? `${sel.hora.txt} a ${hhmm(sel.hora.m + Math.max(duracion(),30))}` : "";
+  $("#s4").classList.toggle("done", !!sel.hora);
+  renderSum();
+}
+/* Turno exprés: busca el primer hueco libre desde ahora */
+$("#express").onclick = () => {
+  for (const d of proximosDias()){
+    const h = horarios(d).find(x => x.pro);
+    if (h){ sel.dia = d; sel.hora = h; renderBook(); $("#s4").scrollIntoView({behavior:"smooth", block:"center"}); return; }
+  }
+  $("#err").textContent = "No encontramos lugar en los próximos días.";
+};
+
+function renderSum(){
+  const svcs = elegidos();
+  const quien = sel.hora ? sel.hora.pro.n : PROS.find(p => p.id === sel.pro).n;
+  const ahorro = svcs.filter(s => s.combo).reduce((a, s) => a + s.combo.reduce((b, id) => b + svc(id).p, 0) - s.p, 0);
+  $("#sum").innerHTML = `
+    <div class="r"><span>Servicio</span><span>${svcs.length ? svcs.map(s => s.n).join(" + ") : "—"}</span></div>
+    ${sel.estilo ? `<div class="r"><span>Estilo</span><span>${sel.estilo}</span></div>` : ""}
+    <div class="r"><span>Barbero</span><span>${quien}</span></div>
+    <div class="r"><span>Cuándo</span><span>${sel.dia ? `${DSEML[sel.dia.getDay()]} ${sel.dia.getDate()}/${sel.dia.getMonth()+1}` : "—"}${sel.hora ? ` · ${sel.hora.txt}` : ""}</span></div>
+    <div class="r"><span>Duración</span><span>${svcs.length ? durTxt(duracion()) : "—"}</span></div>
+    <div class="r tot"><span>Total</span><span>${svcs.length ? fmt(total()) : "—"}</span></div>
+    ${ahorro ? `<div class="save">Ahorrás ${fmt(ahorro)} con el combo</div>` : ""}`;
+  $("#err").textContent = "";
+}
+
+$("#send").onclick = () => {
+  const nom = $("#nom").value.trim(), tel = $("#tel").value.trim();
+  const fallas = [[!sel.svcs.length, "Elegí qué te vas a hacer", "#servicios"], [!sel.dia, "Elegí el día", "#s3"], [!sel.hora, "Elegí la hora", "#s4"], [!nom, "Poné tu nombre", "#nom"], [!tel, "Dejanos tu WhatsApp para confirmarte", "#tel"]];
+  const f = fallas.find(x => x[0]);
+  if (f){ $("#err").textContent = f[1]; const el = $(f[2]); el.scrollIntoView({behavior:"smooth", block:"center"}); if (el.tagName === "INPUT") el.focus(); return; }
+  const msg = [
+    "¡Hola Filo! Quiero sacar turno:",
+    "",
+    ...elegidos().map(s => `• ${s.n} (${durTxt(s.min)} · ${fmt(s.p)})`),
+    ...(sel.estilo ? [`✂️ Estilo: ${sel.estilo}`] : []),
+    "",
+    `📅 ${DSEML[sel.dia.getDay()]} ${sel.dia.getDate()}/${sel.dia.getMonth()+1} a las ${sel.hora.txt}`,
+    `💈 Con ${sel.hora.pro.n}${sel.pro === "any" ? " (el primero libre)" : ""}`,
+    `💲 Total ${fmt(total())}`,
+    `👤 ${nom} · ${tel}`
+  ].join("\n");
+  if (!CONFIG.whatsapp) alert("Demo: acá se abre WhatsApp con este mensaje:\n\n" + msg);
+  else window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+  $("#ok").classList.add("show");
+};
+
+/* ================== B3 · Galería de estilos ================== */
+/* fade: altura del degradé (0 = sin fade) · top: forma de arriba · barba: tipo */
+const ESTILOS = [
+  {n:"Fade bajo", cat:"Cortes", d:"Degradé cerca de la oreja, prolijo y discreto.", svc:"fd", fade:.78, top:"crop"},
+  {n:"Fade alto", cat:"Cortes", d:"Costados casi al ras, arriba con volumen.", svc:"fd", fade:.45, top:"pompa"},
+  {n:"Crop texturizado", cat:"Cortes", d:"Flequillo recto y textura arriba.", svc:"fd", fade:.62, top:"crop"},
+  {n:"Clásico con raya", cat:"Cortes", d:"Tijera, raya al costado, de siempre.", svc:"cl", fade:0, top:"raya"},
+  {n:"Rapado", cat:"Cortes", d:"Máquina pareja, cero mantenimiento.", svc:"cl", fade:0, top:"buzz"},
+  {n:"Fade con diseño", cat:"Cortes", d:"Degradé con líneas a navaja.", svc:"fd", extra:"di", fade:.62, top:"crop", lineas:true},
+  {n:"Barba completa", cat:"Barba", d:"Larga y perfilada, con toalla caliente.", svc:"ba", fade:.62, top:"raya", barba:"full"},
+  {n:"Candado", cat:"Barba", d:"Bigote y mentón, mejillas limpias.", svc:"ba", fade:.62, top:"crop", barba:"candado"}
+];
+const SKIN = "#e2b896", HAIR = "#2a1d16";
+let _g = 0;
+function cabezaSVG(e){
+  const id = "f" + (_g++), f = e.fade || 1;
+  const tops = {
+    crop:  `<path d="M46 92 Q46 40 100 38 Q154 40 154 92 Q140 74 100 76 Q60 74 46 92Z" fill="${HAIR}"/><path d="M60 64 L140 64 L144 82 Q100 76 56 82Z" fill="${HAIR}"/>`,
+    pompa: `<path d="M48 92 Q36 14 104 14 Q168 18 152 92 Q140 62 100 64 Q62 62 48 92Z" fill="${HAIR}"/>`,
+    raya:  `<path d="M46 94 Q44 38 100 38 Q156 38 154 94 Q150 66 124 62 Q92 58 70 66 Q52 74 46 94Z" fill="${HAIR}"/><path d="M78 42 Q80 52 78 62" stroke="${SKIN}" stroke-width="2.5" fill="none"/>`,
+    buzz:  `<path d="M48 88 Q50 46 100 44 Q150 46 152 88 Q132 70 100 70 Q68 70 48 88Z" fill="${HAIR}" opacity=".55"/>`
+  };
+  const barbas = {
+    full: `<path d="M52 112 Q50 186 100 192 Q150 186 148 112 Q144 146 126 152 Q100 144 74 152 Q56 146 52 112Z" fill="${HAIR}"/>`,
+    candado: `<path d="M80 154 Q100 146 120 154 L118 160 Q100 154 82 160Z" fill="${HAIR}"/><path d="M84 168 Q100 190 116 168 Q110 176 100 176 Q90 176 84 168Z" fill="${HAIR}"/>`
+  };
+  return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${e.n}">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${HAIR}"/><stop offset="${Math.max(f-.18,0)}" stop-color="${HAIR}"/><stop offset="${f}" stop-color="${SKIN}"/></linearGradient></defs>
+    <path d="M30 200 Q100 150 170 200Z" fill="${e.barba ? "#1d3a6e" : "#c1272d"}"/>
+    <rect x="82" y="150" width="36" height="34" rx="8" fill="#d3a682"/>
+    <ellipse cx="100" cy="100" rx="56" ry="62" fill="url(#${id})"/>
+    <ellipse cx="46" cy="112" rx="9" ry="14" fill="#d3a682"/><ellipse cx="154" cy="112" rx="9" ry="14" fill="#d3a682"/>
+    <ellipse cx="100" cy="116" rx="46" ry="56" fill="${SKIN}"/>
+    ${e.lineas ? `<path d="M50 84 L66 78 M48 94 L68 86" stroke="${SKIN}" stroke-width="3" stroke-linecap="round"/>` : ""}
+    ${tops[e.top]}
+    <path d="M74 100 L90 98 M110 98 L126 100" stroke="${HAIR}" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="83" cy="112" r="3.6" fill="#2b2321"/><circle cx="117" cy="112" r="3.6" fill="#2b2321"/>
+    <path d="M100 116 Q96 132 102 134" stroke="#c09070" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    ${e.barba ? barbas[e.barba] : ""}
+    <path d="M88 150 Q100 ${e.barba === "full" ? 156 : 158} 112 150" stroke="${e.barba === "full" ? "#e2b896" : "#a0604c"}" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>`;
+}
+let gcat = "Todos";
+function renderGal(){
+  const cats = ["Todos", ...new Set(ESTILOS.map(e => e.cat))];
+  $("#gf").innerHTML = cats.map(c => `<button class="tab ${c===gcat?'on':''}" data-c="${c}">${c}</button>`).join("");
+  $$("#gf .tab").forEach(b => b.onclick = () => { gcat = b.dataset.c; renderGal(); });
+  _g = 0;
+  $("#gal").innerHTML = ESTILOS.map((e, i) => ({e, i})).filter(x => gcat === "Todos" || x.e.cat === gcat).map(({e, i}) => {
+    const on = sel.estilo === e.n;
+    return `<div class="sty">${cabezaSVG(e)}<div class="cap"><b>${e.n}</b><small>${e.d}</small>
+      <button type="button" class="${on?'on':''}" data-i="${i}">${on ? "✓ Elegido" : "Lo quiero"}</button></div></div>`;
+  }).join("");
+  $$("#gal button").forEach(b => b.onclick = () => elegirEstilo(ESTILOS[+b.dataset.i]));
+}
+function elegirEstilo(e){
+  if (sel.estilo === e.n){ sel.estilo = null; renderGal(); renderBook(); return; }
+  sel.estilo = e.n;
+  const tieneCorte = sel.svcs.some(id => ["cl","fd","ni","cb","fb"].includes(id));
+  const conBarba = sel.svcs.some(id => ["cb","fb"].includes(id));
+  if (e.cat === "Cortes"){
+    const quiere = conBarba ? (e.svc === "fd" ? "fb" : "cb") : e.svc;   // ajusta el corte (o el combo) al estilo elegido
+    if (!sel.svcs.includes(quiere) && (!tieneCorte || !sel.svcs.includes("ni"))) toggleSvc(quiere);
+  }
+  if (e.cat === "Barba" && !sel.svcs.some(id => ["ba","cb","fb"].includes(id))) toggleSvc("ba");
+  if (e.extra && !sel.svcs.includes(e.extra)) toggleSvc(e.extra);
+  renderGal(); renderBook();
+  $("#reservar").scrollIntoView({behavior:"smooth"});
+}
+
+/* ================== Horarios + abierto ahora ================== */
+function renderHoras(){
+  const now = hoyUY(), d = now.getDay(), hz = CONFIG.horario[d], m = now.getHours()*60 + now.getMinutes();
+  $("#tabla").innerHTML = [1,2,3,4,5,6,0].map(i => {
+    const h = CONFIG.horario[i];
+    return `<tr class="${i===d ? "today" : ""} ${h ? "" : "closed"}"><td>${DSEML[i][0].toUpperCase() + DSEML[i].slice(1)}</td><td>${h ? `${hhmm(h[0]*60)} – ${hhmm(h[1]*60)}` : "Cerrado"}</td></tr>`;
+  }).join("");
+  const abierto = hz && m >= hz[0]*60 && m < hz[1]*60;
+  $("#open").classList.toggle("si", !!abierto);
+  $("#open span").textContent = abierto ? `Abierto ahora · hasta las ${hz[1]} h` : "Cerrado ahora · reservá para cuando abrimos";
+}
+
+renderList(); renderBook(); renderGal(); renderHoras();
+</script>
 </body>
 </html>
