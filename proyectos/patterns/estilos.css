@@ -249,6 +249,7 @@ tr.rec td{background:#fff8d9;font-weight:700}
 .notify.ya{background:#e7f6ef;border-color:var(--a4)}
 
 .fab{bottom:60px}
+body{padding-bottom:52px}
 
 @media(max-width:900px){
   .talles{grid-template-columns:1fr}
