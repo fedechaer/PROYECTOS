@@ -23,6 +23,9 @@ button{font:inherit;cursor:pointer}
 header.top{position:sticky;top:0;z-index:30;background:rgba(244,242,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
 .logo{font-family:Unbounded,sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo-svg{display:block;height:28px;width:auto;color:var(--ink)}
+.foot-brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.logo-foot .logo-svg{height:18px}
 .logo .mark{width:26px;height:26px;border-radius:6px;background:conic-gradient(var(--a1) 0 25%,var(--a2) 0 50%,var(--a3) 0 75%,var(--a4) 0)}
 nav ul{display:flex;gap:26px;list-style:none}
 nav ul a{text-decoration:none;font-weight:500;color:var(--muted)}
@@ -257,7 +260,7 @@ tr.rec td{background:#fff8d9;font-weight:700}
 }
 @media(max-width:520px){
   .cart-btn,.fav-btn{padding:8px 12px}
-  .logo{font-size:1.1rem}
+  .logo-svg{height:22px}
   .band .wrap{grid-template-columns:1fr}
   .stats{gap:20px}
   th,td{padding:10px 6px;font-size:.9rem}
