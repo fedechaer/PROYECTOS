@@ -65,20 +65,6 @@
   .stat b{display:block;font-family:Newsreader,Georgia,serif;font-size:1.9rem;font-weight:600;line-height:1}
   .stat span{color:var(--soft);font-size:.86rem}
 
-  /* Consulta guiada */
-  .guia{background:var(--navy);color:#fff}
-  .guia .sub{color:#b8c3d6}
-  .sits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .sit{background:var(--navy2);border:1.5px solid #26375a;color:#fff;border-radius:12px;padding:14px 16px;text-align:left;display:flex;gap:12px;align-items:center;font-weight:600;transition:.15s}
-  .sit:hover{border-color:#4a6aa8}
-  .sit .i{font-size:1.3rem;flex:none}
-  .sit.on{background:#fff;color:var(--ink);border-color:#fff}
-  .resp{margin-top:18px;background:#fff;color:var(--ink);border-radius:16px;padding:22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
-  .resp[hidden]{display:none}
-  .resp .area{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--blue);border-radius:99px;padding:3px 10px;margin-bottom:8px}
-  .resp h3{font-family:Newsreader,Georgia,serif;font-size:1.5rem;font-weight:600;line-height:1.15}
-  .resp p{color:var(--soft);margin-top:6px}
-  .resp .bt{display:flex;flex-direction:column;gap:8px}
 
   /* Servicios */
   .areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -90,22 +76,6 @@
   .ar li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--blue)}
   .ar small{color:var(--soft)}
 
-  /* Trámites: qué llevar */
-  #tramites{background:var(--panel)}
-  .tram{display:grid;grid-template-columns:260px minmax(0,1fr);gap:22px;align-items:start}
-  .tabs{display:flex;flex-direction:column;gap:6px}
-  .tab{border:0;background:transparent;text-align:left;padding:11px 14px;border-radius:10px;font-weight:600;color:var(--soft)}
-  .tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 6px rgba(14,26,46,.08)}
-  .lista{background:#fff;border-radius:16px;padding:24px}
-  .lista h3{font-family:Newsreader,Georgia,serif;font-size:1.6rem;font-weight:600}
-  .grupo{margin-top:16px}
-  .grupo b{display:block;font-size:.84rem;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
-  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
-  .chk input{width:20px;height:20px;accent-color:var(--blue);margin-top:2px;flex:none}
-  .chk.hecho span{color:var(--soft);text-decoration:line-through}
-  .prog{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.9rem;color:var(--soft)}
-  .prog .bar{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
-  .prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
 
   /* Inmuebles */
   .filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
@@ -218,17 +188,17 @@
   .toast.on{opacity:1}
 
   @media(max-width:1000px){nav ul{display:none}.props{grid-template-columns:repeat(2,minmax(0,1fr))}.why,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}.pf{grid-template-columns:1fr}.pf img{height:300px}}
-  @media(max-width:820px){.hero .wrap,.ct,.tram{grid-template-columns:1fr}.areas,.sits{grid-template-columns:1fr 1fr}.team{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto}.tab{white-space:nowrap}.resp{grid-template-columns:1fr}
+  @media(max-width:820px){.hero .wrap,.ct{grid-template-columns:1fr}.areas{grid-template-columns:1fr 1fr}.team{grid-template-columns:1fr}
     .props{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*max(5vw,18px));padding:4px max(5vw,18px) 8px}.props .pr{flex:0 0 84%;scroll-snap-align:center}}
-  @media(max-width:560px){section{padding:56px 0}.areas,.sits,.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.why,.pasos{grid-template-columns:1fr}.brand b{font-size:1.05rem}.brand small{display:none}.photo{aspect-ratio:4/3}}
+  @media(max-width:560px){section{padding:56px 0}.areas,.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.why,.pasos{grid-template-columns:1fr}.brand b{font-size:1.05rem}.brand small{display:none}.photo{aspect-ratio:4/3}}
 </style>
 </head>
 <body>
 
 <header><nav class="wrap">
   <a class="brand" href="#" aria-label="Bosdandjian Rodríguez, inicio"><span class="mono"><img src="img/marca/monograma.webp" alt="" width="30" height="20"></span><span><b>Bosdandjian Rodríguez</b><small>ESTUDIO JURÍDICO NOTARIAL</small></span></a>
-  <ul><li><a href="#servicios">Servicios</a></li><li><a href="#tramites">Trámites</a></li><li><a href="#inmuebles">Inmuebles</a></li><li><a href="#estudio">El estudio</a></li><li><a href="#opiniones">Opiniones</a></li></ul>
-  <a class="btn sm" href="#consulta">Consultar</a>
+  <ul><li><a href="#servicios">Servicios</a></li><li><a href="#inmuebles">Inmuebles</a></li><li><a href="#estudio">El estudio</a></li><li><a href="#opiniones">Opiniones</a></li></ul>
+  <a class="btn sm" href="#contacto">Consultar</a>
 </nav></header>
 
 <main>
@@ -237,7 +207,7 @@
     <p class="kick">Estudio jurídico notarial · Ciudad Vieja, Montevideo</p>
     <h1 class="serif">Abogacía, escribanía e inmobiliaria con <span>un solo respaldo</span>.</h1>
     <p class="lead">No necesitás coordinar entre un abogado, un escribano y una inmobiliaria: lo resolvemos dentro del mismo proceso, con análisis preventivo antes de que firmes.</p>
-    <div class="acts"><a class="btn" href="#consulta">Contanos tu caso</a><a class="btn line" href="#inmuebles">Ver propiedades</a></div>
+    <div class="acts"><a class="btn" href="#contacto">Contanos tu caso</a><a class="btn line" href="#inmuebles">Ver propiedades</a></div>
     <div class="stats">
       <div class="stat"><b>2019</b><span>Año de fundación</span></div>
       <div class="stat"><b>3</b><span>Áreas integradas</span></div>
@@ -251,13 +221,6 @@
   </div>
 </div></section>
 
-<section id="consulta" class="guia"><div class="wrap">
-  <h2 class="serif">¿En qué te podemos ayudar?</h2>
-  <p class="sub">Elegí tu situación y te decimos qué área la atiende y cómo seguimos. La primera respuesta es por WhatsApp, rápida y sin compromiso.</p>
-  <div class="sits" id="sits"></div>
-  <div class="resp" id="resp" hidden aria-live="polite"></div>
-</div></section>
-
 <section id="servicios"><div class="wrap">
   <h2 class="serif">Tres áreas, un mismo estudio</h2>
   <p class="sub">Para personas y empresas, en Montevideo, Maldonado y todo el país, presencial o a distancia.</p>
@@ -266,16 +229,6 @@
     <div class="ar"><span class="ico">📜</span><h3>Escribanía</h3><ul><li>Compraventa de inmuebles y automotores</li><li>Poderes para pleitos y generales</li><li>Testamentos</li><li>Certificados notariales</li><li>Actas de constatación y notificación</li></ul><small>Personas y empresas</small></div>
     <div class="ar"><span class="ico">🏠</span><h3>Servicios inmobiliarios</h3><ul><li>Compra y venta de propiedades</li><li>Análisis jurídico del inmueble antes de firmar</li><li>Detección de deudas y riesgos legales</li><li>Operaciones en Montevideo y Maldonado</li><li>Escrituración con respaldo notarial incluido</li></ul><small>Con escribanía incluida</small></div>
   </div>
-</div></section>
-
-<section id="tramites"><div class="wrap">
-  <h2 class="serif">¿Qué necesito llevar?</h2>
-  <p class="sub">Elegí el trámite y mirá la documentación habitual. Podés ir marcando lo que ya tenés.</p>
-  <div class="tram">
-    <div class="tabs" id="tabs" role="tablist"></div>
-    <div class="lista" id="lista"></div>
-  </div>
-  <p class="note">Lista orientativa: cada caso puede pedir algo más. Te lo confirmamos al coordinar.</p>
 </div></section>
 
 <section id="inmuebles"><div class="wrap">
@@ -363,7 +316,7 @@
 
 <footer><div class="wrap"><span>© Bosdandjian Rodríguez · Estudio Jurídico Notarial · Ciudad Vieja, Montevideo</span><span>Abogacía · Escribanía · Inmobiliaria</span></div></footer>
 
-<a class="fab" href="#consulta" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
+<a class="fab" href="#contacto" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Fotos de la propiedad">
   <button type="button" class="x" id="lbX" aria-label="Cerrar">✕</button>
@@ -387,69 +340,6 @@ function wa(msg){
 }
 function toast(t){ const e = $("#toast"); e.textContent = t; e.classList.add("on"); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove("on"), 2200); }
 
-/* ===== Consulta guiada ===== */
-const SITS = [
-  {i:"💼", t:"Me despidieron o tengo un reclamo laboral", a:"Abogacía", d:"Liquidaciones, despidos, acoso o reclamos con la empresa. Revisamos tu caso y te decimos qué te corresponde."},
-  {i:"🏠", t:"Compro, vendo o alquilo una propiedad", a:"Inmobiliaria + Escribanía", d:"Análisis jurídico del inmueble, detección de deudas y escrituración, todo en el mismo proceso.", tram:"inmueble"},
-  {i:"🚗", t:"Compro o vendo un auto", a:"Escribanía", d:"Nos encargamos de los papeles de principio a fin.", tram:"auto"},
-  {i:"✍️", t:"Necesito un poder", a:"Escribanía", d:"Poderes generales o para pleitos, para que alguien te represente.", tram:"poder"},
-  {i:"📜", t:"Testamento o sucesión", a:"Escribanía", d:"Dejá todo ordenado o iniciá la sucesión de un familiar.", tram:"sucesion"},
-  {i:"👨‍👩‍👧", t:"Divorcio, pensión o tema de familia", a:"Abogacía", d:"Divorcios, pensiones alimenticias, visitas y acuerdos."},
-  {i:"🚦", t:"Tuve un accidente de tránsito", a:"Abogacía", d:"Reclamos por daños y lesiones, y gestión con aseguradoras."},
-  {i:"🏛️", t:"Necesito un recurso de amparo", a:"Abogacía", d:"Cuando un derecho tuyo está en riesgo y necesitás una respuesta urgente."},
-  {i:"🏢", t:"Tengo una empresa o voy a crear una", a:"Abogacía + Escribanía", d:"Constitución de sociedades, contratos, certificaciones y asesoramiento."}
-];
-let sitSel = -1;
-function renderSits(){
-  $("#sits").innerHTML = SITS.map((s, i) => `<button type="button" class="sit ${i === sitSel ? "on" : ""}" data-i="${i}" aria-pressed="${i === sitSel}"><span class="i" aria-hidden="true">${s.i}</span>${esc(s.t)}</button>`).join("");
-  $$("#sits .sit").forEach(b => b.onclick = () => { sitSel = sitSel === +b.dataset.i ? -1 : +b.dataset.i; renderSits(); });
-  const r = $("#resp");
-  if (sitSel < 0){ r.hidden = true; return; }
-  const s = SITS[sitSel];
-  r.hidden = false;
-  r.innerHTML = `<div><span class="area">${esc(s.a)}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div>
-    <div class="bt"><button type="button" class="btn wa" id="respWa">💬 Consultar por WhatsApp</button>${s.tram ? `<a class="btn line" style="background:#fff" href="#tramites" id="respTram">📋 ¿Qué necesito llevar?</a>` : ""}</div>`;
-  $("#respWa").onclick = () => wa(`Hola, quiero hacer una consulta sobre: ${s.t.toLowerCase()}.`);
-  if (s.tram) $("#respTram").onclick = () => { tramSel = s.tram; renderTram(); };
-}
-
-/* ===== ¿Qué necesito llevar? (orientativo) ===== */
-const TRAMITES = {
-  inmueble: {n:"Compraventa de inmueble", g:[
-    ["Si vendés", ["Cédula de identidad", "Título de propiedad (escritura anterior)", "Plano de mensura del inmueble", "Contribución Inmobiliaria al día", "Impuesto de Primaria al día", "Gastos comunes al día (si es propiedad horizontal)", "Datos de tu estado civil (partida de matrimonio o divorcio, si corresponde)"]],
-    ["Si comprás", ["Cédula de identidad", "Datos de tu estado civil", "Origen de los fondos (constancia bancaria o de ingresos)"]]]},
-  auto: {n:"Compraventa de automotor", g:[
-    ["Los dos", ["Cédula de identidad del comprador y del vendedor"]],
-    ["Si vendés", ["Título de propiedad del vehículo", "Libreta de circulación", "Patente al día (SUCIVE)", "Constancia de que no tiene multas pendientes"]]]},
-  poder: {n:"Poder", g:[
-    ["Quien da el poder", ["Cédula de identidad", "Nombre completo y cédula de la persona que te va a representar", "Para qué es el poder (trámite, pleito, banco, venta…)"]]]},
-  firmas: {n:"Certificación de firmas", g:[
-    ["Para la cita", ["Cédula de identidad de quienes firman", "El documento a firmar, sin firmar todavía"]]]},
-  sucesion: {n:"Sucesión", g:[
-    ["De la persona fallecida", ["Partida de defunción", "Títulos de los bienes (inmuebles, vehículos, cuentas)", "Testamento, si existe"]],
-    ["De los herederos", ["Cédulas de identidad", "Partidas de nacimiento", "Partida de matrimonio (cónyuge)"]]]}
-};
-let tramSel = "inmueble";
-const hechos = {};
-function renderTram(){
-  $("#tabs").innerHTML = Object.entries(TRAMITES).map(([k, t]) => `<button type="button" class="tab ${k === tramSel ? "on" : ""}" role="tab" aria-selected="${k === tramSel}" data-k="${k}">${esc(t.n)}</button>`).join("");
-  $$("#tabs .tab").forEach(b => b.onclick = () => { tramSel = b.dataset.k; renderTram(); });
-  const t = TRAMITES[tramSel], items = t.g.flatMap(g => g[1]);
-  hechos[tramSel] = hechos[tramSel] || new Set();
-  $("#lista").innerHTML = `<h3>${esc(t.n)}</h3>` + t.g.map(([tit, l]) => `<div class="grupo"><b>${esc(tit)}</b>${l.map(x => {
-      const on = hechos[tramSel].has(x);
-      return `<label class="chk ${on ? "hecho" : ""}"><input type="checkbox" ${on ? "checked" : ""} data-x="${esc(x)}"><span>${esc(x)}</span></label>`;
-    }).join("")}</div>`).join("") +
-    `<div class="prog"><span id="pTxt"></span><div class="bar"><i id="pBar"></i></div></div>
-     <button type="button" class="btn sm" style="margin-top:14px" id="tramWa">💬 Coordinar este trámite</button>`;
-  const prog = () => { const n = hechos[tramSel].size; $("#pTxt").textContent = `${n} de ${items.length}`; $("#pBar").style.width = n / items.length * 100 + "%"; };
-  $$("#lista input").forEach(c => c.onchange = () => {
-    c.checked ? hechos[tramSel].add(c.dataset.x) : hechos[tramSel].delete(c.dataset.x);
-    c.closest(".chk").classList.toggle("hecho", c.checked); prog();
-  });
-  $("#tramWa").onclick = () => wa(`Hola, quiero coordinar un trámite de ${t.n.toLowerCase()}.`);
-  prog();
-}
 
 /* ===== Propiedades ===== */
 const fotos = (slug, n, portada = true) => (portada ? [`img/inmuebles/${slug}/portada.webp`] : []).concat(Array.from({length: n}, (_, i) => `img/inmuebles/${slug}/${String(i + 1).padStart(2, "0")}.webp`));
@@ -569,7 +459,7 @@ $("#form").onsubmit = e => {
 };
 $("#waLink").onclick = e => { e.preventDefault(); wa("Hola, quiero hacer una consulta."); };
 
-renderSits(); renderTram(); renderProps();
+renderProps();
 if (location.hash) setTimeout(irA, 300);
 }
 </script>

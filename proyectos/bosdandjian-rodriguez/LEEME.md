@@ -9,20 +9,17 @@ Web nueva para **Bosdandjian Rodríguez, Estudio Jurídico Notarial**, con dise�
 ## Qué tiene
 
 1. **Portada** con el mensaje principal y cifras reales: fundado en 2019, 3 áreas, 5,0 en Google y 19 reseñas.
-2. **"¿En qué te podemos ayudar?"**: la persona elige su situación (despido, compraventa, auto, poder, sucesión, familia, accidente, amparo, empresa). La web le dice qué área lo atiende y arma la consulta por WhatsApp.
-3. **Servicios**: abogacía, escribanía e inmobiliaria, con lo que incluye cada una.
-4. **"¿Qué necesito llevar?"**: lista de documentos por trámite (compraventa de inmueble y de auto, poder, certificación de firmas, sucesión), con casillas para ir marcando. Es **orientativa**: el estudio tiene que revisarla.
-5. **Propiedades** con filtro (disponibles, Montevideo, Maldonado, operaciones recientes), galería de fotos, consulta por WhatsApp y **link propio** para compartir (`#casa-buceo`, `#terreno-av-italia`, `#casa-playa-hermosa`). En el celular van en carrusel.
-6. **Por qué elegirnos** y **cómo trabajamos** en 4 pasos.
-7. **Equipo** con el mismo formato para los dos.
-8. **Opiniones**: las 19 reseñas de Google, **sin fechas inventadas**. Con `resenas.php` se muestran el promedio, el total y 5 reseñas con su **fecha real** (ver abajo).
-9. **Preguntas frecuentes** y **contacto completo**: WhatsApp, teléfono para llamar, mail, Instagram y formulario.
+2. **Servicios**: abogacía, escribanía e inmobiliaria, con lo que incluye cada una.
+3. **Propiedades** con filtro (disponibles, Montevideo, Maldonado, operaciones recientes), galería de fotos, consulta por WhatsApp y **link propio** para compartir (`#casa-buceo`, `#terreno-av-italia`, `#casa-playa-hermosa`). En el celular van en carrusel.
+4. **Por qué elegirnos** y **cómo trabajamos** en 4 pasos.
+5. **Equipo** con el mismo formato para los dos.
+6. **Opiniones**: las 19 reseñas de Google, **sin fechas inventadas**. Con `resenas.php` se muestran el promedio, el total y 5 reseñas con su **fecha real** (ver abajo).
+7. **Preguntas frecuentes** y **contacto completo**: WhatsApp, teléfono para llamar, mail, Instagram y formulario.
 
 ## Para completar con el estudio
 
 - **Dirección exacta y horario** (en la web aparecen punteados).
 - **Nombre de él**: pusimos "Dr. Andrés Bosdandjian" porque así lo nombran en las reseñas.
-- **Lista de documentos** de "¿Qué necesito llevar?": revisarla y ajustarla.
 - **5 fotos de las galerías** que no se pudieron descargar de su servidor.
 - **Logo**: la versión completa dice "Bosdan**j**ian" (le falta la "d") y "Rodriguez" y "JURIDICO" sin tilde. En esta web se usa solo el monograma BR.
 
