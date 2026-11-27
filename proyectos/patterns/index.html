@@ -21,16 +21,19 @@
     <li><a href="#talles">Talles</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <button class="cart-btn" id="openCart" aria-label="Abrir carrito">🛒 <span class="n" id="cartN">0</span></button>
+  <div class="nav-r">
+    <button class="fav-btn" id="openFav" aria-label="Ver mis favoritas">♡ <span class="n" id="favN">0</span></button>
+    <button class="cart-btn" id="openCart" aria-label="Abrir carrito">🛒 <span class="n" id="cartN">0</span></button>
+  </div>
 </nav></header>
 
 <main>
   <!-- HERO -->
   <div class="wrap hero">
     <div>
-      <span class="kicker">Nueva colección · [Temporada]</span>
+      <span class="kicker">Drop 01 · Animal</span>
       <h1>Vestí tu <span class="hl">patrón</span>.</h1>
-      <p>Remeras con diseño propio, hechas en Uruguay. Cada modelo es un patrón y cada patrón tiene su historia.</p>
+      <p>Remeras con diseño propio, hechas en Uruguay. Patrones de todo tipo: el primer drop sale de las pieles de los animales.</p>
       <div class="actions">
         <a class="btn" href="#tienda">Ver la colección →</a>
         <a class="btn light" href="#contacto">Escribinos</a>
@@ -57,6 +60,7 @@
         <label class="toggle"><input type="checkbox" id="soloStock"> Solo con stock</label>
       </div>
     </div>
+    <div class="share" id="favShare" style="display:none"></div>
     <div class="grid" id="grid"></div>
   </div></section>
 
@@ -82,26 +86,38 @@
   <!-- TALLES -->
   <section id="talles" style="padding-top:0"><div class="wrap">
     <div class="head"><h2>Guía de talles</h2></div>
-    <div style="overflow-x:auto">
-      <table>
-        <thead><tr><th>Talle</th><th>Ancho (cm)</th><th>Largo (cm)</th></tr></thead>
-        <tbody>
-          <tr><td><b>S</b></td><td>50</td><td>70</td></tr>
-          <tr><td><b>M</b></td><td>53</td><td>72</td></tr>
-          <tr><td><b>L</b></td><td>56</td><td>74</td></tr>
-          <tr><td><b>XL</b></td><td>59</td><td>76</td></tr>
-          <tr><td><b>XXL</b></td><td>62</td><td>78</td></tr>
-        </tbody>
-      </table>
+    <div class="talles">
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Talle</th><th>Ancho (cm)</th><th>Largo (cm)</th></tr></thead>
+          <tbody id="tBody"></tbody>
+        </table>
+      </div>
+      <div id="calcHome">
+        <div class="calc" id="calc">
+          <b class="ct">📏 ¿Qué talle soy?</b>
+          <div class="seg" id="cModo"><button type="button" class="on" data-m="remera">Con una remera tuya</button><button type="button" data-m="cuerpo">Con altura y peso</button></div>
+          <div class="cm" data-m="remera">
+            <p>Agarrá una remera que te quede bien, estirala sobre la mesa y medí de axila a axila.</p>
+            <label class="in">Ancho <input id="cAncho" type="number" inputmode="decimal" min="30" max="90" placeholder="ej: 54"> cm</label>
+          </div>
+          <div class="cm" data-m="cuerpo" style="display:none">
+            <div class="r2"><label class="in">Altura <input id="cAlt" type="number" inputmode="numeric" placeholder="175"> cm</label><label class="in">Peso <input id="cPeso" type="number" inputmode="numeric" placeholder="72"> kg</label></div>
+            <p>¿Cómo te gusta que te quede?</p>
+            <div class="seg sm" id="cFit"><button type="button" data-f="-1">Al cuerpo</button><button type="button" class="on" data-f="0">Normal</button><button type="button" data-f="1">Holgada</button></div>
+          </div>
+          <div class="cres" id="cRes" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
-    <p class="note">* Medidas de ejemplo: reemplazar por las reales. Ancho medido de axila a axila con la remera estirada.</p>
+    <p class="note">* Medidas de ejemplo: se cambian en config.js (MEDIDAS). Ancho medido de axila a axila con la remera estirada.</p>
   </div></section>
 
   <!-- FAQ -->
   <section id="faq" style="padding-top:0"><div class="wrap">
     <div class="head"><h2>Preguntas frecuentes</h2></div>
     <details><summary>¿Cómo compro?</summary><p>Elegí tu remera, el color y el talle, y agregala al carrito. Después mandanos el pedido por WhatsApp, Instagram o correo, y coordinamos el pago y la entrega.</p></details>
-    <details><summary>¿El stock está actualizado?</summary><p>Sí, la web muestra lo que tenemos. Si un talle aparece tachado es porque se agotó: escribinos y te avisamos cuando vuelva.</p></details>
+    <details><summary>¿El stock está actualizado?</summary><p>Sí, la web muestra lo que tenemos. Si un talle aparece tachado es porque se agotó: tocalo y pedí que te avisemos cuando vuelva.</p></details>
     <details><summary>¿Hacen envíos al interior?</summary><p>Sí, enviamos a todo Uruguay por [agencia]. El costo corre por cuenta del comprador [a confirmar].</p></details>
     <details><summary>¿Puedo cambiar el talle?</summary><p>Sí, siempre que la remera esté sin uso y con su etiqueta, dentro de los [X] días.</p></details>
     <details><summary>¿Hacen pedidos por cantidad o personalizados?</summary><p>Sí, para grupos, eventos o empresas. Escribinos y armamos un presupuesto.</p></details>
@@ -134,17 +150,26 @@
 
 <!-- Modal de producto -->
 <div class="overlay" id="overlay"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
-  <div class="img" id="mImg"></div>
+  <div class="mgal">
+    <div class="img" id="mImg"></div>
+    <div class="thumbs" id="mThumbs"></div>
+  </div>
   <div class="info">
     <button class="close" id="mClose" aria-label="Cerrar">✕</button>
     <h3 id="mName"></h3>
-    <div class="price" id="mPrice"></div>
+    <div class="prow"><div class="price" id="mPrice"></div><button type="button" class="mfav" id="mFav" aria-pressed="false">♡ Guardar</button></div>
     <p class="desc" id="mDesc"></p>
     <div class="opt"><label>Color: <span id="mColorName" style="font-weight:500"></span></label><div class="colors" id="mColors"></div></div>
-    <div class="opt"><label>Talle · <a href="#talles" id="mGuide" style="font-weight:500">ver guía</a></label><div class="sizes" id="mSizes"></div></div>
+    <div class="opt"><label>Talle · <button type="button" class="calc-link" id="mCalcBtn">📏 ¿Qué talle soy?</button></label><div class="sizes" id="mSizes"></div></div>
+    <div id="mCalcSlot"></div>
     <div class="stock-msg" id="mStock"></div>
     <button class="btn" id="mAdd">Agregar al carrito</button>
-    <p class="ask">¿No está tu talle? <a href="#" id="mAsk">Consultanos por WhatsApp</a></p>
+    <div class="notify" id="mNotify" style="display:none">
+      <b>🔔 ¿Te avisamos cuando vuelva?</b>
+      <p id="nTxt"></p>
+      <div class="nrow"><input id="nName" placeholder="Tu nombre" autocomplete="name" aria-label="Tu nombre"><button type="button" class="btn" id="nBtn">Avisame</button></div>
+    </div>
+    <p class="ask">¿Dudas con el talle o el color? <a href="#" id="mAsk">Consultanos por WhatsApp</a></p>
   </div>
 </div></div>
 

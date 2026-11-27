@@ -24,3 +24,14 @@ const AJUSTES = {
   moneda: "$",
   promo: ["Envíos a todo Uruguay", "Nueva colección disponible", "Cambios de talle sin costo", "Hecho en Uruguay"]
 };
+
+/* Medidas de cada talle en cm: [ancho de axila a axila, largo].
+   Se usan en la guía de talles y en la calculadora "¿Qué talle soy?".
+   Medidas de ejemplo: reemplazar por las reales. */
+const MEDIDAS = {
+  S:   [50, 70],
+  M:   [53, 72],
+  L:   [56, 74],
+  XL:  [59, 76],
+  XXL: [62, 78]
+};

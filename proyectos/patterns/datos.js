@@ -8,9 +8,11 @@
 
    Pestaña Productos: una fila por modelo y color.
    Columnas: id, modelo, precio, categoria, etiqueta, descripcion,
-             patron, color, color_remera, color_estampa, foto,
-             <una columna por talle>, total
-   Los talles son las columnas entre "foto" y "total".
+             patron, color, <una columna por talle>, total
+   Opcionales: color_remera y color_estampa (#hex; si faltan se
+   deducen del nombre del color) y foto (uno o varios links
+   separados por |).
+   Los talles son todas las columnas que no son datos del producto.
    ========================================================= */
 
 // Acepta el link completo de "Publicar en la Web" o solo la clave 2PACX-...
@@ -59,13 +61,22 @@ const hex    = (s, def) => /^#[0-9a-f]{6}$/i.test(limpio(s)) ? limpio(s) : def;
 const entero = s => { const n = parseInt(String(s).replace(/[^\d-]/g, ""), 10); return isNaN(n) || n < 0 ? 0 : n; };
 const slug   = s => limpio(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
+/* Colores por nombre, para cuando la planilla no trae color_remera / color_estampa */
+const COLORES = {
+  blanco:"#fafafa", negro:"#1a1a1a", gris:"#9a9a9a", arena:"#e8dcc6", beige:"#e8dcc6", crudo:"#efe8da",
+  azul:"#2f4bff", marino:"#1d2a4d", celeste:"#9cc9f5", verde:"#16a37f", oliva:"#6b6b3a", amarillo:"#ffd23f",
+  rojo:"#d7263d", bordo:"#6d1a2a", naranja:"#ff5a36", rosa:"#f4a6c0", violeta:"#7b4fd1", marron:"#7a4e2d", camel:"#c19a6b"
+};
+const colorPorNombre = n => COLORES[slug(n).split("-")[0]];
+
+const NO_TALLE = new Set(["id","modelo","precio","categoria","etiqueta","descripcion","patron","color","color_remera","color_estampa","foto","total"]);
+
 function armarProductos(filas){
   const [enc, ...datos] = filas;
   const cols = enc.map(clave);
-  const iFoto = cols.indexOf("foto");
-  const iTotal = cols.indexOf("total");
-  if (iFoto < 0) throw new Error('Falta la columna "foto" en la pestaña Productos');
-  const talles = enc.slice(iFoto + 1, iTotal > iFoto ? iTotal : undefined).map(limpio).filter(Boolean);
+  const iTalles = cols.map((c, i) => c && !NO_TALLE.has(c) ? i : -1).filter(i => i >= 0);
+  const talles = iTalles.map(i => limpio(enc[i]));
+  if (!talles.length) throw new Error("No encontré columnas de talles en la pestaña Productos");
 
   const porId = new Map();
   for (const f of datos){
@@ -79,9 +90,10 @@ function armarProductos(filas){
       });
     }
     const stock = {};
-    talles.forEach((t, k) => stock[t] = entero(f[iFoto + 1 + k]));
+    talles.forEach((t, k) => stock[t] = entero(f[iTalles[k]]));
+    const tee = hex(v.color_remera, colorPorNombre(v.color) || "#fafafa");
     porId.get(id).colores.push({
-      nombre: v.color || "Único", tee: hex(v.color_remera, "#fafafa"), tinta: hex(v.color_estampa, "#111111"),
+      nombre: v.color || "Único", tee, tinta: hex(v.color_estampa, isDark(tee) ? "#ffffff" : "#111111"),
       img: v.foto || "", stock
     });
   }

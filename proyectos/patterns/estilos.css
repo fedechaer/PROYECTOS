@@ -175,7 +175,78 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 .toast{position:fixed;left:50%;top:20px;transform:translate(-50%,-200%);visibility:hidden;background:var(--ink);color:#fff;padding:12px 20px;border-radius:99px;font-weight:600;z-index:80;transition:.3s;max-width:calc(100% - 32px);text-align:center}
 .toast.show{transform:translate(-50%,0);visibility:visible}
 
+/* T1 · Favoritas */
+.nav-r{display:flex;gap:8px;align-items:center}
+.fav-btn{background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;font-weight:700;display:flex;align-items:center;gap:6px}
+.fav-btn .n{background:var(--bg);border-radius:99px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.78rem}
+.fav-btn.on{border-color:var(--a1);color:var(--a1)}
+.fav-btn.on .n{background:var(--a1);color:#fff}
+.heart{position:absolute;right:10px;bottom:10px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--a1);font-size:1.25rem;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.15);transition:transform .15s}
+.heart:active{transform:scale(.88)}
+.heart.on{background:var(--a1);color:#fff}
+.chip.fav{border-color:var(--a1);color:var(--a1)}
+.chip.fav.on{background:var(--a1);color:#fff}
+.share{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#fff2ee;border:1.5px solid var(--a1);border-radius:16px;padding:12px 16px;margin-bottom:18px;font-weight:600}
+.btn.sm{padding:10px 18px;font-size:.9rem}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mfav{border:1.5px solid var(--a1);color:var(--a1);background:#fff;border-radius:99px;padding:7px 14px;font-weight:700;font-size:.88rem}
+.mfav.on{background:var(--a1);color:#fff}
+
+/* T2 · Galería con zoom */
+.mgal{background:var(--bg);display:flex;flex-direction:column;min-width:0}
+.modal .img{position:relative;overflow:hidden}
+.track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;overflow:hidden;cursor:zoom-in}
+.slide .zw{width:100%;height:100%;transition:transform .25s ease}
+.slide .zw svg,.slide .zw img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.z{cursor:zoom-out;touch-action:none}
+.slide.z .zw{transform:scale(2.4)}
+.zhint{position:absolute;right:10px;bottom:10px;background:rgba(17,17,17,.78);color:#fff;font-size:.74rem;font-weight:700;padding:5px 10px;border-radius:99px;pointer-events:none}
+.thumbs{display:flex;gap:8px;padding:10px;overflow-x:auto}
+.thumbs:empty{display:none}
+.thumbs button{flex:0 0 64px;border:2px solid transparent;border-radius:12px;background:#fff;padding:0;overflow:hidden;display:flex;flex-direction:column}
+.thumbs button svg,.thumbs button img{width:100%;height:56px;object-fit:cover;display:block}
+.thumbs button span{font-size:.66rem;font-weight:700;padding:2px 0 3px;color:var(--muted)}
+.thumbs button.on{border-color:var(--ink)}
+.thumbs button.on span{color:var(--ink)}
+
+/* T3 · ¿Qué talle soy? */
+.talles{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
+tr.rec td{background:#fff8d9;font-weight:700}
+.calc{background:var(--card);border:1.5px solid var(--ink);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.calc .ct{font-family:Unbounded;font-size:1rem}
+.calc p{color:var(--muted);font-size:.9rem}
+.seg{display:flex;background:var(--bg);border-radius:99px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;background:none;border-radius:99px;padding:8px 6px;font-weight:700;font-size:.85rem;color:var(--muted)}
+.seg button.on{background:var(--ink);color:#fff}
+.in{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem}
+.in input{width:100%;min-width:0;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:var(--bg)}
+.in input:focus{outline:none;border-color:var(--ink)}
+.calc .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cres:empty{display:none}
+.cres{background:var(--a3);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.cres .big{font-family:Unbounded;font-size:1.05rem}
+.cres .big b{font-size:1.4rem}
+.cres small{font-size:.85rem}
+.cres .btn{align-self:flex-start}
+.calc-link{border:0;background:none;font-weight:600;color:var(--a2);text-decoration:underline;padding:0;font-size:.85rem}
+.calc-link.on{color:var(--ink)}
+#mCalcSlot .calc{border-width:1px}
+.sizes button.rec{box-shadow:inset 0 -3px 0 var(--a3)}
+
+/* T4 · Avisame cuando vuelva */
+.sizes button.agot{opacity:.5;text-decoration:line-through;background:var(--bg)}
+.sizes button.agot.on{opacity:1;background:#8a8780;border-color:#8a8780;color:#fff}
+.notify{background:#eef1ff;border:1.5px solid var(--a2);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.notify p{font-size:.9rem;color:var(--muted)}
+.notify .nrow{display:grid;grid-template-columns:1fr auto;gap:8px}
+.notify input{padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:#fff;min-width:0}
+.notify .btn{background:var(--a2);padding:11px 18px}
+.notify.ya{background:#e7f6ef;border-color:var(--a4)}
+
 @media(max-width:900px){
+  .talles{grid-template-columns:1fr}
   .hero,.about{grid-template-columns:1fr}
   .hero-art{max-width:460px}
   .band .wrap{grid-template-columns:1fr 1fr}
@@ -185,6 +256,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   nav ul{display:none}
 }
 @media(max-width:520px){
+  .cart-btn,.fav-btn{padding:8px 12px}
+  .logo{font-size:1.1rem}
   .band .wrap{grid-template-columns:1fr}
   .stats{gap:20px}
   th,td{padding:10px 6px;font-size:.9rem}
