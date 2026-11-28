@@ -5,7 +5,10 @@ Webs demo para negocios de barrio (Malvín, Montevideo) que no tienen presencia 
 ## Estructura
 
 ```
-├── index.html            ← portada con links a todas las demos
+├── index.html            ← portada: proyectos y los primeros ejemplos
+├── webs.html             ← todas las webs, con filtro por rubro
+├── webs.js               ← lista de webs (la usan las dos páginas)
+├── estilos.css           ← estilos compartidos de la portada y webs.html
 └── proyectos/
     ├── patterns/               ⭐ Marca propia: tienda de remeras con carrito a WhatsApp
     ├── colab-dental/           Laboratorio dental: servicios y canal de contacto (portfolio)
@@ -40,7 +43,7 @@ Queda en `https://fedechaer.github.io/proyectos/`.
 ## Agregar un proyecto nuevo
 
 1. Crear `proyectos/<nombre-negocio>/index.html`.
-2. Agregarlo a la lista `PROYECTOS` del `index.html` de la raíz.
+2. Agregarlo a la lista `PROYECTOS` (o `EJEMPLOS`) de `webs.js`, con su `rubro`.
 3. Regenerar las capturas (ver abajo).
 
 ## Pendiente por cliente
@@ -57,7 +60,7 @@ node herramientas/generar-previews.js
 ```
 
 (Necesita Node y Playwright: `npm i -D playwright && npx playwright install chromium`.)
-Después sumá el proyecto a la lista `PROYECTOS` del `index.html` de la raíz.
+Después sumá el proyecto a la lista `PROYECTOS` (o `EJEMPLOS`) de `webs.js`. La portada muestra los primeros 6 ejemplos (`EN_PORTADA`) y `webs.html` muestra todos.
 
 ## Portada pública y ejemplos
 

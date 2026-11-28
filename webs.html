@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Todas las webs · Federico Chaer</title>
+<meta name="description" content="Todas las webs que hice: proyectos reales y ejemplos por rubro para emprendimientos y comercios de Montevideo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header><nav class="wrap">
+  <a class="brand" href="./">Federico <span>Chaer</span></a>
+  <ul>
+    <li><a href="./#que-hago">Qué hago</a></li>
+    <li><a href="./#como-trabajo">Cómo trabajo</a></li>
+  </ul>
+  <a class="btn wa sm" href="https://wa.me/59899075625?text=Hola%20Federico!%20Vi%20tu%20p%C3%A1gina%20y%20quer%C3%ADa%20consultarte%20por%20una%20web." target="_blank" rel="noopener">💬 Escribime</a>
+</nav></header>
+
+<main>
+  <section style="padding-top:44px"><div class="wrap">
+    <a class="back" href="./">← Volver al inicio</a>
+    <p class="eyebrow">Portfolio</p>
+    <h1 style="font-size:clamp(2rem,5vw,3rem)">Todas las webs</h1>
+    <p class="lead">Proyectos reales y ejemplos por rubro. Filtrá por el tuyo y tocá cualquiera para probarlo.</p>
+    <div class="filters" id="filtros" role="group" aria-label="Filtrar por rubro"></div>
+    <div class="cards" id="todas" aria-live="polite"></div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap">
+    <div class="cta">
+      <h2>¿Te imaginás la tuya?</h2>
+      <p>Contame de tu emprendimiento y te muestro una propuesta, sin compromiso.</p>
+      <a class="btn wa" href="https://wa.me/59899075625?text=Hola%20Federico!%20Vi%20tus%20webs%20y%20quer%C3%ADa%20consultarte%20por%20una." target="_blank" rel="noopener">💬 Escribime por WhatsApp</a>
+    </div>
+  </div></section>
+</main>
+
+<footer>Federico Chaer · Webs para emprendimientos · Montevideo, Uruguay · © <span id="yr"></span></footer>
+
+<script src="webs.js"></script>
+<script>
+{
+  const TODAS = PROYECTOS.map(p => ({...p, real: true})).concat(EJEMPLOS.map(p => ({...p, real: false})));
+  const RUBROS = [...new Set(TODAS.map(p => p.rubro))];
+  const slug = t => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  let rubro = "todas";
+
+  function render(){
+    const opciones = [["todas", "Todas", TODAS.length]].concat(RUBROS.map(r => [slug(r), r, TODAS.filter(p => p.rubro === r).length]));
+    if (!opciones.some(o => o[0] === rubro)) rubro = "todas";
+    document.getElementById("filtros").innerHTML = opciones.map(([k, n, c]) =>
+      `<button type="button" class="fchip ${k === rubro ? "on" : ""}" data-k="${k}" aria-pressed="${k === rubro}">${n}<span>${c}</span></button>`).join("");
+    document.querySelectorAll("#filtros .fchip").forEach(b => b.onclick = () => {
+      rubro = b.dataset.k;
+      history.replaceState(null, "", rubro === "todas" ? location.pathname : "#" + rubro);   // el filtro queda en el link
+      render();
+    });
+    const lista = TODAS.filter(p => rubro === "todas" || slug(p.rubro) === rubro);
+    document.getElementById("todas").innerHTML = lista.length
+      ? lista.map(p => tarjetaWeb(p, p.real)).join("")
+      : `<p class="none">Todavía no hay webs de este rubro.</p>`;
+  }
+
+  rubro = location.hash.slice(1) || "todas";
+  window.addEventListener("hashchange", () => { rubro = location.hash.slice(1) || "todas"; render(); });
+  render();
+  document.getElementById("yr").textContent = new Date().getFullYear();
+}
+</script>
+</body>
+</html>
